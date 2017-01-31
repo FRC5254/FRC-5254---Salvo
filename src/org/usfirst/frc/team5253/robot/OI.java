@@ -25,8 +25,8 @@ public class OI {
 	public OI() {
 		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
-		Button OperatorButtonY = new JoystickButton(operator, 3);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
+		Button OperatorButtonY = new JoystickButton(operator, 3);
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		
