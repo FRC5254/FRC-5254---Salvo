@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5253.robot.commands.Autonomous;
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.Indexer;
@@ -31,7 +32,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
 
-	Command autonomousCommand;
+	Command autonomousCommand = new Autonomous();
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
