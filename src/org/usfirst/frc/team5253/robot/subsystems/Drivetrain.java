@@ -59,7 +59,7 @@ public class Drivetrain extends Subsystem{
 	
 	public void autoDrive(double Throttle, double Turn, double distance) {
 		
-		double wheelDiameter = 6;
+		double wheelDiameter = 4;
 		double gearRatio = 9;
 		final double pi = 3.1415926535;
 		double encoderTicks = 256;

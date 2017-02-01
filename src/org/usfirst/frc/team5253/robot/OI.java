@@ -2,6 +2,7 @@ package org.usfirst.frc.team5253.robot;
 
 import org.usfirst.frc.team5253.robot.commands.DropGear;
 import org.usfirst.frc.team5253.robot.commands.FeedShooter;
+import org.usfirst.frc.team5253.robot.commands.RaiseGear;
 import org.usfirst.frc.team5253.robot.commands.StopFeedingShooter;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
 import org.usfirst.frc.team5253.robot.commands.StopShooting;
@@ -31,7 +32,8 @@ public class OI {
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		
 		
-		OperatorButtonY.whenPressed(new DropGear());
+		OperatorButtonY.whenActive(new DropGear());
+		OperatorButtonY.cancelWhenActive(new RaiseGear());
 		DriverButtonA.whenPressed(new FeedShooter());
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonB.whenPressed(new StopFeedingShooter());

@@ -17,7 +17,6 @@ public class GearHolder extends Subsystem {
 	private DoubleSolenoid gearPiston = new DoubleSolenoid(RobotMap.GEAR_HOLDER_PISTON_EXTEND, RobotMap.GEAR_HOLDER_PISTON_RETRACT);
 
 	public GearHolder() {
-		gearPiston.set(DoubleSolenoid.Value.kOff);
 	}
 	
     public void initDefaultCommand() {
@@ -29,7 +28,7 @@ public class GearHolder extends Subsystem {
     	gearPiston.set(DoubleSolenoid.Value.kForward);
     }
     
-    public void reset() {
+    public void raise() {
     	gearPiston.set(DoubleSolenoid.Value.kReverse);
     }
 }
