@@ -10,6 +10,7 @@ public class CrossBaseLine extends CommandGroup {
 
     public CrossBaseLine() {
     	
+    	System.out.format("Crossbaseline");
     	requires(Robot.Drivetrain);
     	
         // Add Commands here:
@@ -29,6 +30,7 @@ public class CrossBaseLine extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    		addSequential(new DriveToDistance(1, 72));
+    		addSequential(new DriveToDistance(0.25,12));
+    		
     }
 }

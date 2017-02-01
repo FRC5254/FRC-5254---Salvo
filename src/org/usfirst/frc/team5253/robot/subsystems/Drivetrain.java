@@ -13,14 +13,16 @@ import edu.wpi.first.wpilibj.Encoder;
 public class Drivetrain extends Subsystem{
 	
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-	static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
+	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
 	static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
-	static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	
 
 	public double angle = gyro.getAngle();
 	public double Kp = 0.65;
-
+	private static double finalModifier;
+	private static double distance;
+	
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
@@ -53,7 +55,7 @@ public class Drivetrain extends Subsystem{
 		encoder.setMaxPeriod(0.1);
 		encoder.setMinRate(1);
 		encoder.setDistancePerPulse(1);
-		encoder.setReverseDirection(false);
+		encoder.setReverseDirection(true);
 		encoder.setSamplesToAverage(7);
 	}
 	
@@ -63,13 +65,19 @@ public class Drivetrain extends Subsystem{
 		double gearRatio = 9;
 		final double pi = 3.1415926535;
 		double encoderTicks = 256;
-		double finalModifier =(distance/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
+		finalModifier = (distance/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
+		this.distance = distance;
 		if (encoder.get() < finalModifier) {
 			myRobot.drive(Throttle, Turn);
 		}
 	}
+	
+	public boolean autoIsFinished() {
+		return Math.abs(encoder.get()) >= finalModifier;
+	}
 
 	public void stop() {
 		myRobot.arcadeDrive(0.0, 0.0);
+		
 	}
 }

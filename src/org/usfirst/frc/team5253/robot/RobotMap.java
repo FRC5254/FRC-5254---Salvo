@@ -41,8 +41,8 @@ public class RobotMap {
 	// PDP
 	public static final int DRIVE_MOTOR_LEFT1 = 0;
 	public static final int DRIVE_MOTOR_LEFT2 = 1;
-	public static final int DRIVE_MOTOR_RIGHT1 = 14;
-	public static final int DRIVE_MOTOR_RIGHT2 = 15;
+	public static final int DRIVE_MOTOR_RIGHT1 = 2;//14
+	public static final int DRIVE_MOTOR_RIGHT2 = 3;//15
 
 	//CAN Talons
 	public static final int INDEXER_MOTOR = 1; //Not final
