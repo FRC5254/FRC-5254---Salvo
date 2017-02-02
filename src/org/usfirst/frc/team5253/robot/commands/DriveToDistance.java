@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -41,7 +40,7 @@ public class DriveToDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.Drivetrain.autoIsFinished();
+    	return Robot.Drivetrain.driveAutoIsFinished();
     }
 
     // Called once after isFinished returns true

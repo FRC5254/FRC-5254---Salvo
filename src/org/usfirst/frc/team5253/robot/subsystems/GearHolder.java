@@ -2,6 +2,7 @@ package org.usfirst.frc.team5253.robot.subsystems;
 
 
 import org.usfirst.frc.team5253.robot.RobotMap;
+import org.usfirst.frc.team5253.robot.commands.RaiseGear;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,14 +23,15 @@ public class GearHolder extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new RaiseGear());
     }
     
     public void drop() {
-    	gearPiston.set(DoubleSolenoid.Value.kForward);
+    	gearPiston.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void raise() {
-    	gearPiston.set(DoubleSolenoid.Value.kReverse);
+    	gearPiston.set(DoubleSolenoid.Value.kForward);
     }
 }
 

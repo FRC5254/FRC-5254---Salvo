@@ -50,4 +50,11 @@ public class RobotMap {
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 3; //Not final
 	public static final int SHOOTER_MOTOR_BOTTOM = 4; //Not final
 	public static final int INTAKE_MOTOR =  5; //Not final
+	
+	//RPMs
+	public static final double SHOOTER_RPM = 4300;
+	
+	//Misc
+	public static final int WHEEL_DIAMETER = 4;
+	public static final int GEAR_RATIO = 9;
 }

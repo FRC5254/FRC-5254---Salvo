@@ -18,7 +18,7 @@ public class Intake extends Subsystem {
 	
 	public Intake() {
 		
-		intakeMotor.changeControlMode(CANTalon.TalonControlMode.Speed);
+		intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		intakeMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
@@ -34,10 +34,10 @@ public class Intake extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void startIntake(int RPM) {
+    public void startIntake() {
     	intakeMotor.changeControlMode(CANTalon.TalonControlMode.Speed);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		intakeMotor.set(-RPM);
+		intakeMotor.set(1.0);
     }
     
     public void stopIntake() {

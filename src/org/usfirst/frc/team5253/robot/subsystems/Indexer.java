@@ -18,14 +18,14 @@ public class Indexer extends Subsystem {
 	
 	public Indexer() {
 		
-		indexerMotor.changeControlMode(CANTalon.TalonControlMode.Speed);
+		indexerMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		indexerMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		indexerMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		indexerMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		indexerMotor.reverseSensor(false);
 		indexerMotor.reverseOutput(false);
 		indexerMotor.setF(0.025);
-		indexerMotor.setPID(0.11, 0.0, 0.0);
+		indexerMotor.setPID(0.0, 0.0, 0.0);
 		
 	}
 	
@@ -34,8 +34,8 @@ public class Indexer extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void startFeeding(int RPM) {
-    	indexerMotor.set(-RPM);
+    public void startFeeding() {
+    	indexerMotor.set(1.0);
     }
     
     public void stopFeeding() {

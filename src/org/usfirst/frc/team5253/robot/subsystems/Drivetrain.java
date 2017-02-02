@@ -61,19 +61,30 @@ public class Drivetrain extends Subsystem{
 	
 	public void autoDrive(double Throttle, double Turn, double distance) {
 		
-		double wheelDiameter = 4;
-		double gearRatio = 9;
+		double wheelDiameter = RobotMap.WHEEL_DIAMETER;
+		double gearRatio = RobotMap.GEAR_RATIO;
 		final double pi = 3.1415926535;
 		double encoderTicks = 256;
 		finalModifier = (distance/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
 		this.distance = distance;
-		if (encoder.get() < finalModifier) {
+		if (encoder.get() >= finalModifier) {
 			myRobot.drive(Throttle, Turn);
 		}
 	}
 	
-	public boolean autoIsFinished() {
+	public void autoTurn(double turnSpeed, double angle) {
+		if (gyro.getAngle() >= angle && gyro.getAngle() <= angle + 5) {
+			myRobot.drive(0.0, turnSpeed);
+		}
+		
+	}
+	
+	public boolean driveAutoIsFinished() {
 		return Math.abs(encoder.get()) >= finalModifier;
+	}
+	
+	public boolean turnAutoIsFinished() {
+		return (gyro.getAngle() >= angle && gyro.getAngle() <= angle + 5);
 	}
 
 	public void stop() {
