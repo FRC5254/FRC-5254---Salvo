@@ -67,7 +67,7 @@ public class Drivetrain extends Subsystem{
 		double encoderTicks = 256;
 		finalModifier = (distance/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
 		this.distance = distance;
-		if (encoder.get() >= finalModifier) {
+		if (encoder.get() <= finalModifier) {
 			myRobot.drive(Throttle, Turn);
 		}
 	}
