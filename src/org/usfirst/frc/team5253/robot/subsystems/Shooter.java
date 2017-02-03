@@ -30,10 +30,10 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.setPID(0.0, 0.0, 0.0);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
-		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_RIGHT);
+		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 		shooterMotorTopRight.reverseOutput(true);
 		
-		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.Speed);
+		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorBottom.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorBottom.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f,-12.0f);
@@ -49,7 +49,7 @@ public class Shooter extends Subsystem {
     }
     
     public void spinUp() {
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
     	shooterMotorTopLeft.set(0.75);
     	
@@ -57,11 +57,11 @@ public class Shooter extends Subsystem {
     }
     
     public void startShooting() {
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
     	shooterMotorTopLeft.set(0.75);
     	
-    	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.Speed);
+    	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
     	shooterMotorBottom.set(0.75);
     }

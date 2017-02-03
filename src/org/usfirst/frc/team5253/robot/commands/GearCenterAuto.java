@@ -31,7 +31,7 @@ public class GearCenterAuto extends CommandGroup {
 
  
 			addSequential(new DriveToDistance(0.25, 16));
-			addSequential(new DropGear());
+			addSequential(new DropGearAuto());
 			addSequential(new DriveToDistance(-0.25, 16));
 			
     }
