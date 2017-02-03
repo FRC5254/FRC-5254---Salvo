@@ -25,7 +25,7 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorTopLeft.reverseSensor(false);
-		shooterMotorTopLeft.reverseOutput(false);
+		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setF(0.025);
 		shooterMotorTopLeft.setPID(0.0, 0.0, 0.0);
 		
@@ -38,7 +38,7 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorBottom.reverseSensor(false);
-		shooterMotorBottom.reverseOutput(false);
+		shooterMotorBottom.reverseOutput(true);
 		shooterMotorBottom.setF(0.025);
 		shooterMotorBottom.setPID(0.0, 0.0, 0.0);
 		

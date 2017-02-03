@@ -19,6 +19,7 @@ public class Turn extends Command {
     	requires(Robot.Drivetrain);
     	this.turnSpeed = turnSpeed;
     	this.angle = angle;
+      	System.out.format("Turn(%f,%f)%n", this.turnSpeed, this.angle);
     }
 
     // Called just before this Command runs the first time

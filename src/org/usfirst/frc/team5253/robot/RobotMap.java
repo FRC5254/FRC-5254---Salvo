@@ -1,3 +1,8 @@
+
+
+
+
+
 package org.usfirst.frc.team5253.robot;
 
 /**
@@ -19,8 +24,8 @@ public class RobotMap {
 	
 	// Solenoids
 	public static final int SHIFTING_PISTON = 5;
-	public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
-	public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
+	public static final int GEAR_HOLDER_PISTON_EXTEND = 2;//for patho was 2
+	public static final int GEAR_HOLDER_PISTON_RETRACT = 3;//^^^ was 3
 
 	// Sensors
 	public static final int DRIVE_ENCODER_LEFT1 = 0;
@@ -54,6 +59,6 @@ public class RobotMap {
 	public static final double SHOOTER_RPM = 4300;
 	
 	//Misc
-	public static final int WHEEL_DIAMETER = 4;
+	public static final int WHEEL_DIAMETER = 6;//4
 	public static final int GEAR_RATIO = 9;
 }

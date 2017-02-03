@@ -31,7 +31,7 @@ public class GearBaseLineAuto extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveToDistance(0.25, 16));
-    	addSequential(new DropGear());
+    	addSequential(new DropGearAuto());
     	addSequential(new DriveToDistance(-0.25, 10));
     	addSequential(new Turn(0.65, 45));
     	addSequential(new DriveToDistance(0.25, 84));

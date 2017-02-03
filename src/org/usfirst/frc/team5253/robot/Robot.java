@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5253.robot.commands.CrossBaseLine;
 import org.usfirst.frc.team5253.robot.commands.GearBaseLineAuto;
 import org.usfirst.frc.team5253.robot.commands.GearCenterAuto;
 import org.usfirst.frc.team5253.robot.commands.NothingAuto;
+import org.usfirst.frc.team5253.robot.commands.SideGearAuto;
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.Indexer;
@@ -47,7 +49,9 @@ public class Robot extends IterativeRobot {
 		
 		chooser.addObject("Center Gear", new GearCenterAuto());
 		chooser.addObject("Nothing", new NothingAuto());
-		chooser.addObject("Cross Base Line", new GearBaseLineAuto());
+		chooser.addObject("Cross Base Line", new CrossBaseLine());
+		chooser.addObject("Side Gear",new SideGearAuto());
+		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}

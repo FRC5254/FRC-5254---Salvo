@@ -16,7 +16,7 @@ public class DropGearAuto extends Command {
         // eg. requires(chassis);
     	
     	requires(Robot.GearHolder);
-    	
+      	System.out.format("DropGearAuto()%n");
     }
 
     // Called just before this Command runs the first time

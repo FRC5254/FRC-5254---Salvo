@@ -23,7 +23,7 @@ public class Intake extends Subsystem {
 		intakeMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		intakeMotor.reverseSensor(false);
-		intakeMotor.reverseOutput(false);
+		intakeMotor.reverseOutput(true);
 		intakeMotor.setF(0.025);
 		intakeMotor.setPID(0.11, 0.0, 0.0);
 		

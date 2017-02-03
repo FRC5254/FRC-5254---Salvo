@@ -23,7 +23,7 @@ public class Indexer extends Subsystem {
 		indexerMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		indexerMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		indexerMotor.reverseSensor(false);
-		indexerMotor.reverseOutput(false);
+		indexerMotor.reverseOutput(true);
 		indexerMotor.setF(0.025);
 		indexerMotor.setPID(0.0, 0.0, 0.0);
 		

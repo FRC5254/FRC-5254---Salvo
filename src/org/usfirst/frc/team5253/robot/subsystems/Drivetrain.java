@@ -17,9 +17,9 @@ public class Drivetrain extends Subsystem{
 	static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
 	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	
-
-	public double angle = gyro.getAngle();
-	public double Kp = 0.65;
+	private double angle;
+	public double DKp = 0.07;
+	public double TKp = 0.3;
 	private static double finalModifier;
 	private static double distance;
 	
@@ -46,8 +46,8 @@ public class Drivetrain extends Subsystem{
 		gyro.reset();
 	}
 	
-	public void getAngle() {
-		gyro.getAngle();
+	public double getAngle() {
+		return gyro.getAngle();
 	}
 	
 	public void initEncoder() {
@@ -73,8 +73,10 @@ public class Drivetrain extends Subsystem{
 	}
 	
 	public void autoTurn(double turnSpeed, double angle) {
-		if (gyro.getAngle() >= angle && gyro.getAngle() <= angle + 5) {
+		if (gyro.getAngle() >= angle) {
 			myRobot.drive(0.0, turnSpeed);
+		} else if (gyro.getAngle() <= angle +5) {
+			myRobot.drive(0.0, -turnSpeed);
 		}
 		
 	}
@@ -84,7 +86,7 @@ public class Drivetrain extends Subsystem{
 	}
 	
 	public boolean turnAutoIsFinished() {
-		return (gyro.getAngle() >= angle && gyro.getAngle() <= angle + 5);
+		return (gyro.getAngle() >= angle);
 	}
 
 	public void stop() {
