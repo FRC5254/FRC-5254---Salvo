@@ -31,7 +31,7 @@ public class SideGearAuto extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveToDistance(0.25, 72));
-    	addSequential(new Turn(0.25, -60));
+    	addSequential(new AutoTurn(60));
     	addSequential(new DriveToDistance(0.25, 24));
     	addSequential(new DropGearAuto());
     	addSequential(new DriveToDistance(-0.25, 24));

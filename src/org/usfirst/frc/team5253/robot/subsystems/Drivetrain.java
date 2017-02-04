@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
+import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
 import org.usfirst.frc.team5253.robot.commands.DriveWithJoystick;
 
@@ -17,11 +18,12 @@ public class Drivetrain extends Subsystem{
 	static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
 	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	
-	private double angle;
+	double angle;
 	public double DKp = 0.07;
 	public double TKp = 0.3;
 	private static double finalModifier;
 	private static double distance;
+	private static double turnSpeed;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -72,21 +74,20 @@ public class Drivetrain extends Subsystem{
 		}
 	}
 	
-	public void autoTurn(double turnSpeed, double angle) {
+	public void autoTurn(double angle) {
+		turnSpeed = angle - gyro.getAngle();
 		if (gyro.getAngle() >= angle) {
-			myRobot.drive(0.0, turnSpeed);
-		} else if (gyro.getAngle() <= angle +5) {
-			myRobot.drive(0.0, -turnSpeed);
+			drive(0.0, turnSpeed / 50);
+		} else if (gyro.getAngle() <= angle + 1) {
+			drive(0.0, turnSpeed / 50);
+		} else {
+			drive(0.0, 0.0);
 		}
 		
 	}
 	
 	public boolean driveAutoIsFinished() {
-		return Math.abs(encoder.get()) >= finalModifier;
-	}
-	
-	public boolean turnAutoIsFinished() {
-		return (gyro.getAngle() >= angle);
+		return Math.abs(encoder.get()) >= Math.abs(finalModifier);
 	}
 
 	public void stop() {

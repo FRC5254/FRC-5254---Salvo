@@ -12,6 +12,7 @@ public class SpinUp extends Command {
     public SpinUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.Shooter);
     }
 
     // Called just before this Command runs the first time

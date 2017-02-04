@@ -3,6 +3,8 @@ package org.usfirst.frc.team5253.robot;
 import org.usfirst.frc.team5253.robot.commands.DropGear;
 import org.usfirst.frc.team5253.robot.commands.FeedShooter;
 import org.usfirst.frc.team5253.robot.commands.RaiseGear;
+import org.usfirst.frc.team5253.robot.commands.Shift;
+import org.usfirst.frc.team5253.robot.commands.SpinUp;
 import org.usfirst.frc.team5253.robot.commands.StopFeedingShooter;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
 import org.usfirst.frc.team5253.robot.commands.StopShooting;
@@ -30,6 +32,8 @@ public class OI {
 		Button OperatorButtonY = new JoystickButton(operator, 3);
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
+		Button DriverButtonX = new JoystickButton(driver, 4);
+		Button DriverButtonBack = new JoystickButton(driver, 6);
 		
 		
 		OperatorButtonY.whenActive(new DropGear());
@@ -40,6 +44,8 @@ public class OI {
 		DriverButtonB.whenPressed(new StopShooting());
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
+		DriverButtonBack.whenPressed(new Shift());
+		DriverButtonX.whenPressed(new SpinUp());
 	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
