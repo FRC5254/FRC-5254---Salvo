@@ -21,6 +21,7 @@ import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.Indexer;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
 import org.usfirst.frc.team5253.robot.subsystems.Intake;
+import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 	public static Indexer Indexer = new Indexer();
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
+	public static FuelTank FuelTank= new FuelTank();
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
