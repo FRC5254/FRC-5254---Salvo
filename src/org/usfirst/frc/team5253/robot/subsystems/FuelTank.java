@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * 
  */
 public class FuelTank extends Subsystem {
 
@@ -19,6 +19,7 @@ public class FuelTank extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new RedBullWingsRetract());
+    	//sets default command to inside the frame perimeter
     }
     
     public void redBullWingsOut() {

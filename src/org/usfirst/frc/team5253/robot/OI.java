@@ -3,6 +3,7 @@ package org.usfirst.frc.team5253.robot;
 import org.usfirst.frc.team5253.robot.commands.DropGear;
 import org.usfirst.frc.team5253.robot.commands.FeedShooter;
 import org.usfirst.frc.team5253.robot.commands.RaiseGear;
+import org.usfirst.frc.team5253.robot.commands.RedBullWingsExtend;
 import org.usfirst.frc.team5253.robot.commands.Shift;
 import org.usfirst.frc.team5253.robot.commands.SpinUp;
 import org.usfirst.frc.team5253.robot.commands.StopFeedingShooter;
@@ -29,23 +30,24 @@ public class OI {
 		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
-		Button OperatorButtonY = new JoystickButton(operator, 3);
+		Button OperatorButtonX = new JoystickButton(operator, 3);
+		Button OperatorButtonY = new JoystickButton(operator, 4);
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 4);
 		Button DriverButtonBack = new JoystickButton(driver, 6);
-		
-		
-		OperatorButtonY.whenActive(new DropGear());
-		OperatorButtonY.cancelWhenActive(new RaiseGear());
+	
 		DriverButtonA.whenPressed(new FeedShooter());
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonB.whenPressed(new StopFeedingShooter());
+		DriverButtonBack.whenPressed(new Shift());
+		DriverButtonX.whenPressed(new SpinUp());
 		DriverButtonB.whenPressed(new StopShooting());
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
-		DriverButtonBack.whenPressed(new Shift());
-		DriverButtonX.whenPressed(new SpinUp());
+		OperatorButtonX.whenPressed(new RedBullWingsExtend());
+		OperatorButtonY.whenActive(new DropGear());
+		OperatorButtonY.cancelWhenActive(new RaiseGear());
 	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
