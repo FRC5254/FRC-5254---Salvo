@@ -36,11 +36,11 @@ public class Drivetrain extends Subsystem{
 		
 	}
 	
-	public static void shiftUp() {
+	public void shiftUp() {
 		shiftingPiston.set(true);
 	}
 	
-	public static void shiftDown() {
+	public void shiftDown() {
 		shiftingPiston.set(false);
 	}
 	

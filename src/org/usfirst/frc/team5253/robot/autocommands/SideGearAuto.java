@@ -1,13 +1,18 @@
-package org.usfirst.frc.team5253.robot.commands;
+package org.usfirst.frc.team5253.robot.autocommands;
+
+import org.usfirst.frc.team5253.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class NothingAuto extends CommandGroup {
+public class SideGearAuto extends CommandGroup {
 
-    public NothingAuto() {
+    public SideGearAuto() {
+    	
+    	requires(Robot.Drivetrain);
+    	requires(Robot.GearHolder);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,5 +29,12 @@ public class NothingAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	addSequential(new DriveToDistance(0.25, 72));
+    	addSequential(new AutoTurn(60));
+    	addSequential(new DriveToDistance(0.25, 24));
+    	addSequential(new DropGearAuto());
+    	addSequential(new DriveToDistance(-0.25, 24));
+    	
     }
 }

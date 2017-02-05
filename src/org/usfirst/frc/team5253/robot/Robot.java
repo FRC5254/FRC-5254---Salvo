@@ -8,11 +8,13 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5253.robot.commands.CrossBaseLineAuto;
-import org.usfirst.frc.team5253.robot.commands.GearBaseLineAuto;
-import org.usfirst.frc.team5253.robot.commands.GearCenterAuto;
-import org.usfirst.frc.team5253.robot.commands.NothingAuto;
-import org.usfirst.frc.team5253.robot.commands.SideGearAuto;
+import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearBaseLineAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
+import org.usfirst.frc.team5253.robot.autocommands.NothingAuto;
+import org.usfirst.frc.team5253.robot.autocommands.SideGearAuto;
+import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.Indexer;
@@ -47,11 +49,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		
-		chooser.addObject("Center Gear", new GearCenterAuto());
 		chooser.addObject("Nothing", new NothingAuto());
+		chooser.addObject("Center Gear", new GearCenterAuto());
 		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
 		chooser.addObject("Side Gear",new SideGearAuto());
 		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
+		chooser.addObject("Ten Ball Auto", new TenBallAuto());
+		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
