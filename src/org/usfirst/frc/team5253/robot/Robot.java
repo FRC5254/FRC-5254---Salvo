@@ -12,6 +12,7 @@ import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearBaseLineAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearTenBallAndCrossAuto;
 import org.usfirst.frc.team5253.robot.autocommands.NothingAuto;
 import org.usfirst.frc.team5253.robot.autocommands.SideGearAuto;
 import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
@@ -58,6 +59,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
 		chooser.addObject("Ten Ball Auto", new TenBallAuto());
 		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());
+		chooser.addObject("Gear, Shoot and Cross", new GearTenBallAndCrossAuto());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
