@@ -23,11 +23,11 @@ public class FuelTank extends Subsystem {
     }
     
     public void redBullWingsOut() {
-    	redBullWingsPistion.set(DoubleSolenoid.Value.kForward);
+    	redBullWingsPistion.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void redBullWingsIn() {
-    	redBullWingsPistion.set(DoubleSolenoid.Value.kReverse);
+    	redBullWingsPistion.set(DoubleSolenoid.Value.kForward);
     }
 }
 

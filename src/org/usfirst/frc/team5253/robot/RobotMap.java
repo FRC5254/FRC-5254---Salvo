@@ -23,12 +23,13 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	// Solenoids
-	public static final int RED_BULL_WINGS_PISTION_EXTEND = 0;
-	public static final int RED_BULL_WINGS_PISTION_RETRACT = 1;
+	public static final int SHIFTING_PISTON = 0;
 	public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
 	public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
-	public static final int GEAR_INTAKE_PISTION= 4;//not final
-	public static final int SHIFTING_PISTON = 5;
+	public static final int RED_BULL_WINGS_PISTION_EXTEND = 4;
+	public static final int RED_BULL_WINGS_PISTION_RETRACT = 5;
+	public static final int GEAR_INTAKE_PISTION= 6;
+	
 
 
 	// Sensors

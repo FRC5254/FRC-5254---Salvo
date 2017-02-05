@@ -2,9 +2,13 @@ package org.usfirst.frc.team5253.robot;
 
 import org.usfirst.frc.team5253.robot.commands.DropGear;
 import org.usfirst.frc.team5253.robot.commands.FeedShooter;
+import org.usfirst.frc.team5253.robot.commands.GearIntakeIn;
+import org.usfirst.frc.team5253.robot.commands.GearIntakeOut;
 import org.usfirst.frc.team5253.robot.commands.RaiseGear;
 import org.usfirst.frc.team5253.robot.commands.RedBullWingsExtend;
-import org.usfirst.frc.team5253.robot.commands.Shift;
+import org.usfirst.frc.team5253.robot.commands.RedBullWingsRetract;
+import org.usfirst.frc.team5253.robot.commands.ShiftDown;
+import org.usfirst.frc.team5253.robot.commands.ShiftUp;
 import org.usfirst.frc.team5253.robot.commands.SpinUp;
 import org.usfirst.frc.team5253.robot.commands.StopFeedingShooter;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
@@ -32,15 +36,18 @@ public class OI {
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
 		Button OperatorButtonY = new JoystickButton(operator, 4);
+		Button OperatorButtonBack = new JoystickButton(operator, 7);
+		Button OperatorButtonStart = new JoystickButton(operator, 8);
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 4);
-		Button DriverButtonBack = new JoystickButton(driver, 6);
+		Button DriverButtonBack = new JoystickButton(driver, 7);
 	
 		DriverButtonA.whenPressed(new FeedShooter());
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonB.whenPressed(new StopFeedingShooter());
-		DriverButtonBack.whenPressed(new Shift());
+		DriverButtonBack.whenActive(new ShiftUp());
+		DriverButtonBack.cancelWhenActive(new ShiftDown());
 		DriverButtonX.whenPressed(new SpinUp());
 		DriverButtonB.whenPressed(new StopShooting());
 		OperatorButtonA.whenPressed(new StartIntaking());
@@ -48,6 +55,9 @@ public class OI {
 		OperatorButtonX.whenPressed(new RedBullWingsExtend());
 		OperatorButtonY.whenActive(new DropGear());
 		OperatorButtonY.cancelWhenActive(new RaiseGear());
+		OperatorButtonBack.whenPressed(new RedBullWingsRetract());
+		OperatorButtonStart.whenActive(new GearIntakeOut());
+		OperatorButtonStart.cancelWhenActive(new GearIntakeIn());
 	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
