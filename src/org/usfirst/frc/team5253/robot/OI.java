@@ -1,30 +1,21 @@
 package org.usfirst.frc.team5253.robot;
 
-import org.usfirst.frc.team5253.robot.commands.DropGear;
-import org.usfirst.frc.team5253.robot.commands.FeedShooter;
-import org.usfirst.frc.team5253.robot.commands.GearIntakeIn;
-import org.usfirst.frc.team5253.robot.commands.GearIntakeOut;
-import org.usfirst.frc.team5253.robot.commands.RaiseGear;
-import org.usfirst.frc.team5253.robot.commands.RedBullWingsExtend;
-import org.usfirst.frc.team5253.robot.commands.RedBullWingsRetract;
-import org.usfirst.frc.team5253.robot.commands.ShiftDown;
-import org.usfirst.frc.team5253.robot.commands.ShiftUp;
-import org.usfirst.frc.team5253.robot.commands.SpinUp;
-import org.usfirst.frc.team5253.robot.commands.StopFeedingShooter;
-import org.usfirst.frc.team5253.robot.commands.StartShooting;
-import org.usfirst.frc.team5253.robot.commands.StopShooting;
-import org.usfirst.frc.team5253.robot.commands.StartIntaking;
-import org.usfirst.frc.team5253.robot.commands.StopIntaking;
+import org.usfirst.frc.team5253.robot.commands.*;
+import org.usfirst.frc.team5253.robot.autocommands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /** 
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+	
 public class OI {
 	
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
@@ -32,32 +23,54 @@ public class OI {
 	
 	public OI() {
 		
+		Button DriverButtonA = new JoystickButton(driver, 1);
+		Button DriverButtonB = new JoystickButton(driver, 2);
+		Button DriverButtonX = new JoystickButton(driver, 3);
+		Button DriverButtonY = new JoystickButton(driver, 4);
+		Button DriverButtonBumperLeft = new JoystickButton(driver, 5);
+		Button DriverButtonBumperRight = new JoystickButton(driver, 6);
+		Button DriverButtonBack = new JoystickButton(driver, 7);
+		Button DriverButtonStart = new JoystickButton(driver, 8);
+		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
+		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
+		
+		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
 		Button OperatorButtonY = new JoystickButton(operator, 4);
+		Button OperatorButtonBumperLeft = new JoystickButton(operator, 5);
+		Button OperatorButtonBumperRight = new JoystickButton(operator, 6);
 		Button OperatorButtonBack = new JoystickButton(operator, 7);
 		Button OperatorButtonStart = new JoystickButton(operator, 8);
-		Button DriverButtonA = new JoystickButton(driver, 1);
-		Button DriverButtonB = new JoystickButton(driver, 2);
-		Button DriverButtonX = new JoystickButton(driver, 4);
-		Button DriverButtonBack = new JoystickButton(driver, 7);
+		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
+		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
+
 	
-		DriverButtonA.whenPressed(new FeedShooter());
+		DriverButtonA.whenPressed(new StartFeedingShooter());
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonB.whenPressed(new StopFeedingShooter());
-		DriverButtonBack.whenActive(new ShiftUp());
-		DriverButtonBack.cancelWhenActive(new ShiftDown());
-		DriverButtonX.whenPressed(new SpinUp());
 		DriverButtonB.whenPressed(new StopShooting());
+		DriverButtonX.whenPressed(new SpinUp());
+		DriverButtonY.whenPressed(new StartFeedingShooter());
+		//DriverButtonBumperLeft.whenPressed(command);
+		//DriverButtonBumperRight.whenPressed(command);
+		DriverButtonBack.whenActive(new ShiftUp());
+		//DriverButtonStart.whenPressed(command);
+		//DriverButtonLeftJoystickPress.whenPressed(command);
+		//DriverButtonRightJoystickPress.whenPressed(command);
+		
+		
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonX.whenPressed(new RedBullWingsExtend());
-		OperatorButtonY.whenActive(new DropGear());
-		OperatorButtonY.cancelWhenActive(new RaiseGear());
+		OperatorButtonY.whileHeld(new DropGear());
 		OperatorButtonBack.whenPressed(new RedBullWingsRetract());
-		OperatorButtonStart.whenActive(new GearIntakeOut());
-		OperatorButtonStart.cancelWhenActive(new GearIntakeIn());
+		//OperatorButtonStart.whenPressed(command);
+		OperatorButtonBumperLeft.whenPressed(new GearIntakeOut());
+		OperatorButtonBumperRight.whenPressed(new GearIntakeIn());
+		//OperatorButtonLeftJoystickPress.whenPressed(command);
+		//OperatorButtonRightJoystickPress.whenPressed(command);
 	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a

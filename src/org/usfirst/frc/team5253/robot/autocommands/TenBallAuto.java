@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.commands.FeedShooter;
+import org.usfirst.frc.team5253.robot.commands.StartFeedingShooter;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -34,7 +34,7 @@ public class TenBallAuto extends CommandGroup {
         // arm.
     	
     	addSequential(new AutoTurn(90));
-    	addSequential(new FeedShooter());
+    	addSequential(new StartFeedingShooter());
     	addParallel(new AutoSpinUp());
     	addSequential(new StartShooting());
     }

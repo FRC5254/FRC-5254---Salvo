@@ -37,7 +37,7 @@ public class Intake extends Subsystem {
     public void startIntake() {
     	intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		intakeMotor.set(1.0);
+		intakeMotor.set(-1.0);
     }
     
     public void stopIntake() {
