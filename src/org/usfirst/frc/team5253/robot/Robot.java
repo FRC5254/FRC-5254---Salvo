@@ -2,9 +2,11 @@
 package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -32,7 +34,7 @@ import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
  */
 public class Robot extends IterativeRobot {
 
-	
+	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static GearHolder GearHolder = new GearHolder();
@@ -40,7 +42,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank= new FuelTank();
-
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
