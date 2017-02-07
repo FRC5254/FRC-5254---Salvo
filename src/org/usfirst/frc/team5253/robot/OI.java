@@ -47,8 +47,7 @@ public class OI {
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
 	
-		DriverButtonA.whenPressed(new StartFeedingShooter());
-		DriverButtonA.whenPressed(new StartShooting());
+		DriverButtonA.whenPressed(new Shoot());
 		DriverButtonB.whenPressed(new StopFeedingShooter());
 		DriverButtonB.whenPressed(new StopShooting());
 		DriverButtonX.whenPressed(new SpinUp());
