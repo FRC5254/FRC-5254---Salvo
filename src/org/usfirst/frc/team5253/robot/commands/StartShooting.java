@@ -1,8 +1,8 @@
 package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -21,7 +21,8 @@ public class StartShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Shooter.startShooting();
+    	Robot.Shooter.startShooting(4000);
+    	//Robot.Shooter.startShooting(SmartDashboard.getDouble("Shooter RPM StartShooting"));
     }
 
     // Make this return true when this Command no longer needs to run execute()

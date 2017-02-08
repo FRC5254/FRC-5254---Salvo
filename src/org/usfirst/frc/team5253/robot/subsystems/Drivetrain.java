@@ -29,7 +29,6 @@ public class Drivetrain extends Subsystem{
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveWithJoystick());
-		//setDefaultCommand(new ShiftDown());
 	}
 	
 	public void drive(double Throttle, double Turn){

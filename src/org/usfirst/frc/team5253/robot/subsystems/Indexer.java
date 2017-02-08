@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
+import org.usfirst.frc.team5253.robot.commands.StopFeedingShooter;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -23,7 +24,7 @@ public class Indexer extends Subsystem {
 		indexerMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		indexerMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		indexerMotor.reverseSensor(false);
-		indexerMotor.reverseOutput(true);
+		indexerMotor.reverseOutput(false);
 		indexerMotor.setF(0.025);
 		indexerMotor.setPID(0.0, 0.0, 0.0);
 		
@@ -32,6 +33,7 @@ public class Indexer extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new StopFeedingShooter());
     }
     
     public void startFeeding() {

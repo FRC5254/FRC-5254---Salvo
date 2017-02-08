@@ -22,6 +22,9 @@ import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.Indexer;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
+
+import com.ctre.CANTalon;
+
 import org.usfirst.frc.team5253.robot.subsystems.Intake;
 import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
 
@@ -42,6 +45,8 @@ public class Robot extends IterativeRobot {
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank= new FuelTank();
+	
+	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -127,6 +132,7 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
