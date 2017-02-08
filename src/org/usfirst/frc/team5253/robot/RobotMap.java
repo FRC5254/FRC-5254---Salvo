@@ -64,6 +64,6 @@ public class RobotMap {
 	public static final double SHOOTER_RPM = 4300;
 	
 	//Misc
-	public static final int WHEEL_DIAMETER = 4;//4
+	public static final int WHEEL_DIAMETER = 6;//4
 	public static final int GEAR_RATIO = 9;
 }

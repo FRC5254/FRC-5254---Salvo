@@ -32,9 +32,9 @@ public class DriveToDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    if (Throttle>0){
+    if (Throttle > 0) {
     	Robot.Drivetrain.autoDrive(Throttle, Robot.Drivetrain.getAngle() * Robot.Drivetrain.DKp, Distance);
-    }else{
+    } else {
     	Robot.Drivetrain.autoDrive(-Throttle, Robot.Drivetrain.getAngle() * Robot.Drivetrain.DKp, Distance);
     }
     }
