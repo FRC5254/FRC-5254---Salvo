@@ -29,10 +29,10 @@ public class GearCenterAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 
- 
-			addSequential(new DriveToDistance(-0.5, 54));
+
+			addSequential(new DriveToDistance(-0.25, 6 v4));
 			addSequential(new DropGearAuto());
-			addSequential(new DriveToDistance(0.5, 54));
+			addSequential(new DriveToDistance(-0.25, 64));
 			
     }
 }
