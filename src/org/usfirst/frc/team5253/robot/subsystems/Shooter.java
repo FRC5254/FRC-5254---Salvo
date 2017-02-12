@@ -29,8 +29,8 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseSensor(false);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		shooterMotorTopLeft.setF(0.25);
-		shooterMotorTopLeft.setPID(11.0, 0.0, 0.0);
+		shooterMotorTopLeft.setF(0.3876);
+		shooterMotorTopLeft.setPID(0.0, 0.0, 0.0);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
@@ -42,8 +42,8 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorBottom.reverseSensor(false);
 		shooterMotorBottom.reverseOutput(true);
-		shooterMotorBottom.setF(0.025);
-		shooterMotorBottom.setPID(11.0, 0.0, 0.0);
+		shooterMotorBottom.setF(0.3876);
+		shooterMotorBottom.setPID(0.0, 0.0, 0.0);
 		
 	}
     public void initDefaultCommand() {
@@ -82,6 +82,8 @@ public class Shooter extends Subsystem {
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -0.0f);
     	shooterMotorBottom.set(0.0);
+    	
+    	System.out.print(shooterMotorTopLeft.getError());
     }
 }
 
