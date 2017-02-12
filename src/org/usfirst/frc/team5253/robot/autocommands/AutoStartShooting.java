@@ -12,6 +12,7 @@ public class AutoStartShooting extends Command {
 	
 	Timer timer = new Timer();
 
+
     public AutoStartShooting() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -32,7 +33,7 @@ public class AutoStartShooting extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > 4;
+        return timer.get() > 6;
     }
 
     // Called once after isFinished returns true

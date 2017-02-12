@@ -15,12 +15,13 @@ public class Drivetrain extends Subsystem{
 	
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
-	static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
+	public static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
 	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	
 	double angle;
 	public double DKp = 0.07;
 	public double TKp = 0.3;
+	public boolean shiftState = false;
 	private static double finalModifier;
 	private static double distance;
 	private static double turnSpeed;
@@ -38,11 +39,14 @@ public class Drivetrain extends Subsystem{
 	
 	public void shiftUp() {
 		shiftingPiston.set(true);
+		shiftState = true;
 	}
 	
 	public void shiftDown() {
 		shiftingPiston.set(false);
+		shiftState = true;
 	}
+
 	
 	public void resetGyro() {
 		gyro.reset();
@@ -67,7 +71,7 @@ public class Drivetrain extends Subsystem{
 		double gearRatio = RobotMap.GEAR_RATIO;
 		final double pi = 3.1415926535;
 		double encoderTicks = 256;
-		finalModifier = (distance/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
+		finalModifier = (Math.abs(distance)/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
 		this.distance = distance;
 		if (encoder.get() <= finalModifier) {
 			myRobot.drive(Throttle, Turn);

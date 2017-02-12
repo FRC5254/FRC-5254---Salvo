@@ -34,7 +34,7 @@ public class TenBallAuto extends CommandGroup {
         // arm.
     	
     	addSequential(new AutoTurn(90));
-    	addSequential(new StartFeedingShooter());//why
+    	addSequential(new StartFeedingShooter());//cause
     	addParallel(new AutoSpinUp());
     	addSequential(new StartShooting());
     }

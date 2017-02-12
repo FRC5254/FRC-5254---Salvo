@@ -26,11 +26,12 @@ public class ShiftUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.Drivetrain.shiftState;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.Drivetrain.shiftState = false;
     }
 
     // Called when another command which requires one or more of the same
