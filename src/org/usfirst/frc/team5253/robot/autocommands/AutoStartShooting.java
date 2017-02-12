@@ -37,7 +37,7 @@ public class AutoStartShooting extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.Shooter.stopShooting(0);
+    	Robot.Shooter.stopShooting();
     }
 
     // Called when another command which requires one or more of the same

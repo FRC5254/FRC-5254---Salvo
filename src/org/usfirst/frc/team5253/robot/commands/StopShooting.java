@@ -21,7 +21,7 @@ public class StopShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Shooter.stopShooting(0);
+    	Robot.Shooter.stopShooting();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +31,7 @@ public class StopShooting extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.Shooter.stopShooting(0);
+    	Robot.Shooter.stopShooting();
     }
 
     // Called when another command which requires one or more of the same

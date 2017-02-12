@@ -25,12 +25,12 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
-		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
+		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorTopLeft.reverseSensor(false);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
 		shooterMotorTopLeft.setF(0.3876);
-		shooterMotorTopLeft.setPID(0.0, 0.0, 0.0);
+		shooterMotorTopLeft.setPID(11.0, 0.0, 0.0);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
@@ -43,7 +43,7 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.reverseSensor(false);
 		shooterMotorBottom.reverseOutput(true);
 		shooterMotorBottom.setF(0.3876);
-		shooterMotorBottom.setPID(0.0, 0.0, 0.0);
+		shooterMotorBottom.setPID(11.0, 0.0, 0.0);
 		
 	}
     public void initDefaultCommand() {
@@ -55,9 +55,9 @@ public class Shooter extends Subsystem {
     public void spinUp(int RPM) {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
-		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
+		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
     	shooterMotorTopLeft.set(RPM);
-    	
+    	System.out.print(shooterMotorTopLeft.getError());
     	shooterMotorBottom.set(0.0);
     }
     
@@ -66,24 +66,24 @@ public class Shooter extends Subsystem {
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
     	shooterMotorTopLeft.set(RPM);
-    	System.out.println(shooterMotorTopLeft.getSpeed());
+    	System.out.println(shooterMotorTopLeft.getError());
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
     	shooterMotorBottom.set(-0.75);
     }
     
-    public void stopShooting(int RPM) {
+    public void stopShooting() {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
-		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-0.0f);
-    	shooterMotorTopLeft.set(RPM);
+		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+    	shooterMotorTopLeft.set(0.0);
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	shooterMotorBottom.configPeakOutputVoltage(0.0f, -0.0f);
+    	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
     	shooterMotorBottom.set(0.0);
     	
-    	System.out.print(shooterMotorTopLeft.getError());
+    	
     }
 }
 

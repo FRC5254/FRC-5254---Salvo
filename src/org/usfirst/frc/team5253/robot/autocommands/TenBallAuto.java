@@ -15,7 +15,7 @@ public class TenBallAuto extends CommandGroup {
     	
     	requires(Robot.Drivetrain);
     	requires(Robot.Shooter);
-    	requires(Robot.Indexer);
+    	requires(Robot.HypeHat);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
