@@ -16,7 +16,7 @@ public class GearAndTenBallAuto extends CommandGroup {
     	requires(Robot.Drivetrain);
     	requires(Robot.Shooter);
     	requires(Robot.GearHolder);
-    	requires(Robot.Indexer);
+    	requires(Robot.HypeHat);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

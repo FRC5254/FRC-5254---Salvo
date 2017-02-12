@@ -20,7 +20,7 @@ import org.usfirst.frc.team5253.robot.autocommands.SideGearAuto;
 import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
-import org.usfirst.frc.team5253.robot.subsystems.Indexer;
+import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
 import org.usfirst.frc.team5253.robot.subsystems.Intake;
 import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static GearHolder GearHolder = new GearHolder();
-	public static Indexer Indexer = new Indexer();
+	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank= new FuelTank();

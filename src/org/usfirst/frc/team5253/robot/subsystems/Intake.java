@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
+import org.usfirst.frc.team5253.robot.commands.StopIntaking;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -31,13 +32,13 @@ public class Intake extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new StopIntaking());
     }
     
     public void startIntake() {
     	intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		intakeMotor.set(-1.0);
+		intakeMotor.set(-0.75);
     }
     
     public void stopIntake() {

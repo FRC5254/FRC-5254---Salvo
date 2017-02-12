@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.commands.StartFeedingShooter;
+import org.usfirst.frc.team5253.robot.commands.StartSpinning;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -15,7 +15,7 @@ public class TenBallAuto extends CommandGroup {
     	
     	requires(Robot.Drivetrain);
     	requires(Robot.Shooter);
-    	requires(Robot.Indexer);
+    	requires(Robot.HypeHat);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -34,7 +34,7 @@ public class TenBallAuto extends CommandGroup {
         // arm.
     	
     	addSequential(new AutoTurn(90));
-    	addSequential(new StartFeedingShooter());//cause
+    	addSequential(new StartSpinning());//cause
     	addParallel(new AutoSpinUp());
     	addSequential(new StartShooting());
     }
