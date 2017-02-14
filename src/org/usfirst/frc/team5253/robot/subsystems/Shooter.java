@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		shooterMotorTopLeft.reverseSensor(false);
+		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
 		shooterMotorTopLeft.setF(0.0);
@@ -41,7 +41,7 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorBottom.reverseSensor(false);
-		shooterMotorBottom.reverseOutput(true);
+		shooterMotorBottom.reverseOutput(false);
 		shooterMotorBottom.setF(0.0);
 		shooterMotorBottom.setPID(0.0, 0.0, 0.0);
 		
