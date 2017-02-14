@@ -23,7 +23,7 @@ public class SpinUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Shooter.spinUp(4000);
+    	Robot.Shooter.spinUp(3825);
     	//SmartDashboard.getDouble("Shooter RPM AutoSpinUp")
     }
 

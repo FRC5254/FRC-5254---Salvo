@@ -15,18 +15,18 @@ public class HypeHat extends Subsystem {
 
 	 // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	CANTalon indexerMotor = new CANTalon(RobotMap.INDEXER_MOTOR);
+	CANTalon hypeHatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
 	
 	public HypeHat() {
 		
-		indexerMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		indexerMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		indexerMotor.configNominalOutputVoltage(+0.0f, -0.0f);
-		indexerMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		indexerMotor.reverseSensor(false);
-		indexerMotor.reverseOutput(false);
-		indexerMotor.setF(0.025);
-		indexerMotor.setPID(0.0, 0.0, 0.0);
+		hypeHatMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		hypeHatMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		hypeHatMotor.configNominalOutputVoltage(+0.0f, -0.0f);
+		hypeHatMotor.configPeakOutputVoltage(0.0f,-12.0f);
+		hypeHatMotor.reverseSensor(false);
+		hypeHatMotor.reverseOutput(false);
+		hypeHatMotor.setF(0.025);
+		hypeHatMotor.setPID(0.0, 0.0, 0.0);
 		
 	}
 	
@@ -37,11 +37,11 @@ public class HypeHat extends Subsystem {
     }
     
     public void startFeeding() {
-    	indexerMotor.set(1.0);
+    	hypeHatMotor.set(1.0);
     }
     
     public void stopFeeding() {
-    	indexerMotor.set(0);
+    	hypeHatMotor.set(0);
     }
 }
 

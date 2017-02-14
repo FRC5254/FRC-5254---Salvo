@@ -21,7 +21,7 @@ public class StartShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Shooter.startShooting(4000);
+    	Robot.Shooter.startShooting(3825);
     	//Robot.Shooter.startShooting(SmartDashboard.getDouble("Shooter RPM StartShooting"));
     }
 

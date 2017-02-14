@@ -47,31 +47,34 @@ public class OI {
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
 	
-		DriverButtonA.whenPressed(new Shoot());
+		DriverButtonA.whenPressed(new StartShooting());
+		DriverButtonA.whenPressed(new StartFeedingShooter());
 		DriverButtonB.whenPressed(new StopFeedingShooter());
 		DriverButtonB.whenPressed(new StopShooting());
 		DriverButtonX.whenPressed(new SpinUp());
 		DriverButtonY.whenPressed(new StartFeedingShooter());
-		//DriverButtonBumperLeft.whenPressed(command);
-		//DriverButtonBumperRight.whenPressed(command);
-		DriverButtonBack.whenActive(new ShiftUp());
-		DriverButtonBack.whenInactive(new ShiftDown());
-		//DriverButtonStart.whenPressed(command);
-		//DriverButtonLeftJoystickPress.whenPressed(command);
-		//DriverButtonRightJoystickPress.whenPressed(command);
+		DriverButtonBumperLeft.whenActive(new ShiftUp());
+		DriverButtonBumperLeft.whenInactive(new ShiftDown());
+		DriverButtonBumperRight.whenActive(new ShiftUp());
+		DriverButtonBumperRight.whenInactive(new ShiftDown());
+//		DriverButtonBack.whenActive(command);
+//		DriverButtonBack.whenInactive(command);
+//		DriverButtonStart.whenPressed(command);
+//		DriverButtonLeftJoystickPress.whenPressed(command);
+//		DriverButtonRightJoystickPress.whenPressed(command);
 		
 		
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
-		OperatorButtonX.whenPressed(new RedBullWingsExtend());
+//		OperatorButtonX.whenPressed(command);
 		OperatorButtonY.whenActive(new DropGear());
 		OperatorButtonY.whenInactive(new RaiseGear());
-		OperatorButtonBack.whenPressed(new RedBullWingsRetract());
-		//OperatorButtonStart.whenPressed(command);
-		OperatorButtonBumperLeft.whenPressed(new GearIntakeOut());
-		OperatorButtonBumperRight.whenPressed(new GearIntakeIn());
-		//OperatorButtonLeftJoystickPress.whenPressed(command);
-		//OperatorButtonRightJoystickPress.whenPressed(command);
+		OperatorButtonBack.whenPressed(new GearIntakeIn());
+		OperatorButtonStart.whenPressed(new GearIntakeOut());
+		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
+		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+//		OperatorButtonLeftJoystickPress.whenPressed(command);
+//		OperatorButtonRightJoystickPress.whenPressed(command);
 	}
 
 }
