@@ -25,7 +25,7 @@ public class HypeHat extends Subsystem {
 		hypeHatMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		hypeHatMotor.reverseSensor(false);
 		hypeHatMotor.reverseOutput(false);
-		hypeHatMotor.setF(0.025);
+		hypeHatMotor.setF(0.0);
 		hypeHatMotor.setPID(0.0, 0.0, 0.0);
 		
 	}
