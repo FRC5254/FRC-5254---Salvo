@@ -39,7 +39,7 @@ public class Drivetrain extends Subsystem{
 	}
 	
 	public void shiftUp() {
-		shiftingPiston.set(true);
+		shiftingPiston.set(false);
 		shiftState = true;
 	}
 	
