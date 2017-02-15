@@ -52,21 +52,29 @@ public class Shooter extends Subsystem {
     	setDefaultCommand(new StopShooting());
     }
     
-    public void spinUp() {
+    public void spinUp(int RPM) {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-    	shooterMotorTopLeft.set(-0.84);
+		if(shooterMotorTopLeft.getSpeed() < RPM) {
+    		shooterMotorTopLeft.set(-1.0);
+    	} else {
+    		shooterMotorTopLeft.set(0.0);
+    	}
     	System.out.print(shooterMotorTopLeft.getError());
     	
     	shooterMotorBottom.set(0.0);
     }
     
-    public void startShooting() {
+    public void startShooting(int RPM) {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-    	shooterMotorTopLeft.set(-0.83);
+		if(shooterMotorTopLeft.getSpeed() < RPM) {
+    		shooterMotorTopLeft.set(-1.0);
+    	} else {
+    		shooterMotorTopLeft.set(0.0);
+    	}
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
