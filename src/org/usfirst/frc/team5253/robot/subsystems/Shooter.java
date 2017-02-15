@@ -26,6 +26,7 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+		shooterMotorTopLeft.enableBrakeMode(true);
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
@@ -55,6 +56,7 @@ public class Shooter extends Subsystem {
     public void spinUp(int RPM) {
     	
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+    	shooterMotorTopLeft.enableBrakeMode(false);
     	shooterMotorTopLeft.set(RPM);
     	System.out.format("RPM %f Error %d%n", shooterMotorTopLeft.getSpeed(), shooterMotorTopLeft.getClosedLoopError());
     	
@@ -64,14 +66,18 @@ public class Shooter extends Subsystem {
     public void startShooting(int RPM) {
     
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+    	shooterMotorTopLeft.enableBrakeMode(false);
     	shooterMotorTopLeft.set(RPM);
+    	
     	shooterMotorBottom.set(-0.75);
     }
     
     public void stopShooting(int RPM) {
     	
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,0.0f);
+    	shooterMotorTopLeft.enableBrakeMode(true);
     	shooterMotorTopLeft.set(0.0);
+    	
     	shooterMotorBottom.set(0.0);
     	
     	
