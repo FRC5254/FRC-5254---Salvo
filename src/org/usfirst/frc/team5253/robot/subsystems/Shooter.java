@@ -57,7 +57,7 @@ public class Shooter extends Subsystem {
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
 		if(shooterMotorTopLeft.getSpeed() < RPM) {
-    		shooterMotorTopLeft.set(-1.0);
+    		shooterMotorTopLeft.set(1.0);
     	} else {
     		shooterMotorTopLeft.set(0.0);
     	}
@@ -71,7 +71,7 @@ public class Shooter extends Subsystem {
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
 		if(shooterMotorTopLeft.getSpeed() < RPM) {
-    		shooterMotorTopLeft.set(-1.0);
+    		shooterMotorTopLeft.set(1.0);
     	} else {
     		shooterMotorTopLeft.set(0.0);
     	}
@@ -79,7 +79,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
-    	shooterMotorBottom.set(-0.75);
+    	shooterMotorBottom.set(0.75);
 
     }
     

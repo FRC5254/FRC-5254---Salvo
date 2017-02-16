@@ -37,7 +37,7 @@ public class HypeHat extends Subsystem {
     }
     
     public void startSpinning() {
-    	HatMotor.set(0.85);
+    	HatMotor.set(-0.85);
     }
     
     public void stopSpinning() {
