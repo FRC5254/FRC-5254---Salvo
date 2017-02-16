@@ -41,9 +41,6 @@ public class Drivetrain extends Subsystem{
 		myRobot.arcadeDrive(Throttle, Turn);
 		
 	}
-	public void camerastartCapturing() {
-		SmartDashboard.putData("Camera",(Sendable) CameraServer.getInstance().startAutomaticCapture());
-	}
 	
 	public void shiftDown() {
 		shiftingPiston.set(true);

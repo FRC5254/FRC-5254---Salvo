@@ -61,9 +61,9 @@ public class RobotMap {
 	public static final int HYPE_HAT_MOTOR= 9; 
 	public static final int INTAKE_MOTOR =  10;	
 	//RPMs
-	public static final double SHOOTER_RPM = 4300;
+	public static final double SHOOTER_RPM = 4300; //TODO find good value
 	
 	//Misc
-	public static final int WHEEL_DIAMETER = 4;//4
+	public static final int WHEEL_DIAMETER = 4;
 	public static final int GEAR_RATIO = (54/34)*(50/30);
 }
