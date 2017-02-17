@@ -41,6 +41,9 @@ public class Drivetrain extends Subsystem{
 		myRobot.arcadeDrive(Throttle, Turn);
 		
 	}
+	public void slowTrun(double Throttle, double Turn) {
+		myRobot.arcadeDrive(Throttle, 0.5 * Turn);
+	}
 	
 	public void shiftDown() {
 		shiftingPiston.set(true);
