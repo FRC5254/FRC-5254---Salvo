@@ -1,4 +1,4 @@
-
+// fuck you ryan
 
 
 
@@ -65,5 +65,5 @@ public class RobotMap {
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;//4
-	public static final int GEAR_RATIO = (54/34)*(50/30);
+	public static final double GEAR_RATIO = (54/34) * (36/7.75) * (36/41.75);
 }

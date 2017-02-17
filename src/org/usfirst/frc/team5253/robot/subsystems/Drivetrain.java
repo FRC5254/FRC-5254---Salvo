@@ -67,15 +67,29 @@ public class Drivetrain extends Subsystem{
 	}
 	
 	public void autoDrive(double Throttle, double Turn, double distance) {
-		
 		double wheelDiameter = RobotMap.WHEEL_DIAMETER;
 		double gearRatio = RobotMap.GEAR_RATIO;
-		final double pi = 3.1415926535;
 		double encoderTicks = 256;
-		finalModifier = (Math.abs(distance)/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
+		finalModifier = (Math.abs(distance)/(wheelDiameter * Math.PI))  * encoderTicks * gearRatio ;
+		
+		double remaining = finalModifier - Math.abs(encoder.get());
+		double finalThrottle;
+		double sign = Throttle/Math.abs(Throttle);
+		if (Throttle > 0){
+			finalThrottle = remaining/3000;
+		}else{
+			finalThrottle = sign * (-remaining/3000);
+		}
+		
 		this.distance = distance;
-		if (encoder.get() <= finalModifier) {
-			myRobot.drive(Throttle, Turn);
+		
+		if (Math.abs(finalThrottle) < 0.25){
+			if (encoder.get() <= finalModifier) {
+				myRobot.drive(-finalThrottle, Turn);
+				System.out.println(finalThrottle);
+			}
+		}else if (Math.abs(finalThrottle) > 0.25){
+			myRobot.drive((sign*0.25), Turn);
 		}
 	}
 	
