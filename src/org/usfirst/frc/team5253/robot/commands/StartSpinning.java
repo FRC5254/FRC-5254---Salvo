@@ -11,8 +11,7 @@ public class StartSpinning extends Command {
 
     public StartSpinning() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.HypeHat);
+        requires(Robot.HypeHat);
     }
 
     // Called just before this Command runs the first time

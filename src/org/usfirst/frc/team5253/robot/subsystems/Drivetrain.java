@@ -6,9 +6,12 @@ import org.usfirst.frc.team5253.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team5253.robot.commands.ShiftDown;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 
 public class Drivetrain extends Subsystem{
@@ -25,6 +28,7 @@ public class Drivetrain extends Subsystem{
 	private static double finalModifier;
 	private static double distance;
 	private static double turnSpeed;
+	//private static double camera = 0;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -37,13 +41,16 @@ public class Drivetrain extends Subsystem{
 		myRobot.arcadeDrive(Throttle, Turn);
 		
 	}
+	public void slowTrun(double Throttle, double Turn) {
+		myRobot.arcadeDrive(Throttle, 0.5 * Turn);
+	}
 	
-	public void shiftUp() {
+	public void shiftDown() {
 		shiftingPiston.set(true);
 		shiftState = true;
 	}
 	
-	public void shiftDown() {
+	public void shiftUp() {
 		shiftingPiston.set(false);
 		shiftState = true;
 	}
