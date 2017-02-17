@@ -57,13 +57,9 @@ public class RobotMap {
 	//CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-<<<<<<< HEAD
 	public static final int SHOOTER_MOTOR_BOTTOM = 8;
-	public static final int HYPE_HAT_MOTOR= 9; 
-=======
-	public static final int INDEXER_MOTOR = 9;
-	public static final int SHOOTER_MOTOR_BOTTOM = 8; 
->>>>>>> refs/remotes/origin/Bang-Bang-Shooter-Tuning
+	public static final int HYPE_HAT_MOTOR= 9;
+
 	public static final int INTAKE_MOTOR =  10;	
 	//RPMs
 	public static final double SHOOTER_RPM = 4300; //TODO find good value
