@@ -23,7 +23,11 @@ public class SpinUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD
     	Robot.Shooter.spinUp(3400);
+=======
+    	Robot.Shooter.spinUp(3954);
+>>>>>>> refs/remotes/origin/Bang-Bang-Shooter-Tuning
     }
 
     // Make this return true when this Command no longer needs to run execute()
