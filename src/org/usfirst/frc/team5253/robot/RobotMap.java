@@ -1,4 +1,4 @@
-
+// fuck you ryan
 
 
 
@@ -65,6 +65,11 @@ public class RobotMap {
 	public static final double SHOOTER_RPM = 4300; //TODO find good value
 	
 	//Misc
+<<<<<<< HEAD
+	public static final int WHEEL_DIAMETER = 4;//4
+	public static final double GEAR_RATIO = (54/34) * (36/7.75) * (36/41.75);
+=======
 	public static final int WHEEL_DIAMETER = 4;
 	public static final int GEAR_RATIO = (54/34)*(50/30);
+>>>>>>> refs/remotes/origin/Competion-Robot
 }

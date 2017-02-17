@@ -25,10 +25,10 @@ public class OPAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveToDistance(.25, 96));
+    	addSequential(new DriveToDistance(.25, -96));
     	addSequential(new AutoTurn(90)); //TODO find best value
     	//timer insert or wiggle robot
-    	addParallel(new DriveToDistance(.25, 2));
+    	addParallel(new DriveToDistance(.25, 20));
     	addParallel(new AutoSpinUp());
     	addSequential(new AutoStartShooting());
     	

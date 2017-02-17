@@ -21,7 +21,11 @@ public class StartShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD
+    	Robot.Shooter.startShooting(3200);
+=======
     	Robot.Shooter.startShooting(3954);
+>>>>>>> refs/remotes/origin/Competion-Robot
     }
 
     // Make this return true when this Command no longer needs to run execute()
