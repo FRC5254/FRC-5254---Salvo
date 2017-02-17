@@ -2,19 +2,18 @@ package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
-import edu.wpi.first.wpilibj.Timer;
+
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class SpinUp extends Command {
+public class SlowTrun extends Command {
 
-    public SpinUp() {
+    public SlowTrun() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Shooter);    	
+    	requires(Robot.Drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -23,17 +22,12 @@ public class SpinUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-<<<<<<< HEAD
-    	Robot.Shooter.spinUp(3825);
-    	//SmartDashboard.getDouble("Shooter RPM AutoSpinUp")
-=======
-    	Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
->>>>>>> refs/remotes/origin/master
+    	Robot.Drivetrain.slowTrun(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS), Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+        return false;
     }
 
     // Called once after isFinished returns true

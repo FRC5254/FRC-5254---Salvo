@@ -6,9 +6,12 @@ import org.usfirst.frc.team5253.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team5253.robot.commands.ShiftDown;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 
 public class Drivetrain extends Subsystem{
@@ -25,6 +28,7 @@ public class Drivetrain extends Subsystem{
 	private static double finalModifier;
 	private static double distance;
 	private static double turnSpeed;
+	//private static double camera = 0;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -36,13 +40,16 @@ public class Drivetrain extends Subsystem{
 		myRobot.arcadeDrive(Throttle, Turn);
 		
 	}
+	public void slowTrun(double Throttle, double Turn) {
+		myRobot.arcadeDrive(Throttle, 0.5 * Turn);
+	}
 	
-	public void shiftUp() {
+	public void shiftDown() {
 		shiftingPiston.set(true);
 		shiftState = true;
 	}
 	
-	public void shiftDown() {
+	public void shiftUp() {
 		shiftingPiston.set(false);
 		shiftState = true;
 	}
@@ -66,15 +73,29 @@ public class Drivetrain extends Subsystem{
 	}
 	
 	public void autoDrive(double Throttle, double Turn, double distance) {
-		
 		double wheelDiameter = RobotMap.WHEEL_DIAMETER;
 		double gearRatio = RobotMap.GEAR_RATIO;
-		final double pi = 3.1415926535;
 		double encoderTicks = 256;
-		finalModifier = (Math.abs(distance)/(wheelDiameter * pi))  * encoderTicks * gearRatio ;
+		finalModifier = (Math.abs(distance)/(wheelDiameter * Math.PI))  * encoderTicks * gearRatio ;
+		
+		double remaining = finalModifier - Math.abs(encoder.get());
+		double finalThrottle;
+		double sign = Throttle/Math.abs(Throttle);
+		if (Throttle > 0){
+			finalThrottle = remaining/3000;
+		}else{
+			finalThrottle = sign * (-remaining/3000);
+		}
+		
 		this.distance = distance;
-		if (encoder.get() <= finalModifier) {
-			myRobot.drive(Throttle, Turn);
+		
+		if (Math.abs(finalThrottle) < 0.25){
+			if (encoder.get() <= finalModifier) {
+				myRobot.drive(-finalThrottle, Turn);
+				System.out.println(finalThrottle);
+			}
+		}else if (Math.abs(finalThrottle) > 0.25){
+			myRobot.drive((sign*0.25), Turn);
 		}
 	}
 	

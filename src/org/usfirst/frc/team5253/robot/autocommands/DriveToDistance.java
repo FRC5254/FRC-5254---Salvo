@@ -20,7 +20,7 @@ public class DriveToDistance extends Command {
     	this.Throttle = Throttle;
     	this.Distance = Distance;
        	System.out.format("DriveToDistance(%f,%f)%n", this.Throttle, this.Distance);
-    }
+    } 
 
     // Called just before this Command runs the first time
     protected void initialize() {

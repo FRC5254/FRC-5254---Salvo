@@ -32,14 +32,18 @@ public class Intake extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
+<<<<<<< HEAD
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new StopIntaking());
+=======
+        setDefaultCommand(new StopIntaking());
+>>>>>>> refs/remotes/origin/master
     }
     
     public void startIntake() {
     	intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		intakeMotor.set(-1.0);
+		intakeMotor.set(-1);
     }
     
     public void stopIntake() {

@@ -8,12 +8,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StartFeedingShooter extends Command {
+public class StartSpinning extends Command {
 
-    public StartFeedingShooter() {
+    public StartSpinning() {
         // Use requires() here to declare subsystem dependencies
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/commands/StartFeedingShooter.java
         // eg. requires(chassis);
     	requires(Robot.HypeHat);
+=======
+        requires(Robot.HypeHat);
+>>>>>>> refs/remotes/origin/master:src/org/usfirst/frc/team5253/robot/commands/StartSpinning.java
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +26,11 @@ public class StartFeedingShooter extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/commands/StartFeedingShooter.java
     	Robot.HypeHat.startFeeding();
+=======
+    	Robot.HypeHat.startSpinning();
+>>>>>>> refs/remotes/origin/master:src/org/usfirst/frc/team5253/robot/commands/StartSpinning.java
     }
 
     // Make this return true when this Command no longer needs to run execute()

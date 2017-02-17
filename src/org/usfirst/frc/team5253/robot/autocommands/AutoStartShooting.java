@@ -1,6 +1,11 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+<<<<<<< HEAD
+=======
+import org.usfirst.frc.team5253.robot.RobotMap;
+
+>>>>>>> refs/remotes/origin/master
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,8 +32,13 @@ public class AutoStartShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD
     	Robot.Shooter.startShooting(4000);
     	//SmartDashboard.getDouble("Shooter RPM AutoStartShooting")
+=======
+    	Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
+
+>>>>>>> refs/remotes/origin/master
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -7,11 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StopFeedingShooter extends Command {
+public class StopSpinning extends Command {
 
-    public StopFeedingShooter() {
+    public StopSpinning() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.HypeHat);
     }
 

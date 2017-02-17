@@ -11,6 +11,7 @@ public class StopSpinning extends Command {
 
     public StopSpinning() {
         // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     	requires(Robot.HypeHat);
     }
 
@@ -20,7 +21,11 @@ public class StopSpinning extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/commands/StopFeedingShooter.java
     	Robot.HypeHat.stopFeeding();
+=======
+    	Robot.HypeHat.stopSpinning();
+>>>>>>> refs/remotes/origin/master:src/org/usfirst/frc/team5253/robot/commands/StopSpinning.java
     }
 
     // Make this return true when this Command no longer needs to run execute()

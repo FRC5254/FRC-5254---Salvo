@@ -1,6 +1,11 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+<<<<<<< HEAD
+=======
+import org.usfirst.frc.team5253.robot.RobotMap;
+
+>>>>>>> refs/remotes/origin/master
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,8 +31,12 @@ public class AutoSpinUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD
     	Robot.Shooter.spinUp(4000);
     	//SmartDashboard.getDouble("Shooter RPM AutoSpinUp")
+=======
+    	Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
+>>>>>>> refs/remotes/origin/master
     }
 
     // Make this return true when this Command no longer needs to run execute()
