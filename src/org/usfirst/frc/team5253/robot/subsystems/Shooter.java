@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		//shooterMotorTopLeft.enableBrakeMode(true);//TODO test this
+		shooterMotorTopLeft.enableBrakeMode(false);//TODO test this
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
@@ -57,13 +57,14 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
+//		shooterMotorTopLeft.set(shooterRpm);
 		if(shooterMotorTopLeft.getSpeed() < shooterRpm) {
     		shooterMotorTopLeft.set(1.0);
     	} else {
-    		shooterMotorTopLeft.set(0.0);
+    		shooterMotorTopLeft.set(0.8);
     	}
-		
     	//System.out.format("RPM %f Error %d%n", shooterMotorTopLeft.getSpeed(), shooterMotorTopLeft.getClosedLoopError());
+		
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
     }
@@ -72,10 +73,11 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+//		shooterMotorTopLeft.set(shooterRpm);
 		if(shooterMotorTopLeft.getSpeed() < shooterRpm) {
     		shooterMotorTopLeft.set(1.0);
     	} else {
-    		shooterMotorTopLeft.set(0.0);
+    		shooterMotorTopLeft.set(0.8);
     	}
     	System.out.print(shooterMotorTopLeft.getError());
     	
@@ -87,9 +89,8 @@ public class Shooter extends Subsystem {
     public void stopShooting(int RPM) {
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,0.0f);
-    	//shooterMotorTopLeft.enableBrakeMode(true);
+    	shooterMotorTopLeft.enableBrakeMode(true);
     	shooterMotorTopLeft.set(0.0);
-    	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
     	
