@@ -20,32 +20,31 @@ public class Shooter extends Subsystem {
 	CANTalon shooterMotorTopRight = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_RIGHT);
 	CANTalon shooterMotorBottom = new CANTalon(RobotMap.SHOOTER_MOTOR_BOTTOM);
 	
+	int loop, maxError, minError = 10000000;
+	
 	public Shooter() {
 		
-		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		//shooterMotorTopLeft.enableBrakeMode(true);//TODO test this
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		shooterMotorTopLeft.setF(0.03916);
-		shooterMotorTopLeft.setPID(0.128, 0.0, 0.2); //TODO be a good programmer and fing how to do the PID stuff dumb
+		shooterMotorTopLeft.setF(0.0391);
+		shooterMotorTopLeft.setPID(0.28, 0.0056, 2.8);
+		shooterMotorTopLeft.setPID(0.12, 0.0012, 4.8);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
-		shooterMotorTopRight.reverseOutput(true);
+		shooterMotorTopRight.reverseOutput(false);
 		
-		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		shooterMotorBottom.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);;
 		shooterMotorBottom.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorBottom.reverseSensor(false);
 		shooterMotorBottom.reverseOutput(false);
-		shooterMotorBottom.setF(0.0);
-		shooterMotorBottom.setPID(0.0, 0.0, 0.0);
-		
+	
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -54,30 +53,42 @@ public class Shooter extends Subsystem {
     }
     
     public void spinUp(double shooterRpm) {
-    	
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	 	
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		if(shooterMotorTopLeft.getSpeed() < shooterRpm) {
-    		shooterMotorTopLeft.set(1.0);
-    	} else {
-    		shooterMotorTopLeft.set(0.0);
-    	}
+		shooterMotorTopLeft.set(shooterRpm);
 		
-    	//System.out.format("RPM %f Error %d%n", shooterMotorTopLeft.getSpeed(), shooterMotorTopLeft.getClosedLoopError());
+		if (loop++ > 10) {
+			loop = 0;
+			System.out.format("Spin Up; RPM %f Delta %f Error %d%n",  
+					shooterMotorTopLeft.getSpeed(),
+					shooterMotorTopLeft.getSpeed() - shooterRpm, 
+					shooterMotorTopLeft.getClosedLoopError());
+		}
+    	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
     }
     
     public void startShooting(double shooterRpm) {
     	
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		if(shooterMotorTopLeft.getSpeed() < shooterRpm) {
-    		shooterMotorTopLeft.set(1.0);
-    	} else {
-    		shooterMotorTopLeft.set(0.0);
-    	}
-    	System.out.print(shooterMotorTopLeft.getError());
+		shooterMotorTopLeft.set(shooterRpm);
+		
+		double currentRpm = shooterMotorTopLeft.getSpeed();
+		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
+		
+		maxError = Math.max(maxError, Math.abs(closedLoopError));
+    	minError = Math.min(minError, Math.abs(closedLoopError));
+		
+		if (loop++ > 10) {
+			loop = 0;
+			System.out.format("Start Shooting; RPM %f Delta %f Error %d%n", 
+					currentRpm,
+					currentRpm - shooterRpm, 
+					closedLoopError);
+		}
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
@@ -85,10 +96,14 @@ public class Shooter extends Subsystem {
     }
     
     public void stopShooting(int RPM) {
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,0.0f);
-    	//shooterMotorTopLeft.enableBrakeMode(true);
     	shooterMotorTopLeft.set(0.0);
+    	
+    	if (minError != 10000000 || maxError != 0) {
+    		System.out.format("Stop: minError %d maxError %d%n", minError, maxError);
+    		minError = 10000000;
+    		maxError = 0;
+    	}
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);

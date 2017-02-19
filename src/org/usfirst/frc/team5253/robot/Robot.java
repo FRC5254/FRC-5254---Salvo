@@ -68,7 +68,7 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		CameraServer.getInstance().startAutomaticCapture(0);
+//		CameraServer.getInstance().startAutomaticCapture(0);
 	}
 
 	/**
