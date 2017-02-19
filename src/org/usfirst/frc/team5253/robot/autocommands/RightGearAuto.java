@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class SideGearAuto extends CommandGroup {
+public class RightGearAuto extends CommandGroup {
 
-    public SideGearAuto() {
+    public RightGearAuto() {
     	
     	requires(Robot.Drivetrain);
     	requires(Robot.GearHolder);
@@ -30,11 +30,11 @@ public class SideGearAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveToDistance(-1.0, 90));
+    	addSequential(new DriveToDistance(-1.0, 91));
     	addSequential(new AutoTurn(60));
-    	addSequential(new DriveToDistance(-1.0, 3));
+    	addSequential(new DriveToDistance(-1.0, 13));
     	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, 3));
+    	addSequential(new DriveToDistance(1.0, 13));
     	
     }
 }

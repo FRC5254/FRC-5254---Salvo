@@ -17,8 +17,13 @@ import org.usfirst.frc.team5253.robot.autocommands.GearBaseLineAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearTenBallAndCrossAuto;
 import org.usfirst.frc.team5253.robot.autocommands.NothingAuto;
-import org.usfirst.frc.team5253.robot.autocommands.SideGearAuto;
+import org.usfirst.frc.team5253.robot.autocommands.RightGearAuto;
 import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
+<<<<<<< HEAD
+=======
+import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
+import org.usfirst.frc.team5253.robot.commands.LeftGearAuto;
+>>>>>>> refs/remotes/origin/Rory
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
@@ -58,7 +63,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Nothing", new NothingAuto());
 		chooser.addObject("Center Gear", new GearCenterAuto());
 		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
-		chooser.addObject("Side Gear",new SideGearAuto());
+		chooser.addObject("Right Gear Auto",new RightGearAuto());
+		chooser.addObject("Left Gear Auto", new LeftGearAuto());
 		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
 		chooser.addObject("Ten Ball Auto", new TenBallAuto());
 		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());
