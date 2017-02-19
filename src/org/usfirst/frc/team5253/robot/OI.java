@@ -4,6 +4,7 @@ import org.usfirst.frc.team5253.robot.commands.*;
 import org.usfirst.frc.team5253.robot.autocommands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -33,6 +34,7 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
+		//AxisType DriverAxisRightTrigger = new AxisType();
 		
 		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
@@ -47,10 +49,8 @@ public class OI {
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
 	
-		DriverButtonA.whenPressed(new StartSpinning());
-		DriverButtonA.whenPressed(new StartShooting());
-		DriverButtonB.whenPressed(new StopSpinning());
-		DriverButtonB.whenPressed(new StopShooting());
+		DriverButtonA.whenPressed(new Shoot());
+		DriverButtonB.whenPressed(new NoShoot());
 		DriverButtonX.whenPressed(new SpinUp());
 		DriverButtonY.whenPressed(new StartSpinning());
 		DriverButtonBumperLeft.whenPressed(new ShiftUp());

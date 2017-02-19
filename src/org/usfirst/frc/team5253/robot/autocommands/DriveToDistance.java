@@ -36,7 +36,7 @@ public class DriveToDistance extends Command {
     	Robot.Drivetrain.autoDrive(Throttle, Robot.Drivetrain.getAngle() * Robot.Drivetrain.DKp, Distance);
     } else {
     	Robot.Drivetrain.autoDrive(Throttle, -Robot.Drivetrain.getAngle() * Robot.Drivetrain.DKp, -Distance);
-    }
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
