@@ -50,11 +50,7 @@ public class OI {
 
 	
 		DriverButtonA.whenPressed(new StartShooting());
-<<<<<<< HEAD
 		DriverButtonA.whenPressed(new StartSpinning());
-=======
-		DriverButtonA.cancelWhenPressed(new StartSpinning());
->>>>>>> refs/remotes/origin/Shooter-Motoer-Testing
 		DriverButtonB.whenPressed(new StopShooting());
 		DriverButtonB.whenPressed(new StopSpinning());
 		DriverButtonX.whenPressed(new SpinUp());
