@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		
+		chooser = new SendableChooser();
 		chooser.addObject("Nothing", new NothingAuto());
 		chooser.addObject("Center Gear", new GearCenterAuto());
 		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
