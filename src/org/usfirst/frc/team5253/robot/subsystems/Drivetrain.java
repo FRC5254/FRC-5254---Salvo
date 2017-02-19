@@ -13,8 +13,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
+<<<<<<< HEAD
 public class Drivetrain extends Subsystem {
+=======
+public class Drivetrain extends PIDSubsystem {
+>>>>>>> refs/remotes/origin/Rory
 	
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
@@ -29,6 +34,12 @@ public class Drivetrain extends Subsystem {
 	private static double distance;
 	private static double turnSpeed;
 	//private static double camera = 0;
+	
+	public Drivetrain () {
+		super("DriveTrain", .02, .002, .2);	
+		setAbsoluteTolerance(3.0);
+		getPIDController().setContinuous(true);		
+	}	
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -112,6 +123,19 @@ public class Drivetrain extends Subsystem {
 		
 	}
 	
+	protected double returnPIDInput() {
+        // Return your input value for the PID loop
+        // e.g. a sensor, like a potentiometer:
+        // yourPot.getAverageVoltage() / kYourMaxVoltage
+        return getAngle();
+    }
+    
+    protected void usePIDOutput(double output) {
+        // Use output to drive your system, like a motor
+        // e.g. yourMotor.set(output);
+    	drive(0.0, output);
+    }
+    
 	public boolean driveAutoIsFinished() {
 		return Math.abs(encoder.get()) >= Math.abs(finalModifier);
 	}
