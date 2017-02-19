@@ -85,7 +85,7 @@ public class Shooter extends Subsystem {
     	shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopRight.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorTopRight.set(shooterRpm);
-		System.out.format("Spin Up; RPM %f, Delta %f, Error %D%n",
+		System.out.format("Spin Up; RPM %f, Delta %f, Error %d%n",
 	    		shooterMotorTopRight.getSpeed(),
 	    		shooterMotorTopRight.getSpeed() - shooterRpm,
 	    		shooterMotorTopRight.getClosedLoopError());
