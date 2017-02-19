@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Shoot extends CommandGroup {
 
     public Shoot() {
-        addSequential(new SpinUp());
+        addSequential(new GetToSpeed());
         addSequential(new StartShooting());
     }
 }

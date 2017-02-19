@@ -15,7 +15,11 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
+<<<<<<< HEAD
+public class Drivetrain extends Subsystem {
+=======
 public class Drivetrain extends PIDSubsystem {
+>>>>>>> refs/remotes/origin/Rory
 	
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
