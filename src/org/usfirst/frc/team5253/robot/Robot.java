@@ -47,6 +47,7 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+//	SmartDashboard smartdash = new SmartDashboard();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -55,19 +56,22 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+	
 		
-		chooser = new SendableChooser();
-		chooser.addObject("Nothing", new NothingAuto());
-		chooser.addObject("Center Gear", new GearCenterAuto());
-		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
-		chooser.addObject("Right Side Gear",new RightGearAuto());
-		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
-		chooser.addObject("Ten Ball Auto", new TenBallAuto());
-		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());
-		chooser.addObject("Gear, Shoot and Cross", new GearTenBallAndCrossAuto());
-		chooser.addObject("Left Side Gear",new LeftGearAuto());
+	
+		
+		//chooser = new SendableChooser();
+//		chooser.addObject("Nothing", new NothingAuto());
+//		chooser.addObject("Center Gear", new GearCenterAuto());
+//		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
+		//chooser.addDefault("Right Side Gear",new RightGearAuto());
+//		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
+//		chooser.addObject("Ten Ball Auto", new TenBallAuto());
+//		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());
+//		chooser.addObject("Gear, Shoot and Cross", new GearTenBallAndCrossAuto());
+		chooser.addDefault("Left Side Gear",new LeftGearAuto());
 		//chooser.addObject();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		//chooser.addObject("My Auto", new My AutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		CameraServer.getInstance().startAutomaticCapture(0);
@@ -103,6 +107,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
+//		smartdash.getStringArray("AutoSelected");
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
