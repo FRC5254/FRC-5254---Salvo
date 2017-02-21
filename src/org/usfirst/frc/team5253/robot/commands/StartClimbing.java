@@ -12,6 +12,7 @@ public class StartClimbing extends Command {
     public StartClimbing() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.Climber);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +21,7 @@ public class StartClimbing extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Intake.startClimber();
+    	Robot.Climber.startClimber();
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -17,7 +17,6 @@ public class Intake extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	CANTalon intakeMotor = new CANTalon(RobotMap.INTAKE_MOTOR);
-	CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	
 	public Intake() {
 		intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
@@ -28,16 +27,6 @@ public class Intake extends Subsystem {
 		intakeMotor.reverseOutput(true);
 		intakeMotor.setF(0.025);
 		intakeMotor.setPID(0.11, 0.0, 0.0);
-		
-		climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		climberMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		climberMotor.configNominalOutputVoltage(+0.0f, -0.0f);
-		climberMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		climberMotor.reverseSensor(false);
-		climberMotor.reverseOutput(true);
-		climberMotor.setF(0.025);
-		climberMotor.setPID(0.11, 0.0, 0.0);
-		
 	}
 
     public void initDefaultCommand() {
@@ -53,15 +42,6 @@ public class Intake extends Subsystem {
     
     public void stopIntake() {
     	intakeMotor.set(0);
-    }
-    public void startClimber() {
-    	climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-    	climberMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		climberMotor.set(-1);
-    }
-    
-    public void stopClimber() {
-    	climberMotor.set(0);
     }
     
     

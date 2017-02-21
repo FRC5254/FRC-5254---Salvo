@@ -25,6 +25,7 @@ import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
 import org.usfirst.frc.team5253.robot.subsystems.Intake;
 import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
+import org.usfirst.frc.team5253.robot.subsystems.Climber;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,6 +44,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank= new FuelTank();
+	public static Climber Climber = new Climber();
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
