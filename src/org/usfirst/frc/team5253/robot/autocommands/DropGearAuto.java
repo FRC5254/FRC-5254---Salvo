@@ -32,7 +32,6 @@ public class DropGearAuto extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	System.out.format("Time %f", timer.get());
         return timer.get() >= 1.0;
     }
     
