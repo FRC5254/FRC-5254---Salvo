@@ -6,7 +6,6 @@ import org.usfirst.frc.team5253.robot.commands.StopShooting;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 
-import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -35,7 +34,7 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
 		shooterMotorTopLeft.setF(1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0));
-		System.out.format("Shooter RPM %f F %f%n", RobotMap.SHOOTER_RPM, 1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096));
+		System.out.format("Shooter RPM %f F %f%n", RobotMap.SHOOTER_RPM, shooterMotorTopLeft.getF());
 		shooterMotorTopLeft.setPID(0.12, 0.0012, 4.8);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -48,9 +47,7 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.reverseSensor(false);
 	}
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new StopShooting());
+      	setDefaultCommand(new StopShooting());
     }
     
     public void spinUp(double shooterRpm) {
@@ -69,10 +66,9 @@ public class Shooter extends Subsystem {
 
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
-    	
-    	SmartDashboard.putDouble("Spin Up RPM", shooterMotorTopLeft.getSpeed());
-    	SmartDashboard.putDouble("Spin Up RPM", shooterMotorTopLeft.getSpeed()-shooterRpm);
-    	SmartDashboard.putDouble("Spin Up Error", shooterMotorTopLeft.getClosedLoopError());
+
+    	SmartDashboard.putNumber("Spin Up RPM", shooterMotorTopLeft.getSpeed());
+    	SmartDashboard.putNumber("Spin Up Error", shooterMotorTopLeft.getClosedLoopError());
     }
     
     
@@ -100,9 +96,8 @@ public class Shooter extends Subsystem {
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
     	shooterMotorBottom.set(0.75);
     	
-    	SmartDashboard.putDouble("Start Shooting RPM", shooterMotorTopLeft.getSpeed());
-    	SmartDashboard.putDouble("Start Shooting RPM", shooterMotorTopLeft.getSpeed()-shooterRpm);
-    	SmartDashboard.putDouble("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
+    	SmartDashboard.putNumber("Start Shooting RPM", shooterMotorTopLeft.getSpeed());
+    	SmartDashboard.putNumber("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
     }
     
     public void stopShooting(int RPM) {
