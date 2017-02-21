@@ -30,9 +30,9 @@ public class GearCenterAuto extends CommandGroup {
         // arm.
 
 
-    	addSequential(new DriveToDistance(1, 69));
+    	addSequential(new DriveToDistance(1.0, 69));
     	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1, -24));
+    	addSequential(new DriveToDistance(1.0, -24));
 			
     }
 }

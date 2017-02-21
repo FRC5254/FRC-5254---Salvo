@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftGearAuto extends CommandGroup {
+public class SideGearAuto extends CommandGroup {
 
-    public LeftGearAuto() {
+    public SideGearAuto(boolean clockwise) {
     	requires(Robot.Drivetrain);
     	requires(Robot.GearHolder);
         // Add Commands here:
@@ -31,10 +31,15 @@ public class LeftGearAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveToDistance(-1.0, 91));
-    	addSequential(new TurnRobot(-60));
-    	addSequential(new DriveToDistance(-1.0, 13));
+    	
+    	double angle = 60;
+    	if (clockwise == false) {
+    		angle = -angle;
+    	}
+    	addSequential(new DriveToDistance(1.0, 84));
+    	addSequential(new TurnRobot(angle));
+    	addSequential(new DriveToDistance(1.0, 12));
     	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, -13));
+    	addSequential(new DriveToDistance(1.0, -24));
     }
 }
