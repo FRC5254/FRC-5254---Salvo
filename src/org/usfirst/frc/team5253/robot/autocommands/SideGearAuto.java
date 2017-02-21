@@ -36,7 +36,7 @@ public class SideGearAuto extends CommandGroup {
     	if (clockwise == false) {
     		angle = -angle;
     	}
-    	addSequential(new DriveToDistance(1.0, 84));
+    	addSequential(new DriveToDistance(1.0, 96));
     	addSequential(new TurnRobot(angle));
     	addSequential(new DriveToDistance(1.0, 12));
     	addSequential(new DropGearAuto());
