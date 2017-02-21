@@ -20,7 +20,7 @@ import org.usfirst.frc.team5253.robot.autocommands.NothingAuto;
 import org.usfirst.frc.team5253.robot.autocommands.RightGearAuto;
 import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
 import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
-import org.usfirst.frc.team5253.robot.commands.LeftGearAuto;
+import org.usfirst.frc.team5253.robot.autocommands.LeftGearAuto;
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.HypeHat;

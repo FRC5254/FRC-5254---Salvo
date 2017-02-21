@@ -1,7 +1,7 @@
-package org.usfirst.frc.team5253.robot.commands;
+package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.autocommands.AutoTurn;
+import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
 import org.usfirst.frc.team5253.robot.autocommands.DriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.DropGearAuto;
 
@@ -32,9 +32,9 @@ public class LeftGearAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveToDistance(-1.0, 91));
-    	addSequential(new AutoTurn(-60));
+    	addSequential(new TurnRobot(-60));
     	addSequential(new DriveToDistance(-1.0, 13));
     	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, 13));
+    	addSequential(new DriveToDistance(1.0, -13));
     }
 }
