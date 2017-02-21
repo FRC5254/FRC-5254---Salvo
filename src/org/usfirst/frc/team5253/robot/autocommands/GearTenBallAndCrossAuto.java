@@ -35,10 +35,10 @@ public class GearTenBallAndCrossAuto extends CommandGroup {
     	addSequential(new DriveToDistance(-1.0, 54));
     	addSequential(new DropGear());
     	addParallel(new DriveToDistance(1.0, 54));
-    	addSequential(new AutoTurn(90));
+    	addSequential(new TurnRobot(90));
     	addSequential(new AutoSpinUp());
     	addSequential(new AutoStartShooting());
-    	addSequential(new AutoTurn(-45));
+    	addSequential(new TurnRobot(-45));
     	addSequential(new DriveToDistance(-1.0, 122));
     }
 }
