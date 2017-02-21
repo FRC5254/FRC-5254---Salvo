@@ -19,24 +19,17 @@ public class DriveToDistance extends Command {
     	requires(Robot.Drivetrain);
     	this.Throttle = Throttle;
     	this.Distance = Distance;
-       	System.out.format("DriveToDistance(%f,%f)%n", this.Throttle, this.Distance);
     } 
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Drivetrain.resetGyro();
-    	Robot.Drivetrain.getAngle();
-    	Robot.Drivetrain.initEncoder();
-    	
+    	Robot.Drivetrain.autoDriveInitialize(Throttle, Distance);
+    	System.out.format("DriveToDistance(%f,%f)%n", this.Throttle, this.Distance);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    if (Throttle > 0) {
-    	Robot.Drivetrain.autoDrive(Throttle, Robot.Drivetrain.getAngle() * Robot.Drivetrain.DKp, Distance);
-    } else {
-    	Robot.Drivetrain.autoDrive(Throttle, -Robot.Drivetrain.getAngle() * Robot.Drivetrain.DKp, -Distance);
-    }
+    	Robot.Drivetrain.autoDrive();
     }
 
     // Make this return true when this Command no longer needs to run execute()
