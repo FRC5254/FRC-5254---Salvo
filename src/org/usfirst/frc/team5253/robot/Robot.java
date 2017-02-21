@@ -58,7 +58,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Nothing", new NothingAuto());
 		chooser.addObject("Center Gear", new GearCenterAuto());
 		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
-		chooser.addObject("Side Gear",new SideGearAuto());
+		chooser.addObject("Right Gear Auto",new SideGearAuto(true));
+		chooser.addObject("Left Gear Auto", new SideGearAuto(false));
 		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
 		chooser.addObject("Ten Ball Auto", new TenBallAuto());
 		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());

@@ -30,7 +30,7 @@ public class CrossBaseLineAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    		addSequential(new DriveToDistance(-0.25,185));
+    	addSequential(new DriveToDistance(1.0, 100));
     		
     }
 }

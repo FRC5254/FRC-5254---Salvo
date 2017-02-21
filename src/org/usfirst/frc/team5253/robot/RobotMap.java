@@ -71,10 +71,15 @@ public class RobotMap {
 	public static final int HYPE_HAT_MOTOR= 9;
 	public static final int INTAKE_MOTOR =  10;	
 	//RPMs
+<<<<<<< HEAD
 	public static final double SHOOTER_RPM = 3826; //TODO find good value
 >>>>>>> refs/remotes/origin/Rory
+=======
+	public static final double SHOOTER_RPM = 10000; //TODO find good value
+>>>>>>> origin/Rory
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;
-	public static final double GEAR_RATIO = (54/34)*(50/30)*(12/2.5);
+	public static final int WHEEL_TICKS = 256;
+	public static final double GEAR_RATIO = 25.0/6.0;
 }

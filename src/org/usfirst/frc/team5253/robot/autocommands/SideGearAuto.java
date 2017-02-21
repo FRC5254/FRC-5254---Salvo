@@ -1,6 +1,9 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
+import org.usfirst.frc.team5253.robot.autocommands.DriveToDistance;
+import org.usfirst.frc.team5253.robot.autocommands.DropGearAuto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -9,8 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class SideGearAuto extends CommandGroup {
 
-    public SideGearAuto() {
-    	
+    public SideGearAuto(boolean clockwise) {
     	requires(Robot.Drivetrain);
     	requires(Robot.GearHolder);
         // Add Commands here:
@@ -30,11 +32,14 @@ public class SideGearAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveToDistance(-1.0, 90));
-    	addSequential(new AutoTurn(60));
-    	addSequential(new DriveToDistance(-1.0, 3));
+    	double angle = 60;
+    	if (clockwise == false) {
+    		angle = -angle;
+    	}
+    	addSequential(new DriveToDistance(1.0, 84));
+    	addSequential(new TurnRobot(angle));
+    	addSequential(new DriveToDistance(1.0, 12));
     	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, 3));
-    	
+    	addSequential(new DriveToDistance(1.0, -24));
     }
 }

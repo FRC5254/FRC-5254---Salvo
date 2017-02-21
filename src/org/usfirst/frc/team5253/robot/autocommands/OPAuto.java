@@ -26,7 +26,7 @@ public class OPAuto extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveToDistance(.25, -96));
-    	addSequential(new AutoTurn(90)); //TODO find best value
+    	addSequential(new TurnRobot(90)); //TODO find best value
     	//timer insert or wiggle robot
     	addParallel(new DriveToDistance(.25, 20));
     	addParallel(new AutoSpinUp());
