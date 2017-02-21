@@ -33,18 +33,9 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
-<<<<<<< HEAD
-		shooterMotorTopLeft.setF(0.0391);
-=======
 		shooterMotorTopLeft.setProfile(0);
-<<<<<<< HEAD
-		shooterMotorTopLeft.setF(0.0391);
-		shooterMotorTopLeft.setPID(0.28, 0.0056, 2.8);
->>>>>>> refs/remotes/origin/Rory
-=======
 		shooterMotorTopLeft.setF(1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0));
 		System.out.format("Shooter RPM %f F %f%n", RobotMap.SHOOTER_RPM, 1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096));
->>>>>>> origin/Rory
 		shooterMotorTopLeft.setPID(0.12, 0.0012, 4.8);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -55,12 +46,6 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorBottom.reverseSensor(false);
-		shooterMotorBottom.reverseOutput(false);
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> refs/remotes/origin/Rory
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -69,18 +54,7 @@ public class Shooter extends Subsystem {
     }
     
     public void spinUp(double shooterRpm) {
-<<<<<<< HEAD
     	
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
-		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		shooterMotorTopLeft.set(shooterRpm);
-		System.out.format("Spin Up; RPM %f, Delta %f, Error %D%n",
-	    		shooterMotorTopLeft.getSpeed(),
-	    		shooterMotorTopLeft.getSpeed() - shooterRpm,
-	    		shooterMotorTopLeft.getClosedLoopError());
-		
-=======
-    	 	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
 		shooterMotorTopLeft.set(shooterRpm);
@@ -92,8 +66,7 @@ public class Shooter extends Subsystem {
 					shooterMotorTopLeft.getSpeed() - shooterRpm, 
 					shooterMotorTopLeft.getClosedLoopError());
 		}
-    	
->>>>>>> refs/remotes/origin/Rory
+
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
     	
@@ -108,13 +81,6 @@ public class Shooter extends Subsystem {
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
 		shooterMotorTopLeft.set(shooterRpm);
-<<<<<<< HEAD
-		System.out.format("Spin Up; RPM %f, Delta %f, Error %D%n",
-	    		shooterMotorTopLeft.getSpeed(),
-	    		shooterMotorTopLeft.getSpeed() - shooterRpm,
-	    		shooterMotorTopLeft.getClosedLoopError());
-	    	
-=======
 		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
@@ -129,7 +95,6 @@ public class Shooter extends Subsystem {
 					currentRpm - shooterRpm, 
 					closedLoopError);
 		}
->>>>>>> refs/remotes/origin/Rory
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
@@ -141,10 +106,7 @@ public class Shooter extends Subsystem {
     }
     
     public void stopShooting(int RPM) {
-<<<<<<< HEAD
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
-=======
->>>>>>> refs/remotes/origin/Rory
+    	
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,0.0f);
     	shooterMotorTopLeft.set(0.0);
     	

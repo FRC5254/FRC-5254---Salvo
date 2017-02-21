@@ -59,7 +59,9 @@ public class RobotMap {
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
 	public static final int SHOOTER_MOTOR_BOTTOM = 8;
 	public static final int HYPE_HAT_MOTOR= 9;
-	public static final int INTAKE_MOTOR =  10;	
+	public static final int INTAKE_MOTOR =  10;
+	public static final int CLIMBER_MOTOR = 11;
+	
 	//RPMs
 	public static final double SHOOTER_RPM = 10000; //TODO find good value
 	
