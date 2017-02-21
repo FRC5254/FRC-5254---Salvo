@@ -25,9 +25,6 @@ public class Climber extends Subsystem {
 		climberMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		climberMotor.reverseSensor(false);
 		climberMotor.reverseOutput(true);
-		climberMotor.setF(0.025);
-		climberMotor.setPID(0.11, 0.0, 0.0);
-	
 	}
 	
 

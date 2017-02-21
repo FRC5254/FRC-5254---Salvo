@@ -24,10 +24,7 @@ public class HypeHat extends Subsystem {
 		HatMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		HatMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		HatMotor.reverseSensor(false);
-		HatMotor.reverseOutput(true);
-		HatMotor.setF(0.0);
-		HatMotor.setPID(0.0, 0.0, 0.0);
-		
+		HatMotor.reverseOutput(true);		
 	}
 	
     public void initDefaultCommand() {

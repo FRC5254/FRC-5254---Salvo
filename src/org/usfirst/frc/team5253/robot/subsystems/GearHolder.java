@@ -26,7 +26,6 @@ public class GearHolder extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new RaiseGear());
-    	setDefaultCommand(new GearIntakeIn());
     }
     
     public void drop() {
