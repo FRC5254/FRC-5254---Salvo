@@ -31,8 +31,8 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		shooterMotorTopLeft.setF(0.0391);
-		shooterMotorTopLeft.setPID(0.28, 0.0056, 2.8);
+		shooterMotorTopLeft.setF(1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0));
+		System.out.format("Shooter RPM %f F %f%n", RobotMap.SHOOTER_RPM, 1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096));
 		shooterMotorTopLeft.setPID(0.12, 0.0012, 4.8);
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
