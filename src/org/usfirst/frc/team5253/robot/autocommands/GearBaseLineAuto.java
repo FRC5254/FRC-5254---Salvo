@@ -30,9 +30,10 @@ public class GearBaseLineAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveToDistance(1.0, 54));
-    	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, 54));
+//    	addSequential(new DriveToDistance(1.0, 54));
+//    	addSequential(new DropGearAuto());
+//    	addSequential(new DriveToDistance(1.0, 54));
+    	addSequential(new GearCenterAuto());
     	addSequential(new TurnRobot(45));
     	addSequential(new DriveToDistance(1.0, 122));
     	

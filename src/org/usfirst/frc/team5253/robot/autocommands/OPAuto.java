@@ -25,19 +25,19 @@ public class OPAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	/*
     	addSequential(new DriveToDistance(.25, -96));
     	addSequential(new TurnRobot(90)); //TODO find best value
     	//timer insert or wiggle robot
     	addParallel(new DriveToDistance(.25, 20));
     	addParallel(new AutoSpinUp());
     	addSequential(new AutoStartShooting());
-    	
-    	/*
-    	 * addSequential(new DriveToDistance(.25, 80));
-    	 * addSequential(new AutoTurn(10)); //famboyent effect
-    	 * addSequential(new DriveToDistance(?,?)); //get into optimal shooting spot #wish we had vision
-    	 * addSequential(new AutoSpinUp());
-    	 * addSequential(new AutoStartShooting());
-    	 * */
+    	*/
+    	addSequential(new TurnRobot(5));
+    	addSequential(new DriveToDistance(.25, 80));
+    	addSequential(new TurnRobot(10)); //famboyent effect
+    	addParallel(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
+    	addSequential(new AutoSpinUp());
+        addSequential(new AutoStartShooting());
     }
 }

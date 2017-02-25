@@ -3,7 +3,6 @@ package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -13,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5253.robot.autocommands.*;
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
+import com.ctre.CANTalon;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -21,6 +22,7 @@ import org.usfirst.frc.team5253.robot.subsystems.*;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 
 	NetworkTable table;
 	public static OI oi;
@@ -33,12 +35,31 @@ public class Robot extends IterativeRobot {
 	public static Climber Climber = new Climber();
 		
 	// Auto modes
-	private final String AutoNothing = "Nothing";
+	private final String NothingAuto = "Nothing";
+	private final String CrossBaseLine = "Cross Base Line";
 	private final String AutoCenterGear = "Center Gear";
 	private final String AutoRightGear = "Right Gear";
 	private final String AutoLeftGear = "Left Gear";
+	private final String TenBall = "Shoot Ten Balls";
+	private final String GearBaseLine = "Center Gear and Cross Base Line";
+	private final String GearTenBall = "Center Gear and Ten Ball Shot";
+	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
+	private final String OP = "Auto Bots Assemble";
 	
-	private final String[] AutoModes = {AutoNothing, AutoCenterGear, AutoRightGear, AutoLeftGear };
+	private final String[] AutoModes = {
+			
+			NothingAuto,
+			CrossBaseLine,
+			AutoCenterGear,
+			AutoRightGear,
+			AutoLeftGear,
+			TenBall,
+			GearBaseLine,
+			GearTenBall,
+			GearTenBallAndCross,
+			OP
+			
+	};
 	
 	Command autonomousCommand;
 	
@@ -56,7 +77,8 @@ public class Robot extends IterativeRobot {
 		
 		// Initialize cameras
 		CameraServer.getInstance().startAutomaticCapture(0);
-		CameraServer.getInstance().startAutomaticCapture(1);
+		//CameraServer.getInstance().startAutomaticCapture(1);
+		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
 
 	/**
@@ -87,11 +109,20 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		String autoSelected = SmartDashboard.getString("Auto Selector", AutoNothing);
+		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
 		
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
 		
 	    switch (autoSelected) {
+	    /*TenBall,
+			GearBaseLine,
+			GearTenBall,
+			GearTenBallAndCross,
+			OP*/
+    	
+	    case CrossBaseLine:
+	    	autonomousCommand = new CrossBaseLineAuto();
+	    	
 	    case AutoCenterGear:
 	    	autonomousCommand = new GearCenterAuto();
 	    	break;
@@ -102,6 +133,22 @@ public class Robot extends IterativeRobot {
 	    	
 	    case AutoLeftGear:
 	    	autonomousCommand = new SideGearAuto(true);
+	    	break;
+	    	
+	    case TenBall:
+	    	autonomousCommand = new TenBallAuto();
+	    	break;
+	    	
+	    case GearBaseLine:
+	    	autonomousCommand = new GearBaseLineAuto();
+	    	break;
+	    	
+	    case GearTenBall:
+	    	autonomousCommand = new GearAndTenBallAuto();
+	    	break;
+	    	
+	    case GearTenBallAndCross:
+	    	autonomousCommand = new  GearTenBallAndCrossAuto();
 	    	break;
 	    	
 	    default:

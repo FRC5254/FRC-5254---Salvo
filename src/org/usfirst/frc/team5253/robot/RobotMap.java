@@ -57,13 +57,13 @@ public class RobotMap {
 	//CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-	public static final int SHOOTER_MOTOR_BOTTOM = 8;
-	public static final int HYPE_HAT_MOTOR= 9;
-	public static final int INTAKE_MOTOR =  10;
-	public static final int CLIMBER_MOTOR = 11;
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;// was 8
+	public static final int HYPE_HAT_MOTOR = 3;//9
+	public static final int INTAKE_MOTOR =  5;//10
+	public static final int CLIMBER_MOTOR = 11;// we no have clmber
 	
 	//RPMs
-	public static final double SHOOTER_RPM = 10000; //TODO find good value
+	public static final double SHOOTER_RPM = 11250; //TODO find good value divide this number by 3.2 
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;
