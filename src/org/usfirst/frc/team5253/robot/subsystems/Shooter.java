@@ -119,6 +119,7 @@ public class Shooter extends Subsystem {
 
     	SmartDashboard.putNumber("Start Shooting RPM", shooterMotorTopLeft.getSpeed());
     	SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+    	SmartDashboard.putNumber("Shooter RPM", shooterRpm);
     	//SmartDashboard.putNumber("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
     	
     	
