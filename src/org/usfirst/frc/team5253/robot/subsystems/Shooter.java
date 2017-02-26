@@ -76,12 +76,8 @@ public class Shooter extends Subsystem {
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
 
-<<<<<<< HEAD
-    	SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+    	//SmartDashboard.putNumber("Spin Up RPM", shooterMotorTopLeft.getSpeed());
     	//SmartDashboard.putNumber("Spin Up Error", shooterMotorTopLeft.getClosedLoopError());
-=======
-    	SmartDashboard.putNumber("Spin Up RPM", shooterMotorTopLeft.getSpeed());
-    	SmartDashboard.putNumber("Spin Up Error", shooterMotorTopLeft.getClosedLoopError());
     	
     	if (shooterMotorTopLeft.getSpeed() >= shooterRpm) {
     		idleAchieved = true;
@@ -94,7 +90,6 @@ public class Shooter extends Subsystem {
     		SmartDashboard.putString("DB/String 7", Double.toString(maxIdle));
     	}
     	
->>>>>>> origin/Rory
     }
     
     
@@ -121,13 +116,11 @@ public class Shooter extends Subsystem {
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
     	shooterMotorBottom.set(0.75);
-    	
-<<<<<<< HEAD
-    	//SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
-    	//SmartDashboard.putNumber("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
-=======
+
     	SmartDashboard.putNumber("Start Shooting RPM", shooterMotorTopLeft.getSpeed());
-    	SmartDashboard.putNumber("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
+    	SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+    	//SmartDashboard.putNumber("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
+    	
     	
     	if (shooterMotorTopLeft.getSpeed() >= shooterRpm){
     		shootingSpeedAchieved = true;
@@ -140,7 +133,6 @@ public class Shooter extends Subsystem {
     		SmartDashboard.putString("DB/String 3", Double.toString(minShooting));
     		SmartDashboard.putString("DB/String 8", Double.toString(maxShooting));
     	}
->>>>>>> origin/Rory
     }
     
     public void stopShooting(int RPM) {
