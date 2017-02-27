@@ -77,7 +77,7 @@ public class Shooter extends Subsystem {
 		if (loop++ > 10) {
 			loop = 0;
 			System.out.format("Spin Up; RPM %f Delta %f Error %d%n",  
-					shooterMotorTopLeft.getSpeed() ,//THOUSAND RPM BASED ON RATIO 3.2
+					shooterMotorTopLeft.getSpeed() ,
 					shooterMotorTopLeft.getSpeed() - shooterRpm, 
 					shooterMotorTopLeft.getClosedLoopError());
 		}
@@ -174,5 +174,8 @@ public class Shooter extends Subsystem {
 //	} else {
 //		return true;
 //		}
+	}
+	public void ResetMinMaxRpmValues() {
+		
 	}
 }
