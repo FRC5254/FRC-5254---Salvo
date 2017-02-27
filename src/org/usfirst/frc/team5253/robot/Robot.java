@@ -3,29 +3,16 @@ package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearBaseLineAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearTenBallAndCrossAuto;
-import org.usfirst.frc.team5253.robot.autocommands.NothingAuto;
-import org.usfirst.frc.team5253.robot.autocommands.SideGearAuto;
-import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
-import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
-import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
-import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
-import org.usfirst.frc.team5253.robot.subsystems.Shooter;
-import org.usfirst.frc.team5253.robot.subsystems.Intake;
-import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
+import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.subsystems.*;
+
+import com.ctre.CANTalon;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +22,7 @@ import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 
 	NetworkTable table;
 	public static OI oi;
@@ -43,11 +31,38 @@ public class Robot extends IterativeRobot {
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
-	public static FuelTank FuelTank= new FuelTank();
+	public static FuelTank FuelTank = new FuelTank();
+	public static Climber Climber = new Climber();
+		
+	// Auto modes
+	private final String NothingAuto = "Nothing";
+	private final String CrossBaseLine = "Cross Base Line";
+	private final String AutoCenterGear = "Center Gear";
+	private final String AutoRightGear = "Right Gear";
+	private final String AutoLeftGear = "Left Gear";
+	private final String TenBall = "Shoot Ten Balls";
+	private final String GearBaseLine = "Center Gear and Cross Base Line";
+	private final String GearTenBall = "Center Gear and Ten Ball Shot";
+	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
+	private final String OP = "Auto Bots Assemble";
+	
+	private final String[] AutoModes = {
+			
+			NothingAuto,
+			CrossBaseLine,
+			AutoCenterGear,
+			AutoRightGear,
+			AutoLeftGear,
+			TenBall,
+			GearBaseLine,
+			GearTenBall,
+			GearTenBallAndCross,
+			OP
+			
+	};
 	
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
-
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -56,19 +71,14 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		
-		chooser.addObject("Nothing", new NothingAuto());
-		chooser.addObject("Center Gear", new GearCenterAuto());
-		chooser.addObject("Cross Base Line", new CrossBaseLineAuto());
-		chooser.addObject("Side Gear",new SideGearAuto());
-		chooser.addObject("Gear and Baseline", new GearBaseLineAuto());
-		chooser.addObject("Ten Ball Auto", new TenBallAuto());
-		chooser.addObject("Gear and Ten Ball", new GearAndTenBallAuto());
-		chooser.addObject("Gear, Shoot and Cross", new GearTenBallAndCrossAuto());
-		chooser.addObject("JCH", new TurnRobot(180));
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+		// Send auto modes
+		NetworkTable table = NetworkTable.getTable("SmartDashboard");
+		table.putStringArray("Auto List", AutoModes);
 		
+		// Initialize cameras
 		CameraServer.getInstance().startAutomaticCapture(0);
+		//CameraServer.getInstance().startAutomaticCapture(1);
+		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
 
 	/**
@@ -99,23 +109,57 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected) { 
-		 * case "My Auto": 
-		 * autonomousCommand = new MyAutoCommand(); 
-		 * break; 
-		 * 
-		 * case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); 
-		 * break; }
-		 */
+		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
+		
+		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
+		
+	    switch (autoSelected) {
+	    /*TenBall,
+			GearBaseLine,
+			GearTenBall,
+			GearTenBallAndCross,
+			OP*/
+    	
+	    case CrossBaseLine:
+	    	autonomousCommand = new CrossBaseLineAuto();
+	    	
+	    case AutoCenterGear:
+	    	autonomousCommand = new GearCenterAuto();
+	    	break;
+	    	
+	    case AutoRightGear:
+	    	autonomousCommand = new SideGearAuto(false);
+	    	break;
+	    	
+	    case AutoLeftGear:
+	    	autonomousCommand = new SideGearAuto(true);
+	    	break;
+	    	
+	    case TenBall:
+	    	autonomousCommand = new TenBallAuto();
+	    	break;
+	    	
+	    case GearBaseLine:
+	    	autonomousCommand = new GearBaseLineAuto();
+	    	break;
+	    	
+	    case GearTenBall:
+	    	autonomousCommand = new GearAndTenBallAuto();
+	    	break;
+	    	
+	    case GearTenBallAndCross:
+	    	autonomousCommand = new  GearTenBallAndCrossAuto();
+	    	break;
+	    	
+	    default:
+	    	break;
+	    }
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
+		if (autonomousCommand != null) {
+			SmartDashboard.putString("DB/String 0", autoSelected);
 			autonomousCommand.start();
+		}
 	}
 
 	/**

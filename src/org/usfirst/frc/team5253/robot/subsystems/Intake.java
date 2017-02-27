@@ -6,6 +6,7 @@ import org.usfirst.frc.team5253.robot.commands.StopIntaking;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,16 +19,12 @@ public class Intake extends Subsystem {
 	CANTalon intakeMotor = new CANTalon(RobotMap.INTAKE_MOTOR);
 	
 	public Intake() {
-		
 		intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		intakeMotor.configNominalOutputVoltage(+0.0f, -0.0f);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		intakeMotor.reverseSensor(false);
 		intakeMotor.reverseOutput(true);
-		intakeMotor.setF(0.025);
-		intakeMotor.setPID(0.11, 0.0, 0.0);
-		
 	}
 
     public void initDefaultCommand() {
@@ -35,14 +32,16 @@ public class Intake extends Subsystem {
         setDefaultCommand(new StopIntaking());
     }
     
-    public void startIntake() {
+    public void startIntake(double Percent) {
     	intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		intakeMotor.set(-1);
+		intakeMotor.set(Percent);
     }
     
     public void stopIntake() {
     	intakeMotor.set(0);
     }
+    
+    
 }
 

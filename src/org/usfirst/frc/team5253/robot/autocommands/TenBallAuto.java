@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
 import org.usfirst.frc.team5253.robot.commands.StartSpinning;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
 
@@ -33,7 +34,7 @@ public class TenBallAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new AutoTurn(90));
+    	addSequential(new TurnRobot(90));
     	addSequential(new StartSpinning());//cause
     	addParallel(new AutoSpinUp());
     	addSequential(new StartShooting());

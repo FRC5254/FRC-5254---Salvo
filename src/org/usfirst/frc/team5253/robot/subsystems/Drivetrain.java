@@ -23,12 +23,12 @@ public class Drivetrain extends PIDSubsystem {
 	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	
 	double angle;
-	public double DKp = 0.07;
+	public double DKp = 0.035;
 	public double TKp = 0.3;
-	public boolean shiftState = false;
-	private static double finalModifier;
-	private static double distance;
-	private static double turnSpeed;
+	private static int finalTicks;
+	private int remainingTicks;
+	private double Throttle;
+	private double distance;
 	//private static double camera = 0;
 	
 	public Drivetrain () {
@@ -41,7 +41,6 @@ public class Drivetrain extends PIDSubsystem {
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveWithJoystick());
-		//setDefaultCommand(new ShiftDown());
 	}
 	
 	public void drive(double Throttle, double Turn){
@@ -54,12 +53,10 @@ public class Drivetrain extends PIDSubsystem {
 	
 	public void shiftDown() {
 		shiftingPiston.set(true);
-		shiftState = true;
 	}
 	
 	public void shiftUp() {
 		shiftingPiston.set(false);
-		shiftState = true;
 	}
 
 	
@@ -80,43 +77,30 @@ public class Drivetrain extends PIDSubsystem {
 		encoder.setSamplesToAverage(7);
 	}
 	
-	public void autoDrive(double Throttle, double Turn, double distance) {
-		double wheelDiameter = RobotMap.WHEEL_DIAMETER;
-		double gearRatio = RobotMap.GEAR_RATIO;
-		double encoderTicks = 256;
-		finalModifier = (Math.abs(distance)/(wheelDiameter * Math.PI))  * encoderTicks * gearRatio ;
-		
-		double remaining = finalModifier - Math.abs(encoder.get());
-		double finalThrottle;
-		double sign = Throttle/Math.abs(Throttle);
-		if (Throttle > 0){
-			finalThrottle = remaining/3000;
-		}else{
-			finalThrottle = sign * (-remaining/3000);
-		}
-		
+	public void autoDriveInitialize(double Throttle, double distance) {
 		this.distance = distance;
-		
-		if (Math.abs(finalThrottle) < 0.25){
-			if (encoder.get() <= finalModifier) {
-				myRobot.drive(-finalThrottle, Turn);
-				System.out.println(finalThrottle);
-			}
-		}else if (Math.abs(finalThrottle) > 0.25){
-			myRobot.drive((sign*0.25), Turn);
-		}
+		this.Throttle = Throttle;
+		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI))  * RobotMap.WHEEL_TICKS * RobotMap.GEAR_RATIO) ;
+		initEncoder();
+	  	resetGyro();
 	}
+	public void autoDrive() {
+		double sign = Math.signum(distance);
+		double Turn = - sign * getAngle() * DKp;
+		remainingTicks = (int) (sign * (Math.abs(finalTicks) - Math.abs(encoder.get())));
+		double finalThrottle;
 	
-	public void autoTurn(double angle) {
-		turnSpeed = angle - gyro.getAngle();
-		if (gyro.getAngle() >= angle) {
-			drive(0.0, turnSpeed / 50);
-		} else if (gyro.getAngle() <= angle + 1) {
-			drive(0.0, turnSpeed / 50);
-		} else {
-			drive(0.0, 0.0);
+		finalThrottle = 0.4;
+		if (Math.abs(remainingTicks) < 1000) {
+			finalThrottle = Math.abs(remainingTicks) / 1000;
+			if (finalThrottle < 0.2) {
+				finalThrottle = 0.2;
+			}
 		}
+		finalThrottle = - finalThrottle * sign;
 		
+//		System.out.format("autoDrive: finalThrottle %f, Turn %f, remaining %d, ticks %d%n",  finalThrottle, Turn, remainingTicks, encoder.get());
+		myRobot.drive(finalThrottle, Turn);
 	}
 	
 	protected double returnPIDInput() {
@@ -133,7 +117,7 @@ public class Drivetrain extends PIDSubsystem {
     }
     
 	public boolean driveAutoIsFinished() {
-		return Math.abs(encoder.get()) >= Math.abs(finalModifier);
+		return Math.abs(remainingTicks) < 20;  // ~ 1/2 "
 	}
 
 	public void stop() {

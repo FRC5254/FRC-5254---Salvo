@@ -1,14 +1,10 @@
 package org.usfirst.frc.team5253.robot;
 
 import org.usfirst.frc.team5253.robot.commands.*;
-import org.usfirst.frc.team5253.robot.autocommands.*;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /** 
@@ -18,8 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 	
 public class OI {
 	
-	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
-	public Joystick operator = new Joystick(RobotMap.OPERATOR_JOYSTICK);
+	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
+	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 	
 	public OI() {
 		
@@ -33,6 +29,7 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
+		//AxisType DriverAxisRightTrigger = new AxisType();
 		
 		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
@@ -47,10 +44,10 @@ public class OI {
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
 	
-		DriverButtonA.whenPressed(new StartSpinning());
 		DriverButtonA.whenPressed(new StartShooting());
-		DriverButtonB.whenPressed(new StopSpinning());
+		//DriverButtonA.whenPressed(new StartSpinning());
 		DriverButtonB.whenPressed(new StopShooting());
+		DriverButtonB.whenPressed(new StopSpinning());
 		DriverButtonX.whenPressed(new SpinUp());
 		DriverButtonY.whenPressed(new StartSpinning());
 		DriverButtonBumperLeft.whenPressed(new ShiftUp());
@@ -62,11 +59,19 @@ public class OI {
 		//DriverButtonStart.whenPressed(command);
 		//DriverButtonLeftJoystickPress.whenPressed(command);
 		//DriverButtonRightJoystickPress.whenPressed(command);
+		if (driver.getTrigger(Hand.kRight)) {
+			Robot.Intake.startIntake(0.8);;
+		} else if (driver.getTrigger(Hand.kLeft)) {
+			Robot.Intake.startIntake(-0.8);
+		} else {
+			Robot.Intake.stopIntake();
+		}//TODO does this work??
 		
 		
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
-		//OperatorButtonX.whenPressed();
+		OperatorButtonB.whenPressed(new StopClimbing());
+		OperatorButtonX.whenPressed(new StartClimbing());
 		OperatorButtonY.whenActive(new DropGear());
 		OperatorButtonY.whenInactive(new RaiseGear());
 		OperatorButtonBack.whenPressed(new GearIntakeIn());

@@ -57,14 +57,21 @@ public class RobotMap {
 	//CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-	public static final int SHOOTER_MOTOR_BOTTOM = 8;
-	public static final int HYPE_HAT_MOTOR= 9;
-
-	public static final int INTAKE_MOTOR =  10;	
-	//RPMs
-	public static final double SHOOTER_RPM = 5924; //TODO find good value
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;// was 8
+	public static final int HYPE_HAT_MOTOR = 3;//9
+	public static final int INTAKE_MOTOR =  5;//10
+	public static final int CLIMBER_MOTOR = 11;// we no have clmber
+	
+	// Shooter tuning values
+	// RPM is the RPM of the encoder, not the motors
+	public static final double SHOOTER_RPM = 3826;
+	public static final double SHOOTER_PID_F = 0.008;
+	public static final double SHOOTER_PID_P = 0.12;
+	public static final double SHOOTER_PID_I = 0.0;
+	public static final double SHOOTER_PID_D = 4.8;
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;
-	public static final int GEAR_RATIO = (54/34)*(50/30);
+	public static final int WHEEL_TICKS = 256;
+	public static final double GEAR_RATIO = 25.0/6.0;
 }
