@@ -64,7 +64,7 @@ public class RobotMap {
 	
 	// Shooter tuning values
 	// RPM is the RPM of the encoder, not the motors
-	public static final double SHOOTER_RPM = 3825;
+	public static final double SHOOTER_RPM = 3826;
 	public static final double SHOOTER_PID_F = 0.008;
 	public static final double SHOOTER_PID_P = 0.12;
 	public static final double SHOOTER_PID_I = 0.0;
