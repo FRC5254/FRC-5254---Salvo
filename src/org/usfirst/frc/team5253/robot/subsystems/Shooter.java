@@ -42,9 +42,18 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		shooterMotorTopLeft.setF(0.008);//1023.0 /(RobotMap.SHOOTER_RPM / 600.0 * 4096.0)
-		System.out.format("Shooter RPM %f F %f%n", RobotMap.SHOOTER_RPM, shooterMotorTopLeft.getF());
-		shooterMotorTopLeft.setPID(0, 0, 0);//0.12, 0.0012, 4.8
+		shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F);
+		System.out.format("Shooter RPM %f F calculated: %f using: %f%n", 
+				RobotMap.SHOOTER_RPM,
+				1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0),
+				shooterMotorTopLeft.getF());
+		shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P);
+		shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I);
+		shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D);
+		System.out.format("Shooter P %f I %f D %f%n", 
+				shooterMotorTopLeft.getP(),
+				shooterMotorTopLeft.getI(),
+				shooterMotorTopLeft.getD());
 		
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
