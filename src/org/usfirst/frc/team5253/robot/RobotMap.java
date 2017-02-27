@@ -63,7 +63,7 @@ public class RobotMap {
 	public static final int CLIMBER_MOTOR = 11;// we no have clmber
 	
 	//RPMs
-	public static final double SHOOTER_RPM = 11250; //TODO find good value divide this number by 3.2 
+	public static final double SHOOTER_RPM = 3826; //TODO find good value divide this number by 3.2 
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;

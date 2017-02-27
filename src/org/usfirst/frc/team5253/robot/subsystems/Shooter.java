@@ -63,7 +63,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		shooterMotorTopLeft.set(-0.75);
+		shooterMotorTopLeft.set(-1);
 		
 		if (loop++ > 10) {
 			loop = 0;
@@ -95,9 +95,9 @@ public class Shooter extends Subsystem {
     
     public void startShooting(double shooterRpm) { 
     	
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		shooterMotorTopLeft.set(shooterRpm);
+		shooterMotorTopLeft.set(-0.75);
 		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
