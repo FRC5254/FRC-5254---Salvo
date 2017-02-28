@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-	
+	       
 public class OI {
 	
 	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
@@ -45,7 +45,7 @@ public class OI {
 
 	
 		DriverButtonA.whenPressed(new StartShooting());
-		//DriverButtonA.whenPressed(new StartSpinning());
+		DriverButtonA.whenPressed(new StartSpinning());
 		DriverButtonB.whenPressed(new StopShooting());
 		DriverButtonB.whenPressed(new StopSpinning());
 		DriverButtonX.whenPressed(new SpinUp());

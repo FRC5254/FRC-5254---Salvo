@@ -70,9 +70,9 @@ public class Shooter extends Subsystem {
     
     public void spinUp(double shooterRpm) {
     	
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		shooterMotorTopLeft.set(-1);
+		shooterMotorTopLeft.set(shooterRpm);
 		
 		if (loop++ > 10) {
 			loop = 0;
@@ -104,9 +104,9 @@ public class Shooter extends Subsystem {
     
     public void startShooting(double shooterRpm) { 
     	
-    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		shooterMotorTopLeft.set(-0.75);
+		shooterMotorTopLeft.set(shooterRpm);
 		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
@@ -128,7 +128,7 @@ public class Shooter extends Subsystem {
 
     	SmartDashboard.putNumber("Start Shooting RPM", shooterMotorTopLeft.getSpeed());
     	SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
-    	SmartDashboard.putNumber("Shooter RPM", shooterRpm);
+    	//SmartDashboard.putNumber("Shooter RPM", shooterRpm);
     	//SmartDashboard.putNumber("Start Shooting Error", shooterMotorTopLeft.getClosedLoopError());
     	
     	
