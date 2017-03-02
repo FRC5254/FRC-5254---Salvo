@@ -27,10 +27,18 @@ public class Shooter extends Subsystem {
 	double maxShooting  = 0;
 	
 	Boolean idleAchieved = false;
-	int loop, maxError, minError = 10000000;
+	double loop, maxError, minError = 10000000;
 	double minIdle = 10000000.0;
 	double maxIdle = 0.0;
 	
+	public void resetData(){
+		minIdle = 10000000.0;
+		maxIdle = 0.0;
+		minShooting = 10000000.0;
+		maxShooting =  0.0;
+		maxError = 0.0;
+		minError = 1000000000.0;
+	}
 	
 	public Shooter() {
 		
@@ -111,8 +119,8 @@ public class Shooter extends Subsystem {
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
 		
-		maxError = Math.max(maxError, Math.abs(closedLoopError));
-    	minError = Math.min(minError, Math.abs(closedLoopError));
+		maxError = Math.max(maxError, Math.abs(currentRpm));
+    	minError = Math.min(minError, Math.abs(currentRpm));
 		
 		if (loop++ > 10) {
 			loop = 0;

@@ -34,7 +34,6 @@ public class TenBallAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new TurnRobot(90));
     	addSequential(new StartSpinning());//cause
     	addParallel(new AutoSpinUp());
     	addSequential(new StartShooting());

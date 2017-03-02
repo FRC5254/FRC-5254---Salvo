@@ -55,6 +55,7 @@ public class OI {
 		DriverButtonBumperRight.whenPressed(new ShiftUp());
 		DriverButtonBumperRight.whenInactive(new ShiftDown());
 		DriverButtonBack.whenActive(new SlowTrun());
+		DriverButtonStart.whenPressed(new ResetPIDData());
 		DriverButtonBack.whenInactive(new DriveWithJoystick());
 		//DriverButtonStart.whenPressed(command);
 		//DriverButtonLeftJoystickPress.whenPressed(command);
