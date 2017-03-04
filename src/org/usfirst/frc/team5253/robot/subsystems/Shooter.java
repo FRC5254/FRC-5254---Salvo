@@ -80,7 +80,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		shooterMotorTopLeft.set(shooterRpm);
+		shooterMotorTopLeft.set(SmartDashboard.getNumber("DB/Slider 0", -0.75));
 		
 		if (loop++ > 10) {
 			loop = 0;
@@ -93,7 +93,7 @@ public class Shooter extends Subsystem {
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);
 
-    	//SmartDashboard.putNumber("Spin Up RPM", shooterMotorTopLeft.getSpeed());
+    	SmartDashboard.putNumber("Spin Up RPM", shooterMotorTopLeft.getSpeed());
     	//SmartDashboard.putNumber("Spin Up Error", shooterMotorTopLeft.getClosedLoopError());
     	
     	if (shooterMotorTopLeft.getSpeed() >= shooterRpm) {
@@ -105,6 +105,7 @@ public class Shooter extends Subsystem {
     		minIdle = Math.min(minIdle, shooterMotorTopLeft.getSpeed());
     		SmartDashboard.putString("DB/String 2", Double.toString(minIdle));
     		SmartDashboard.putString("DB/String 7", Double.toString(maxIdle));
+    		
     	}
     	
     }
@@ -114,7 +115,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		shooterMotorTopLeft.set(shooterRpm);
+		shooterMotorTopLeft.set(SmartDashboard.getNumber("DB/Slider 1", -0.75));
 		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
@@ -153,7 +154,7 @@ public class Shooter extends Subsystem {
     	}
     }
     
-    public void stopShooting(int RPM) {
+    public void stopShooting(int ShooterRpm) {
     	
     	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,0.0f);
     	shooterMotorTopLeft.set(0.0);
@@ -176,13 +177,13 @@ public class Shooter extends Subsystem {
     	shooterMotorBottom.set(0.0);
     	
     }
-	public boolean shooterUpToSpeed() {
-//		if (RobotBase.isReal()) {
-			return shooterMotorTopLeft.getClosedLoopError() < ShooterError;
-//	} else {
-//		return true;
-//		}
-	}
+//	public boolean shooterUpToSpeed() {
+////		if (RobotBase.isReal()) {
+//			return shooterMotorTopLeft.getClosedLoopError() < ShooterError;
+////	} else {
+////		return true;
+////		}
+//	}
 	public void ResetMinMaxRpmValues() {
 		
 	}
