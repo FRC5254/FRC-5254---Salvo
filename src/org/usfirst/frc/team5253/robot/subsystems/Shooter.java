@@ -80,7 +80,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
-		shooterMotorTopLeft.set(SmartDashboard.getNumber("DB/Slider 0", -0.75));
+		shooterMotorTopLeft.set(shooterRpm);//SmartDashboard.getNumber("DB/Slider 0", -0.75)
 		
 		if (loop++ > 10) {
 			loop = 0;
@@ -115,7 +115,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
-		shooterMotorTopLeft.set(SmartDashboard.getNumber("DB/Slider 1", -0.75));
+		shooterMotorTopLeft.set(shooterRpm);//SmartDashboard.getNumber("DB/Slider 1", -0.75)
 		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
@@ -168,7 +168,7 @@ public class Shooter extends Subsystem {
     	maxShooting  = 0;
     	
     	if (minError != 10000000 || maxError != 0) {
-    		System.out.format("Stop: minError %d maxError %d%n", minError, maxError);
+    		System.out.format("Stop: minError %f maxError %f%n", minError, maxError);
     		minError = 10000000;
     		maxError = 0;
     	}
