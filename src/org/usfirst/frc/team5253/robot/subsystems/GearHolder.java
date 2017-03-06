@@ -2,7 +2,6 @@ package org.usfirst.frc.team5253.robot.subsystems;
 
 
 import org.usfirst.frc.team5253.robot.RobotMap;
-import org.usfirst.frc.team5253.robot.commands.GearIntakeIn;
 import org.usfirst.frc.team5253.robot.commands.RaiseGear;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;

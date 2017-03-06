@@ -29,7 +29,6 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
-		//AxisType DriverAxisRightTrigger = new AxisType();
 		
 		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
@@ -60,13 +59,7 @@ public class OI {
 		//DriverButtonStart.whenPressed(command);
 		//DriverButtonLeftJoystickPress.whenPressed(command);
 		//DriverButtonRightJoystickPress.whenPressed(command);
-		if (driver.getTrigger(Hand.kRight)) {
-			Robot.Intake.startIntake(0.8);;
-		} else if (driver.getTrigger(Hand.kLeft)) {
-			Robot.Intake.startIntake(-0.8);
-		} else {
-			Robot.Intake.stopIntake();
-		}//TODO does this work??
+		
 		
 		
 		OperatorButtonA.whenPressed(new StartIntaking());
@@ -76,12 +69,19 @@ public class OI {
 		OperatorButtonX.whenPressed(new StartClimbing());
 		OperatorButtonY.whenPressed(new GearMechPickUp());
 		//OperatorButtonY.whenInactive(new GearMechUp());
-		OperatorButtonBack.whenPressed(new GearMechUp());
-		OperatorButtonStart.whenPressed(new GearMechDown());
+		OperatorButtonBack.whenPressed(new GearMechDown());
+		OperatorButtonStart.whenPressed(new GearMechUp());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		OperatorButtonLeftJoystickPress.whenPressed(new GearMechIn());
-		OperatorButtonRightJoystickPress.whenPressed(new GearMechOut());
+		OperatorButtonLeftJoystickPress.whenPressed(new GearMechOut());
+		OperatorButtonRightJoystickPress.whenPressed(new GearMechIn());
+		if (operator.getTrigger(Hand.kRight)) {
+			Robot.Intake.startIntake(0.8);;
+		} else if (operator.getTrigger(Hand.kLeft)) {
+			Robot.Intake.startIntake(-0.8);
+		} else {
+			Robot.Intake.stopIntake();
+		}//TODO does this work??
 	}
 
 }

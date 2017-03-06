@@ -2,8 +2,6 @@ package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

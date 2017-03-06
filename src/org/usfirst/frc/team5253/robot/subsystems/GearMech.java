@@ -16,7 +16,7 @@ public class GearMech extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private DoubleSolenoid gearPiston = new DoubleSolenoid(RobotMap.GEAR_PICK_UP_PISTON_EXTEND, RobotMap.GEAR_PICK_UP_PISTON_RETRACT);
-	CANTalon gearMotor = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
+	private CANTalon gearMotor = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
