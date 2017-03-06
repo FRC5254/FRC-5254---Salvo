@@ -3,6 +3,7 @@ package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -24,9 +25,12 @@ import com.ctre.CANTalon;
 public class Robot extends IterativeRobot {
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 
+
+	
 	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
+	public static GearMech GearMech = new GearMech();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
@@ -70,6 +74,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+
 		
 		// Send auto modes
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");
