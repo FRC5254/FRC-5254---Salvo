@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,15 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoStartShooting extends Command {
+public class TimerTurn extends Command {
 	
 	Timer timer = new Timer();
+	boolean clockwise;
 
-
-    public AutoStartShooting() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.Shooter);
+    public TimerTurn() {
+    	requires(Robot.Drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -28,18 +25,17 @@ public class AutoStartShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
-
+    	Robot.Drivetrain.Turn(clockwise);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > 10;
+        return timer.get() > 1.5;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.Shooter.stopShooting(0);
+    	Robot.Drivetrain.disable();
     }
 
     // Called when another command which requires one or more of the same

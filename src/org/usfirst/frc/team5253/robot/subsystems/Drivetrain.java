@@ -111,6 +111,13 @@ public class Drivetrain extends PIDSubsystem {
         // e.g. yourMotor.set(output);
     	drive(0.0, output);
     }
+    public void Turn(boolean clockwise) {
+    	if (clockwise == false) {
+    		myRobot.drive(.25, 1);
+    	} else {
+    	myRobot.drive(.25, -1);
+    	}
+    }
     
 	public boolean driveAutoIsFinished() {
 		return Math.abs(remainingTicks) < 20;  // ~ 1/2 "
