@@ -5,14 +5,14 @@ import org.usfirst.frc.team5253.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *huh
  */
-public class IntakeWithRightTrigger extends Command {
+public class ResetPIDData extends Command {
 
-    public IntakeWithRightTrigger() {
+    public ResetPIDData() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Intake);
+    	requires(Robot.Shooter);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class IntakeWithRightTrigger extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.Shooter.resetData();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,5 +36,6 @@ public class IntakeWithRightTrigger extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

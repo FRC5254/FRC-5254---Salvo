@@ -22,11 +22,14 @@ import com.ctre.CANTalon;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 
+	
 	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
+	public static GearMech GearMech = new GearMech();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
@@ -41,7 +44,6 @@ public class Robot extends IterativeRobot {
 	private final String AutoRightGear = "Right Gear";
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
-	private final String GearBaseLine = "Center Gear and Cross Base Line";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
 	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
 	private final String OP = "Auto Bots Assemble";
@@ -54,10 +56,9 @@ public class Robot extends IterativeRobot {
 			AutoRightGear,
 			AutoLeftGear,
 			TenBall,
-			GearBaseLine,
 			GearTenBall,
 			GearTenBallAndCross,
-			OP
+			OP,
 			
 	};
 	
@@ -70,6 +71,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+
 		
 		// Send auto modes
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");
@@ -78,7 +80,7 @@ public class Robot extends IterativeRobot {
 		// Initialize cameras
 		CameraServer.getInstance().startAutomaticCapture(0);
 		//CameraServer.getInstance().startAutomaticCapture(1);
-		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+		//SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
 
 	/**
@@ -122,6 +124,7 @@ public class Robot extends IterativeRobot {
     	
 	    case CrossBaseLine:
 	    	autonomousCommand = new CrossBaseLineAuto();
+	    	break;
 	    	
 	    case AutoCenterGear:
 	    	autonomousCommand = new GearCenterAuto();
@@ -139,16 +142,16 @@ public class Robot extends IterativeRobot {
 	    	autonomousCommand = new TenBallAuto();
 	    	break;
 	    	
-	    case GearBaseLine:
-	    	autonomousCommand = new GearBaseLineAuto();
-	    	break;
-	    	
 	    case GearTenBall:
 	    	autonomousCommand = new GearAndTenBallAuto();
 	    	break;
 	    	
 	    case GearTenBallAndCross:
 	    	autonomousCommand = new  GearTenBallAndCrossAuto();
+	    	break;
+	    	
+	    case OP:
+	    	autonomousCommand = new OPAuto();
 	    	break;
 	    	
 	    default:

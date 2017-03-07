@@ -35,6 +35,7 @@ public class RightGearAuto extends CommandGroup {
     	addSequential(new DriveToDistance(1.0, 12));
     	addSequential(new DropGearAuto());
     	addSequential(new DriveToDistance(1.0, -24));
+    	addSequential(new NothingAuto());
     	
     }
 }

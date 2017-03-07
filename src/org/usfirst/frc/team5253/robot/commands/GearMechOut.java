@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeWithRightTrigger extends Command {
+public class GearMechOut extends Command {
 
-    public IntakeWithRightTrigger() {
+    public GearMechOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Intake);
+    	requires(Robot.GearMech);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class IntakeWithRightTrigger extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.GearMech.on(-1.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

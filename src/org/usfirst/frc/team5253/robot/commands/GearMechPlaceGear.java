@@ -1,18 +1,13 @@
-package org.usfirst.frc.team5253.robot.autocommands;
-
-import org.usfirst.frc.team5253.robot.Robot;
+package org.usfirst.frc.team5253.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GearBaseLineAuto extends CommandGroup {
+public class GearMechPlaceGear extends CommandGroup {
 
-    public GearBaseLineAuto() {
-    	
-    	requires(Robot.Drivetrain);
-    	requires(Robot.GearHolder);
+    public GearMechPlaceGear() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -29,14 +24,7 @@ public class GearBaseLineAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-//    	addSequential(new DriveToDistance(1.0, 54));
-//    	addSequential(new DropGearAuto());
-//    	addSequential(new DriveToDistance(1.0, 54));
-    	addSequential(new GearCenterAuto());
-    	addSequential(new TurnRobot(45));
-    	addSequential(new DriveToDistance(1.0, 122));
-    	
-   
+    	addParallel(new GearMechUp());
+    	addParallel(new GearMechOut());
     }
 }

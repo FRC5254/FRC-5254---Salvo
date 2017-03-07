@@ -1,16 +1,17 @@
 package org.usfirst.frc.team5253.robot;
 
 import org.usfirst.frc.team5253.robot.commands.*;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-/**
- *	In this class the driver joystick and operator joystick are created and defined.
- * The buttons on the joysticks are assigned a command. The OI class is called in the
- * Robot.java class.
+
+/** 
+ * This class is the glue that binds the controls on the physical operator
+ * interface to the commands and command groups that allow control of the robot.
  */
-	
+	       
 public class OI {
 	
 	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
@@ -28,6 +29,7 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
+		
 		
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
@@ -52,23 +54,34 @@ public class OI {
 		DriverButtonBumperRight.whenPressed(new ShiftUp());
 		DriverButtonBumperRight.whenInactive(new ShiftDown());
 		DriverButtonBack.whenActive(new SlowTrun());
+		DriverButtonStart.whenPressed(new ResetPIDData());
 		DriverButtonBack.whenInactive(new DriveWithJoystick());
 		//DriverButtonStart.whenPressed(command);
 		//DriverButtonLeftJoystickPress.whenPressed(command);
 		//DriverButtonRightJoystickPress.whenPressed(command);
 		
+		
+		
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonB.whenPressed(new StopClimbing());
+		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new StartClimbing());
-		OperatorButtonY.whenActive(new DropGear());
-		OperatorButtonY.whenInactive(new RaiseGear());
-		OperatorButtonBack.whenPressed(new GearIntakeIn());
-		OperatorButtonStart.whenPressed(new GearIntakeOut());
+		OperatorButtonY.whenPressed(new GearMechPickUp());
+		//OperatorButtonY.whenInactive(new GearMechUp());
+		OperatorButtonBack.whenPressed(new GearMechDown());
+		OperatorButtonStart.whenPressed(new GearMechUp());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		//OperatorButtonLeftJoystickPress.whenPressed(command);
-		//OperatorButtonRightJoystickPress.whenPressed(command);
+		OperatorButtonLeftJoystickPress.whenPressed(new GearMechOut());
+		OperatorButtonRightJoystickPress.whenPressed(new GearMechIn());
+		if (operator.getTrigger(Hand.kRight)) {
+			Robot.Intake.startIntake(0.8);;
+		} else if (operator.getTrigger(Hand.kLeft)) {
+			Robot.Intake.startIntake(-0.8);
+		} else {
+			Robot.Intake.stopIntake();
+		}//TODO does this work??
 	}
 
 }

@@ -1,17 +1,11 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
-import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
 import org.usfirst.frc.team5253.robot.commands.DriveWithJoystick;
-import org.usfirst.frc.team5253.robot.commands.ShiftDown;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -29,7 +23,6 @@ public class Drivetrain extends PIDSubsystem {
 	private int remainingTicks;
 	private double Throttle;
 	private double distance;
-	//private static double camera = 0;
 	
 	public Drivetrain () {
 		super("DriveTrain", .02, .002, .2);	
@@ -39,7 +32,6 @@ public class Drivetrain extends PIDSubsystem {
 	
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveWithJoystick());
 	}
 	
@@ -90,7 +82,7 @@ public class Drivetrain extends PIDSubsystem {
 		remainingTicks = (int) (sign * (Math.abs(finalTicks) - Math.abs(encoder.get())));
 		double finalThrottle;
 	
-		finalThrottle = 0.4;
+		finalThrottle = 0.6; //old .4
 		if (Math.abs(remainingTicks) < 1000) {
 			finalThrottle = Math.abs(remainingTicks) / 1000;
 			if (finalThrottle < 0.2) {

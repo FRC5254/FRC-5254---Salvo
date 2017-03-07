@@ -1,7 +1,3 @@
-// fuck you ryan
-
-
-
 
 package org.usfirst.frc.team5253.robot;
 
@@ -24,6 +20,9 @@ public class RobotMap {
 	
 	// Solenoids
 	public static final int SHIFTING_PISTON = 0;
+	//public static final int GEAR_PICK_UP_PISTON_EXTEND = 2;
+	//public static final int GEAR_PICK_UP_PISTON_RETRACT = 3;
+	//TODO remove the GearHolder code
 	public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
 	public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
 	public static final int RED_BULL_WINGS_PISTION_EXTEND = 4;
@@ -57,18 +56,18 @@ public class RobotMap {
 	//CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-	public static final int SHOOTER_MOTOR_BOTTOM = 4;// was 8
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;//TODO was 8
 	public static final int HYPE_HAT_MOTOR = 3;//9
 	public static final int INTAKE_MOTOR =  5;//10
 	public static final int CLIMBER_MOTOR = 11;// we no have clmber
+	//public static final int GEAR_MECH_MOTOR = 0;//TODO which CAN  if its even a CAN
 	
 	// Shooter tuning values
-	// RPM is the RPM of the encoder, not the motors
-	public static final double SHOOTER_RPM = 3826;
-	public static final double SHOOTER_PID_F = 0.008;
-	public static final double SHOOTER_PID_P = 0.12;
+	public static final double SHOOTER_RPM = 3250;// RPM is the RPM of the encoder, not the motors old 3500
+	public static final double SHOOTER_PID_F = 0.0267;
+	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;
-	public static final double SHOOTER_PID_D = 4.8;
+	public static final double SHOOTER_PID_D = 0.4;
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;

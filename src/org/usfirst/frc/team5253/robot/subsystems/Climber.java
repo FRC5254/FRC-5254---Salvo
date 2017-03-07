@@ -15,7 +15,7 @@ public class Climber extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
+	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	
 	public Climber() {
 		

@@ -15,7 +15,7 @@ public class HypeHat extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
+	private CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
 	
 	public HypeHat() {
 		
@@ -34,7 +34,7 @@ public class HypeHat extends Subsystem {
     }
     
     public void startSpinning() {
-    	HatMotor.set(-1.0);
+    	HatMotor.set(-0.75);
     }
     
     public void stopSpinning() {
