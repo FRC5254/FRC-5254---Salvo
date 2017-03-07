@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TimerTurn extends Command {
 	
 	Timer timer = new Timer();
-	boolean clockwise;
+	double time, turn;
 
-    public TimerTurn() {
+    public TimerTurn(double turn, double time) {
     	requires(Robot.Drivetrain);
+    	this.turn = turn;
+    	this.time = time;
     }
 
     // Called just before this Command runs the first time
@@ -25,12 +27,12 @@ public class TimerTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Drivetrain.Turn(clockwise);
+    	Robot.Drivetrain.drive(0, turn);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > 1.5;
+        return timer.get() > time;
     }
 
     // Called once after isFinished returns true

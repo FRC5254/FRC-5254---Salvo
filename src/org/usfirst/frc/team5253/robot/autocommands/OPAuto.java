@@ -37,7 +37,7 @@ public class OPAuto extends CommandGroup {
     	*/
     	
     	addSequential(new DriveToDistance(.4, -120));
-    	addSequential(new TurnRobot(-20));
+    	addSequential(new TimerTurn(-0.5, 0.5));
     	addSequential(new StopRobot());
 //    	addSequential(new TurnRobot(10)); //famboyent effect
 //    	addSequential(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
