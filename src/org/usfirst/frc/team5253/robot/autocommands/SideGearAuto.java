@@ -2,6 +2,7 @@ package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
+import org.usfirst.frc.team5253.robot.commands.StopRobot;
 import org.usfirst.frc.team5253.robot.autocommands.DriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.DropGearAuto;
 
@@ -41,6 +42,6 @@ public class SideGearAuto extends CommandGroup {
     	addSequential(new DriveToDistance(1.0, 12));
     	addSequential(new DropGearAuto());
     	addSequential(new DriveToDistance(1.0, -24));
-    	addSequential(new NothingAuto());
+    	addSequential(new StopRobot());
     }
 }

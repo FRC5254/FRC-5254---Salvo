@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.commands.StopRobot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -33,7 +34,7 @@ public class GearCenterAuto extends CommandGroup {
     	addSequential(new DriveToDistance(1.0, 69));
     	addSequential(new DropGearAuto());
     	addSequential(new DriveToDistance(1.0, -24));
-    	addSequential(new NothingAuto());
+    	addSequential(new StopRobot());
 			
     }
 }

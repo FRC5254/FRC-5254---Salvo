@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
+import org.usfirst.frc.team5253.robot.commands.StopRobot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -36,7 +38,7 @@ public class OPAuto extends CommandGroup {
     	
     	addSequential(new DriveToDistance(.4, -120));
     	addSequential(new TurnRobot(-20));
-    	addSequential(new NothingAuto());
+    	addSequential(new StopRobot());
 //    	addSequential(new TurnRobot(10)); //famboyent effect
 //    	addSequential(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
 //    	addSequential(new TurnRobot(5));

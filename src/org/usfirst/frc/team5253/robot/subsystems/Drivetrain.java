@@ -60,6 +60,10 @@ public class Drivetrain extends PIDSubsystem {
 		return gyro.getAngle();
 	}
 	
+	public void stopRobot(){
+		drive(0.0, 0.0);
+	}
+	
 	public void initEncoder() {
 		encoder.reset();
 		encoder.setMaxPeriod(0.1);
