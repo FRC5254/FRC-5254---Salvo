@@ -38,7 +38,7 @@ public class GearAndTenBallAuto extends CommandGroup {
 //    	addSequential(new DropGear());
 //    	addParallel(new DriveToDistance(1.0, 54));
     	addSequential(new GearCenterAuto());
-    	addSequential(new TurnRobot(90));
+    	addSequential(new TurnRobot(90));//TODO find goochi value
     	addSequential(new AutoSpinUp());
     	addSequential(new StartShooting());
     }
