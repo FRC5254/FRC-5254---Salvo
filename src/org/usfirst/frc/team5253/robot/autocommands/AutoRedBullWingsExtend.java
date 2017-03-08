@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StopRobot extends Command {
+public class AutoRedBullWingsExtend extends Command {
 
-    public StopRobot() {
-    	requires(Robot.Drivetrain);
+    public AutoRedBullWingsExtend() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.FuelTank);
     }
 
     // Called just before this Command runs the first time
@@ -21,12 +21,12 @@ public class StopRobot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Drivetrain.drive(0,0);
+    	Robot.FuelTank.redBullWingsOut();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

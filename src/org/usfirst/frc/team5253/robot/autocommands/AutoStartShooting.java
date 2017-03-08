@@ -29,12 +29,12 @@ public class AutoStartShooting extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
-
+    	Robot.HypeHat.startSpinning();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > 10;
+        return timer.get() > 20;
     }
 
     // Called once after isFinished returns true

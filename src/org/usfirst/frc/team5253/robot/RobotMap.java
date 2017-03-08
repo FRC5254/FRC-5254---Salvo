@@ -63,7 +63,7 @@ public class RobotMap {
 	//public static final int GEAR_MECH_MOTOR = 0;//TODO which CAN  if its even a CAN
 	
 	// Shooter tuning values
-	public static final double SHOOTER_RPM = 3250;// RPM is the RPM of the encoder, not the motors old 3500
+	public static final double SHOOTER_RPM = 3325;// RPM is the RPM of the encoder, not the motors old 3500
 	public static final double SHOOTER_PID_F = 0.0267;
 	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;
