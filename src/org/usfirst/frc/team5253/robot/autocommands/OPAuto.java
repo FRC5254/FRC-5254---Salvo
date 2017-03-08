@@ -1,7 +1,9 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import org.usfirst.frc.team5253.robot.commands.StopRobot;
+import org.usfirst.frc.team5253.robot.commands.*;
+import org.usfirst.frc.team5253.robot.autocommands.*;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -10,7 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class OPAuto extends CommandGroup {
 
     public OPAuto() {
-        // Add Commands here:
+    	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
@@ -27,22 +29,19 @@ public class OPAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	/*
-    	addSequential(new DriveToDistance(.25, -96));
-    	addSequential(new TurnRobot(90)); //TODO find best value
-    	//timer insert or wiggle robot
-    	addParallel(new DriveToDistance(.25, 20));
-    	addParallel(new AutoSpinUp());
-    	addSequential(new AutoStartShooting());
-    	*/
+    	addSequential(new DriveToDistance(.75, -132.5));//0.6 OG
     	
-    	addSequential(new DriveToDistance(.6, -120));
-    	addSequential(new TimerTurn(-1, 1));
+    	addSequential(new AutoRedBullWingsExtend());
+    	addParallel(new SpinUpThenShoot());
+    	
+    	addParallel(new FlamboyientEffect(0.5));
+    	addSequential(new TimerTurn(-1, 0.35)); //0.2 OG
+//    	addSequential(new TurnRobot(-35));
+    	
     	addSequential(new StopRobot());
 //    	addSequential(new TurnRobot(10)); //famboyent effect
 //    	addSequential(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
 //    	addSequential(new TurnRobot(5));
-//    	addSequential(new AutoSpinUp());
 //        addSequential(new AutoStartShooting());
     }
 }
