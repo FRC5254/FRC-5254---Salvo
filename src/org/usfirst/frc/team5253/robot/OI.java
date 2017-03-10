@@ -61,27 +61,25 @@ public class OI {
 		//DriverButtonRightJoystickPress.whenPressed(command);
 		
 		
-		
-		OperatorButtonA.whenPressed(new StartIntaking());
+		OperatorButtonA.whenActive(new GearMechPickUp());
+		OperatorButtonA.whenInactive(new GearMechDefault());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonB.whenPressed(new StopClimbing());
 		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new StartClimbing());
-		OperatorButtonY.whenPressed(new GearMechPickUp());
-		//OperatorButtonY.whenInactive(new GearMechUp());
-		OperatorButtonBack.whenPressed(new GearMechDown());
-		OperatorButtonStart.whenPressed(new GearMechUp());
+		OperatorButtonY.whenActive(new GearMechPlaceGear());
+		OperatorButtonY.whenInactive(new GearMechDefault());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		OperatorButtonLeftJoystickPress.whenPressed(new GearMechOut());
 		OperatorButtonRightJoystickPress.whenPressed(new GearMechIn());
 		if (operator.getTrigger(Hand.kRight)) {
-			Robot.Intake.startIntake(0.8);;
+			Robot.Climber.startClimber(-1);;
 		} else if (operator.getTrigger(Hand.kLeft)) {
-			Robot.Intake.startIntake(-0.8);
+			Robot.Climber.startClimber(1);
 		} else {
-			Robot.Intake.stopIntake();
-		}//TODO does this work??
+			Robot.Climber.stopClimber();
+		}//TODO does this work?? no.
 	}
 
 }

@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class GearMechPickUp extends CommandGroup {
+public class GearMechDefault extends CommandGroup {
 
-    public GearMechPickUp() {
+    public GearMechDefault() {
     	requires(Robot.GearMech);
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -27,7 +27,7 @@ public class GearMechPickUp extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new GearMechDown());
-    	addSequential(new GearMechIn());
+    	addParallel(new GearMechUp());
+    	addSequential(new GearMechOff());
     }
 }

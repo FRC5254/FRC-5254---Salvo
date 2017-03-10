@@ -33,10 +33,10 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new StopClimbing());
     }
-    public void startClimber() {
+    public void startClimber(double percent) {
     	climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	climberMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		climberMotor.set(-1);
+		climberMotor.set(percent);
     }
     
     public void stopClimber() {

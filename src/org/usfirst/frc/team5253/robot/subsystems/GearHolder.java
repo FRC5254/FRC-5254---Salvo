@@ -17,7 +17,7 @@ public class GearHolder extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	private DoubleSolenoid gearPiston = new DoubleSolenoid(RobotMap.GEAR_HOLDER_PISTON_EXTEND, RobotMap.GEAR_HOLDER_PISTON_RETRACT);
+	//private DoubleSolenoid gearPiston = new DoubleSolenoid(RobotMap.GEAR_HOLDER_PISTON_EXTEND, RobotMap.GEAR_HOLDER_PISTON_RETRACT);
 	private Solenoid gearIntake = new Solenoid(RobotMap.GEAR_INTAKE_PISTION);
 	public GearHolder() {
 	}
@@ -29,12 +29,12 @@ public class GearHolder extends Subsystem {
     }
     
     public void drop() {
-    	gearPiston.set(DoubleSolenoid.Value.kReverse);
+    	//gearPiston.set(DoubleSolenoid.Value.kReverse);
     }
     
     
     public void raise() {
-    	gearPiston.set(DoubleSolenoid.Value.kForward);
+    	//gearPiston.set(DoubleSolenoid.Value.kForward);
     }
     
     public void Out() {

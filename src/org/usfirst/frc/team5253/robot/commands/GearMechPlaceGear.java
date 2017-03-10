@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5253.robot.commands;
 
+import org.usfirst.frc.team5253.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,6 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GearMechPlaceGear extends CommandGroup {
 
     public GearMechPlaceGear() {
+    	requires(Robot.GearMech);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -25,6 +28,6 @@ public class GearMechPlaceGear extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addParallel(new GearMechUp());
-    	addParallel(new GearMechOut());
+    	addSequential(new GearMechOut());
     }
 }
