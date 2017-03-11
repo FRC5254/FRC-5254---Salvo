@@ -29,6 +29,6 @@ public class SpinUpThenShoot extends CommandGroup {
     	
     	addSequential(new AutoSpinUp());
     	addSequential(new AutoStartShooting());
-    	addParallel(new IntakeStartIntaking());
+    	addParallel(new IntakeStartIntaking(true));
     }
 }

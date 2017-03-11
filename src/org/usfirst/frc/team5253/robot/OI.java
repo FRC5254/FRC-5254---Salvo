@@ -87,8 +87,7 @@ public class OI {
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
-<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/OI.java
-		OperatorButtonX.whenPressed(new ClimberStartClimbing());
+		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
 		OperatorButtonY.whenPressed(new GearMechPistonUp());
 		OperatorButtonStart.whenPressed(new GearMechPickUp());
 		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
@@ -96,20 +95,6 @@ public class OI {
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		//OperatorButtonLeftJoystickPress.whenPressed(command);
 		//OperatorButtonRightJoystickPress.whenPressed(command);
-=======
-		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonStart.whenPressed(new GearMechPickUp());
-		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
-		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
-		OperatorButtonY.whenPressed(new GearMechPistonUp());
-
-//		if (operator.getTrigger(Hand.kRight)) {
-//			Robot.Climber.startClimber(-1);;
-//		} else if (operator.getTrigger(Hand.kLeft)) {
-//			Robot.Climber.startClimber(1);
-//		}//TODO does this work
->>>>>>> origin/master:src/org/usfirst/frc/team5254/robot/OI.java
 	}
 
 }
