@@ -62,7 +62,6 @@ public class OI {
 		
 		
 		OperatorButtonA.whenPressed(new GearMechPickUp());
-//		OperatorButtonA.whenInactive(new GearMechDefault());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonB.whenPressed(new StopClimbing());
 		OperatorButtonB.whenPressed(new GearMechOff());
@@ -70,15 +69,13 @@ public class OI {
 		OperatorButtonY.whenPressed(new GearMechPlaceGear());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		OperatorButtonLeftJoystickPress.whenPressed(new GearMechOut());
-		OperatorButtonRightJoystickPress.whenPressed(new GearMechIn());
+		OperatorButtonLeftJoystickPress.whenPressed(new GearMechDown());
+		OperatorButtonRightJoystickPress.whenPressed(new GearMechUp());
 		if (operator.getTrigger(Hand.kRight)) {
 			Robot.Climber.startClimber(-1);;
 		} else if (operator.getTrigger(Hand.kLeft)) {
 			Robot.Climber.startClimber(1);
-		} else {
-			Robot.Climber.stopClimber();
-		}//TODO does this work?? no. ok cool, good talk. 
+		}//TODO does this work
 	}
 
 }

@@ -59,11 +59,11 @@ public class RobotMap {
 	public static final int SHOOTER_MOTOR_BOTTOM = 4;//TODO was 8
 	public static final int HYPE_HAT_MOTOR = 3;//9
 	public static final int INTAKE_MOTOR =  5;//10
-	public static final int CLIMBER_MOTOR = 1;// we no have clmber
+	public static final int CLIMBER_MOTOR = 1;
 	public static final int GEAR_MECH_MOTOR = 12;
 	
 	// Shooter tuning values
-	public static final double SHOOTER_RPM = 3325;// RPM is the RPM of the encoder, not the motors old 3500
+	public static final double SHOOTER_RPM = 3325;// RPM is the RPM of the encoder, not the motors (old 3500)
 	public static final double SHOOTER_PID_F = 0.0267;
 	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;
