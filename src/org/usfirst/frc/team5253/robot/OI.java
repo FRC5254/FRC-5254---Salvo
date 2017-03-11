@@ -61,14 +61,13 @@ public class OI {
 		//DriverButtonRightJoystickPress.whenPressed(command);
 		
 		
-		OperatorButtonA.whenActive(new GearMechPickUp());
-		OperatorButtonA.whenInactive(new GearMechDefault());
+		OperatorButtonA.whenPressed(new GearMechPickUp());
+//		OperatorButtonA.whenInactive(new GearMechDefault());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonB.whenPressed(new StopClimbing());
 		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new StartClimbing());
-		OperatorButtonY.whenActive(new GearMechPlaceGear());
-		OperatorButtonY.whenInactive(new GearMechDefault());
+		OperatorButtonY.whenPressed(new GearMechPlaceGear());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		OperatorButtonLeftJoystickPress.whenPressed(new GearMechOut());
@@ -79,7 +78,7 @@ public class OI {
 			Robot.Climber.startClimber(1);
 		} else {
 			Robot.Climber.stopClimber();
-		}//TODO does this work?? no.
+		}//TODO does this work?? no. ok cool, good talk. 
 	}
 
 }

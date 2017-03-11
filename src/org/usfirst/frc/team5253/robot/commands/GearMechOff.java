@@ -12,6 +12,7 @@ public class GearMechOff extends Command {
     public GearMechOff() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.GearMech);
     }
 
     // Called just before this Command runs the first time
