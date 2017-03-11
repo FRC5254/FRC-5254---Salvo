@@ -4,15 +4,28 @@ import org.usfirst.frc.team5254.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+
 /**
  *
  */
 public class ClimberStartClimbing extends Command {
 
-    public ClimberStartClimbing() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	double climberSpeed;
+	
+    public ClimberStartClimbing(boolean direction) {
+    	// accept direction of climber direction. true = forward, false = backward
+       
     	requires(Robot.Climber);
+    	
+    	   
+    	//if climb direction is forward
+    	if (direction == true){
+    		//set speed to full forward
+    		climberSpeed = -1.0;
+    	}else {
+    		//set speed to full backward
+    		climberSpeed = 1.0;
+    	}
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +34,9 @@ public class ClimberStartClimbing extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Climber.startClimber(-1);
+    	
+    	Robot.Climber.startClimber(climberSpeed);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

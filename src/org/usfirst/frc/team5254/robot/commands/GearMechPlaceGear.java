@@ -28,6 +28,6 @@ public class GearMechPlaceGear extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addParallel(new GearMechDown());
-    	addSequential(new GearMechOut());
+    	addSequential(new GearMechOn(false));
     }
 }

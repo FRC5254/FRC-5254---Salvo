@@ -28,6 +28,6 @@ public class GearMechPickUp extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addParallel(new GearMechDown());
-    	addSequential(new GearMechIn());
+    	addSequential(new GearMechOn(true));
     }
 }

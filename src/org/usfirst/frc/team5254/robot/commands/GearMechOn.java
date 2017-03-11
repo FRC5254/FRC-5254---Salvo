@@ -7,11 +7,19 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearMechOut extends Command {
+public class GearMechOn extends Command {
 
-    public GearMechOut() {
+	double gearSpeed;
+	
+    public GearMechOn(boolean direction) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	
+    	if (direction = true){
+    		gearSpeed = 1;
+    	}else {
+    		gearSpeed = -1;
+    	}
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +28,7 @@ public class GearMechOut extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.GearMech.on(-1.0);
+    	Robot.GearMech.on(gearSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

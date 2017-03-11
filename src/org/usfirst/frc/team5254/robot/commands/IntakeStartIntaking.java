@@ -9,10 +9,18 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class IntakeStartIntaking extends Command {
 
-    public IntakeStartIntaking() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	double intakeSpeed;
+	
+    public IntakeStartIntaking(boolean direction) {
+        
     	requires(Robot.Intake);
+    	
+    	if (direction == true){
+    		intakeSpeed = 1;
+    	}else {
+    		intakeSpeed = -1;
+    	} 
+    		
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +29,7 @@ public class IntakeStartIntaking extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Intake.startIntake(1.0);
+    	Robot.Intake.startIntake(intakeSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -62,21 +62,33 @@ public class OI {
 		//DriverButtonRightJoystickPress.whenPressed(command);
 		
 		
-		OperatorButtonA.whenPressed(new IntakeStartIntaking());
+		/*
+		 * set buttons to activate commands
+		 * A = start intaking balls
+		 * X = start climber (forwards)
+		 * Start = lowers gear mech and intakes to collect gear
+		 * Back = outtakes and lowers to place gear
+		 * Right Bumper = extend wings
+		 * Left Bumper = retract wings
+		 * Y = raises the gear mech
+		 * B = stop intaking balls & stop climbing & stop gear motor
+		 */
+		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
-		OperatorButtonX.whenPressed(new ClimberStartClimbing());
-		OperatorButtonY.whenPressed(new GearMechPickUp());
+		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
+		OperatorButtonStart.whenPressed(new GearMechPickUp());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		OperatorButtonLeftJoystickPress.whenPressed(new GearMechPlaceGear());
-		OperatorButtonRightJoystickPress.whenPressed(new GearMechPistonUp());
-		if (operator.getTrigger(Hand.kRight)) {
-			Robot.Climber.startClimber(-1);;
-		} else if (operator.getTrigger(Hand.kLeft)) {
-			Robot.Climber.startClimber(1);
-		}//TODO does this work
+		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
+		OperatorButtonY.whenPressed(new GearMechPistonUp());
+
+//		if (operator.getTrigger(Hand.kRight)) {
+//			Robot.Climber.startClimber(-1);;
+//		} else if (operator.getTrigger(Hand.kLeft)) {
+//			Robot.Climber.startClimber(1);
+//		}//TODO does this work
 	}
 
 }
