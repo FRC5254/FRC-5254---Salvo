@@ -18,7 +18,7 @@ public class GearMech extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private DoubleSolenoid gearPiston = new DoubleSolenoid(RobotMap.GEAR_PICK_UP_PISTON_EXTEND, RobotMap.GEAR_PICK_UP_PISTON_RETRACT);
-	private CANTalon gearMotor = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
+	//private CANTalon gearMotor = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -26,12 +26,12 @@ public class GearMech extends Subsystem {
     	setDefaultCommand(new GearMechInit());
     }
     public GearMech() {	
-		gearMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		gearMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		gearMotor.configNominalOutputVoltage(+0.0f, -0.0f);
-		gearMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		gearMotor.reverseSensor(false);
-		gearMotor.reverseOutput(true);	
+//		gearMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+//		gearMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+//		gearMotor.configNominalOutputVoltage(+0.0f, -0.0f);
+//		gearMotor.configPeakOutputVoltage(0.0f,-12.0f);
+//		gearMotor.reverseSensor(false);
+//		gearMotor.reverseOutput(true);	
     }
     
     public void up() {
@@ -43,11 +43,11 @@ public class GearMech extends Subsystem {
     }
     
     public void on(double percent) {
-    	gearMotor.set(percent);
+    	//gearMotor.set(percent);
     }
     
     public void off() {
-    	gearMotor.set(0.0);	
+    	//gearMotor.set(0.0);	
     }
 
 }

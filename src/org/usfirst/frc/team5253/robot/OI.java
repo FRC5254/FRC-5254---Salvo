@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.Joystick;
 
 import org.usfirst.frc.team5253.robot.commands.*;
 
@@ -16,10 +17,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 	       
 public class OI {
 	
-	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
+	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
-	double triggerValueRight;
-	double triggerValueLeft;
+	
 	
 	public OI() {
 		
@@ -61,11 +61,9 @@ public class OI {
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 		
-		triggerValueRight = driver.getRawAxis(3);
-		triggerValueLeft = driver.getRawAxis(2);
+		System.out.println("Right Trigger " + driver.getRawAxis(3) + "    Left Trigger " + driver.getRawAxis(2));
 		//if the right trigger is pressed down use slowturn
-		if (triggerValueRight >= .9 || triggerValueLeft >=.9 ){new DrivetrainSlowTrun();}
-		
+		if (driver.getRawAxis(3) >= .9 || driver.getRawAxis(2) >= .9 ){new DrivetrainSlowTrun();}
 		
 		//otherwise use normalturn
 		else {new DrivetrainDriveWithJoystick();}

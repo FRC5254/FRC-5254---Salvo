@@ -16,6 +16,7 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
+	private CANTalon climberMotor2 = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
 	
 	public Climber() {
 		
@@ -25,6 +26,10 @@ public class Climber extends Subsystem {
 		climberMotor.configPeakOutputVoltage(0.0f,-12.0f);
 		climberMotor.reverseSensor(false);
 		climberMotor.reverseOutput(true);
+		
+		climberMotor2.changeControlMode(CANTalon.TalonControlMode.Follower);
+		climberMotor2.set(RobotMap.CLIMBER_MOTOR);
+		climberMotor2.reverseOutput(false);
 	}
 	
 
