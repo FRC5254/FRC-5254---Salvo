@@ -18,7 +18,8 @@ public class OI {
 	
 	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
-	double triggerValue;
+	double triggerValueRight;
+	double triggerValueLeft;
 	
 	public OI() {
 		
@@ -60,9 +61,11 @@ public class OI {
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 		
-		triggerValue = driver.getRawAxis(3);
+		triggerValueRight = driver.getRawAxis(3);
+		triggerValueLeft = driver.getRawAxis(2);
 		//if the right trigger is pressed down use slowturn
-		if (triggerValue >= .9){new DrivetrainSlowTrun();}
+		if (triggerValueRight >= .9 || triggerValueLeft >=.9 ){new DrivetrainSlowTrun();}
+		
 		
 		//otherwise use normalturn
 		else {new DrivetrainDriveWithJoystick();}
