@@ -27,8 +27,13 @@ public class GearMechPlaceGear extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/commands/GearMechPlaceGear.java
     	addParallel(new GearMechOut());
     	addSequential(new GearMechDown());
     	
+=======
+    	addParallel(new GearMechDown());
+    	addSequential(new GearMechOn(false));
+>>>>>>> origin/master:src/org/usfirst/frc/team5254/robot/commands/GearMechPlaceGear.java
     }
 }

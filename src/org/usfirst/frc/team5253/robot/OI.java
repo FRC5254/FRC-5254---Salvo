@@ -18,8 +18,11 @@ public class OI {
 	
 	public XboxController driver = new XboxController(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
+	double triggerValue;
 	
 	public OI() {
+		
+		
 		
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
@@ -55,17 +58,33 @@ public class OI {
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		DriverButtonBack.whenActive(new DrivetrainSlowTrun());
-		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
-		//DriverButtonLeftJoystickPress.whenPressed(command);
-		//DriverButtonRightJoystickPress.whenPressed(command);
+		
+		triggerValue = driver.getRawAxis(3);
+		//if the right trigger is pressed down use slowturn
+		if (triggerValue >= .9){new DrivetrainSlowTrun();}
+		
+		//otherwise use normalturn
+		else {new DrivetrainDriveWithJoystick();}
 		
 		
-		OperatorButtonA.whenPressed(new IntakeStartIntaking());
+		
+		/*
+		 * set buttons to activate commands
+		 * A = start intaking balls
+		 * X = start climber (forwards)
+		 * Start = lowers gear mech and intakes to collect gear
+		 * Back = outtakes and lowers to place gear
+		 * Right Bumper = extend wings
+		 * Left Bumper = retract wings
+		 * Y = raises the gear mech
+		 * B = stop intaking balls & stop climbing & stop gear motor
+		 */
+		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/OI.java
 		OperatorButtonX.whenPressed(new ClimberStartClimbing());
 		OperatorButtonY.whenPressed(new GearMechPistonUp());
 		OperatorButtonStart.whenPressed(new GearMechPickUp());
@@ -74,6 +93,20 @@ public class OI {
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		//OperatorButtonLeftJoystickPress.whenPressed(command);
 		//OperatorButtonRightJoystickPress.whenPressed(command);
+=======
+		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
+		OperatorButtonStart.whenPressed(new GearMechPickUp());
+		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
+		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
+		OperatorButtonY.whenPressed(new GearMechPistonUp());
+
+//		if (operator.getTrigger(Hand.kRight)) {
+//			Robot.Climber.startClimber(-1);;
+//		} else if (operator.getTrigger(Hand.kLeft)) {
+//			Robot.Climber.startClimber(1);
+//		}//TODO does this work
+>>>>>>> origin/master:src/org/usfirst/frc/team5254/robot/OI.java
 	}
 
 }
