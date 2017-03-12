@@ -47,23 +47,7 @@ public class OI {
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
 	
-<<<<<<< HEAD
-		DriverButtonA.whenPressed(new StartShooting());
-		DriverButtonA.whenPressed(new StartFeedingShooter());
-		DriverButtonB.whenPressed(new StopFeedingShooter());
-		DriverButtonB.whenPressed(new StopShooting());
-		DriverButtonX.whenPressed(new SpinUp());
-		DriverButtonY.whenPressed(new StartFeedingShooter());
-		DriverButtonBumperLeft.whenActive(new ShiftUp());
-		DriverButtonBumperLeft.whenInactive(new ShiftDown());
-		DriverButtonBumperRight.whenActive(new ShiftUp());
-		DriverButtonBumperRight.whenInactive(new ShiftDown());
-//		DriverButtonBack.whenActive(command);
-//		DriverButtonBack.whenInactive(command);
-//		DriverButtonStart.whenPressed(command);
-//		DriverButtonLeftJoystickPress.whenPressed(command);
-//		DriverButtonRightJoystickPress.whenPressed(command);
-=======
+
 		DriverButtonA.whenPressed(new StartSpinning());
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonB.whenPressed(new StopSpinning());
@@ -79,29 +63,20 @@ public class OI {
 		//DriverButtonStart.whenPressed(command);
 		//DriverButtonLeftJoystickPress.whenPressed(command);
 		//DriverButtonRightJoystickPress.whenPressed(command);
->>>>>>> refs/remotes/origin/master
+
 		
 		
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
-<<<<<<< HEAD
-//		OperatorButtonX.whenPressed(command);
-=======
 		//OperatorButtonX.whenPressed();
->>>>>>> refs/remotes/origin/master
 		OperatorButtonY.whenActive(new DropGear());
 		OperatorButtonY.whenInactive(new RaiseGear());
 		OperatorButtonBack.whenPressed(new GearIntakeIn());
 		OperatorButtonStart.whenPressed(new GearIntakeOut());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-<<<<<<< HEAD
-//		OperatorButtonLeftJoystickPress.whenPressed(command);
-//		OperatorButtonRightJoystickPress.whenPressed(command);
-=======
 		//OperatorButtonLeftJoystickPress.whenPressed(command);
 		//OperatorButtonRightJoystickPress.whenPressed(command);
->>>>>>> refs/remotes/origin/master
 	}
 
 }

@@ -32,12 +32,7 @@ public class Intake extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-<<<<<<< HEAD
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new StopIntaking());
-=======
         setDefaultCommand(new StopIntaking());
->>>>>>> refs/remotes/origin/master
     }
     
     public void startIntake() {

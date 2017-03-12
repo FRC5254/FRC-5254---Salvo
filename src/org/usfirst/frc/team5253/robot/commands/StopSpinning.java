@@ -21,11 +21,7 @@ public class StopSpinning extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/commands/StopFeedingShooter.java
-    	Robot.HypeHat.stopFeeding();
-=======
     	Robot.HypeHat.stopSpinning();
->>>>>>> refs/remotes/origin/master:src/org/usfirst/frc/team5253/robot/commands/StopSpinning.java
     }
 
     // Make this return true when this Command no longer needs to run execute()

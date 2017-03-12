@@ -23,12 +23,7 @@ public class SpinUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-<<<<<<< HEAD
-    	Robot.Shooter.spinUp(3825);
-    	//SmartDashboard.getDouble("Shooter RPM AutoSpinUp")
-=======
     	Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
->>>>>>> refs/remotes/origin/master
     }
 
     // Make this return true when this Command no longer needs to run execute()
