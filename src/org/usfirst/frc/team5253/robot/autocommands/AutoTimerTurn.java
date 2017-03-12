@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/autocommands/AutoTimerTurn.java
 public class AutoTimerTurn extends Command {
 	
 	Timer timer = new Timer();
@@ -45,4 +46,48 @@ public class AutoTimerTurn extends Command {
     protected void interrupted() {
     	end();
     }
+=======
+public class TimerTurn extends Command {
+
+	Timer timer = new Timer();
+	double time, turn;
+
+	public TimerTurn(double turn, double time) {
+		requires(Robot.Drivetrain);
+		this.turn = turn;
+		this.time = time;
+	}
+
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		Robot.Drivetrain.disable();
+	}
+
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+		Robot.Drivetrain.drive(0, turn);
+	}
+
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+		timer.reset();
+		timer.start();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
+	}
+
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return timer.get() > time;
+	}
+>>>>>>> origin/master:src/org/usfirst/frc/team5253/robot/autocommands/TimerTurn.java
 }

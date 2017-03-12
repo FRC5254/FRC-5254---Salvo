@@ -1,31 +1,35 @@
 package org.usfirst.frc.team5253.robot;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.Joystick;
-
 import org.usfirst.frc.team5253.robot.commands.*;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-
-/** 
+/**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-	       
+
 public class OI {
+<<<<<<< HEAD
 	
 	// defining the controllers for the driver and operator
+=======
+
+>>>>>>> origin/master
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
-	
-	
+
 	public OI() {
+<<<<<<< HEAD
 		
 		
 		//defining driver buttons
+=======
+
+>>>>>>> origin/master
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 3);
@@ -36,9 +40,13 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
+<<<<<<< HEAD
 		
 		
 		//defining operator buttons
+=======
+
+>>>>>>> origin/master
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
@@ -50,6 +58,7 @@ public class OI {
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
+<<<<<<< HEAD
 		
 		/*
 		 * set driver buttons to activate commands
@@ -60,6 +69,8 @@ public class OI {
 		 * Right Bumper = shift down
 		 * B = stop hat spinning/stop shooting
 		 */
+=======
+>>>>>>> origin/master
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
 		DriverButtonB.whenPressed(new ShooterStopShooting());
@@ -71,6 +82,7 @@ public class OI {
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+<<<<<<< HEAD
 		
 		
 		
@@ -84,6 +96,26 @@ public class OI {
 		 * Left Bumper = retract wings
 		 * Y = raises the gear mech
 		 * B = stop intaking balls & stop climbing & stop gear motor
+=======
+
+		System.out.println("Right Trigger " + driver.getRawAxis(3) + "    Left Trigger " + driver.getRawAxis(2));
+		// if the right trigger is pressed down use slowturn
+		if (driver.getRawAxis(3) >= .9 || driver.getRawAxis(2) >= .9) {
+			new DrivetrainSlowTrun();
+		}
+
+		// otherwise use normal turn
+		else {
+			new DrivetrainDriveWithJoystick();
+		}
+
+		/*
+		 * set buttons to activate commands A = start intaking balls X = start
+		 * climber (forwards) Start = lowers gear mech and intakes to collect
+		 * gear Back = outtakes and lowers to place gear Right Bumper = extend
+		 * wings Left Bumper = retract wings Y = raises the gear mech B = stop
+		 * intaking balls & stop climbing & stop gear motor
+>>>>>>> origin/master
 		 */
 		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
@@ -95,6 +127,11 @@ public class OI {
 		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+<<<<<<< HEAD
+=======
+		// OperatorButtonLeftJoystickPress.whenPressed(command);
+		// OperatorButtonRightJoystickPress.whenPressed(command);
+>>>>>>> origin/master
 	}
 
 }

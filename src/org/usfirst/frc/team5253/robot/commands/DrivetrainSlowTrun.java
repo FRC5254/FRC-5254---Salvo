@@ -1,17 +1,19 @@
 package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class GearMechUp extends Command {
+public class DrivetrainSlowTrun extends Command {
 
-	public GearMechUp() {
+	public DrivetrainSlowTrun() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		requires(Robot.Drivetrain);
 	}
 
 	// Called once after isFinished returns true
@@ -22,7 +24,8 @@ public class GearMechUp extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.GearMech.up();
+		Robot.Drivetrain.slowTrun(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS),
+				Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS) * 0.5);
 	}
 
 	// Called just before this Command runs the first time

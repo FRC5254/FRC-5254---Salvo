@@ -1,15 +1,21 @@
-package org.usfirst.frc.team5253.robot.commands;
+package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.commands.GearHolderDropGear;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GearMechInit extends CommandGroup {
+public class GearTenBallAndCrossAuto extends CommandGroup {
 
-	public GearMechInit() {
+	public GearTenBallAndCrossAuto() {
+
+		requires(Robot.Drivetrain);
+		requires(Robot.GearHolder);
+		requires(Robot.HypeHat);
+		requires(Robot.Shooter);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -26,9 +32,13 @@ public class GearMechInit extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		requires(Robot.GearMech);
-
-		addParallel(new GearMechDown());
-		addSequential(new GearMechOff());
+		addSequential(new DriveToDistance(-1.0, 54));
+		addSequential(new GearHolderDropGear());
+		addParallel(new DriveToDistance(1.0, 54));
+		addSequential(new TurnRobot(90));
+		addSequential(new AutoSpinUp());
+		addSequential(new AutoStartShooting());
+		addSequential(new TurnRobot(-45));
+		addSequential(new DriveToDistance(-1.0, 122));
 	}
 }

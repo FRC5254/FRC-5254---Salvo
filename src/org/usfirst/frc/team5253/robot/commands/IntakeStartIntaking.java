@@ -10,40 +10,45 @@ import edu.wpi.first.wpilibj.command.Command;
 public class IntakeStartIntaking extends Command {
 
 	double intakeSpeed;
-	
-    public IntakeStartIntaking(boolean direction) {
-        
-    	requires(Robot.Intake);
-    	
-    	if (direction == true){
-    		intakeSpeed = 1;
-    	}else {
-    		intakeSpeed = -1;
-    	} 
-    		
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public IntakeStartIntaking(boolean direction) {
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.Intake.startIntake(intakeSpeed);
-    }
+		requires(Robot.Intake);
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+		if (direction == true) {
+			intakeSpeed = 1;
+		} else {
+			intakeSpeed = -1;
+		}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+	}
+
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+		Robot.Intake.startIntake(intakeSpeed);
+	}
+
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
+	}
+
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
 }

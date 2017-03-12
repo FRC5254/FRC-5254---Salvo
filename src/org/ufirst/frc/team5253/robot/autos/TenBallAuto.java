@@ -1,8 +1,11 @@
 package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
+<<<<<<< HEAD:src/org/ufirst/frc/team5253/robot/autos/TenBallAuto.java
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
 import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
+=======
+>>>>>>> origin/master:src/org/usfirst/frc/team5253/robot/autocommands/TenBallAuto.java
 import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
 import org.usfirst.frc.team5253.robot.commands.ShooterStartShooting;
 
@@ -13,30 +16,30 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class TenBallAuto extends CommandGroup {
 
-    public TenBallAuto() {
-    	
-    	requires(Robot.Drivetrain);
-    	requires(Robot.Shooter);
-    	requires(Robot.HypeHat);
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
+	public TenBallAuto() {
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
+		requires(Robot.Drivetrain);
+		requires(Robot.Shooter);
+		requires(Robot.HypeHat);
+		// Add Commands here:
+		// e.g. addSequential(new Command1());
+		// addSequential(new Command2());
+		// these will run in order.
 
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	
-    	addSequential(new HypeHatStartSpinning());//cause
-    	addParallel(new AutoSpinUp());
-    	addSequential(new ShooterStartShooting());
-    }
+		// To run multiple commands at the same time,
+		// use addParallel()
+		// e.g. addParallel(new Command1());
+		// addSequential(new Command2());
+		// Command1 and Command2 will run in parallel.
+
+		// A command group will require all of the subsystems that each member
+		// would require.
+		// e.g. if Command1 requires chassis, and Command2 requires arm,
+		// a CommandGroup containing them would require both the chassis and the
+		// arm.
+
+		addSequential(new HypeHatStartSpinning());// cause
+		addParallel(new AutoSpinUp());
+		addSequential(new ShooterStartShooting());
+	}
 }
