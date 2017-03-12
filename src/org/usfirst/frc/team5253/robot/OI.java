@@ -1,29 +1,24 @@
 package org.usfirst.frc.team5253.robot;
 
 import org.usfirst.frc.team5253.robot.commands.*;
-import org.usfirst.frc.team5253.robot.autocommands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
-import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-/** 
+/**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-	
+
 public class OI {
-	
+
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
-	public Joystick operator = new Joystick(RobotMap.OPERATOR_JOYSTICK);
-	
+	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
+
 	public OI() {
-		
+
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 3);
@@ -34,9 +29,7 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
-		//AxisType DriverAxisRightTrigger = new AxisType();
-		
-		
+
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
@@ -48,6 +41,7 @@ public class OI {
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
+<<<<<<< HEAD
 	
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonA.whenPressed(new StartSpinning());
@@ -73,11 +67,50 @@ public class OI {
 		OperatorButtonY.whenInactive(new RaiseGear());
 		OperatorButtonBack.whenPressed(new GearIntakeIn());
 		OperatorButtonStart.whenPressed(new GearIntakeOut());
+=======
+		DriverButtonA.whenPressed(new ShooterStartShooting());
+		DriverButtonA.whenPressed(new HypeHatStartSpinning());
+		DriverButtonB.whenPressed(new ShooterStopShooting());
+		DriverButtonB.whenPressed(new HypeHatStopSpinning());
+		DriverButtonX.whenPressed(new ShooterSpinUp());
+		DriverButtonY.whenPressed(new HypeHatStartSpinning());
+		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
+		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
+		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
+		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
+		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+
+		System.out.println("Right Trigger " + driver.getRawAxis(3) + "    Left Trigger " + driver.getRawAxis(2));
+		// if the right trigger is pressed down use slowturn
+		if (driver.getRawAxis(3) >= .9 || driver.getRawAxis(2) >= .9) {
+			new DrivetrainSlowTrun();
+		}
+
+		// otherwise use normal turn
+		else {
+			new DrivetrainDriveWithJoystick();
+		}
+
+		/*
+		 * set buttons to activate commands A = start intaking balls X = start
+		 * climber (forwards) Start = lowers gear mech and intakes to collect
+		 * gear Back = outtakes and lowers to place gear Right Bumper = extend
+		 * wings Left Bumper = retract wings Y = raises the gear mech B = stop
+		 * intaking balls & stop climbing & stop gear motor
+		 */
+		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
+		OperatorButtonB.whenPressed(new IntakeStopIntaking());
+		OperatorButtonB.whenPressed(new ClimberStopClimbing());
+		OperatorButtonB.whenPressed(new GearMechMotorOff());
+		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
+		OperatorButtonY.whenPressed(new GearMechPistonUp());
+		OperatorButtonStart.whenPressed(new GearMechPickUp());
+		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
+>>>>>>> refs/remotes/origin/master
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		//OperatorButtonLeftJoystickPress.whenPressed(command);
-		//OperatorButtonRightJoystickPress.whenPressed(command);
+		// OperatorButtonLeftJoystickPress.whenPressed(command);
+		// OperatorButtonRightJoystickPress.whenPressed(command);
 	}
 
 }
-  

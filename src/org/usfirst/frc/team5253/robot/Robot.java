@@ -1,31 +1,35 @@
 
 package org.usfirst.frc.team5253.robot;
 
+import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
+import org.usfirst.frc.team5253.robot.autocommands.GearTenBallAndCrossAuto;
+import org.usfirst.frc.team5253.robot.autocommands.OPAuto;
+import org.usfirst.frc.team5253.robot.autocommands.SideGearAuto;
+import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
+<<<<<<< HEAD
+import org.usfirst.frc.team5253.robot.commands.LeftGearAuto;
+=======
+import org.usfirst.frc.team5253.robot.subsystems.Climber;
+>>>>>>> refs/remotes/origin/master
+import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
+import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
+import org.usfirst.frc.team5253.robot.subsystems.GearMech;
+import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
+import org.usfirst.frc.team5253.robot.subsystems.Intake;
+import org.usfirst.frc.team5253.robot.subsystems.Shooter;
+
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearBaseLineAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
-import org.usfirst.frc.team5253.robot.autocommands.GearTenBallAndCrossAuto;
-import org.usfirst.frc.team5253.robot.autocommands.NothingAuto;
-import org.usfirst.frc.team5253.robot.autocommands.RightGearAuto;
-import org.usfirst.frc.team5253.robot.autocommands.TenBallAuto;
-import org.usfirst.frc.team5253.robot.commands.LeftGearAuto;
-import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
-import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
-import org.usfirst.frc.team5253.robot.subsystems.Shooter;
-import org.usfirst.frc.team5253.robot.subsystems.Intake;
-import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,13 +40,15 @@ import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
  */
 public class Robot extends IterativeRobot {
 
-	NetworkTable table;
 	public static OI oi;
+
 	public static Drivetrain Drivetrain = new Drivetrain();
+	public static GearMech GearMech = new GearMech();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
+<<<<<<< HEAD
 	public static FuelTank FuelTank= new FuelTank();
 	
 	Command autonomousCommand;
@@ -77,6 +83,110 @@ public class Robot extends IterativeRobot {
 		CameraServer.getInstance().startAutomaticCapture(0);
 		//CameraServer.getInstance().startAutomaticCapture(1);
 	}
+=======
+	public static FuelTank FuelTank = new FuelTank();
+	public static Climber Climber = new Climber();
+	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
+	NetworkTable table;
+
+	// Auto modes
+	private final String NothingAuto = "Nothing";
+	private final String CrossBaseLine = "Cross Base Line";
+	private final String AutoCenterGear = "Center Gear";
+	private final String AutoRightGear = "Right Gear";
+	private final String AutoLeftGear = "Left Gear";
+	private final String TenBall = "Shoot Ten Balls";
+	private final String GearTenBall = "Center Gear and Ten Ball Shot";
+	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
+	private final String OP = "Auto Bots Assemble";
+>>>>>>> refs/remotes/origin/master
+
+	private final String[] AutoModes = {
+
+			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall,
+			GearTenBallAndCross, OP,
+
+	};
+
+	Command autonomousCommand;
+
+	/**
+	 * This autonomous (along with the chooser code above) shows how to select
+	 * between different autonomous modes using the dashboard. The sendable
+	 * chooser code works with the Java SmartDashboard. If you prefer the
+	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
+	 * getString code to get the auto name from the text box below the Gyro
+	 *
+	 * You can add additional auto modes by adding additional commands to the
+	 * chooser code above (like the commented example) or additional comparisons
+	 * to the switch structure below with additional strings & commands.
+	 */
+	@Override
+	public void autonomousInit() {
+<<<<<<< HEAD
+		autonomousCommand = chooser.getSelected();
+//		smartdash.getStringArray("AutoSelected");
+=======
+		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
+
+		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
+>>>>>>> refs/remotes/origin/master
+
+		switch (autoSelected) {
+		/*
+		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
+		 */
+
+		case CrossBaseLine:
+			autonomousCommand = new CrossBaseLineAuto();
+			break;
+
+		case AutoCenterGear:
+			autonomousCommand = new GearCenterAuto();
+			break;
+
+		case AutoRightGear:
+			autonomousCommand = new SideGearAuto(false);
+			break;
+
+		case AutoLeftGear:
+			autonomousCommand = new SideGearAuto(true);
+			break;
+
+		case TenBall:
+			autonomousCommand = new TenBallAuto();
+			break;
+
+		case GearTenBall:
+			autonomousCommand = new GearAndTenBallAuto();
+			break;
+
+		case GearTenBallAndCross:
+			autonomousCommand = new GearTenBallAndCrossAuto();
+			break;
+
+		case OP:
+			autonomousCommand = new OPAuto();
+			break;
+
+		default:
+			break;
+		}
+
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null) {
+			SmartDashboard.putString("DB/String 0", autoSelected);
+			autonomousCommand.start();
+		}
+	}
+
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	@Override
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+	}
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -94,44 +204,22 @@ public class Robot extends IterativeRobot {
 	}
 
 	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
 	 */
 	@Override
-	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-//		smartdash.getStringArray("AutoSelected");
+	public void robotInit() {
+		oi = new OI();
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		 * switch(autoSelected) { 
-		 * case "My Auto": 
-		 * autonomousCommand = new MyAutoCommand(); 
-		 * break; 
-		 * 
-		 * case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); 
-		 * break; }
-		 */
+		// Send auto modes
+		NetworkTable table = NetworkTable.getTable("SmartDashboard");
+		table.putStringArray("Auto List", AutoModes);
 
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
-	}
-
-	/**
-	 * This function is called periodically during autonomous
-	 */
-	@Override
-	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		// Initialize cameras
+		CameraServer.getInstance().startAutomaticCapture(0);
+		// CameraServer.getInstance().startAutomaticCapture(1);
+		// SmartDashboard.putNumber("Shooter RPM",
+		// shooterMotorTopLeft.getSpeed());
 	}
 
 	@Override
@@ -150,6 +238,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		// if the right trigger is pressed down use slowturn
 	}
 
 	/**
