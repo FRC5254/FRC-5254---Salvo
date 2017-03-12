@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 	       
 public class OI {
 	
+	// defining the controllers for the driver and operator
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 	
@@ -24,7 +25,7 @@ public class OI {
 	public OI() {
 		
 		
-		
+		//defining driver buttons
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 3);
@@ -37,6 +38,7 @@ public class OI {
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
 		
 		
+		//defining operator buttons
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
@@ -48,7 +50,16 @@ public class OI {
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
-	
+		
+		/*
+		 * set driver buttons to activate commands
+		 * A = start hat spinning/start shooting
+		 * X = spin up fly wheels
+		 * Y = start hat spinning
+		 * Left Bumper = shift up
+		 * Right Bumper = shift down
+		 * B = stop hat spinning/stop shooting
+		 */
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
 		DriverButtonB.whenPressed(new ShooterStopShooting());
@@ -61,17 +72,10 @@ public class OI {
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 		
-		System.out.println("Right Trigger " + driver.getRawAxis(3) + "    Left Trigger " + driver.getRawAxis(2));
-		//if the right trigger is pressed down use slowturn
-		if (driver.getRawAxis(3) >= .9 || driver.getRawAxis(2) >= .9 ){new DrivetrainSlowTrun();}
-		
-		//otherwise use normalturn
-		else {new DrivetrainDriveWithJoystick();}
-		
 		
 		
 		/*
-		 * set buttons to activate commands
+		 * set operator buttons to activate commands
 		 * A = start intaking balls
 		 * X = start climber (forwards)
 		 * Start = lowers gear mech and intakes to collect gear
@@ -91,8 +95,6 @@ public class OI {
 		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		//OperatorButtonLeftJoystickPress.whenPressed(command);
-		//OperatorButtonRightJoystickPress.whenPressed(command);
 	}
 
 }

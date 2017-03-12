@@ -1,19 +1,18 @@
-package org.usfirst.frc.team5253.robot.commands;
+package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DrivetrainSlowTrun extends Command {
+public class AutoStopRobot extends Command {
 
-    public DrivetrainSlowTrun() {
+    public AutoStopRobot() {
+    	requires(Robot.Drivetrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +21,7 @@ public class DrivetrainSlowTrun extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Drivetrain.slowTrun(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS), Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS)* 0.5);
+    	Robot.Drivetrain.drive(0,0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

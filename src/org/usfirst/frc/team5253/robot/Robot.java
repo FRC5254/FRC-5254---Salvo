@@ -1,4 +1,4 @@
-
+ 
 package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -11,6 +11,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.ufirst.frc.team5253.robot.autos.CrossBaseLineAuto;
+import org.ufirst.frc.team5253.robot.autos.GearAndTenBallAuto;
+import org.ufirst.frc.team5253.robot.autos.GearCenterAuto;
+import org.ufirst.frc.team5253.robot.autos.OPAuto;
+import org.ufirst.frc.team5253.robot.autos.SideGearAuto;
+import org.ufirst.frc.team5253.robot.autos.TenBallAuto;
 import org.usfirst.frc.team5253.robot.autocommands.*;
 import org.usfirst.frc.team5253.robot.commands.DrivetrainDriveWithJoystick;
 import org.usfirst.frc.team5253.robot.commands.DrivetrainSlowTrun;
@@ -49,7 +55,6 @@ public class Robot extends IterativeRobot {
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
-	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
 	private final String OP = "Auto Bots Assemble";
 	
 	private final String[] AutoModes = {
@@ -61,7 +66,6 @@ public class Robot extends IterativeRobot {
 			AutoLeftGear,
 			TenBall,
 			GearTenBall,
-			GearTenBallAndCross,
 			OP,
 			
 	};
@@ -148,10 +152,6 @@ public class Robot extends IterativeRobot {
 	    	
 	    case GearTenBall:
 	    	autonomousCommand = new GearAndTenBallAuto();
-	    	break;
-	    	
-	    case GearTenBallAndCross:
-	    	autonomousCommand = new  GearTenBallAndCrossAuto();
 	    	break;
 	    	
 	    case OP:

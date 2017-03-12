@@ -56,7 +56,7 @@ public class RobotMap {
 	//CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-	public static final int SHOOTER_MOTOR_BOTTOM = 4;//TODO was 8
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;//was 8
 	public static final int HYPE_HAT_MOTOR = 3;//9
 	public static final int INTAKE_MOTOR =  5;//10
 	public static final int CLIMBER_MOTOR = 1;

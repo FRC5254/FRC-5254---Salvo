@@ -32,7 +32,7 @@ public class AutoSpinUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() >= 1.5;
+        return timer.get() >= 1.5; //Ends after 1.5 seconds
     }
 
     // Called once after isFinished returns true

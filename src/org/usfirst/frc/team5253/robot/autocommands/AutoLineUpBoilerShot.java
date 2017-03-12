@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class LineUpBoilerShot extends Command {
+public class AutoLineUpBoilerShot extends Command {
 	
 	double BoilerDistance = SmartDashboard.getDouble("Boiler Distance");
 	double BoilerX = SmartDashboard.getDouble("Boiler Vision X");
 	double BoilerY = SmartDashboard.getDouble("Boiler Vision Y");
 	double ScaledBoilerX = SmartDashboard.getDouble("Scaled Boiler Vision X");
 	
-    public LineUpBoilerShot() {
+    public AutoLineUpBoilerShot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

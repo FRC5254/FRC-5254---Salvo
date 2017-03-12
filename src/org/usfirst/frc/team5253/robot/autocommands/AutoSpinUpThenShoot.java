@@ -1,18 +1,16 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import org.usfirst.frc.team5253.robot.autocommands.*;
 import org.usfirst.frc.team5253.robot.commands.*;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class OPAuto extends CommandGroup {
+public class AutoSpinUpThenShoot extends CommandGroup {
 
-    public OPAuto() {
-    	// Add Commands here:
+    public AutoSpinUpThenShoot() {
+        // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
@@ -29,18 +27,8 @@ public class OPAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveToDistance(.75, -132.5));//0.6 OG
-    	
-    	addSequential(new AutoRedBullWingsExtend());
-    	addParallel(new SpinUpThenShoot());
-    	
-    	addSequential(new TimerTurn(-1, 0.35)); //0.2 OG
-//    	addSequential(new TurnRobot(-35));
-    	
-    	addSequential(new StopRobot());
-//    	addSequential(new TurnRobot(10)); //famboyent effect
-//    	addSequential(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
-//    	addSequential(new TurnRobot(5));
-//        addSequential(new AutoStartShooting());
+    	addSequential(new AutoSpinUp());
+    	addSequential(new AutoStartShooting());
+    	addParallel(new IntakeStartIntaking(true));
     }
 }

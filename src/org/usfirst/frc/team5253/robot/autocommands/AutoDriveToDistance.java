@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveToDistance extends Command {
+public class AutoDriveToDistance extends Command {
 
     double Throttle;
     double Turn;
     double Distance;
     
-	public DriveToDistance(double Throttle, double Distance) {
+	public AutoDriveToDistance(double Throttle, double Distance) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.Drivetrain);

@@ -34,7 +34,7 @@ public class AutoStartShooting extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > 20;
+        return timer.get() > 20; //shoots for 20 seconds
     }
 
     // Called once after isFinished returns true
