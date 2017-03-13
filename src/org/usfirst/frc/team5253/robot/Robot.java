@@ -32,7 +32,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	public static Drivetrain Drivetrain = new Drivetrain();
-	public static GearMech GearMech = new GearMech();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
