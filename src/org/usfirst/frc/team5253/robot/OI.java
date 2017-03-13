@@ -56,11 +56,13 @@ public class OI {
 		DriverButtonB.whenPressed(new HypeHatStopSpinning());
 		DriverButtonX.whenPressed(new ShooterSpinUp());
 		DriverButtonY.whenPressed(new HypeHatStartSpinning());
+		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+		DriverButtonBack.whenPressed(new DrivetrainSlowTrun());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+		
 
 		/*
 		 * set operator buttons to activate commands A = start intaking balls X
@@ -72,14 +74,15 @@ public class OI {
 		OperatorButtonA.whenPressed(new GearMechPickUp());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
+		OperatorButtonB.whenPressed(new IntakeOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenPressed(new GearMechPistonDown()); // TODO make thase t good
+		OperatorButtonY.whenPressed(new GearMechPlaceGear());
 		OperatorButtonStart.whenPressed(new GearMechPistonUp());
-		// OperatorButtonBack.whenPressed(command);
+		OperatorButtonBack.whenPressed(new GearMechPistonDown());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		// OperatorButtonLeftJoystickPress.whenPressed(command);
-		// OperatorButtonRightJoystickPress.whenPressed(command);
+		OperatorButtonLeftJoystickPress.whenPressed(new IntakeOn(true));
+		OperatorButtonRightJoystickPress.whenPressed(new IntakeOn(false));// TODO we good here
 	}
 
 }

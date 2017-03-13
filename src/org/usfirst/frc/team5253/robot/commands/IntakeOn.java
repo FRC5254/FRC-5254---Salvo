@@ -5,14 +5,26 @@ import org.usfirst.frc.team5253.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * TODO do we need this class??
+ *
  */
-public class ShooterResetPIDData extends Command {
+public class IntakeOn extends Command {
 
-	public ShooterResetPIDData() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		requires(Robot.Shooter);
+	double intakeSpeed;
+
+	public IntakeOn(boolean direction) {
+		// accept direction of climber direction. true = forward, false =
+		// backward
+
+		requires(Robot.Intake);
+
+		// if climb direction is forward
+		if (direction == true) {
+			// set speed to full forward
+			intakeSpeed = -1.0;
+		} else {
+			// set speed to full backward
+			intakeSpeed = 1.0;
+		}
 	}
 
 	// Called once after isFinished returns true
@@ -23,7 +35,9 @@ public class ShooterResetPIDData extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Shooter.resetData();
+
+		Robot.Intake.On(intakeSpeed);
+
 	}
 
 	// Called just before this Command runs the first time

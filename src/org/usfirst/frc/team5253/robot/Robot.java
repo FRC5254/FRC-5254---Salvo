@@ -1,18 +1,8 @@
 
 package org.usfirst.frc.team5253.robot;
 
-import org.ufirst.frc.team5253.robot.autos.CrossBaseLineAuto;
-import org.ufirst.frc.team5253.robot.autos.GearAndTenBallAuto;
-import org.ufirst.frc.team5253.robot.autos.GearCenterAuto;
-import org.ufirst.frc.team5253.robot.autos.OPAuto;
-import org.ufirst.frc.team5253.robot.autos.SideGearAuto;
-import org.ufirst.frc.team5253.robot.autos.TenBallAuto;
-import org.usfirst.frc.team5253.robot.subsystems.Climber;
-import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
-import org.usfirst.frc.team5253.robot.subsystems.GearMech;
-import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
-import org.usfirst.frc.team5253.robot.subsystems.Shooter;
+import org.ufirst.frc.team5253.robot.autos.*;
+import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
 
@@ -41,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter Shooter = new Shooter();
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
+	public static Intake Intake = new Intake();
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 	NetworkTable table;
 
@@ -184,7 +175,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		// if the right trigger is pressed down use slowturn
+		// if the right trigger is pressed down use slowturn TODO
 	}
 
 	/**
