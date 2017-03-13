@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 
-public class TurnRobot extends Command {
+public class AutoTurnRobot extends Command {
 
 	double angle;
 
-	public TurnRobot(double angle) {
+	public AutoTurnRobot(double angle) {
 		requires(Robot.Drivetrain);
 		this.angle = angle;
 	}

@@ -1,11 +1,7 @@
 package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
-<<<<<<< HEAD:src/org/ufirst/frc/team5253/robot/autos/TenBallAuto.java
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
-import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
-=======
->>>>>>> origin/master:src/org/usfirst/frc/team5253/robot/autocommands/TenBallAuto.java
 import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
 import org.usfirst.frc.team5253.robot.commands.ShooterStartShooting;
 
