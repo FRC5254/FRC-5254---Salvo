@@ -25,11 +25,13 @@ public class Robot extends IterativeRobot {
 	
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> parent of de0cb76... Added Gear Pick Up Code
 	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
-	public static GearMech GearMech = new GearMech();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
@@ -71,7 +73,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-
 		
 		// Send auto modes
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");

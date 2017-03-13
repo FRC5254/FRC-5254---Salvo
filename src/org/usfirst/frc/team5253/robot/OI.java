@@ -65,8 +65,8 @@ public class OI {
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonB.whenPressed(new StopClimbing());
-		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new StartClimbing());
+<<<<<<< HEAD
 		OperatorButtonY.whenPressed(new GearMechPickUp());
 		//OperatorButtonY.whenInactive(new GearMechUp());
 		OperatorButtonBack.whenPressed(new GearMechDown());
@@ -82,6 +82,16 @@ public class OI {
 		} else {
 			Robot.Intake.stopIntake();
 		}//TODO does this work??
+=======
+		OperatorButtonY.whenActive(new DropGear());
+		OperatorButtonY.whenInactive(new RaiseGear());
+		OperatorButtonBack.whenPressed(new GearIntakeIn());
+		OperatorButtonStart.whenPressed(new GearIntakeOut());
+		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
+		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+		//OperatorButtonLeftJoystickPress.whenPressed(command);
+		//OperatorButtonRightJoystickPress.whenPressed(command);
+>>>>>>> parent of de0cb76... Added Gear Pick Up Code
 	}
 
 }
