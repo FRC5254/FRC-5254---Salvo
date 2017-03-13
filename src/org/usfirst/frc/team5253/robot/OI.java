@@ -74,7 +74,6 @@ public class OI {
 		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
-		OperatorButtonB.whenPressed(new GearMechMotorOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
 		OperatorButtonY.whenActive(new GearHolderDropGear());
 		OperatorButtonY.whenInactive(new GearHolderRaiseGear());
