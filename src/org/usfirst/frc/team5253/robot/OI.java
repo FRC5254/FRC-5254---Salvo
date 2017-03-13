@@ -72,16 +72,15 @@ public class OI {
 		OperatorButtonA.whenPressed(new StartIntaking());
 		OperatorButtonB.whenPressed(new StopIntaking());
 		OperatorButtonB.whenPressed(new StopClimbing());
-		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new StartClimbing());
-		OperatorButtonY.whenPressed(new GearMechPickUp());
-		//OperatorButtonY.whenInactive(new GearMechUp());
-		OperatorButtonBack.whenPressed(new GearMechUp());
-		OperatorButtonStart.whenPressed(new GearMechDown());
+		OperatorButtonY.whenActive(new DropGear());
+		OperatorButtonY.whenInactive(new RaiseGear());
+		OperatorButtonBack.whenPressed(new GearIntakeIn());
+		OperatorButtonStart.whenPressed(new GearIntakeOut());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
-		OperatorButtonLeftJoystickPress.whenPressed(new GearMechIn());
-		OperatorButtonRightJoystickPress.whenPressed(new GearMechOut());
+		//OperatorButtonLeftJoystickPress.whenPressed(command);
+		//OperatorButtonRightJoystickPress.whenPressed(command);
 	}
 
 }
