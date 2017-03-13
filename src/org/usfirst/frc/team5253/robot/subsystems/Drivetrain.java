@@ -82,7 +82,7 @@ public class Drivetrain extends PIDSubsystem {
 		remainingTicks = (int) (sign * (Math.abs(finalTicks) - Math.abs(encoder.get())));
 		double finalThrottle;
 	
-		finalThrottle = 0.6; //old .4
+		finalThrottle = 0.4;
 		if (Math.abs(remainingTicks) < 1000) {
 			finalThrottle = Math.abs(remainingTicks) / 1000;
 			if (finalThrottle < 0.2) {

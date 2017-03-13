@@ -33,14 +33,11 @@ public class OPAuto extends CommandGroup {
     	addParallel(new AutoSpinUp());
     	addSequential(new AutoStartShooting());
     	*/
-    	
-    	addSequential(new DriveToDistance(.4, -120));
-    	addSequential(new TurnRobot(-20));
-    	addSequential(new NothingAuto());
-//    	addSequential(new TurnRobot(10)); //famboyent effect
-//    	addSequential(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
-//    	addSequential(new TurnRobot(5));
-//    	addSequential(new AutoSpinUp());
-//        addSequential(new AutoStartShooting());
+    	addSequential(new TurnRobot(5));
+    	addSequential(new DriveToDistance(.25, 80));
+    	addSequential(new TurnRobot(10)); //famboyent effect
+    	addParallel(new DriveToDistance(.5, 5)); //get into optimal shooting spot #wish we had vision
+    	addSequential(new AutoSpinUp());
+        addSequential(new AutoStartShooting());
     }
 }
