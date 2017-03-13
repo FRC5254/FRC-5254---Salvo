@@ -28,6 +28,7 @@ public class Shooter extends Subsystem {
 	
 	public Shooter() {
 		
+<<<<<<< HEAD
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopRight.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopRight.configNominalOutputVoltage(+0.0f, -0.0f);
@@ -81,6 +82,17 @@ public class Shooter extends Subsystem {
 		System.out.format("Shooter P %f I %f D %f%n", shooterMotorTopLeft.getP(), shooterMotorTopLeft.getI(),
 				shooterMotorTopLeft.getD());
 
+=======
+		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+		shooterMotorTopLeft.reverseSensor(true);
+		shooterMotorTopLeft.reverseOutput(true);
+		shooterMotorTopLeft.setProfile(0);
+		shooterMotorTopLeft.setF(0.03916);
+		shooterMotorTopLeft.setPID(0.128, 0.0, 0.2);
+>>>>>>> refs/remotes/origin/Shooter-PID-Tuning
 		shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shooterMotorTopRight.set(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 		shooterMotorTopRight.reverseOutput(false);
@@ -234,6 +246,7 @@ public class Shooter extends Subsystem {
     }
     
     public void stopShooting(int RPM) {
+<<<<<<< HEAD
     	shooterMotorTopRight.changeControlMode(CANTalon.TalonControlMode.Speed);
     	shooterMotorTopRight.configPeakOutputVoltage(0.0f,0.0f);
     	shooterMotorTopRight.set(0.0);
@@ -243,6 +256,11 @@ public class Shooter extends Subsystem {
     		minError = 10000000;
     		maxError = 0;
     	}
+=======
+    	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+    	shooterMotorTopLeft.configPeakOutputVoltage(0.0f,0.0f);
+    	shooterMotorTopLeft.set(0.0);
+>>>>>>> refs/remotes/origin/Shooter-PID-Tuning
     	
     	shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     	shooterMotorBottom.set(0.0);

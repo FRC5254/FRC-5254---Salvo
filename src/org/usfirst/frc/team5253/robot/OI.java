@@ -49,6 +49,11 @@ public class OI {
 
 <<<<<<< HEAD
 	
+<<<<<<< HEAD
+=======
+
+		DriverButtonA.whenPressed(new StartSpinning());
+>>>>>>> refs/remotes/origin/Shooter-PID-Tuning
 		DriverButtonA.whenPressed(new StartShooting());
 		DriverButtonA.whenPressed(new StartSpinning());
 		DriverButtonB.whenPressed(new StopShooting());
@@ -64,6 +69,7 @@ public class OI {
 		//DriverButtonStart.whenPressed(command);
 		//DriverButtonLeftJoystickPress.whenPressed(command);
 		//DriverButtonRightJoystickPress.whenPressed(command);
+
 		
 		
 		OperatorButtonA.whenPressed(new StartIntaking());

@@ -57,7 +57,11 @@ public class RobotMap {
 	public static final int SHOOTER_MOTOR_TOP_LEFT2 = 11;
 	public static final int SHOOTER_MOTOR_BOTTOM = 8;
 	public static final int HYPE_HAT_MOTOR= 9;
+<<<<<<< HEAD
 	public static final int INTAKE_MOTOR =  10;	
+=======
+	public static final int INTAKE_MOTOR =  10;
+>>>>>>> refs/remotes/origin/Shooter-PID-Tuning
 	//RPMs
 	public static final double SHOOTER_RPM = 3826; //TODO find good value
 	

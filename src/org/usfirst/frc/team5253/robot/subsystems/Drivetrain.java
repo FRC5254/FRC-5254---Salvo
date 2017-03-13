@@ -24,6 +24,7 @@ public class Drivetrain extends PIDSubsystem {
 	double angle;
 	public double DKp = 0.035;
 	public double TKp = 0.3;
+<<<<<<< HEAD
 	private int remainingTicks;
 	private double Throttle;
 	private double distance;
@@ -33,6 +34,23 @@ public class Drivetrain extends PIDSubsystem {
 		super("DriveTrain", .02, .002, .2);
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
+=======
+	public boolean shiftState = false;
+	private static double finalModifier;
+	private static double distance;
+	private static double turnSpeed;
+	//private static double camera = 0;
+	
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		setDefaultCommand(new DriveWithJoystick());
+	}
+	
+	public void drive(double Throttle, double Turn){
+		myRobot.arcadeDrive(Throttle, Turn);
+		
+>>>>>>> refs/remotes/origin/Shooter-PID-Tuning
 	}
 
 	public void autoDrive() {
