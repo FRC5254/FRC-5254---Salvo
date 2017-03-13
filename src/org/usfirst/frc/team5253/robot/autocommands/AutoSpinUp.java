@@ -13,6 +13,7 @@ public class AutoSpinUp extends Command {
 
 	Timer timer = new Timer();
 
+
 	public AutoSpinUp() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

@@ -6,7 +6,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
+
 public class LineUpBoilerShot extends Command {
+
 
 	double BoilerDistance = SmartDashboard.getDouble("Boiler Distance");
 	double BoilerX = SmartDashboard.getDouble("Boiler Vision X");

@@ -1,15 +1,20 @@
-package org.usfirst.frc.team5253.robot.autocommands;
+package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class GearCenterAuto extends CommandGroup {
+/**
+ *
+ */
+public class CrossBaseLineAuto extends CommandGroup {
 
-	public GearCenterAuto() {
 
+	public CrossBaseLineAuto() {
+
+		System.out.format("Crossbaseline");
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
 
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -28,10 +33,8 @@ public class GearCenterAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new DriveToDistance(1.0, 69));
-		addSequential(new DropGearAuto());
-		addSequential(new DriveToDistance(1.0, -24));
-		addSequential(new StopRobot());
+		addSequential(new AutoDriveToDistance(1.0, 100));
+		addSequential(new NothingAuto());
 
 	}
 }

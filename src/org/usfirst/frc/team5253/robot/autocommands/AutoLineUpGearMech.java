@@ -1,16 +1,14 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import org.usfirst.frc.team5253.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class StopRobot extends Command {
+public class AutoLineUpGearMech extends Command {
 
-	public StopRobot() {
-		requires(Robot.Drivetrain);
+
+	public AutoLineUpGearMech() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
@@ -23,7 +21,6 @@ public class StopRobot extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Drivetrain.drive(0, 0);
 	}
 
 	// Called just before this Command runs the first time
@@ -35,7 +32,6 @@ public class StopRobot extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		end();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

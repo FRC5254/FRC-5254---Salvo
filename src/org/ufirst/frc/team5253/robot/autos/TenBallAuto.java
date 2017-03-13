@@ -1,6 +1,8 @@
-package org.usfirst.frc.team5253.robot.autocommands;
+package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
+import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
 import org.usfirst.frc.team5253.robot.commands.ShooterStartShooting;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -8,13 +10,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class GearAndTenBallAuto extends CommandGroup {
+public class TenBallAuto extends CommandGroup {
 
-	public GearAndTenBallAuto() {
+	public TenBallAuto() {
 
 		requires(Robot.Drivetrain);
 		requires(Robot.Shooter);
-		requires(Robot.GearHolder);
 		requires(Robot.HypeHat);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -33,12 +34,8 @@ public class GearAndTenBallAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		// addSequential(new DriveToDistance(1.0, 54));
-		// addSequential(new GearHolderDropGear());
-		// addParallel(new DriveToDistance(1.0, 54));
-		addSequential(new GearCenterAuto());
-		addSequential(new TurnRobot(90));// TODO find goochi value
-		addSequential(new AutoSpinUp());
+		addSequential(new HypeHatStartSpinning());// cause
+		addParallel(new AutoSpinUp());
 		addSequential(new ShooterStartShooting());
 	}
 }

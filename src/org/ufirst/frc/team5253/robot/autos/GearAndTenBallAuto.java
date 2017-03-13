@@ -1,15 +1,22 @@
-package org.usfirst.frc.team5253.robot.autocommands;
+package org.ufirst.frc.team5253.robot.autos;
 
-import org.usfirst.frc.team5253.robot.commands.IntakeStartIntaking;
+import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.*;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class SpinUpThenShoot extends CommandGroup {
+public class GearAndTenBallAuto extends CommandGroup {
 
-	public SpinUpThenShoot() {
+
+	public GearAndTenBallAuto() {
+
+		requires(Robot.Drivetrain);
+		requires(Robot.Shooter);
+		requires(Robot.GearHolder);
+		requires(Robot.HypeHat);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -27,8 +34,12 @@ public class SpinUpThenShoot extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
+		// addSequential(new DriveToDistance(1.0, 54));
+		// addSequential(new GearHolderDropGear());
+		// addParallel(new DriveToDistance(1.0, 54));
+		addSequential(new GearCenterAuto());
+		addSequential(new AutoTurnRobot(90));// TODO find goochi value
 		addSequential(new AutoSpinUp());
 		addSequential(new AutoStartShooting());
-		addParallel(new IntakeStartIntaking(true));
 	}
 }

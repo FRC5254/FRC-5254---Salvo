@@ -13,6 +13,7 @@ public class AutoStartShooting extends Command {
 
 	Timer timer = new Timer();
 
+
 	public AutoStartShooting() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

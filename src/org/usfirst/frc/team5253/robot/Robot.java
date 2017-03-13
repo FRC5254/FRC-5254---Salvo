@@ -1,6 +1,7 @@
-
+ 
 package org.usfirst.frc.team5253.robot;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
@@ -20,6 +21,11 @@ import org.usfirst.frc.team5253.robot.subsystems.GearMech;
 import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
 import org.usfirst.frc.team5253.robot.subsystems.Intake;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
+=======
+import org.ufirst.frc.team5253.robot.autos.*;
+import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.subsystems.*;
+>>>>>>> refs/remotes/origin/master
 
 import com.ctre.CANTalon;
 
@@ -30,6 +36,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.ctre.CANTalon;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -97,14 +106,13 @@ public class Robot extends IterativeRobot {
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
-	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
 	private final String OP = "Auto Bots Assemble";
 >>>>>>> refs/remotes/origin/master
 
+
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall,
-			GearTenBallAndCross, OP,
+			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
 
 	};
 
@@ -121,7 +129,7 @@ public class Robot extends IterativeRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
-	@Override
+	
 	public void autonomousInit() {
 <<<<<<< HEAD
 		autonomousCommand = chooser.getSelected();
@@ -129,7 +137,10 @@ public class Robot extends IterativeRobot {
 =======
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
 
+<<<<<<< HEAD
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 
 		switch (autoSelected) {
@@ -161,10 +172,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new GearAndTenBallAuto();
 			break;
 
-		case GearTenBallAndCross:
-			autonomousCommand = new GearTenBallAndCrossAuto();
-			break;
-
 		case OP:
 			autonomousCommand = new OPAuto();
 			break;
@@ -172,6 +179,7 @@ public class Robot extends IterativeRobot {
 		default:
 			break;
 		}
+
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
@@ -183,7 +191,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during autonomous
 	 */
-	@Override
+	
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
@@ -193,12 +201,12 @@ public class Robot extends IterativeRobot {
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
-	@Override
+	
 	public void disabledInit() {
 
 	}
 
-	@Override
+	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
@@ -207,7 +215,7 @@ public class Robot extends IterativeRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	@Override
+	
 	public void robotInit() {
 		oi = new OI();
 
@@ -222,7 +230,7 @@ public class Robot extends IterativeRobot {
 		// shooterMotorTopLeft.getSpeed());
 	}
 
-	@Override
+	
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -235,7 +243,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during operator control
 	 */
-	@Override
+	
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		// if the right trigger is pressed down use slowturn
@@ -244,7 +252,7 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during test mode
 	 */
-	@Override
+	
 	public void testPeriodic() {
 		LiveWindow.run();
 	}

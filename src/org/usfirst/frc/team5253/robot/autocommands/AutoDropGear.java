@@ -1,38 +1,42 @@
-
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TurnRobot extends Command {
+public class AutoDropGear extends Command {
+	Timer timer = new Timer();
 
-	double angle;
 
-	public TurnRobot(double angle) {
-		requires(Robot.Drivetrain);
-		this.angle = angle;
+	public void DropGearAuto() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+
+		requires(Robot.GearHolder);
+		System.out.format("DropGearAuto()%n");
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.Drivetrain.disable();
+		timer.stop();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		Robot.GearHolder.drop();
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.Drivetrain.setSetpoint(Robot.Drivetrain.getAngle() + this.angle);
-		Robot.Drivetrain.enable();
+		timer.reset();
+		timer.start();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -45,6 +49,6 @@ public class TurnRobot extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return Robot.Drivetrain.onTarget();
+		return timer.get() >= 1.0;
 	}
 }
