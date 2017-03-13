@@ -50,23 +50,7 @@ public class RobotMap {
 	public static final int DRIVE_MOTOR_RIGHT1 = 2;// 14
 	public static final int DRIVE_MOTOR_RIGHT2 = 3;// 15
 
-<<<<<<< HEAD
-	//CAN Talons
-	public static final int SHOOTER_MOTOR_TOP_RIGHT = 6;
-	public static final int SHOOTER_MOTOR_TOP_LEFT = 7;
-	public static final int SHOOTER_MOTOR_TOP_LEFT2 = 11;
-	public static final int SHOOTER_MOTOR_BOTTOM = 8;
-	public static final int HYPE_HAT_MOTOR= 9;
-<<<<<<< HEAD
-	public static final int INTAKE_MOTOR =  10;	
-=======
-	public static final int INTAKE_MOTOR =  10;
->>>>>>> refs/remotes/origin/Shooter-PID-Tuning
-	//RPMs
-	public static final double SHOOTER_RPM = 3826; //TODO find good value
-	
-	//Misc
-=======
+
 	// CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
@@ -88,7 +72,6 @@ public class RobotMap {
 	public static final double SHOOTER_PID_D = 0.4;
 
 	// Misc
->>>>>>> refs/remotes/origin/master
 	public static final int WHEEL_DIAMETER = 4;
 	public static final int WHEEL_TICKS = 256;
 	public static final double GEAR_RATIO = 25.0 / 6.0;

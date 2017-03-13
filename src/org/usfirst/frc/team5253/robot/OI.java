@@ -44,59 +44,7 @@ public class OI {
 		Button OperatorButtonStart = new JoystickButton(operator, 8);
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-	
-<<<<<<< HEAD
-=======
-
-		DriverButtonA.whenPressed(new StartSpinning());
->>>>>>> refs/remotes/origin/Shooter-PID-Tuning
-		DriverButtonA.whenPressed(new StartShooting());
-		DriverButtonA.whenPressed(new StartSpinning());
-		DriverButtonB.whenPressed(new StopShooting());
-		DriverButtonB.whenPressed(new StopSpinning());
-		DriverButtonX.whenPressed(new SpinUp());
-		DriverButtonY.whenPressed(new StartSpinning());
-		DriverButtonBumperLeft.whenPressed(new ShiftUp());
-		DriverButtonBumperLeft.whenInactive(new ShiftDown());
-		DriverButtonBumperRight.whenPressed(new ShiftUp());
-		DriverButtonBumperRight.whenInactive(new ShiftDown());
-		DriverButtonBack.whenActive(new SlowTrun());
-		DriverButtonBack.whenInactive(new DriveWithJoystick());
-		//DriverButtonStart.whenPressed(command);
-		//DriverButtonLeftJoystickPress.whenPressed(command);
-		//DriverButtonRightJoystickPress.whenPressed(command);
-
-		
-		
-		OperatorButtonA.whenPressed(new StartIntaking());
-		OperatorButtonB.whenPressed(new StopIntaking());
-		//OperatorButtonX.whenPressed();
-		OperatorButtonY.whenActive(new DropGear());
-		OperatorButtonY.whenInactive(new RaiseGear());
-		OperatorButtonBack.whenPressed(new GearIntakeIn());
-		OperatorButtonStart.whenPressed(new GearIntakeOut());
-=======
-=======
-=======
->>>>>>> refs/remotes/origin/master
-		
-		/*
-		 * set driver buttons to activate commands
-		 * A = start hat spinning/start shooting
-		 * X = spin up fly wheels
-		 * Y = start hat spinning
-		 * Left Bumper = shift up
-		 * Right Bumper = shift down
-		 * B = stop hat spinning/stop shooting
-		 */
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> refs/remotes/origin/master
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
 		DriverButtonB.whenPressed(new ShooterStopShooting());
@@ -128,10 +76,10 @@ public class OI {
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenPressed(new GearMechPistonUp());
-		OperatorButtonStart.whenPressed(new GearMechPickUp());
-		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
->>>>>>> refs/remotes/origin/master
+		OperatorButtonY.whenActive(new GearHolderDropGear());
+		OperatorButtonY.whenInactive(new GearHolderRaiseGear());
+		OperatorButtonStart.whenPressed(new GearHolderIntakeOut());
+		OperatorButtonBack.whenPressed(new GearHolderIntakeIn());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		// OperatorButtonLeftJoystickPress.whenPressed(command);

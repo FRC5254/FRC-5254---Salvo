@@ -12,21 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class AutoStartShooting extends Command {
 
-<<<<<<< HEAD
 	Timer timer = new Timer();
-=======
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return timer.get() > 6;
-    }
->>>>>>> refs/remotes/origin/Shooter-PID-Tuning
-
-
+	
 	public AutoStartShooting() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
