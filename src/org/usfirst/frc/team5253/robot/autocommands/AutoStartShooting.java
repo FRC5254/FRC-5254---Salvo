@@ -13,11 +13,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoStartShooting extends Command {
 
 	Timer timer = new Timer();
-	
-	public AutoStartShooting() {
+	double time;
+	public AutoStartShooting(double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Shooter);
+		this.time = time;
 	}
 
 	// Called once after isFinished returns true
@@ -50,6 +51,6 @@ public class AutoStartShooting extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return timer.get() > 20;
+		return timer.get() > time;
 	}
 }

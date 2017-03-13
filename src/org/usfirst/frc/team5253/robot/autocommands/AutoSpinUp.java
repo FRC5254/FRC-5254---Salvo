@@ -13,12 +13,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoSpinUp extends Command {
 
 	Timer timer = new Timer();
+	double time;
 
-
-	public AutoSpinUp() {
+	public AutoSpinUp(double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Shooter);
+		
+		this.time = time;
 	}
 
 	// Called once after isFinished returns true
@@ -50,6 +52,6 @@ public class AutoSpinUp extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return timer.get() >= 1.5;
+		return timer.get() >= time;
 	}
 }

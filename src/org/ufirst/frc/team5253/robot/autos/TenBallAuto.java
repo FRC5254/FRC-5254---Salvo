@@ -2,8 +2,8 @@ package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
-import org.usfirst.frc.team5253.robot.commands.ShooterStartShooting;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -35,7 +35,7 @@ public class TenBallAuto extends CommandGroup {
 		// arm.
 
 		addSequential(new HypeHatStartSpinning());// cause
-		addParallel(new AutoSpinUp());
-		addSequential(new ShooterStartShooting());
+		addParallel(new AutoSpinUp(2));
+		addSequential(new AutoStartShooting(20));
 	}
 }
