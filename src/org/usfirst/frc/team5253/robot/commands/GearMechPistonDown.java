@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class GearMechPlaceGear extends CommandGroup {
+public class GearMechPistonDown extends CommandGroup {
 
-	public GearMechPlaceGear() {
+	public GearMechPistonDown() {
 		requires(Robot.GearMech);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -29,6 +29,5 @@ public class GearMechPlaceGear extends CommandGroup {
 		// arm.
 
 		addParallel(new GearMechDown());
-		addSequential(new GearMechOn(false));
 	}
 }

@@ -1,7 +1,10 @@
 package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -12,7 +15,7 @@ public class SideGearAuto extends CommandGroup {
 
 	public SideGearAuto(boolean clockwise) {
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -23,7 +26,6 @@ public class SideGearAuto extends CommandGroup {
 		// e.g. addParallel(new Command1());
 		// addSequential(new Command2());
 		// Command1 and Command2 will run in parallel.
-
 
 		// A command group will require all of the subsystems that each member
 		// would require.

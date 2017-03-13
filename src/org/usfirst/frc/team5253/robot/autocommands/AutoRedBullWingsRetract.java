@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoRedBullWingsRetract extends Command {
 
-
 	public AutoRedBullWingsRetract() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

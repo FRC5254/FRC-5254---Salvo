@@ -1,14 +1,11 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import org.usfirst.frc.team5253.robot.commands.IntakeStartIntaking;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class AutoSpinUpThenShoot extends CommandGroup {
-
 
 	public AutoSpinUpThenShoot() {
 		// Add Commands here:
@@ -30,6 +27,5 @@ public class AutoSpinUpThenShoot extends CommandGroup {
 
 		addSequential(new AutoSpinUp());
 		addSequential(new AutoStartShooting());
-		addParallel(new IntakeStartIntaking(true));
 	}
 }

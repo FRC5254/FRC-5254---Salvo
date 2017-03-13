@@ -13,15 +13,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 
 public class OI {
-	
+
 	// defining the controllers for the driver and operator
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 
 	public OI() {
-		
-		
-		//defining driver buttons
+
+		// defining driver buttons
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 3);
@@ -32,8 +31,8 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
-		
-		//defining operator buttons
+
+		// defining operator buttons
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
@@ -44,15 +43,12 @@ public class OI {
 		Button OperatorButtonStart = new JoystickButton(operator, 8);
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
-		
+
 		/*
-		 * set driver buttons to activate commands
-		 * A = start hat spinning/start shooting
-		 * X = spin up fly wheels
-		 * Y = start hat spinning
-		 * Left Bumper = shift up
-		 * Right Bumper = shift down
-		 * B = stop hat spinning/stop shooting
+		 * set driver buttons to activate commands A = start hat spinning/start
+		 * shooting X = spin up fly wheels Y = start hat spinning Left Bumper =
+		 * shift up Right Bumper = shift down B = stop hat spinning/stop
+		 * shooting
 		 */
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
@@ -66,28 +62,20 @@ public class OI {
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 
-		
-		
-		
 		/*
-		 * set operator buttons to activate commands
-		 * A = start intaking balls
-		 * X = start climber (forwards)
-		 * Start = lowers gear mech and intakes to collect gear
-		 * Back = outtakes and lowers to place gear
-		 * Right Bumper = extend wings
-		 * Left Bumper = retract wings
-		 * Y = raises the gear mech
-		 * B = stop intaking balls & stop climbing & stop gear motor
+		 * set operator buttons to activate commands A = start intaking balls X
+		 * = start climber (forwards) Start = lowers gear mech and intakes to
+		 * collect gear Back = outtakes and lowers to place gear Right Bumper =
+		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
+		 * stop intaking balls & stop climbing & stop gear motor
 		 */
-		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
-		OperatorButtonB.whenPressed(new IntakeStopIntaking());
+		OperatorButtonA.whenPressed(new GearMechPickUp());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenPressed(new GearMechPistonUp());
-		OperatorButtonStart.whenPressed(new GearMechPickUp());
-		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
+		OperatorButtonY.whenPressed(new GearMechPistonDown()); // TODO make thase t good
+		OperatorButtonStart.whenPressed(new GearMechPistonUp());
+		// OperatorButtonBack.whenPressed(command);
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		// OperatorButtonLeftJoystickPress.whenPressed(command);

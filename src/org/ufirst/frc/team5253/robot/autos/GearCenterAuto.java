@@ -9,11 +9,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GearCenterAuto extends CommandGroup {
 
-
 	public GearCenterAuto() {
 
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
