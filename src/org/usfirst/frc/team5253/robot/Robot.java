@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5253.robot;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.usfirst.frc.team5253.robot.autocommands.CrossBaseLineAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearAndTenBallAuto;
 import org.usfirst.frc.team5253.robot.autocommands.GearCenterAuto;
@@ -21,6 +22,11 @@ import org.usfirst.frc.team5253.robot.subsystems.GearMech;
 import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
 import org.usfirst.frc.team5253.robot.subsystems.Intake;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
+=======
+import org.ufirst.frc.team5253.robot.autos.*;
+import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.subsystems.*;
+>>>>>>> refs/remotes/origin/master
 =======
 import org.ufirst.frc.team5253.robot.autos.*;
 import org.usfirst.frc.team5253.robot.autocommands.*;
@@ -110,6 +116,7 @@ public class Robot extends IterativeRobot {
 >>>>>>> refs/remotes/origin/master
 
 
+
 	private final String[] AutoModes = {
 
 			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
@@ -138,7 +145,10 @@ public class Robot extends IterativeRobot {
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master

@@ -45,6 +45,7 @@ public class OI {
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 	
@@ -74,6 +75,8 @@ public class OI {
 		OperatorButtonStart.whenPressed(new GearIntakeOut());
 =======
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 		
 		/*
 		 * set driver buttons to activate commands
@@ -84,6 +87,9 @@ public class OI {
 		 * Right Bumper = shift down
 		 * B = stop hat spinning/stop shooting
 		 */
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
