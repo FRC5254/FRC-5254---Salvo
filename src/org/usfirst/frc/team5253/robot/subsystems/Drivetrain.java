@@ -14,7 +14,7 @@ public class Drivetrain extends PIDSubsystem {
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
 	public static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
-	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	public static Encoder encoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 
 	private static int finalTicks;
 	double angle;
@@ -31,6 +31,15 @@ public class Drivetrain extends PIDSubsystem {
 		getPIDController().setContinuous(true);
 	}
 
+	public void autoDriveInitialize(double Throttle, double distance) {
+		this.distance = distance;
+		this.Throttle = Throttle;
+		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI)) * RobotMap.WHEEL_TICKS
+				* RobotMap.GEAR_RATIO);
+		initEncoder();
+		resetGyro();
+	}
+	
 	public void autoDrive() {
 		double sign = Math.signum(distance);
 		double Turn = -sign * getAngle() * DKp;
@@ -51,15 +60,7 @@ public class Drivetrain extends PIDSubsystem {
 		myRobot.drive(Throttle, Turn);
 	}
 
-	public void autoDriveInitialize(double Throttle, double distance) {
-		this.distance = distance;
-		this.Throttle = Throttle;
-		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI)) * RobotMap.WHEEL_TICKS
-				* RobotMap.GEAR_RATIO);
-		initEncoder();
-		resetGyro();
-	}
-
+	
 	public void drive(double Throttle, double Turn) {
 		myRobot.arcadeDrive(Throttle, Turn);
 

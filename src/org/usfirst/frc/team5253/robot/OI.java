@@ -51,18 +51,21 @@ public class OI {
 		DriverButtonB.whenPressed(new HypeHatStopSpinning());
 		DriverButtonX.whenPressed(new ShooterSpinUp());
 		DriverButtonY.whenPressed(new HypeHatStartSpinning());
+		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+		DriverButtonBack.whenPressed(new DrivetrainSlowTrun());
+		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+		
 
 		
 		
 		
 		/*
 		 * set operator buttons to activate commands
-		 * A = start intaking balls
+		 * A = start intaking ballssss
 		 * X = start climber (forwards)
 		 * Start = lowers gear mech and intakes to collect gear
 		 * Back = outtakes and lowers to place gear
