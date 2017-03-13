@@ -9,19 +9,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutoSpinUpThenShoot extends CommandGroup {
 
-<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/autocommands/AutoSpinUpThenShoot.java
-    public AutoSpinUpThenShoot() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-=======
-	public SpinUpThenShoot() {
+
+	public AutoSpinUpThenShoot() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
 		// these will run in order.
->>>>>>> origin/master:src/org/usfirst/frc/team5253/robot/autocommands/SpinUpThenShoot.java
 
 		// To run multiple commands at the same time,
 		// use addParallel()

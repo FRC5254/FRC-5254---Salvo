@@ -9,37 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoRedBullWingsExtend extends Command {
 
-<<<<<<< HEAD
-    public AutoRedBullWingsExtend() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.FuelTank);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.FuelTank.redBullWingsOut();
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return true; // Causes command to run once and then finish
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
-=======
 	public AutoRedBullWingsExtend() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -74,5 +44,4 @@ public class AutoRedBullWingsExtend extends Command {
 	protected boolean isFinished() {
 		return true;
 	}
->>>>>>> origin/master
 }

@@ -32,13 +32,13 @@ public class GearTenBallAndCrossAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		addSequential(new DriveToDistance(-1.0, 54));
+		addSequential(new AutoDriveToDistance(-1.0, 54));
 		addSequential(new GearHolderDropGear());
-		addParallel(new DriveToDistance(1.0, 54));
-		addSequential(new TurnRobot(90));
+		addParallel(new AutoDriveToDistance(1.0, 54));
+		addSequential(new AutoTurnRobot(90));
 		addSequential(new AutoSpinUp());
 		addSequential(new AutoStartShooting());
-		addSequential(new TurnRobot(-45));
-		addSequential(new DriveToDistance(-1.0, 122));
+		addSequential(new AutoTurnRobot(-45));
+		addSequential(new AutoDriveToDistance(-1.0, 122));
 	}
 }
