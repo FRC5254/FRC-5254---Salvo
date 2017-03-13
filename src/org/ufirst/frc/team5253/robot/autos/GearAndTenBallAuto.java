@@ -1,7 +1,9 @@
 package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
+import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -9,7 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class GearAndTenBallAuto extends CommandGroup {
-
 
 	public GearAndTenBallAuto() {
 

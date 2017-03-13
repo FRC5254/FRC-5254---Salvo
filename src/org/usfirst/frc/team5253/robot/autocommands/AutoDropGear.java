@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoDropGear extends Command {
 	Timer timer = new Timer();
 
-
 	public void DropGearAuto() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

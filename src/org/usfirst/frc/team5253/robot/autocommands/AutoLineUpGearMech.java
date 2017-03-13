@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoLineUpGearMech extends Command {
 
-
 	public AutoLineUpGearMech() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

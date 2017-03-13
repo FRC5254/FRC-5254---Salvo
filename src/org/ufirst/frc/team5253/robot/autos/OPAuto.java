@@ -1,6 +1,10 @@
 package org.ufirst.frc.team5253.robot.autos;
 
-import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
+import org.usfirst.frc.team5253.robot.autocommands.AutoRedBullWingsExtend;
+import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUpThenShoot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoTimerTurn;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -8,7 +12,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class OPAuto extends CommandGroup {
-
 
 	public OPAuto() {
 		// Add Commands here:

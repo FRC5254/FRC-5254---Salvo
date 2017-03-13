@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GearCenterAuto extends CommandGroup {
 
-
 	public GearCenterAuto() {
 
 		requires(Robot.Drivetrain);

@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoDriveToDistance extends Command {
 
-
 	double Throttle;
 	double Turn;
 	double Distance;

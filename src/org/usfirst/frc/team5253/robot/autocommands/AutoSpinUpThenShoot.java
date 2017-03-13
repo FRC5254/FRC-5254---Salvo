@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutoSpinUpThenShoot extends CommandGroup {
 
-
 	public AutoSpinUpThenShoot() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());

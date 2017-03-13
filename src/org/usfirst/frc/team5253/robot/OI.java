@@ -1,6 +1,23 @@
 package org.usfirst.frc.team5253.robot;
 
-import org.usfirst.frc.team5253.robot.commands.*;
+import org.usfirst.frc.team5253.robot.commands.ClimberStartClimbing;
+import org.usfirst.frc.team5253.robot.commands.ClimberStopClimbing;
+import org.usfirst.frc.team5253.robot.commands.DrivetrainShiftDown;
+import org.usfirst.frc.team5253.robot.commands.DrivetrainShiftUp;
+import org.usfirst.frc.team5253.robot.commands.GearMechMotorOff;
+import org.usfirst.frc.team5253.robot.commands.GearMechPickUp;
+import org.usfirst.frc.team5253.robot.commands.GearMechPistonUp;
+import org.usfirst.frc.team5253.robot.commands.GearMechPlaceGear;
+import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
+import org.usfirst.frc.team5253.robot.commands.HypeHatStopSpinning;
+import org.usfirst.frc.team5253.robot.commands.IntakeStartIntaking;
+import org.usfirst.frc.team5253.robot.commands.IntakeStopIntaking;
+import org.usfirst.frc.team5253.robot.commands.RedBullWingsExtend;
+import org.usfirst.frc.team5253.robot.commands.RedBullWingsRetract;
+import org.usfirst.frc.team5253.robot.commands.ShooterResetPIDData;
+import org.usfirst.frc.team5253.robot.commands.ShooterSpinUp;
+import org.usfirst.frc.team5253.robot.commands.ShooterStartShooting;
+import org.usfirst.frc.team5253.robot.commands.ShooterStopShooting;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -13,15 +30,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 
 public class OI {
-	
+
 	// defining the controllers for the driver and operator
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 
 	public OI() {
-		
-		
-		//defining driver buttons
+
+		// defining driver buttons
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 3);
@@ -32,8 +48,8 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
-		
-		//defining operator buttons
+
+		// defining operator buttons
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
@@ -44,15 +60,12 @@ public class OI {
 		Button OperatorButtonStart = new JoystickButton(operator, 8);
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
-		
+
 		/*
-		 * set driver buttons to activate commands
-		 * A = start hat spinning/start shooting
-		 * X = spin up fly wheels
-		 * Y = start hat spinning
-		 * Left Bumper = shift up
-		 * Right Bumper = shift down
-		 * B = stop hat spinning/stop shooting
+		 * set driver buttons to activate commands A = start hat spinning/start
+		 * shooting X = spin up fly wheels Y = start hat spinning Left Bumper =
+		 * shift up Right Bumper = shift down B = stop hat spinning/stop
+		 * shooting
 		 */
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
@@ -66,19 +79,12 @@ public class OI {
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 
-		
-		
-		
 		/*
-		 * set operator buttons to activate commands
-		 * A = start intaking balls
-		 * X = start climber (forwards)
-		 * Start = lowers gear mech and intakes to collect gear
-		 * Back = outtakes and lowers to place gear
-		 * Right Bumper = extend wings
-		 * Left Bumper = retract wings
-		 * Y = raises the gear mech
-		 * B = stop intaking balls & stop climbing & stop gear motor
+		 * set operator buttons to activate commands A = start intaking balls X
+		 * = start climber (forwards) Start = lowers gear mech and intakes to
+		 * collect gear Back = outtakes and lowers to place gear Right Bumper =
+		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
+		 * stop intaking balls & stop climbing & stop gear motor
 		 */
 		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
