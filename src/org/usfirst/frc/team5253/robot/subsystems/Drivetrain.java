@@ -32,7 +32,6 @@ public class Drivetrain extends PIDSubsystem {
 	
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveWithJoystick());
 	}
 	

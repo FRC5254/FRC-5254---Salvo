@@ -14,8 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Shooter extends Subsystem {
 	
-	private static final double ShooterError = Math.abs(20);
+	// private static final double ShooterError = Math.abs(20);
 
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
@@ -42,7 +43,6 @@ public class Shooter extends Subsystem {
 	
 	public Shooter() {
 		
-		
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
@@ -50,14 +50,12 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F);
+		updatePID();
 		System.out.format("Shooter RPM %f F calculated: %f using: %f%n", 
 				RobotMap.SHOOTER_RPM,
 				1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0),
 				shooterMotorTopLeft.getF());
-		shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P);
-		shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I);
-		shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D);
+
 		System.out.format("Shooter P %f I %f D %f%n", 
 				shooterMotorTopLeft.getP(),
 				shooterMotorTopLeft.getI(),
@@ -76,10 +74,18 @@ public class Shooter extends Subsystem {
       	setDefaultCommand(new StopShooting());
     }
     
+    public void updatePID(){	
+    	shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F);
+    	shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P);
+    	shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I);
+    	shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D);	
+    }
+    
     public void spinUp(double shooterRpm) {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f,-12.0f);
+		//updatePID();
 		shooterMotorTopLeft.set(shooterRpm);//SmartDashboard.getNumber("DB/Slider 0", -0.75)
 		
 		if (loop++ > 10) {
@@ -115,6 +121,7 @@ public class Shooter extends Subsystem {
     	
     	shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f,-12.0f);
+		//updatePID();
 		shooterMotorTopLeft.set(shooterRpm);//SmartDashboard.getNumber("DB/Slider 1", -0.75)
 		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
