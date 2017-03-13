@@ -1,3 +1,7 @@
+// fuck you ryan
+
+
+
 
 package org.usfirst.frc.team5253.robot;
 
@@ -60,7 +64,7 @@ public class RobotMap {
 	public static final int HYPE_HAT_MOTOR = 3;//9
 	public static final int INTAKE_MOTOR =  5;//10
 	public static final int CLIMBER_MOTOR = 11;// we no have clmber
-	public static final int GEAR_MECH_MOTOR = 0;//TODO which CAN  if its even a CAN
+	public static final int GEAR_MECH_MOTOR = 0;//TODO which CAN
 	
 	// Shooter tuning values
 	public static final double SHOOTER_RPM = 3250;// RPM is the RPM of the encoder, not the motors old 3500
