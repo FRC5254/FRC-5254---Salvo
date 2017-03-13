@@ -28,7 +28,7 @@ public class GearMechInit extends CommandGroup {
 		// arm.
 		requires(Robot.GearMech);
 
-		addParallel(new GearMechDown());
+		addParallel(new GearMechDown());// TODO is this one up or down
 		addSequential(new GearMechOff());
 	}
 }

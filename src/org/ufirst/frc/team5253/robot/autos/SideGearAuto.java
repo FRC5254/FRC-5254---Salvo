@@ -15,7 +15,7 @@ public class SideGearAuto extends CommandGroup {
 
 	public SideGearAuto(boolean clockwise) {
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());

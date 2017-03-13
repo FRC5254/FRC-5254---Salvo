@@ -12,7 +12,7 @@ public class RightGearAuto extends CommandGroup {
 	public RightGearAuto() {
 
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());

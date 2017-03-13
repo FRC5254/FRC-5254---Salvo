@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.commands.GearHolderDropGear;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -13,7 +12,7 @@ public class GearTenBallAndCrossAuto extends CommandGroup {
 	public GearTenBallAndCrossAuto() {
 
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 		requires(Robot.HypeHat);
 		requires(Robot.Shooter);
 		// Add Commands here:
@@ -33,7 +32,7 @@ public class GearTenBallAndCrossAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 		addSequential(new AutoDriveToDistance(-1.0, 54));
-		addSequential(new GearHolderDropGear());
+		addSequential(new AutoDropGear());
 		addParallel(new AutoDriveToDistance(1.0, 54));
 		addSequential(new AutoTurnRobot(90));
 		addSequential(new AutoSpinUp());

@@ -15,7 +15,7 @@ public class AutoDropGear extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 		System.out.format("DropGearAuto()%n");
 	}
 
@@ -28,7 +28,7 @@ public class AutoDropGear extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.GearHolder.drop();
+		Robot.GearMech.down();
 	}
 
 	// Called just before this Command runs the first time

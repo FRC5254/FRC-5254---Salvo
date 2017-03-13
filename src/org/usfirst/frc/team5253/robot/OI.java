@@ -1,23 +1,6 @@
 package org.usfirst.frc.team5253.robot;
 
-import org.usfirst.frc.team5253.robot.commands.ClimberStartClimbing;
-import org.usfirst.frc.team5253.robot.commands.ClimberStopClimbing;
-import org.usfirst.frc.team5253.robot.commands.DrivetrainShiftDown;
-import org.usfirst.frc.team5253.robot.commands.DrivetrainShiftUp;
-import org.usfirst.frc.team5253.robot.commands.GearMechMotorOff;
-import org.usfirst.frc.team5253.robot.commands.GearMechPickUp;
-import org.usfirst.frc.team5253.robot.commands.GearMechPistonUp;
-import org.usfirst.frc.team5253.robot.commands.GearMechPlaceGear;
-import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
-import org.usfirst.frc.team5253.robot.commands.HypeHatStopSpinning;
-import org.usfirst.frc.team5253.robot.commands.IntakeStartIntaking;
-import org.usfirst.frc.team5253.robot.commands.IntakeStopIntaking;
-import org.usfirst.frc.team5253.robot.commands.RedBullWingsExtend;
-import org.usfirst.frc.team5253.robot.commands.RedBullWingsRetract;
-import org.usfirst.frc.team5253.robot.commands.ShooterResetPIDData;
-import org.usfirst.frc.team5253.robot.commands.ShooterSpinUp;
-import org.usfirst.frc.team5253.robot.commands.ShooterStartShooting;
-import org.usfirst.frc.team5253.robot.commands.ShooterStopShooting;
+import org.usfirst.frc.team5253.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -86,14 +69,13 @@ public class OI {
 		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
 		 * stop intaking balls & stop climbing & stop gear motor
 		 */
-		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
-		OperatorButtonB.whenPressed(new IntakeStopIntaking());
+		OperatorButtonA.whenPressed(new GearMechPickUp());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenPressed(new GearMechPistonUp());
-		OperatorButtonStart.whenPressed(new GearMechPickUp());
-		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
+		OperatorButtonY.whenPressed(new GearMechPistonDown()); // TODO make thase t good
+		OperatorButtonStart.whenPressed(new GearMechPistonUp());
+		// OperatorButtonBack.whenPressed(command);
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		// OperatorButtonLeftJoystickPress.whenPressed(command);

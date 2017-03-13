@@ -10,10 +10,8 @@ import org.ufirst.frc.team5253.robot.autos.TenBallAuto;
 import org.usfirst.frc.team5253.robot.subsystems.Climber;
 import org.usfirst.frc.team5253.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5253.robot.subsystems.FuelTank;
-import org.usfirst.frc.team5253.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5253.robot.subsystems.GearMech;
 import org.usfirst.frc.team5253.robot.subsystems.HypeHat;
-import org.usfirst.frc.team5253.robot.subsystems.Intake;
 import org.usfirst.frc.team5253.robot.subsystems.Shooter;
 
 import com.ctre.CANTalon;
@@ -39,10 +37,8 @@ public class Robot extends IterativeRobot {
 
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static GearMech GearMech = new GearMech();
-	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
-	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
