@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
 		table.putStringArray("Auto List", AutoModes);
 		
 		// Initialize cameras
-		CameraServer.getInstance().startAutomaticCapture(0);
+		// TODO CameraServer.getInstance().startAutomaticCapture(0);
 		//CameraServer.getInstance().startAutomaticCapture(1);
 		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
