@@ -57,7 +57,7 @@ public class Drivetrain extends PIDSubsystem {
 
 		// System.out.format("autoDrive: finalThrottle %f, Turn %f, remaining
 		// %d, ticks %d%n", finalThrottle, Turn, remainingTicks, encoder.get());
-		myRobot.drive(Throttle, Turn);
+		myRobot.arcadeDrive(Throttle, Turn);
 	}
 
 	
