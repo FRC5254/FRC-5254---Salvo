@@ -63,12 +63,13 @@ public class RobotMap {
 	public static final int CLIMBER_MOTOR = 11;// we no have clmber
 	
 	// Shooter tuning values
-	// RPM is the RPM of the encoder, not the motors
-	public static final double SHOOTER_RPM = 3500;
-	public static final double SHOOTER_PID_F = 0.0255;
-	public static final double SHOOTER_PID_P = 0.05;
+	public static final double SHOOTER_RPM = 3325;// RPM is the RPM of the
+													// encoder, not the motors
+													// (old 3500)
+	public static final double SHOOTER_PID_F = 0.0267;
+	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;
-	public static final double SHOOTER_PID_D = 0;
+	public static final double SHOOTER_PID_D = 0.4;
 	
 	//Misc
 	public static final int WHEEL_DIAMETER = 4;
