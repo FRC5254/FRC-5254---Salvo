@@ -25,7 +25,7 @@ public class OPAuto extends CommandGroup {
     			// a CommandGroup containing them would require both the chassis and the
     			// arm.
 
-    			addSequential(new DriveToDistance(.75, -132.5));// 0.6 OG
+    			addSequential(new DriveToDistance(.75, -130));// 0.6 OG
 
     			addSequential(new AutoRedBullWingsExtend());
     			addParallel(new AutoSpinUpThenShoot());
@@ -33,7 +33,6 @@ public class OPAuto extends CommandGroup {
     			addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
     			// addSequential(new TurnRobot(-35));
 
-    			addSequential(new AutoStopRobot());
     			// addSequential(new TurnRobot(10)); //famboyent effect
     			// addSequential(new DriveToDistance(.5, 5)); //get into optimal
     			// shooting spot #wish we had vision
