@@ -1,6 +1,10 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team5253.robot.commands.IntakeStartIntaking;
+=======
+import org.usfirst.frc.team5253.robot.commands.StartIntaking;
+>>>>>>> refs/heads/Comp-Bot
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -28,8 +32,17 @@ public class AutoSpinUpThenShoot extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
+<<<<<<< HEAD
 		addSequential(new AutoSpinUp(2));
 		addSequential(new AutoStartShooting(20));
 		addParallel(new IntakeStartIntaking(true));
 	}
 }
+=======
+		addSequential(new AutoSpinUp());
+		addSequential(new AutoStartShooting());
+		addParallel(new StartIntaking());
+	}
+}
+
+>>>>>>> refs/heads/Comp-Bot

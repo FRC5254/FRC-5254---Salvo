@@ -52,3 +52,7 @@ public class AutoTimerTurn extends Command {
 		return timer.get() > time;
 	}
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/heads/Comp-Bot

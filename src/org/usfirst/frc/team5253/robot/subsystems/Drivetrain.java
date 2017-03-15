@@ -1,9 +1,22 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
+import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
+<<<<<<< HEAD
 import org.usfirst.frc.team5253.robot.commands.DrivetrainDriveWithJoystick;
 
+=======
+import org.usfirst.frc.team5253.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team5253.robot.commands.ShiftDown;
+
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+>>>>>>> refs/heads/Comp-Bot
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -23,12 +36,32 @@ public class Drivetrain extends PIDSubsystem {
 	private int remainingTicks;
 	private double Throttle;
 	private double distance;
+<<<<<<< HEAD
 	// private static double camera = 0;
 
 	public Drivetrain() {
 		super("DriveTrain", .02, .002, .2);
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
+=======
+	//private static double camera = 0;
+	
+	public Drivetrain () {
+		super("DriveTrain", .02, .002, .2);	
+		setAbsoluteTolerance(3.0);
+		getPIDController().setContinuous(true);		
+	}	
+	
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		setDefaultCommand(new DriveWithJoystick());
+	}
+	
+	public void drive(double Throttle, double Turn){
+		myRobot.arcadeDrive(Throttle, Turn);
+		
+>>>>>>> refs/heads/Comp-Bot
 	}
 
 	public void autoDriveInitialize(double Throttle, double distance) {
@@ -88,9 +121,37 @@ public class Drivetrain extends PIDSubsystem {
 		encoder.setReverseDirection(true);
 		encoder.setSamplesToAverage(7);
 	}
+<<<<<<< HEAD
 
 	public void resetGyro() {
 		gyro.reset();
+=======
+	
+	public void autoDriveInitialize(double Throttle, double distance) {
+		this.distance = distance;
+		this.Throttle = Throttle;
+		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI))  * RobotMap.WHEEL_TICKS * RobotMap.GEAR_RATIO) ;
+		initEncoder();
+	  	resetGyro();
+	}
+	public void autoDrive() {
+		double sign = Math.signum(distance);
+		double Turn = - sign * getAngle() * DKp;
+		remainingTicks = (int) (sign * (Math.abs(finalTicks) - Math.abs(encoder.get())));
+		double finalThrottle;
+	
+		finalThrottle = 0.4;
+		if (Math.abs(remainingTicks) < 1000) {
+			finalThrottle = Math.abs(remainingTicks) / 1000;
+			if (finalThrottle < 0.2) {
+				finalThrottle = 0.2;
+			}
+		}
+		finalThrottle = - finalThrottle * sign;
+		
+//		System.out.format("autoDrive: finalThrottle %f, Turn %f, remaining %d, ticks %d%n",  finalThrottle, Turn, remainingTicks, encoder.get());
+		myRobot.drive(finalThrottle, Turn);
+>>>>>>> refs/heads/Comp-Bot
 	}
 
 	@Override

@@ -13,10 +13,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class HypeHat extends Subsystem {
 
+<<<<<<< HEAD
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	private CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
 
+=======
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+	CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
+	
+>>>>>>> refs/heads/Comp-Bot
 	public HypeHat() {
 
 		HatMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);

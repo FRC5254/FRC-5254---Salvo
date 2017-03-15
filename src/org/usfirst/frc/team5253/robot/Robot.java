@@ -28,7 +28,13 @@ import com.ctre.CANTalon;
  * directory.
  */
 public class Robot extends IterativeRobot {
+<<<<<<< HEAD
 
+=======
+	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
+
+	NetworkTable table;
+>>>>>>> refs/heads/Comp-Bot
 	public static OI oi;
 
 	public static Drivetrain Drivetrain = new Drivetrain();
@@ -49,9 +55,50 @@ public class Robot extends IterativeRobot {
 	private final String AutoRightGear = "Right Gear";
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
+	private final String GearBaseLine = "Center Gear and Cross Base Line";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
+<<<<<<< HEAD
 	private final String OP = "Auto Bots Assemble";
 
+=======
+	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
+	private final String OP = "OP Auto";
+	
+	private final String[] AutoModes = {
+			
+			NothingAuto,
+			CrossBaseLine,
+			AutoCenterGear,
+			AutoRightGear,
+			AutoLeftGear,
+			TenBall,
+			GearBaseLine,
+			GearTenBall,
+			GearTenBallAndCross,
+			OP,
+			
+	};
+	
+	Command autonomousCommand;
+	
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+	@Override
+	public void robotInit() {
+		oi = new OI();
+		
+		// Send auto modes
+		NetworkTable table = NetworkTable.getTable("SmartDashboard");
+		table.putStringArray("Auto List", AutoModes);
+		
+		// Initialize cameras
+		// TODO CameraServer.getInstance().startAutomaticCapture(0);
+		//CameraServer.getInstance().startAutomaticCapture(1);
+		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+	}
+>>>>>>> refs/heads/Comp-Bot
 
 
 
@@ -78,6 +125,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
+<<<<<<< HEAD
 
 
 		switch (autoSelected) {
@@ -117,6 +165,57 @@ public class Robot extends IterativeRobot {
 			break;
 		}
 
+=======
+		
+		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
+		
+	    switch (autoSelected) {
+	    /*TenBall,
+			GearBaseLine,
+			GearTenBall,
+			GearTenBallAndCross,
+			OP*/
+    	
+	    case CrossBaseLine:
+	    	autonomousCommand = new CrossBaseLineAuto();
+	    	break;
+	    	
+	    case AutoCenterGear:
+	    	autonomousCommand = new GearCenterAuto();
+	    	break;
+	    	
+	    case AutoRightGear:
+	    	autonomousCommand = new SideGearAuto(false);
+	    	break;
+	    	
+	    case AutoLeftGear:
+	    	autonomousCommand = new SideGearAuto(true);
+	    	break;
+	    	
+	    case TenBall:
+	    	autonomousCommand = new TenBallAuto();
+	    	break;
+	    	
+	    case GearBaseLine:
+	    	autonomousCommand = new GearBaseLineAuto();
+	    	break;
+	    	
+	    case GearTenBall:
+	    	autonomousCommand = new GearAndTenBallAuto();
+	    	break;
+	    	
+	    case GearTenBallAndCross:
+	    	autonomousCommand = new  GearTenBallAndCrossAuto();
+	    	break;
+	    	
+	    case OP:
+	    	autonomousCommand = new OPAuto();
+	    	break;
+	    	
+	    default:
+	    	break;
+	    }
+>>>>>>> refs/heads/Comp-Bot
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {

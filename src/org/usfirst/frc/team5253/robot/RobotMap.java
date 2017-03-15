@@ -1,3 +1,7 @@
+// fuck you ryan
+
+
+
 
 package org.usfirst.frc.team5253.robot;
 
@@ -51,6 +55,7 @@ public class RobotMap {
 	// CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
+<<<<<<< HEAD
 
 	public static final int SHOOTER_MOTOR_BOTTOM = 4;// TODO was 8
 	public static final int HYPE_HAT_MOTOR = 3;// 9
@@ -61,6 +66,15 @@ public class RobotMap {
 
 	// Shooter tuning values
 	public static final double SHOOTER_RPM = 3325;// RPM is the RPM of the
+=======
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;// was 8
+	public static final int HYPE_HAT_MOTOR = 3;//9
+	public static final int INTAKE_MOTOR =  5;//10
+	public static final int CLIMBER_MOTOR = 11;// we no have clmber
+	
+	// Shooter tuning values
+	public static final double SHOOTER_RPM = 3500;// RPM is the RPM of the
+>>>>>>> refs/heads/Comp-Bot
 													// encoder, not the motors
 													// (old 3500)
 	public static final double SHOOTER_PID_F = 0.0267;

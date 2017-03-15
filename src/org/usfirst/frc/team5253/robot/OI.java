@@ -32,6 +32,7 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
+		//AxisType DriverAxisRightTrigger = new AxisType();
 		
 		//defining operator buttons
 		Button OperatorButtonA = new JoystickButton(operator, 1);
@@ -45,6 +46,7 @@ public class OI {
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
+<<<<<<< HEAD
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
 		DriverButtonB.whenPressed(new ShooterStopShooting());
@@ -86,6 +88,46 @@ public class OI {
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		// OperatorButtonLeftJoystickPress.whenPressed(command);
 		// OperatorButtonRightJoystickPress.whenPressed(command);
+=======
+	
+		DriverButtonA.whenPressed(new StartShooting());
+		DriverButtonA.whenPressed(new StartSpinning());
+		DriverButtonB.whenPressed(new StopShooting());
+		DriverButtonB.whenPressed(new StopSpinning());
+		DriverButtonX.whenPressed(new SpinUp());
+		DriverButtonY.whenPressed(new StartSpinning());
+		DriverButtonBumperLeft.whenPressed(new ShiftUp());
+		DriverButtonBumperLeft.whenInactive(new ShiftDown());
+		DriverButtonBumperRight.whenPressed(new ShiftUp());
+		DriverButtonBumperRight.whenInactive(new ShiftDown());
+		DriverButtonBack.whenActive(new SlowTrun());
+		DriverButtonStart.whenPressed(new ResetPIDData());
+		DriverButtonBack.whenInactive(new DriveWithJoystick());
+		//DriverButtonStart.whenPressed(command);
+		//DriverButtonLeftJoystickPress.whenPressed(command);
+		//DriverButtonRightJoystickPress.whenPressed(command);
+		if (driver.getTrigger(Hand.kRight)) {
+			Robot.Intake.startIntake(0.8);;
+		} else if (driver.getTrigger(Hand.kLeft)) {
+			Robot.Intake.startIntake(-0.8);
+		} else {
+			Robot.Intake.stopIntake();
+		}//TODO does this work??
+		
+		
+		OperatorButtonA.whenPressed(new StartIntaking());
+		OperatorButtonB.whenPressed(new StopIntaking());
+		OperatorButtonB.whenPressed(new StopClimbing());
+		OperatorButtonX.whenPressed(new StartClimbing());
+		OperatorButtonY.whenActive(new DropGear());
+		OperatorButtonY.whenInactive(new RaiseGear());
+		OperatorButtonBack.whenPressed(new GearIntakeIn());
+		OperatorButtonStart.whenPressed(new GearIntakeOut());
+		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
+		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+		//OperatorButtonLeftJoystickPress.whenPressed(command);
+		//OperatorButtonRightJoystickPress.whenPressed(command);
+>>>>>>> refs/heads/Comp-Bot
 	}
 
 }

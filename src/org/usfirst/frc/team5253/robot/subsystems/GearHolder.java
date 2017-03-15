@@ -1,7 +1,12 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
+<<<<<<< HEAD
 import org.usfirst.frc.team5253.robot.commands.GearHolderRaiseGear;
+=======
+import org.usfirst.frc.team5253.robot.commands.GearIntakeIn;
+import org.usfirst.frc.team5253.robot.commands.RaiseGear;
+>>>>>>> refs/heads/Comp-Bot
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -19,7 +24,10 @@ public class GearHolder extends Subsystem {
 	DoubleSolenoid(RobotMap.GEAR_HOLDER_PISTON_EXTEND,
 	RobotMap.GEAR_HOLDER_PISTON_RETRACT);
 	private Solenoid gearIntake = new Solenoid(RobotMap.GEAR_INTAKE_PISTION);
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/Comp-Bot
 	public GearHolder() {
 	}
 
