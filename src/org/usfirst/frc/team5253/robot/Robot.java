@@ -1,13 +1,5 @@
- 
+
 package org.usfirst.frc.team5253.robot;
-
-
-import org.ufirst.frc.team5253.robot.autos.*;
-import org.usfirst.frc.team5253.robot.autocommands.*;
-import org.usfirst.frc.team5253.robot.subsystems.*;
-
-
-import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -17,8 +9,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.ctre.CANTalon;
+import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.subsystems.*;
 
+import com.ctre.CANTalon;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,26 +22,18 @@ import com.ctre.CANTalon;
  * directory.
  */
 public class Robot extends IterativeRobot {
-<<<<<<< HEAD
-
-=======
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
 
 	NetworkTable table;
->>>>>>> refs/heads/Comp-Bot
 	public static OI oi;
-
 	public static Drivetrain Drivetrain = new Drivetrain();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
-
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
-	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
-	NetworkTable table;
-
+		
 	// Auto modes
 	private final String NothingAuto = "Nothing";
 	private final String CrossBaseLine = "Cross Base Line";
@@ -57,10 +43,6 @@ public class Robot extends IterativeRobot {
 	private final String TenBall = "Shoot Ten Balls";
 	private final String GearBaseLine = "Center Gear and Cross Base Line";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
-<<<<<<< HEAD
-	private final String OP = "Auto Bots Assemble";
-
-=======
 	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
 	private final String OP = "OP Auto";
 	
@@ -98,17 +80,21 @@ public class Robot extends IterativeRobot {
 		//CameraServer.getInstance().startAutomaticCapture(1);
 		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
->>>>>>> refs/heads/Comp-Bot
 
+	/**
+	 * This function is called once each time the robot enters Disabled mode.
+	 * You can use it to reset any subsystem information you want to clear when
+	 * the robot is disabled.
+	 */
+	@Override
+	public void disabledInit() {
 
+	}
 
-	private final String[] AutoModes = {
-
-			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
-
-	};
-
-	Command autonomousCommand;
+	@Override
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
+	}
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
@@ -121,51 +107,9 @@ public class Robot extends IterativeRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
-	
+	@Override
 	public void autonomousInit() {
-
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
-<<<<<<< HEAD
-
-
-		switch (autoSelected) {
-		/*
-		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
-		 */
-
-		case CrossBaseLine:
-			autonomousCommand = new CrossBaseLineAuto();
-			break;
-
-		case AutoCenterGear:
-			autonomousCommand = new GearCenterAuto();
-			break;
-
-		case AutoRightGear:
-			autonomousCommand = new SideGearAuto(false);
-			break;
-
-		case AutoLeftGear:
-			autonomousCommand = new SideGearAuto(true);
-			break;
-
-		case TenBall:
-			autonomousCommand = new TenBallAuto();
-			break;
-
-		case GearTenBall:
-			autonomousCommand = new GearAndTenBallAuto();
-			break;
-
-		case OP:
-			autonomousCommand = new OPAuto();
-			break;
-
-		default:
-			break;
-		}
-
-=======
 		
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
 		
@@ -192,9 +136,10 @@ public class Robot extends IterativeRobot {
 	    	autonomousCommand = new SideGearAuto(true);
 	    	break;
 	    	
-	    case TenBall:
-	    	autonomousCommand = new TenBallAuto();
-	    	break;
+//	    case TenBall:
+//	    	autonomousCommand = new TenBallAuto();
+//	    	break;
+	    	// TODO whay this not ok?
 	    	
 	    case GearBaseLine:
 	    	autonomousCommand = new GearBaseLineAuto();
@@ -204,10 +149,6 @@ public class Robot extends IterativeRobot {
 	    	autonomousCommand = new GearAndTenBallAuto();
 	    	break;
 	    	
-	    case GearTenBallAndCross:
-	    	autonomousCommand = new  GearTenBallAndCrossAuto();
-	    	break;
-	    	
 	    case OP:
 	    	autonomousCommand = new OPAuto();
 	    	break;
@@ -215,7 +156,6 @@ public class Robot extends IterativeRobot {
 	    default:
 	    	break;
 	    }
->>>>>>> refs/heads/Comp-Bot
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
@@ -227,52 +167,17 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during autonomous
 	 */
-	
+	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
-	
-	public void disabledInit() {
-
-	}
-
-	
-	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
-	}
-
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
-	
-	public void robotInit() {
-		oi = new OI();
-
-		// Send auto modes
-		NetworkTable table = NetworkTable.getTable("SmartDashboard");
-		table.putStringArray("Auto List", AutoModes);
-
-		// Initialize cameras
-		CameraServer.getInstance().startAutomaticCapture(0);
-		// CameraServer.getInstance().startAutomaticCapture(1);
-		// SmartDashboard.putNumber("Shooter RPM",
-		// shooterMotorTopLeft.getSpeed());
-	}
-
-	
+	@Override
 	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
@@ -280,16 +185,15 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during operator control
 	 */
-	
+	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		// if the right trigger is pressed down use slowturn
 	}
 
 	/**
 	 * This function is called periodically during test mode
 	 */
-	
+	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
 	}

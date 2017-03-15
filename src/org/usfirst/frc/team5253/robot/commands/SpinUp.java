@@ -2,10 +2,6 @@ package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/heads/Comp-Bot
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

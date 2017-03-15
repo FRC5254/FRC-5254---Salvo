@@ -14,17 +14,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Intake extends Subsystem {
 
-<<<<<<< HEAD
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	private CANTalon intakeMotor = new CANTalon(RobotMap.INTAKE_MOTOR);
 
-=======
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	CANTalon intakeMotor = new CANTalon(RobotMap.INTAKE_MOTOR);
-	
->>>>>>> refs/heads/Comp-Bot
 	public Intake() {
 		intakeMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		intakeMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);

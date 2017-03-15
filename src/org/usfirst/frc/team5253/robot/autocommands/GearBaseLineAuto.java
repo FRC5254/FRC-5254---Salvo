@@ -34,8 +34,8 @@ public class GearBaseLineAuto extends CommandGroup {
 //    	addSequential(new DropGearAuto());
 //    	addSequential(new DriveToDistance(1.0, 54));
     	addSequential(new GearCenterAuto());
-    	addSequential(new TurnRobot(45));
-    	addSequential(new DriveToDistance(1.0, 122));
+    	addSequential(new AutoTurnRobot(45));
+    	addSequential(new AutoDriveToDistance(1.0, 122));
     	
    
     }

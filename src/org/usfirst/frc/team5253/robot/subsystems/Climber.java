@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
@@ -13,18 +14,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Climber extends Subsystem {
 
-<<<<<<< HEAD
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
-	private CANTalon climberMotor2 = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
+	private CANTalon climberMotor2 = new CANTalon(RobotMap.CLIMBER_MOTOR_2);
 
-=======
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
-	
->>>>>>> refs/heads/Comp-Bot
 	public Climber() {
 
 		climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
