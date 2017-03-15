@@ -1,9 +1,11 @@
  
 package org.usfirst.frc.team5253.robot;
 
+
 import org.ufirst.frc.team5253.robot.autos.*;
 import org.usfirst.frc.team5253.robot.autocommands.*;
 import org.usfirst.frc.team5253.robot.subsystems.*;
+
 
 import com.ctre.CANTalon;
 
@@ -30,11 +32,11 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	public static Drivetrain Drivetrain = new Drivetrain();
-	public static GearMech GearMech = new GearMech();
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
 	public static Intake Intake = new Intake();
+
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
@@ -49,6 +51,8 @@ public class Robot extends IterativeRobot {
 	private final String TenBall = "Shoot Ten Balls";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
 	private final String OP = "Auto Bots Assemble";
+
+
 
 
 	private final String[] AutoModes = {
@@ -72,6 +76,7 @@ public class Robot extends IterativeRobot {
 	 */
 	
 	public void autonomousInit() {
+
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
 
 
@@ -168,6 +173,7 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}

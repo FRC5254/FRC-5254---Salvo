@@ -20,11 +20,8 @@ public class RobotMap {
 
 	// Solenoids
 	public static final int SHIFTING_PISTON = 0;
-	public static final int GEAR_PICK_UP_PISTON_EXTEND = 2;
-	public static final int GEAR_PICK_UP_PISTON_RETRACT = 3;
-	// TODO remove the GearHolder code
-	// public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
-	// public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
+	public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
+	public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
 	public static final int RED_BULL_WINGS_PISTION_EXTEND = 4;
 	public static final int RED_BULL_WINGS_PISTION_RETRACT = 5;
 	public static final int GEAR_INTAKE_PISTION = 6;
@@ -49,6 +46,7 @@ public class RobotMap {
 	public static final int DRIVE_MOTOR_LEFT2 = 1;
 	public static final int DRIVE_MOTOR_RIGHT1 = 2;// 14
 	public static final int DRIVE_MOTOR_RIGHT2 = 3;// 15
+
 
 	// CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;

@@ -25,7 +25,7 @@ public class DrivetrainSlowTrun extends Command {
 	@Override
 	protected void execute() {
 		Robot.Drivetrain.slowTrun(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS),
-				Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS) * 0.5);
+				Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS));
 	}
 
 	// Called just before this Command runs the first time

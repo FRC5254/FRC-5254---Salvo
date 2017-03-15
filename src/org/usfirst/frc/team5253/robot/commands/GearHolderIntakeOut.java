@@ -12,6 +12,7 @@ public class GearHolderIntakeOut extends Command {
 	public GearHolderIntakeOut() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		requires(Robot.GearHolder);
 	}
 
 	// Called once after isFinished returns true

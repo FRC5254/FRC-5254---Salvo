@@ -44,34 +44,28 @@ public class OI {
 		Button OperatorButtonStart = new JoystickButton(operator, 8);
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
-		
-		/*
-		 * set driver buttons to activate commands
-		 * A = start hat spinning/start shooting
-		 * X = spin up fly wheels
-		 * Y = start hat spinning
-		 * Left Bumper = shift up
-		 * Right Bumper = shift down
-		 * B = stop hat spinning/stop shooting
-		 */
+
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
 		DriverButtonB.whenPressed(new ShooterStopShooting());
 		DriverButtonB.whenPressed(new HypeHatStopSpinning());
 		DriverButtonX.whenPressed(new ShooterSpinUp());
 		DriverButtonY.whenPressed(new HypeHatStartSpinning());
+		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+		DriverButtonBack.whenPressed(new DrivetrainSlowTrun());
+		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		DriverButtonStart.whenPressed(new ShooterResetPIDData());
+		
 
 		
 		
 		
 		/*
 		 * set operator buttons to activate commands
-		 * A = start intaking balls
+		 * A = start intaking ballssss
 		 * X = start climber (forwards)
 		 * Start = lowers gear mech and intakes to collect gear
 		 * Back = outtakes and lowers to place gear
@@ -83,11 +77,11 @@ public class OI {
 		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
-		OperatorButtonB.whenPressed(new GearMechMotorOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenPressed(new GearMechPistonUp());
-		OperatorButtonStart.whenPressed(new GearMechPickUp());
-		OperatorButtonBack.whenPressed(new GearMechPlaceGear());
+		OperatorButtonY.whenActive(new GearHolderDropGear());
+		OperatorButtonY.whenInactive(new GearHolderRaiseGear());
+		OperatorButtonStart.whenPressed(new GearHolderIntakeOut());
+		OperatorButtonBack.whenPressed(new GearHolderIntakeIn());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		// OperatorButtonLeftJoystickPress.whenPressed(command);
