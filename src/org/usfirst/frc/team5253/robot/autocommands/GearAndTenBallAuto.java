@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.commands.DropGear;
 import org.usfirst.frc.team5253.robot.commands.StartShooting;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -38,8 +37,8 @@ public class GearAndTenBallAuto extends CommandGroup {
 //    	addSequential(new DropGear());
 //    	addParallel(new DriveToDistance(1.0, 54));
     	addSequential(new GearCenterAuto());
-    	addSequential(new TurnRobot(90));
-    	addSequential(new AutoSpinUp());
+    	addSequential(new AutoTurnRobot(90));
+    	addSequential(new AutoSpinUp(1));
     	addSequential(new StartShooting());
     }
 }

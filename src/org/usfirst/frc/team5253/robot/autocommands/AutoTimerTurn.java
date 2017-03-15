@@ -52,4 +52,3 @@ public class AutoTimerTurn extends Command {
 		return timer.get() > time;
 	}
 }
-

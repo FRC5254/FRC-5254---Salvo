@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import org.usfirst.frc.team5253.robot.commands.StartIntaking;
+
+import org.usfirst.frc.team5253.robot.commands.IntakeStartIntaking;
+
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -28,9 +30,10 @@ public class AutoSpinUpThenShoot extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoSpinUp());
-		addSequential(new AutoStartShooting());
-		addParallel(new StartIntaking());
+
+		addSequential(new AutoSpinUp(2));
+		addSequential(new AutoStartShooting(20));
+		addParallel(new IntakeStartIntaking(true));
 	}
 }
 

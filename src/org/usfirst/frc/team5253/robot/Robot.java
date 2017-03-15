@@ -136,9 +136,10 @@ public class Robot extends IterativeRobot {
 	    	autonomousCommand = new SideGearAuto(true);
 	    	break;
 	    	
-	    case TenBall:
-	    	autonomousCommand = new TenBallAuto();
-	    	break;
+//	    case TenBall:
+//	    	autonomousCommand = new TenBallAuto();
+//	    	break;
+	    	// TODO whay this not ok?
 	    	
 	    case GearBaseLine:
 	    	autonomousCommand = new GearBaseLineAuto();
@@ -146,10 +147,6 @@ public class Robot extends IterativeRobot {
 	    	
 	    case GearTenBall:
 	    	autonomousCommand = new GearAndTenBallAuto();
-	    	break;
-	    	
-	    case GearTenBallAndCross:
-	    	autonomousCommand = new  GearTenBallAndCrossAuto();
 	    	break;
 	    	
 	    case OP:

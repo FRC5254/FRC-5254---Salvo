@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
-import org.usfirst.frc.team5253.robot.commands.StopShooting;
+import org.usfirst.frc.team5253.robot.commands.ShooterStopShooting;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -73,7 +73,7 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.reverseSensor(false);
 	}
     public void initDefaultCommand() {
-      	setDefaultCommand(new StopShooting());
+      	setDefaultCommand(new ShooterStopShooting());
     }
     
     public void spinUp(double shooterRpm) {

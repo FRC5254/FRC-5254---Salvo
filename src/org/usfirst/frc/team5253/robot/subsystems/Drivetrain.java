@@ -2,8 +2,7 @@ package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
-import org.usfirst.frc.team5253.robot.commands.DriveWithJoystick;
-import org.usfirst.frc.team5253.robot.commands.ShiftDown;
+import org.usfirst.frc.team5253.robot.commands.DrivetrainDriveWithJoystick;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Sendable;
@@ -40,7 +39,7 @@ public class Drivetrain extends PIDSubsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		setDefaultCommand(new DriveWithJoystick());
+		setDefaultCommand(new DrivetrainDriveWithJoystick());
 	}
 	
 	public void drive(double Throttle, double Turn){

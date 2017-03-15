@@ -30,11 +30,10 @@ public class RightGearAuto extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveToDistance(1.0, 84));
-    	addSequential(new TurnRobot(-60));
-    	addSequential(new DriveToDistance(1.0, 12));
-    	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, -24));
-    	
+    	addSequential(new AutoDriveToDistance(1.0, 84));
+    	addSequential(new AutoTurnRobot(-60));
+    	addSequential(new AutoDriveToDistance(1.0, 12));
+    	addSequential(new AutoDropGear());
+    	addSequential(new AutoDriveToDistance(1.0, -24));
     }
 }

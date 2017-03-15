@@ -1,9 +1,6 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.autocommands.TurnRobot;
-import org.usfirst.frc.team5253.robot.autocommands.DriveToDistance;
-import org.usfirst.frc.team5253.robot.autocommands.DropGearAuto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -36,10 +33,10 @@ public class SideGearAuto extends CommandGroup {
     	if (clockwise == false) {
     		angle = -angle;
     	}
-    	addSequential(new DriveToDistance(1.0, 96));
-    	addSequential(new TurnRobot(angle));
-    	addSequential(new DriveToDistance(1.0, 12));
-    	addSequential(new DropGearAuto());
-    	addSequential(new DriveToDistance(1.0, -24));
+    	addSequential(new AutoDriveToDistance(1.0, 96));
+    	addSequential(new AutoTurnRobot(angle));
+    	addSequential(new AutoDriveToDistance(1.0, 12));
+    	addSequential(new AutoDropGear());
+    	addSequential(new AutoDriveToDistance(1.0, -24));
     }
 }
