@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoDriveToDistance extends Command {
 
-
 	double Throttle;
 	double Turn;
 	double Distance;
@@ -18,20 +17,9 @@ public class AutoDriveToDistance extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Drivetrain);
-		this.Throttle = Throttle;
+		this.Throttle = Throttle; // TODO ask Rorster if this works that it gets
+									// the throttle
 		this.Distance = Distance;
-	}
-
-	// Called once after isFinished returns true
-	@Override
-	protected void end() {
-		System.out.println("End");
-	}
-
-	// Called repeatedly when this Command is scheduled to run
-	@Override
-	protected void execute() {
-		Robot.Drivetrain.autoDrive();
 	}
 
 	// Called just before this Command runs the first time
@@ -41,16 +29,27 @@ public class AutoDriveToDistance extends Command {
 		System.out.format("DriveToDistance(%f,%f)%n", this.Throttle, this.Distance);
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
+	// Called repeatedly when this Command is scheduled to run
 	@Override
-	protected void interrupted() {
-		end();
+	protected void execute() {
+		Robot.Drivetrain.autoDrive();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
 		return Robot.Drivetrain.driveAutoIsFinished();
+	}
+
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
 	}
 }

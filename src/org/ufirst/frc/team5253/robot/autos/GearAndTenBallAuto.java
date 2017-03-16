@@ -3,13 +3,13 @@ package org.ufirst.frc.team5253.robot.autos;
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.*;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class GearAndTenBallAuto extends CommandGroup {
-
 
 	public GearAndTenBallAuto() {
 
@@ -34,12 +34,17 @@ public class GearAndTenBallAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		// addSequential(new DriveToDistance(1.0, 54));
-		// addSequential(new GearHolderDropGear());
-		// addParallel(new DriveToDistance(1.0, 54));
+		// TODO do the driver allaince color code shit here an logic it out
+		double turn = 1;
+		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
+			turn = -turn;
+		}
+
 		addSequential(new AutoSpinUp(2));
 		addSequential(new AutoStartShooting(3));
 		addSequential(new AutoTurnRobot(90));
+		// TODO figure out his line up mang
+		// addSequential(new AutoDriveToDistance(fuck(Throttle), you(Distance));
 		addSequential(new GearCenterAuto());
 	}
 }

@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.ufirst.frc.team5253.robot.autos.*;
+//import org.usfirst.frc.team5253.robot.autocommands.*; TODO is this where code get the broke?
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
@@ -33,7 +34,7 @@ public class Robot extends IterativeRobot {
 	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
-		
+
 	// Auto modes
 	private final String NothingAuto = "Nothing";
 	private final String CrossBaseLine = "Cross Base Line";
@@ -41,28 +42,17 @@ public class Robot extends IterativeRobot {
 	private final String AutoRightGear = "Right Gear";
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
-	private final String GearBaseLine = "Center Gear and Cross Base Line";
-	private final String GearTenBall = "Center Gear and Ten Ball Shot";
-	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
+	private final String GearTenBall = "Ten Ball Shot and Center Gear";
 	private final String OP = "OP Auto";
-	
+
 	private final String[] AutoModes = {
-			
-			NothingAuto,
-			CrossBaseLine,
-			AutoCenterGear,
-			AutoRightGear,
-			AutoLeftGear,
-			TenBall,
-			GearBaseLine,
-			GearTenBall,
-			GearTenBallAndCross,
-			OP,
-			
+
+			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
+
 	};
-	
+
 	Command autonomousCommand;
-	
+
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -70,14 +60,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		
+
 		// Send auto modes
 		NetworkTable table = NetworkTable.getTable("SmartDashboard");
 		table.putStringArray("Auto List", AutoModes);
-		
+
 		// Initialize cameras
 		// TODO CameraServer.getInstance().startAutomaticCapture(0);
-		//CameraServer.getInstance().startAutomaticCapture(1);
+		CameraServer.getInstance().startAutomaticCapture(1);
 		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
 
@@ -110,52 +100,45 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
-		
+
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
-		
-	    switch (autoSelected) {
-	    /*TenBall,
-			GearBaseLine,
-			GearTenBall,
-			GearTenBallAndCross,
-			OP*/
-    	
-	    case CrossBaseLine:
-	    	autonomousCommand = new CrossBaseLineAuto();
-	    	break;
-	    	
-	    case AutoCenterGear:
-	    	autonomousCommand = new GearCenterAuto();
-	    	break;
-	    	
-	    case AutoRightGear:
-	    	autonomousCommand = new SideGearAuto(false);
-	    	break;
-	    	
-	    case AutoLeftGear:
-	    	autonomousCommand = new SideGearAuto(true);
-	    	break;
-	    	
-//	    case TenBall:
-//	    	autonomousCommand = new TenBallAuto();
-//	    	break;
-	    	// TODO whay this not ok?
-	    	
-	    case GearBaseLine:
-	    	autonomousCommand = new GearBaseLineAuto();
-	    	break;
-	    	
-	    case GearTenBall:
-	    	autonomousCommand = new GearAndTenBallAuto();
-	    	break;
-	    	
-	    case OP:
-	    	autonomousCommand = new OPAuto();
-	    	break;
-	    	
-	    default:
-	    	break;
-	    }
+
+		switch (autoSelected) {
+		/*
+		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
+		 */
+
+		case CrossBaseLine:
+			autonomousCommand = new CrossBaseLineAuto();
+			break;
+
+		case AutoCenterGear:
+			autonomousCommand = new GearCenterAuto();
+			break;
+
+		case AutoRightGear:
+			autonomousCommand = new SideGearAuto(false);
+			break;
+
+		case AutoLeftGear:
+			autonomousCommand = new SideGearAuto(true);
+			break;
+
+		case TenBall:
+			autonomousCommand = new TenBallAuto();
+			break;
+
+		case GearTenBall:
+			autonomousCommand = new GearAndTenBallAuto();
+			break;
+
+		case OP:
+			autonomousCommand = new OPAuto();
+			break;
+
+		default:
+			break;
+		}
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {

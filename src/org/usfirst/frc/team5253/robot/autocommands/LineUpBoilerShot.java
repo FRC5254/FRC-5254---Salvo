@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LineUpBoilerShot extends Command {
 
-
 	double BoilerDistance = SmartDashboard.getDouble("Boiler Distance");
 	double BoilerX = SmartDashboard.getDouble("Boiler Vision X");
 	double BoilerY = SmartDashboard.getDouble("Boiler Vision Y");
@@ -20,9 +19,9 @@ public class LineUpBoilerShot extends Command {
 		// eg. requires(chassis);
 	}
 
-	// Called once after isFinished returns true
+	// Called just before this Command runs the first time
 	@Override
-	protected void end() {
+	protected void initialize() {
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -40,20 +39,20 @@ public class LineUpBoilerShot extends Command {
 
 	}
 
-	// Called just before this Command runs the first time
+	// Make this return true when this Command no longer needs to run execute()
 	@Override
-	protected void initialize() {
+	protected boolean isFinished() {
+		return false;
+	}
+
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		return false;
 	}
 }

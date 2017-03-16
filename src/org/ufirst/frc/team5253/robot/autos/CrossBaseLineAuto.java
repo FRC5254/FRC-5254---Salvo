@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class CrossBaseLineAuto extends CommandGroup {
 
-
 	public CrossBaseLineAuto() {
 
 		System.out.format("Crossbaseline");
