@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class OPAuto extends CommandGroup {
 
-
-	public OPAuto() {
+	int sign;
+	public OPAuto(Boolean alliance) {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -27,13 +27,18 @@ public class OPAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
+		if (alliance = true){
+			sign = 1;
+		}else{
+			sign = -1;
+		}
 
-		addSequential(new AutoDriveToDistance(.75, -132.5));// 0.6 OG
+		addSequential(new AutoDriveToDistance(.75, sign * 132.5));// 0.6 OG
 
 		addSequential(new AutoRedBullWingsExtend());
 		addParallel(new AutoSpinUpThenShoot());
 
-		addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
+		addSequential(new AutoTimerTurn(sign * -1, 0.35)); // 0.2 OG
 		// addSequential(new TurnRobot(-35));
 
 		addSequential(new AutoStopRobot());

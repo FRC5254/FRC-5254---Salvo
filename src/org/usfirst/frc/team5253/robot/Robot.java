@@ -50,14 +50,15 @@ public class Robot extends IterativeRobot {
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
-	private final String OP = "Auto Bots Assemble";
-
+	private final String OPRedAlliance = "Auto Bots Assemble (Red Alliance)";
+	private final String OPBlueAlliance = "Auto Botsd Assemble (Blue Alliance)";
 
 
 
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
+			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OPRedAlliance,
+			OPBlueAlliance
 
 	};
 
@@ -109,10 +110,13 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new GearAndTenBallAuto();
 			break;
 
-		case OP:
-			autonomousCommand = new OPAuto();
+		case OPRedAlliance:
+			autonomousCommand = new OPAuto(true);
 			break;
 
+		case OPBlueAlliance: 
+		autonomousCommand = new OPAuto(false);
+			
 		default:
 			break;
 		}
