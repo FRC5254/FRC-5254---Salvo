@@ -31,7 +31,6 @@ public class Robot extends IterativeRobot {
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
-	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
 
@@ -66,9 +65,10 @@ public class Robot extends IterativeRobot {
 		table.putStringArray("Auto List", AutoModes);
 
 		// Initialize cameras
-		// TODO CameraServer.getInstance().startAutomaticCapture(0);
-		CameraServer.getInstance().startAutomaticCapture(1);
+		// TODO CameraServer.getInstance().startAutomaticCapture(1);
+		CameraServer.getInstance().startAutomaticCapture(0);
 		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+		
 	}
 
 	/**

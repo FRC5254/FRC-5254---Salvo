@@ -34,7 +34,7 @@ public class OPAuto extends CommandGroup {
 			turn = -turn;
 		}
 
-		addSequential(new AutoDriveToDistance(.75, -132.5));// 0.6 OG
+		addSequential(new AutoDriveToDistance(.75, -128.5));// 0.6 OG
 
 		addSequential(new AutoRedBullWingsExtend());
 		addParallel(new AutoSpinUpThenShoot());
