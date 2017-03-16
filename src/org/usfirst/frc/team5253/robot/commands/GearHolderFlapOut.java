@@ -7,28 +7,34 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearHolderIntakeOut extends Command {
+public class GearHolderFlapOut extends Command {
 
-	public GearHolderIntakeOut() {
+	public GearHolderFlapOut() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.GearHolder);
 	}
 
-	// Called once after isFinished returns true
+	// Called just before this Command runs the first time
 	@Override
-	protected void end() {
+	protected void initialize() {
 	}
-
+	
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
 		Robot.GearHolder.Out();
 	}
-
-	// Called just before this Command runs the first time
+	
+	// Make this return true when this Command no longer needs to run execute()
 	@Override
-	protected void initialize() {
+	protected boolean isFinished() {
+		return false;
+	}
+	
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
 	}
 
 	// Called when another command which requires one or more of the same
@@ -36,11 +42,5 @@ public class GearHolderIntakeOut extends Command {
 	@Override
 	protected void interrupted() {
 		end();
-	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		return false;
 	}
 }

@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class HypeHat extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 	CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
 
 	public HypeHat() {

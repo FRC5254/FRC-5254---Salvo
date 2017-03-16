@@ -13,15 +13,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 
 public class OI {
-	
+
 	// defining the controllers for the driver and operator
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 
 	public OI() {
-		
-		
-		//defining driver buttons
+
+		// defining driver buttons
 		Button DriverButtonA = new JoystickButton(driver, 1);
 		Button DriverButtonB = new JoystickButton(driver, 2);
 		Button DriverButtonX = new JoystickButton(driver, 3);
@@ -32,9 +31,8 @@ public class OI {
 		Button DriverButtonStart = new JoystickButton(driver, 8);
 		Button DriverButtonLeftJoystickPress = new JoystickButton(driver, 9);
 		Button DriverButtonRightJoystickPress = new JoystickButton(driver, 10);
-		//AxisType DriverAxisRightTrigger = new AxisType();
-		
-		//defining operator buttons
+
+		// defining operator buttons
 		Button OperatorButtonA = new JoystickButton(operator, 1);
 		Button OperatorButtonB = new JoystickButton(operator, 2);
 		Button OperatorButtonX = new JoystickButton(operator, 3);
@@ -59,21 +57,15 @@ public class OI {
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
-		
-
-		
-		
+		// DriverButtonLeftJoystickPress.whenPressed(command);
+		// DriverButtonRightJoystickPress.whenPressed(command);
 		
 		/*
-		 * set operator buttons to activate commands
-		 * A = start intaking ballssss
-		 * X = start climber (forwards)
-		 * Start = lowers gear mech and intakes to collect gear
-		 * Back = outtakes and lowers to place gear
-		 * Right Bumper = extend wings
-		 * Left Bumper = retract wings
-		 * Y = raises the gear mech
-		 * B = stop intaking balls & stop climbing & stop gear motor
+		 * set operator buttons to activate commands A = start intaking ballssss
+		 * X = start climber (forwards) Start = lowers gear mech and intakes to
+		 * collect gear Back = outtakes and lowers to place gear Right Bumper =
+		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
+		 * stop intaking balls & stop climbing & stop gear motor
 		 */
 		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
 		OperatorButtonB.whenPressed(new IntakeStopIntaking());
@@ -81,8 +73,8 @@ public class OI {
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
 		OperatorButtonY.whenActive(new GearHolderDropGear());
 		OperatorButtonY.whenInactive(new GearHolderRaiseGear());
-		OperatorButtonStart.whenPressed(new GearHolderIntakeOut());
-		OperatorButtonBack.whenPressed(new GearHolderIntakeIn());
+		OperatorButtonStart.whenPressed(new GearHolderFlapOut());
+		OperatorButtonBack.whenPressed(new GearHolderFlapIn());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		// OperatorButtonLeftJoystickPress.whenPressed(command);

@@ -3,7 +3,6 @@ package org.usfirst.frc.team5253.robot.subsystems;
 import org.usfirst.frc.team5253.robot.RobotMap;
 import org.usfirst.frc.team5253.robot.commands.GearHolderRaiseGear;
 
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,10 +15,9 @@ public class GearHolder extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
-	private DoubleSolenoid gearPiston = new
-	DoubleSolenoid(RobotMap.GEAR_HOLDER_PISTON_EXTEND,
-	RobotMap.GEAR_HOLDER_PISTON_RETRACT);
-	private Solenoid gearIntake = new Solenoid(RobotMap.GEAR_INTAKE_PISTION);
+	private DoubleSolenoid gearPiston = new DoubleSolenoid(RobotMap.GEAR_HOLDER_PISTON_EXTEND,
+			RobotMap.GEAR_HOLDER_PISTON_RETRACT);
+	private Solenoid gearFlap = new Solenoid(RobotMap.GEAR_FLAP_PISTION);
 
 	public GearHolder() {
 	}
@@ -29,7 +27,7 @@ public class GearHolder extends Subsystem {
 	}
 
 	public void In() {
-		gearIntake.set(false);
+		gearFlap.set(false);
 	}
 
 	@Override
@@ -40,7 +38,7 @@ public class GearHolder extends Subsystem {
 	}
 
 	public void Out() {
-		gearIntake.set(true); // TODO change
+		gearFlap.set(true); // TODO change
 	}
 
 	public void raise() {

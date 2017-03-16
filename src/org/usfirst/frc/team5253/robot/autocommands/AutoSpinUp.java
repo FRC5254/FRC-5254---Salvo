@@ -19,8 +19,27 @@ public class AutoSpinUp extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Shooter);
-		
+
 		this.time = time;
+	}
+	
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+		timer.reset();
+		timer.start();
+	}
+	
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+		Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
+	}
+	
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return timer.get() >= time;
 	}
 
 	// Called once after isFinished returns true
@@ -29,30 +48,10 @@ public class AutoSpinUp extends Command {
 		timer.stop();
 	}
 
-	// Called repeatedly when this Command is scheduled to run
-	@Override
-	protected void execute() {
-		Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
-	}
-
-	// Called just before this Command runs the first time
-	@Override
-	protected void initialize() {
-		timer.reset();
-		timer.start();
-	}
-
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
 		end();
 	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		return timer.get() >= time;
-	}
-
 }

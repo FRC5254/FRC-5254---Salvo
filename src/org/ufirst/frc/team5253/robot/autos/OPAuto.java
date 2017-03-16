@@ -2,13 +2,13 @@ package org.ufirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.autocommands.*;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class OPAuto extends CommandGroup {
-
 
 	public OPAuto() {
 		// Add Commands here:
@@ -27,20 +27,20 @@ public class OPAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
+		
+		// TODO this is good right? -1 was the turn we were using at the cafe
+		double turn = 1;
+		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
+			turn = -turn;
+		}
 
 		addSequential(new AutoDriveToDistance(.75, -132.5));// 0.6 OG
 
 		addSequential(new AutoRedBullWingsExtend());
 		addParallel(new AutoSpinUpThenShoot());
 
-		addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
-		// addSequential(new TurnRobot(-35));
+		addSequential(new AutoTimerTurn(turn , 0.35)); // 0.2 OG\
 
 		addSequential(new AutoStopRobot());
-		// addSequential(new TurnRobot(10)); //famboyent effect
-		// addSequential(new DriveToDistance(.5, 5)); //get into optimal
-		// shooting spot #wish we had vision
-		// addSequential(new TurnRobot(5));
-		// addSequential(new AutoStartShooting());
 	}
 }

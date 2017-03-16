@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Shoot extends CommandGroup {
 
-    public Shoot() {
-        
-    }
+	public Shoot() {
+// TODO why u exist
+	}
 }
