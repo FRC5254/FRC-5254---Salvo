@@ -28,13 +28,13 @@ public class AutoStartShooting extends Command {
 		timer.reset();
 		timer.start();
 	}
-	
+
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
 		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
 		Robot.HypeHat.startSpinning();
-		//TODO dosent his auto exist naw?
+		// TODO dosent his auto exist naw?
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -42,7 +42,7 @@ public class AutoStartShooting extends Command {
 	protected boolean isFinished() {
 		return timer.get() > time;
 	}
-	
+
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {

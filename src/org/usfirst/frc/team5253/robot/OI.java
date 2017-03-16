@@ -59,7 +59,7 @@ public class OI {
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
 		// DriverButtonLeftJoystickPress.whenPressed(command);
 		// DriverButtonRightJoystickPress.whenPressed(command);
-		
+
 		/*
 		 * set operator buttons to activate commands A = start intaking ballssss
 		 * X = start climber (forwards) Start = lowers gear mech and intakes to

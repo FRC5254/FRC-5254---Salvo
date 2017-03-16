@@ -3,7 +3,7 @@ package org.usfirst.frc.team5253.robot.autocommands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * TODO bleh
+ * TODO bleh but thiis one is th good one?
  */
 public class OPAuto extends CommandGroup {
 
@@ -31,7 +31,7 @@ public class OPAuto extends CommandGroup {
 		addParallel(new AutoSpinUpThenShoot());
 
 		addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
-		
+
 		addSequential(new AutoStopRobot());
 	}
 }

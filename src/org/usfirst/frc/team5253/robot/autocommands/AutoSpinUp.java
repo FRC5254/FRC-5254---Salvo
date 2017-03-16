@@ -22,20 +22,20 @@ public class AutoSpinUp extends Command {
 
 		this.time = time;
 	}
-	
+
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		timer.reset();
 		timer.start();
 	}
-	
+
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
 		Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
 	}
-	
+
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {

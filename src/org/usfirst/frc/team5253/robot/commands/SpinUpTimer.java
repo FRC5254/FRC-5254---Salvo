@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5253.robot.commands;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,7 +29,9 @@ public class SpinUpTimer extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.Shooter.spinUp(4000);
+		Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);// TODO put the
+													// RobotMap.SHOOTER_RPM in
+													// the shooter subsysytem
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

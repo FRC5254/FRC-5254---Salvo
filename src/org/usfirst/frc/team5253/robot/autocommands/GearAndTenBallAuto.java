@@ -1,8 +1,6 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.commands.StartShooting;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -32,10 +30,10 @@ public class GearAndTenBallAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-
+		// TODO these values are WRONG
 		addSequential(new GearCenterAuto());
 		addSequential(new AutoTurnRobot(90));
 		addSequential(new AutoSpinUp(1));
-		addSequential(new StartShooting());
+		addSequential(new AutoStartShooting(20));
 	}
 }

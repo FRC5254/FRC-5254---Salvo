@@ -17,10 +17,11 @@ public class AutoDriveToDistance extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Drivetrain);
-		this.Throttle = Throttle; // TODO ask Rorster if this works that it gets the throttle
+		this.Throttle = Throttle; // TODO ask Rorster if this works that it gets
+									// the throttle
 		this.Distance = Distance;
 	}
-	
+
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
@@ -39,7 +40,7 @@ public class AutoDriveToDistance extends Command {
 	protected boolean isFinished() {
 		return Robot.Drivetrain.driveAutoIsFinished();
 	}
-	
+
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {

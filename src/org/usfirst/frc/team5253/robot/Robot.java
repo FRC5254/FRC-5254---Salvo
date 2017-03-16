@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.ufirst.frc.team5253.robot.autos.TenBallAuto;
-import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.ufirst.frc.team5253.robot.autos.*;
+//import org.usfirst.frc.team5253.robot.autocommands.*; TODO is this where code get the broke?
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
@@ -42,15 +42,12 @@ public class Robot extends IterativeRobot {
 	private final String AutoRightGear = "Right Gear";
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
-	private final String GearBaseLine = "Center Gear and Cross Base Line";
-	private final String GearTenBall = "Center Gear and Ten Ball Shot";
-	private final String GearTenBallAndCross = "Center Gear And Ten Ball Shot and Cross Base Line";
+	private final String GearTenBall = "Ten Ball Shot and Center Gear";
 	private final String OP = "OP Auto";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearBaseLine, GearTenBall,
-			GearTenBallAndCross, OP,
+			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
 
 	};
 
@@ -70,7 +67,7 @@ public class Robot extends IterativeRobot {
 
 		// Initialize cameras
 		// TODO CameraServer.getInstance().startAutomaticCapture(0);
-		// CameraServer.getInstance().startAutomaticCapture(1);
+		CameraServer.getInstance().startAutomaticCapture(1);
 		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
 	}
 
