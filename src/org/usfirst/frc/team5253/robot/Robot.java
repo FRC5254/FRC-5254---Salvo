@@ -66,9 +66,10 @@ public class Robot extends IterativeRobot {
 
 		// Initialize cameras
 		// TODO CameraServer.getInstance().startAutomaticCapture(1);
-		CameraServer.getInstance().startAutomaticCapture(0);
-		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
-		
+		// CameraServer.getInstance().startAutomaticCapture(0);
+		// SmartDashboard.putNumber("Shooter RPM",
+		// shooterMotorTopLeft.getSpeed());
+
 	}
 
 	/**

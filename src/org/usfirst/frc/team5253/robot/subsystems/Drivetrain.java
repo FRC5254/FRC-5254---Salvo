@@ -19,7 +19,7 @@ public class Drivetrain extends PIDSubsystem {
 	static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static RobotDrive myRobot = new RobotDrive(2, 3, 0, 1);
 	public static Solenoid shiftingPiston = new Solenoid(RobotMap.SHIFTING_PISTON);
-	public static Encoder encoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	public static Encoder encoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
 
 	double angle;
 	public double DKp = 0.035;
@@ -65,12 +65,12 @@ public class Drivetrain extends PIDSubsystem {
 		return gyro.getAngle();
 	}
 
-	public void initEncoder() {
+	public void initEncoder(boolean direction) {
 		encoder.reset();
 		encoder.setMaxPeriod(0.1);
 		encoder.setMinRate(1);
 		encoder.setDistancePerPulse(1);
-		encoder.setReverseDirection(true);
+		encoder.setReverseDirection(direction);
 		encoder.setSamplesToAverage(7);
 	}
 
@@ -78,37 +78,44 @@ public class Drivetrain extends PIDSubsystem {
 		this.Throttle = Throttle;
 		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI)) * RobotMap.ENCODER_TICKS
 				* RobotMap.GEAR_RATIO);
-		initEncoder();
+		if (Throttle > 0) {
+			initEncoder(true);
+		} else {
+			initEncoder(false);
+		}
 		resetGyro();
 	}
 
 	public void autoDrive() {
 		remainingTicks = Math.abs(finalTicks) - Math.abs(encoder.get());
-		remainingDistance = Math.abs(remainingTicks) / (RobotMap.ENCODER_TICKS * RobotMap.GEAR_RATIO);
-		
-		if (Throttle > 0){
-			if (remainingDistance < Throttle * 50){
-				finalThrottle = remainingDistance / 50;
-			}else {
+		remainingDistance = (Math.abs(remainingTicks) / (RobotMap.ENCODER_TICKS * RobotMap.GEAR_RATIO))
+				* (RobotMap.WHEEL_DIAMETER * Math.PI);
+
+		if (Throttle > 0) {
+			if (remainingDistance < Throttle * 100) {
+				finalThrottle = remainingDistance / 100;
+			} else {
 				finalThrottle = Throttle;
 			}
-			
-			if (finalThrottle < 0.2){
-				finalThrottle = 0.2;
+
+			if (finalThrottle < 0.35) {
+				finalThrottle = 0.35;
 			}
-		}else {
-			if (remainingDistance < Math.abs(Throttle) / 50){
-				finalThrottle = -remainingDistance / 50;
-			}else {
+		} else {
+			if (remainingDistance < Math.abs(Throttle) * 25) {
+				finalThrottle = -remainingDistance / 25;
+			} else {
 				finalThrottle = Throttle;
 			}
-			
-			if (finalThrottle > -0.2){
-				finalThrottle = -0.2;
+
+			if (finalThrottle > -0.35) {
+				finalThrottle = -0.35;
 			}
 		}
-		
-		drive(finalThrottle, -getAngle() * DKp);
+
+		drive(-finalThrottle, -getAngle() * DKp);
+
+		System.out.println(Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get());
 	}
 
 	protected double returnPIDInput() {
