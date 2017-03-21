@@ -28,7 +28,6 @@ public class Drivetrain extends PIDSubsystem {
 	private int remainingTicks;
 	private double Throttle;
 	private double distance;
-	// private static double camera = 0;
 
 	public Drivetrain() {
 		super("DriveTrain", .02, .002, .2);
@@ -36,9 +35,7 @@ public class Drivetrain extends PIDSubsystem {
 		getPIDController().setContinuous(true);
 	}
 
-	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
 		setDefaultCommand(new DrivetrainDriveWithJoystick());
 	}
 
