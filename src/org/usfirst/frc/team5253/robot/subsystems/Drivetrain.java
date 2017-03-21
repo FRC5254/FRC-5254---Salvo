@@ -27,7 +27,8 @@ public class Drivetrain extends PIDSubsystem {
 	private static int finalTicks;
 	private int remainingTicks;
 	private double Throttle;
-	private double distance;
+	private double remainingDistance;
+	private double finalThrottle;
 	// private static double camera = 0;
 
 	public Drivetrain() {
@@ -77,32 +78,40 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public void autoDriveInitialize(double Throttle, double distance) {
-		this.distance = distance;
 		this.Throttle = Throttle;
-		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI)) * RobotMap.WHEEL_TICKS
+		finalTicks = (int) ((distance / (RobotMap.WHEEL_DIAMETER * Math.PI)) * RobotMap.ENCODER_TICKS
 				* RobotMap.GEAR_RATIO);
 		initEncoder();
 		resetGyro();
 	}
 
 	public void autoDrive() {
-		double sign = Math.signum(distance);
-		double Turn = -sign * getAngle() * DKp;
-		remainingTicks = (int) (sign * (Math.abs(finalTicks) - Math.abs(encoder.get())));
-		double finalThrottle;
-
-		finalThrottle = 0.4;
-		if (Math.abs(remainingTicks) < 1000) {
-			finalThrottle = Math.abs(remainingTicks) / 1000;
-			if (finalThrottle < 0.2) {
+		remainingTicks = Math.abs(finalTicks) - Math.abs(encoder.get());
+		remainingDistance = Math.abs(remainingTicks) / (RobotMap.ENCODER_TICKS * RobotMap.GEAR_RATIO);
+		
+		if (Throttle > 0){
+			if (remainingDistance < Throttle * 50){
+				finalThrottle = remainingDistance / 50;
+			}else {
+				finalThrottle = Throttle;
+			}
+			
+			if (finalThrottle < 0.2){
 				finalThrottle = 0.2;
 			}
+		}else {
+			if (remainingDistance < Math.abs(Throttle) / 50){
+				finalThrottle = -remainingDistance / 50;
+			}else {
+				finalThrottle = Throttle;
+			}
+			
+			if (finalThrottle > -0.2){
+				finalThrottle = -0.2;
+			}
 		}
-		finalThrottle = -finalThrottle * sign;
-
-		// System.out.format("autoDrive: finalThrottle %f, Turn %f, remaining
-		// %d, ticks %d%n", finalThrottle, Turn, remainingTicks, encoder.get());
-		myRobot.drive(finalThrottle, Turn);
+		
+		drive(finalThrottle, -getAngle() * DKp);
 	}
 
 	protected double returnPIDInput() {
