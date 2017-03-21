@@ -27,13 +27,8 @@ public class Drivetrain extends PIDSubsystem {
 	private static int finalTicks;
 	private int remainingTicks;
 	private double Throttle;
-<<<<<<< HEAD
 	private double remainingDistance;
 	private double finalThrottle;
-	// private static double camera = 0;
-=======
-	private double distance;
->>>>>>> origin/Comp-Bot
 
 	public Drivetrain() {
 		super("DriveTrain", .02, .002, .2);
