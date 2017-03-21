@@ -38,7 +38,7 @@ public class GearHolder extends Subsystem {
 	}
 
 	public void Out() {
-		gearFlap.set(true); // TODO change
+		gearFlap.set(true);
 	}
 
 	public void raise() {
