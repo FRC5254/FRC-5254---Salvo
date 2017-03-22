@@ -27,17 +27,8 @@ public class DrivetrainDriveWithJoystick extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println(
-				"Right Trigger " + Robot.oi.driver.getRawAxis(3) + "    Left Trigger " + Robot.oi.driver.getRawAxis(2));
-		// TODO
-		// if (Robot.oi.driver.getRawAxis(3) >= .9 ||
-		// Robot.oi.driver.getRawAxis(2) >= .9) {
-		// Robot.Drivetrain.slowTrun(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS),
-		// Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS) * 0.5);
-		// } else {
-		// Robot.Drivetrain.drive(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS),
-		// Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS));
-		// }
+		Robot.Drivetrain.drive(Robot.oi.driver.getRawAxis(RobotMap.DRIVER_THROTTLE_AXIS),
+				Robot.oi.driver.getRawAxis(RobotMap.DRIVER_TURN_AXIS));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

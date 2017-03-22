@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoDriveToDistance extends Command {
 
 	double Throttle;
-	double Turn;
 	double Distance;
 
 	public AutoDriveToDistance(double Throttle, double Distance) {
@@ -44,6 +43,7 @@ public class AutoDriveToDistance extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.Drivetrain.stop();
 	}
 
 	// Called when another command which requires one or more of the same

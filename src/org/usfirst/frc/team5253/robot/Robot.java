@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team5253.robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -10,7 +9,6 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.ufirst.frc.team5253.robot.autos.*;
-//import org.usfirst.frc.team5253.robot.autocommands.*; TODO is this where code get the broke?
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
@@ -31,7 +29,6 @@ public class Robot extends IterativeRobot {
 	public static GearHolder GearHolder = new GearHolder();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
-	public static Intake Intake = new Intake();
 	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
 
@@ -66,9 +63,11 @@ public class Robot extends IterativeRobot {
 		table.putStringArray("Auto List", AutoModes);
 
 		// Initialize cameras
-		// TODO CameraServer.getInstance().startAutomaticCapture(0);
-		CameraServer.getInstance().startAutomaticCapture(1);
-		SmartDashboard.putNumber("Shooter RPM", shooterMotorTopLeft.getSpeed());
+		// TODO CameraServer.getInstance().startAutomaticCapture(1);
+		// CameraServer.getInstance().startAutomaticCapture(0);
+		// SmartDashboard.putNumber("Shooter RPM",
+		// shooterMotorTopLeft.getSpeed());
+
 	}
 
 	/**

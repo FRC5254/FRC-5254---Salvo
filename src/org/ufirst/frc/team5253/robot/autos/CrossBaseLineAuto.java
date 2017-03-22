@@ -33,7 +33,6 @@ public class CrossBaseLineAuto extends CommandGroup {
 		// arm.
 
 		addSequential(new AutoDriveToDistance(1.0, 100));
-		addSequential(new NothingAuto());
 
 	}
 }

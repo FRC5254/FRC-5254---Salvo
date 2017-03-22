@@ -67,8 +67,7 @@ public class OI {
 		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
 		 * stop intaking balls & stop climbing & stop gear motor
 		 */
-		OperatorButtonA.whenPressed(new IntakeStartIntaking(true));
-		OperatorButtonB.whenPressed(new IntakeStopIntaking());
+		// OperatorButtonA.whenPressed(command);
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
 		OperatorButtonY.whenActive(new GearHolderDropGear());

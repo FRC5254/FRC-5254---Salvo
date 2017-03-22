@@ -44,9 +44,8 @@ public class RobotMap {
 	// CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-	public static final int SHOOTER_MOTOR_BOTTOM = 8;// for protobot was 4
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;
 	public static final int HYPE_HAT_MOTOR = 9;// 3
-	public static final int INTAKE_MOTOR = 10;// 5
 	public static final int CLIMBER_MOTOR = 11;
 	public static final int CLIMBER_MOTOR_2 = 12;
 
@@ -59,6 +58,6 @@ public class RobotMap {
 
 	// Misc
 	public static final int WHEEL_DIAMETER = 4;
-	public static final int WHEEL_TICKS = 256;
-	public static final double GEAR_RATIO = 25.0 / 6.0;
+	public static final int ENCODER_TICKS = 256;
+	public static final double GEAR_RATIO = ((25.0 / 6.0)*(100.0 /91.0));
 }

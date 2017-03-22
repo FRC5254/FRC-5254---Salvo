@@ -35,14 +35,14 @@ public class GearAndTenBallAuto extends CommandGroup {
 		// arm.
 
 		// TODO do the driver allaince color code shit here an logic it out
-		double turn = 1;
+		double turn = 90;
 		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
 			turn = -turn;
 		}
 
 		addSequential(new AutoSpinUp(2));
 		addSequential(new AutoStartShooting(3));
-		addSequential(new AutoTurnRobot(90));
+		addSequential(new AutoTurnRobot(turn));
 		// TODO figure out his line up mang
 		// addSequential(new AutoDriveToDistance(fuck(Throttle), you(Distance));
 		addSequential(new GearCenterAuto());
