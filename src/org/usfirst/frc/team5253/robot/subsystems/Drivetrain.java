@@ -34,6 +34,7 @@ public class Drivetrain extends PIDSubsystem {
 		super("DriveTrain", .02, .002, .2);
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
+		gyro.calibrate();
 	}
 
 	protected void initDefaultCommand() {
