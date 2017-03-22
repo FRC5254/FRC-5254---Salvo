@@ -35,6 +35,7 @@ public class AutoRedBullWingsExtend extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		// TODO for autos put robot.stop();
 	}
 
 	// Called when another command which requires one or more of the same

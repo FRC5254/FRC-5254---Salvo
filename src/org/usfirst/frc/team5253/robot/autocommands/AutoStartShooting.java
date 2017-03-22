@@ -15,11 +15,8 @@ public class AutoStartShooting extends Command {
 	Timer timer = new Timer();
 	double time;
 
-<<<<<<< HEAD
-	public AutoStartShooting() {
-=======
+
 	public AutoStartShooting(double time) {
->>>>>>> refs/remotes/origin/Comp-Bot
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Shooter);

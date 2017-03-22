@@ -12,6 +12,7 @@ public class GearMechDown extends Command {
 	public GearMechDown() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		requires(Robot.GearMech);
 	}
 
 	// Called once after isFinished returns true

@@ -25,12 +25,8 @@ public class AutoSpinUpThenShoot extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-<<<<<<< HEAD
-		addSequential(new AutoSpinUp());
-		addSequential(new AutoStartShooting());
-=======
+
 		addSequential(new AutoSpinUp(5));
 		addSequential(new AutoStartShooting(20));
->>>>>>> refs/remotes/origin/Comp-Bot
 	}
 }

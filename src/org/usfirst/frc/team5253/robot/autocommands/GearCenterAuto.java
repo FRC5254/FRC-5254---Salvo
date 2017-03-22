@@ -9,12 +9,7 @@ public class GearCenterAuto extends CommandGroup {
 	public GearCenterAuto() {
 
 		requires(Robot.Drivetrain);
-<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/autocommands/RightGearAuto.java
-		requires(Robot.GearMech);
-=======
-		requires(Robot.GearHolder);
-
->>>>>>> refs/remotes/origin/Comp-Bot:src/org/usfirst/frc/team5253/robot/autocommands/GearCenterAuto.java
+		
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
