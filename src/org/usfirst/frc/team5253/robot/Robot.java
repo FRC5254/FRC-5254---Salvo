@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.ufirst.frc.team5253.robot.autos.*;
+import org.usfirst.frc.team5253.robot.autos.*;
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
