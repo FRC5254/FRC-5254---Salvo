@@ -1,15 +1,17 @@
-package org.usfirst.frc.team5253.robot.commands;
+package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * TODO BLLLLLEEEEHHHHHH
  */
-public class GearMechInit extends CommandGroup {
+public class SideGearAuto extends CommandGroup {
 
-	public GearMechInit() {
+	public SideGearAuto(boolean clockwise) {
+		requires(Robot.Drivetrain);
+		requires(Robot.GearHolder);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -26,9 +28,20 @@ public class GearMechInit extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		requires(Robot.GearMech);
 
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/commands/GearMechInit.java
 		addParallel(new GearMechDown());// TODO is this one up or down
 		addSequential(new GearMechOff());
+=======
+		double angle = 60;
+		if (clockwise == false) {
+			angle = -angle;
+		}
+		addSequential(new AutoDriveToDistance(1.0, 96));
+		addSequential(new AutoTurnRobot(angle));
+		addSequential(new AutoDriveToDistance(1.0, 12));
+		addSequential(new AutoDropGear());
+		addSequential(new AutoDriveToDistance(1.0, -24));
+>>>>>>> refs/remotes/origin/Comp-Bot:src/org/usfirst/frc/team5253/robot/autocommands/SideGearAuto.java
 	}
 }

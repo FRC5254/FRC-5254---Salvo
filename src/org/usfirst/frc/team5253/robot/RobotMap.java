@@ -20,14 +20,11 @@ public class RobotMap {
 
 	// Solenoids
 	public static final int SHIFTING_PISTON = 0;
-	public static final int GEAR_PICK_UP_PISTON_EXTEND = 2;
-	public static final int GEAR_PICK_UP_PISTON_RETRACT = 3;
-	// TODO remove the GearHolder code
-	// public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
-	// public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
+	public static final int GEAR_HOLDER_PISTON_EXTEND = 2;
+	public static final int GEAR_HOLDER_PISTON_RETRACT = 3;
 	public static final int RED_BULL_WINGS_PISTION_EXTEND = 4;
 	public static final int RED_BULL_WINGS_PISTION_RETRACT = 5;
-	public static final int GEAR_INTAKE_PISTION = 6;
+	public static final int GEAR_FLAP_PISTION = 6;
 
 	// Sensors
 	public static final int DRIVE_ENCODER_LEFT1 = 0;
@@ -44,27 +41,16 @@ public class RobotMap {
 	// Gyro
 	public static final int GYRO = 1;
 
-	// PDP
-	public static final int DRIVE_MOTOR_LEFT1 = 0;
-	public static final int DRIVE_MOTOR_LEFT2 = 1;
-	public static final int DRIVE_MOTOR_RIGHT1 = 2;// 14
-	public static final int DRIVE_MOTOR_RIGHT2 = 3;// 15
-
 	// CAN Talons
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
-
-	public static final int SHOOTER_MOTOR_BOTTOM = 4;// TODO was 8
-	public static final int HYPE_HAT_MOTOR = 3;// 9
-	public static final int INTAKE_MOTOR = 5;// 10
-
-	public static final int CLIMBER_MOTOR = 1;
-	public static final int GEAR_MECH_MOTOR = 12;
+	public static final int SHOOTER_MOTOR_BOTTOM = 4;
+	public static final int HYPE_HAT_MOTOR = 9;// 3
+	public static final int CLIMBER_MOTOR = 11;
+	public static final int CLIMBER_MOTOR_2 = 12;
 
 	// Shooter tuning values
-	public static final double SHOOTER_RPM = 3325;// RPM is the RPM of the
-													// encoder, not the motors
-													// (old 3500)
+	public static final double SHOOTER_RPM = 3500;
 	public static final double SHOOTER_PID_F = 0.0267;
 	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;
@@ -72,6 +58,6 @@ public class RobotMap {
 
 	// Misc
 	public static final int WHEEL_DIAMETER = 4;
-	public static final int WHEEL_TICKS = 256;
+	public static final int ENCODER_TICKS = 256;
 	public static final double GEAR_RATIO = 25.0 / 6.0;
 }

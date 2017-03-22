@@ -5,6 +5,7 @@ import org.usfirst.frc.team5253.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -12,24 +13,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoStartShooting extends Command {
 
 	Timer timer = new Timer();
+	double time;
 
+<<<<<<< HEAD
 	public AutoStartShooting() {
+=======
+	public AutoStartShooting(double time) {
+>>>>>>> refs/remotes/origin/Comp-Bot
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.Shooter);
-	}
-
-	// Called once after isFinished returns true
-	@Override
-	protected void end() {
-		Robot.Shooter.stopShooting(0);
-	}
-
-	// Called repeatedly when this Command is scheduled to run
-	@Override
-	protected void execute() {
-		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
-		Robot.HypeHat.startSpinning();
+		this.time = time;
 	}
 
 	// Called just before this Command runs the first time
@@ -39,16 +33,31 @@ public class AutoStartShooting extends Command {
 		timer.start();
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
+	// Called repeatedly when this Command is scheduled to run
 	@Override
-	protected void interrupted() {
-		end();
+	protected void execute() {
+		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
+		Robot.HypeHat.startSpinning();
+		// TODO dosent his auto exist naw?
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return timer.get() > 20;
+		return timer.get() > time;
+	}
+
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		Robot.Shooter.stopShooting();
+		timer.stop();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+		end();
 	}
 }

@@ -44,12 +44,15 @@ public class OI {
 		Button OperatorButtonLeftJoystickPress = new JoystickButton(operator, 9);
 		Button OperatorButtonRightJoystickPress = new JoystickButton(operator, 10);
 
+<<<<<<< HEAD
 		/*
 		 * set driver buttons to activate commands A = start hat spinning/start
 		 * shooting X = spin up fly wheels Y = start hat spinning Left Bumper =
 		 * shift up Right Bumper = shift down B = stop hat spinning/stop
 		 * shooting
 		 */
+=======
+>>>>>>> refs/remotes/origin/Comp-Bot
 		DriverButtonA.whenPressed(new ShooterStartShooting());
 		DriverButtonA.whenPressed(new HypeHatStartSpinning());
 		DriverButtonB.whenPressed(new ShooterStopShooting());
@@ -58,19 +61,33 @@ public class OI {
 		DriverButtonY.whenPressed(new HypeHatStartSpinning());
 		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 		DriverButtonBack.whenPressed(new DrivetrainSlowTrun());
+<<<<<<< HEAD
+=======
+		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
+>>>>>>> refs/remotes/origin/Comp-Bot
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());
 		DriverButtonBumperRight.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperRight.whenInactive(new DrivetrainShiftDown());
+<<<<<<< HEAD
 		
 
 		/*
 		 * set operator buttons to activate commands A = start intaking balls X
 		 * = start climber (forwards) Start = lowers gear mech and intakes to
+=======
+		// DriverButtonLeftJoystickPress.whenPressed(command);
+		// DriverButtonRightJoystickPress.whenPressed(command);
+
+		/*
+		 * set operator buttons to activate commands A = start intaking ballssss
+		 * X = start climber (forwards) Start = lowers gear mech and intakes to
+>>>>>>> refs/remotes/origin/Comp-Bot
 		 * collect gear Back = outtakes and lowers to place gear Right Bumper =
 		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
 		 * stop intaking balls & stop climbing & stop gear motor
 		 */
+<<<<<<< HEAD
 		OperatorButtonA.whenPressed(new GearMechPickUp());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechMotorOff());
@@ -83,6 +100,20 @@ public class OI {
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 		OperatorButtonLeftJoystickPress.whenPressed(new IntakeOn(true));
 		OperatorButtonRightJoystickPress.whenPressed(new IntakeOn(false));// TODO we good here
+=======
+		// OperatorButtonA.whenPressed(command);
+		OperatorButtonB.whenPressed(new ClimberStopClimbing());
+		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
+		OperatorButtonY.whenActive(new GearHolderDropGear());
+		OperatorButtonY.whenInactive(new GearHolderRaiseGear());
+		OperatorButtonStart.whenPressed(new GearHolderFlapOut());
+		OperatorButtonBack.whenPressed(new GearHolderFlapIn());
+		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
+		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+		// OperatorButtonLeftJoystickPress.whenPressed(command);
+		// OperatorButtonRightJoystickPress.whenPressed(command);
+
+>>>>>>> refs/remotes/origin/Comp-Bot
 	}
 
 }

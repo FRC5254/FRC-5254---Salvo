@@ -1,20 +1,18 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc.team5253.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-
 /**
- *
+ * TODO fix this, why two of the same autos in different places
  */
-public class GearTenBallAndCrossAuto extends CommandGroup {
+public class CrossBaseLineAuto extends CommandGroup {
 
-	public GearTenBallAndCrossAuto() {
+	public CrossBaseLineAuto() {
 
+		System.out.format("Crossbaseline");
 		requires(Robot.Drivetrain);
-		requires(Robot.GearMech);
-		requires(Robot.HypeHat);
-		requires(Robot.Shooter);
+
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -31,13 +29,8 @@ public class GearTenBallAndCrossAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		addSequential(new AutoDriveToDistance(-1.0, 54));
-		addSequential(new AutoDropGear());
-		addParallel(new AutoDriveToDistance(1.0, 54));
-		addSequential(new AutoTurnRobot(90));
-		addSequential(new AutoSpinUp());
-		addSequential(new AutoStartShooting());
-		addSequential(new AutoTurnRobot(-45));
-		addSequential(new AutoDriveToDistance(-1.0, 122));
+
+		addSequential(new AutoDriveToDistance(1.0, 100));
+
 	}
 }

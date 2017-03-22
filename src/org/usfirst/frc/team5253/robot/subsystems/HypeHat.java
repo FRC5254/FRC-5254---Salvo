@@ -15,7 +15,7 @@ public class HypeHat extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
+	CANTalon HatMotor = new CANTalon(RobotMap.HYPE_HAT_MOTOR);
 
 	public HypeHat() {
 

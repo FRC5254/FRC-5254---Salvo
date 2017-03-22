@@ -6,6 +6,7 @@ import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUpThenShoot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoTimerTurn;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -31,19 +32,19 @@ public class OPAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoDriveToDistance(.75, -132.5));// 0.6 OG
+		// TODO this is good right? -1 was the turn we were using at the cafe
+		double turn = 1;
+		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
+			turn = -turn;
+		}
+
+		addSequential(new AutoDriveToDistance(.75, -128.5));// 0.6 OG
 
 		addSequential(new AutoRedBullWingsExtend());
 		addParallel(new AutoSpinUpThenShoot());
 
-		addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
-		// addSequential(new TurnRobot(-35));
+		addSequential(new AutoTimerTurn(turn, 0.35)); // 0.2 OG\
 
 		addSequential(new AutoStopRobot());
-		// addSequential(new TurnRobot(10)); //famboyent effect
-		// addSequential(new DriveToDistance(.5, 5)); //get into optimal
-		// shooting spot #wish we had vision
-		// addSequential(new TurnRobot(5));
-		// addSequential(new AutoStartShooting());
 	}
 }

@@ -1,15 +1,20 @@
-package org.usfirst.frc.team5253.robot.commands;
+package org.usfirst.frc.team5253.robot.autocommands;
 
 import org.usfirst.frc.team5253.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
-public class GearMechMotorOff extends CommandGroup {
+public class GearCenterAuto extends CommandGroup {
 
-	public GearMechMotorOff() {
+	public GearCenterAuto() {
+
+		requires(Robot.Drivetrain);
+<<<<<<< HEAD:src/org/usfirst/frc/team5253/robot/autocommands/RightGearAuto.java
+		requires(Robot.GearMech);
+=======
+		requires(Robot.GearHolder);
+
+>>>>>>> refs/remotes/origin/Comp-Bot:src/org/usfirst/frc/team5253/robot/autocommands/GearCenterAuto.java
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -26,8 +31,10 @@ public class GearMechMotorOff extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		requires(Robot.GearMech);
 
-		addSequential(new GearMechOff());
+		addSequential(new AutoDriveToDistance(1.0, 69));
+		addSequential(new AutoDropGear());
+		addSequential(new AutoDriveToDistance(1.0, -24));
+
 	}
 }

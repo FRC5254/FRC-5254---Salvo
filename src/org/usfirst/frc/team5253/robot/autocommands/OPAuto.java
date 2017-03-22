@@ -1,18 +1,13 @@
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import org.usfirst.frc.team5253.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * TODO bleh but thiis one is th good one?
  */
-public class RightGearAuto extends CommandGroup {
+public class OPAuto extends CommandGroup {
 
-	public RightGearAuto() {
-
-		requires(Robot.Drivetrain);
-		requires(Robot.GearMech);
+	public OPAuto() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -30,11 +25,13 @@ public class RightGearAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoDriveToDistance(1.0, 84));
-		addSequential(new AutoTurnRobot(-60));
-		addSequential(new AutoDriveToDistance(1.0, 12));
-		addSequential(new AutoDropGear());
-		addSequential(new AutoDriveToDistance(1.0, -24));
+		addSequential(new AutoDriveToDistance(.75, -130));// 0.6 OG
 
+		addSequential(new AutoRedBullWingsExtend());
+		addParallel(new AutoSpinUpThenShoot());
+
+		addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
+
+		addSequential(new AutoStopRobot());
 	}
 }

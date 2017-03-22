@@ -14,13 +14,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Shooter extends Subsystem {
 
-	// private static final double ShooterError = Math.abs(20);
+	private static final double ShooterError = Math.abs(20);
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
-	private CANTalon shooterMotorTopRight = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_RIGHT);
-	private CANTalon shooterMotorBottom = new CANTalon(RobotMap.SHOOTER_MOTOR_BOTTOM);
+	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
+	CANTalon shooterMotorTopRight = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_RIGHT);
+	CANTalon shooterMotorBottom = new CANTalon(RobotMap.SHOOTER_MOTOR_BOTTOM);
 
 	Boolean shootingSpeedAchieved = false;
 	double minShooting = 1000000.0;
@@ -31,6 +31,15 @@ public class Shooter extends Subsystem {
 	double minIdle = 10000000.0;
 	double maxIdle = 0.0;
 
+	public void resetData() {
+		minIdle = 10000000.0;
+		maxIdle = 0.0;
+		minShooting = 10000000.0;
+		maxShooting = 0.0;
+		maxError = 0.0;
+		minError = 1000000000.0;
+	}
+
 	public Shooter() {
 
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
@@ -40,10 +49,12 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		updatePID();
+		shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F);
 		System.out.format("Shooter RPM %f F calculated: %f using: %f%n", RobotMap.SHOOTER_RPM,
 				1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0), shooterMotorTopLeft.getF());
-
+		shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P);
+		shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I);
+		shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D);
 		System.out.format("Shooter P %f I %f D %f%n", shooterMotorTopLeft.getP(), shooterMotorTopLeft.getI(),
 				shooterMotorTopLeft.getD());
 
@@ -58,36 +69,14 @@ public class Shooter extends Subsystem {
 		shooterMotorBottom.reverseSensor(false);
 	}
 
-	@Override
 	public void initDefaultCommand() {
 		setDefaultCommand(new ShooterStopShooting());
-	}
-
-	public void resetData() {
-		minIdle = 10000000.0;
-		maxIdle = 0.0;
-		minShooting = 10000000.0;
-		maxShooting = 0.0;
-		maxError = 0.0;
-		minError = 1000000000.0;
-	}
-
-	// public boolean shooterUpToSpeed() {
-	//// if (RobotBase.isReal()) {
-	// return shooterMotorTopLeft.getClosedLoopError() < ShooterError;
-	//// } else {
-	//// return true;
-	//// }
-	// }
-	public void ResetMinMaxRpmValues() {
-
 	}
 
 	public void spinUp(double shooterRpm) {
 
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f, -12.0f);
-		// updatePID();
 		shooterMotorTopLeft.set(shooterRpm);// SmartDashboard.getNumber("DB/Slider
 											// 0", -0.75)
 
@@ -122,7 +111,6 @@ public class Shooter extends Subsystem {
 
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
-		// updatePID();
 		shooterMotorTopLeft.set(shooterRpm);// SmartDashboard.getNumber("DB/Slider
 											// 1", -0.75)
 
@@ -161,7 +149,7 @@ public class Shooter extends Subsystem {
 		}
 	}
 
-	public void stopShooting(int ShooterRpm) {
+	public void stopShooting() {
 
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f, 0.0f);
 		shooterMotorTopLeft.set(0.0);
@@ -185,10 +173,14 @@ public class Shooter extends Subsystem {
 
 	}
 
-	public void updatePID() {
-		shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F);
-		shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P);
-		shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I);
-		shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D);
+	// public boolean shooterUpToSpeed() {
+	//// if (RobotBase.isReal()) {
+	// return shooterMotorTopLeft.getClosedLoopError() < ShooterError;
+	//// } else {
+	//// return true;
+	//// }
+	// }
+	public void ResetMinMaxRpmValues() {
+
 	}
 }

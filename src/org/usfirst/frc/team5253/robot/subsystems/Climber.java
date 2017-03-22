@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
@@ -16,7 +17,7 @@ public class Climber extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
-	private CANTalon climberMotor2 = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
+	private CANTalon climberMotor2 = new CANTalon(RobotMap.CLIMBER_MOTOR_2);
 
 	public Climber() {
 
