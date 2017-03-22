@@ -1,22 +1,19 @@
-package org.ufirst.frc.team5253.robot.autos;
+package org.usfirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
-import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
-import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
-public class TenBallAuto extends CommandGroup {
+public class GearCenterAuto extends CommandGroup {
 
-	public TenBallAuto() {
+	public GearCenterAuto() {
 
 		requires(Robot.Drivetrain);
-		requires(Robot.Shooter);
-		requires(Robot.HypeHat);
+		requires(Robot.GearHolder);
+
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -34,9 +31,10 @@ public class TenBallAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		// TODO this auto is bad
-		addSequential(new HypeHatStartSpinning());// cause
-		addParallel(new AutoSpinUp(2));
-		addSequential(new AutoStartShooting(20));
+		addSequential(new AutoDriveToDistance(1.0, 69));
+		addSequential(new AutoDropGear());
+		addSequential(new AutoDriveToDistance(-1.0, 34.5));// TODO why
+		addSequential(new AutoStopRobot());
+
 	}
 }

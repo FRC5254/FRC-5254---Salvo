@@ -1,21 +1,21 @@
-package org.ufirst.frc.team5253.robot.autos;
+package org.usfirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
-import org.usfirst.frc.team5253.robot.autocommands.*;
+import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
+import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GearAndTenBallAuto extends CommandGroup {
+public class TenBallAuto extends CommandGroup {
 
-	public GearAndTenBallAuto() {
+	public TenBallAuto() {
 
 		requires(Robot.Drivetrain);
 		requires(Robot.Shooter);
-		requires(Robot.GearHolder);
 		requires(Robot.HypeHat);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -34,17 +34,9 @@ public class GearAndTenBallAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		// TODO do the driver allaince color code shit here an logic it out
-		double turn = 90;
-		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
-			turn = -turn;
-		}
-
-		addSequential(new AutoSpinUp(2));
-		addSequential(new AutoStartShooting(3));
-		addSequential(new AutoTurnRobot(turn));
-		// TODO figure out his line up mang
-		// addSequential(new AutoDriveToDistance(fuck(Throttle), you(Distance));
-		addSequential(new GearCenterAuto());
+		// TODO this auto is bad
+		addSequential(new HypeHatStartSpinning());// cause
+		addParallel(new AutoSpinUp(2));
+		addSequential(new AutoStartShooting(20));
 	}
 }
