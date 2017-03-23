@@ -1,11 +1,14 @@
 
 package org.usfirst.frc.team5253.robot;
 
+<<<<<<< HEAD
 import org.usfirst.frc.team5253.robot.autos.*;
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
 
+=======
+>>>>>>> refs/remotes/origin/Comp-Bot
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -13,6 +16,14 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+<<<<<<< HEAD
+=======
+import org.usfirst.frc.team5253.robot.autos.*;
+import org.usfirst.frc.team5253.robot.subsystems.*;
+
+import com.ctre.CANTalon;
+
+>>>>>>> refs/remotes/origin/Comp-Bot
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
