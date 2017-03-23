@@ -35,12 +35,12 @@ public class OPAuto extends CommandGroup {
 		}
 
 		addSequential(new AutoDriveToDistance(-1.0, 128.5));// 0.6 OG
-		// TODO do the thing atat makeds the thing take he abosolute value of he encuder
+		// TODO do the thing that makeds the thing take he abosolute value of he encuder
 
 		addSequential(new AutoRedBullWingsExtend());
 		addParallel(new AutoSpinUpThenShoot());
 
-		addSequential(new AutoTimerTurn(turn, 0.35)); // 0.2 OG\
+		addSequential(new AutoTimerTurn(turn, 0.35)); // 0.2 OG
 
 		addSequential(new AutoStopRobot());
 	}
