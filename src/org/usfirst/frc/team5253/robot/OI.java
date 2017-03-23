@@ -73,18 +73,16 @@ public class OI {
 		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
 		 * stop intaking balls & stop climbing & stop gear motor
 		 */
-		OperatorButtonA.whenPressed(new GearMechCollect());// TODO do a press an
-															// hold for the
-															// position it
-															// shoulde be in to
-															// remain up... will
-															// it work?
+		OperatorButtonA.whenActive(new GearMechCollect(true));
+		OperatorButtonA.whenInactive(new GearMechUp());
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenPressed(new GearMechPlace());
-		OperatorButtonStart.whenPressed(new GearMechUp());
-		OperatorButtonBack.whenPressed(new GearMechDown());
+		// TODO OperatorButtonY.whenPressed(new GearMechCollect(false));
+		OperatorButtonY.whenActive(new GearMechDown());
+		OperatorButtonY.whenInactive(new GearMechUp());
+//		OperatorButtonStart.whenPressed(new GearMechUp());
+//		OperatorButtonBack.whenPressed(new GearMechDown());
 		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
 		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
 

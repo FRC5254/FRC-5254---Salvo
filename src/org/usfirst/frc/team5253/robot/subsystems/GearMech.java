@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
 import org.usfirst.frc.team5253.robot.RobotMap;
-import org.usfirst.frc.team5253.robot.commands.GearMechInit;
+import org.usfirst.frc.team5253.robot.commands.GearMechUp;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -37,7 +37,7 @@ public class GearMech extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new GearMechInit());
+		setDefaultCommand(new GearMechUp());
 	}
 
 	public void off() {

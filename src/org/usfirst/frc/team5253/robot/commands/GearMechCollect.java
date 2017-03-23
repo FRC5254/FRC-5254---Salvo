@@ -8,11 +8,22 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class GearMechCollect extends Command {
+	
+	double gearMotorSpeed;
 
-    public GearMechCollect() {
+    public GearMechCollect(boolean direction) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.GearMech);
+    	
+    	// if climb direction is forward
+    			if (direction == true) {
+    				// set speed to full forward
+    				gearMotorSpeed = -1.0;
+    			} else {
+    				// set speed to full backward
+    				gearMotorSpeed = 1.0;
+    			}
     }
 
     // Called just before this Command runs the first time
@@ -22,6 +33,7 @@ public class GearMechCollect extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.GearMech.on(1);
+    	Robot.GearMech.down();
     }
 
     // Make this return true when this Command no longer needs to run execute()

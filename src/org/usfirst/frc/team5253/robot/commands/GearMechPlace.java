@@ -1,42 +1,32 @@
 package org.usfirst.frc.team5253.robot.commands;
 
-import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GearMechPlace extends Command {
+public class GearMechPlace extends CommandGroup {
 
     public GearMechPlace() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.GearMech);
-    }
+        // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.GearMech.down();
-    	Robot.GearMech.on(-1);
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
+    	addParallel(new GearMechDown());
+    	addSequential(new AutoDriveToDistance(-1.0, 10));// TODO does this work and tune how far itll go back
     }
 }

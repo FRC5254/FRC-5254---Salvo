@@ -20,8 +20,8 @@ public class RobotMap {
 
 	// Solenoids
 	public static final int SHIFTING_PISTON = 0;
-	public static final int GEAR_MECH_PISTON_EXTEND = 2;
-	public static final int GEAR_MECH_PISTON_RETRACT = 3;
+	public static final int GEAR_MECH_PISTON_EXTEND = 3;
+	public static final int GEAR_MECH_PISTON_RETRACT = 2;
 	public static final int RED_BULL_WINGS_PISTION_EXTEND = 4;
 	public static final int RED_BULL_WINGS_PISTION_RETRACT = 5;
 	public static final int GEAR_FLAP_PISTION = 6;
@@ -48,7 +48,7 @@ public class RobotMap {
 	public static final int HYPE_HAT_MOTOR = 9;// 3
 	public static final int CLIMBER_MOTOR = 11;
 	public static final int CLIMBER_MOTOR_2 = 12;
-	public static final int GEAR_MECH_MOTOR = 1; // TODO what is the can talon
+	public static final int GEAR_MECH_MOTOR = 2; // TODO what is the can talon
 
 	// Shooter tuning values
 	public static final double SHOOTER_RPM = 3500;

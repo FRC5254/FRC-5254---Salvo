@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team5253.robot;
 
-import org.ufirst.frc.team5253.robot.autos.*;
+import org.usfirst.frc.team5253.robot.autos.*;
 import org.usfirst.frc.team5253.robot.subsystems.*;
 
 import com.ctre.CANTalon;
