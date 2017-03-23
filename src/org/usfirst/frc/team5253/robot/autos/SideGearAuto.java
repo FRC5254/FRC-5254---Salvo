@@ -1,20 +1,21 @@
-package org.ufirst.frc.team5253.robot.autos;
+package org.usfirst.frc.team5253.robot.autos;
 
+import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
-import org.usfirst.frc.team5253.robot.autocommands.AutoRedBullWingsExtend;
-import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUpThenShoot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
-import org.usfirst.frc.team5253.robot.autocommands.AutoTimerTurn;
+import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class OPAuto extends CommandGroup {
+public class SideGearAuto extends CommandGroup {
 
-	public OPAuto() {
+	public SideGearAuto(boolean clockwise) {
+		requires(Robot.Drivetrain);
+		requires(Robot.GearMech);
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -32,19 +33,15 @@ public class OPAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		// TODO this is good right? -1 was the turn we were using at the cafe
-		double turn = 1;
-		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
-			turn = -turn;
+		double angle = 60;
+		if (clockwise == false) {
+			angle = -angle;
 		}
-
-		addSequential(new AutoDriveToDistance(.75, -128.5));// 0.6 OG
-
-		addSequential(new AutoRedBullWingsExtend());
-		addParallel(new AutoSpinUpThenShoot());
-
-		addSequential(new AutoTimerTurn(turn, 0.35)); // 0.2 OG\
-
+		addSequential(new AutoDriveToDistance(1.0, 96));
+		addSequential(new AutoTurnRobot(angle));
+		addSequential(new AutoDriveToDistance(1.0, 12));
+		addSequential(new AutoDropGear());
+		addSequential(new AutoDriveToDistance(1.0, -34.5));// TODO how far do you have to backup 
 		addSequential(new AutoStopRobot());
 	}
 }

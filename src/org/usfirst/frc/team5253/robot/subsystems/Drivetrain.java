@@ -22,7 +22,7 @@ public class Drivetrain extends PIDSubsystem {
 	public static Encoder encoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
 
 	double angle;
-	public double DKp = 0.035;
+	public double DKp = 0.08;
 	public double TKp = 0.3;
 	private static int finalTicks;
 	private int remainingTicks;
@@ -34,6 +34,7 @@ public class Drivetrain extends PIDSubsystem {
 		super("DriveTrain", .02, .002, .2);
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
+		gyro.calibrate();
 	}
 
 	protected void initDefaultCommand() {
@@ -92,8 +93,8 @@ public class Drivetrain extends PIDSubsystem {
 				* (RobotMap.WHEEL_DIAMETER * Math.PI);
 
 		if (Throttle > 0) {
-			if (remainingDistance < Throttle * 100) {
-				finalThrottle = remainingDistance / 100;
+			if (remainingDistance < Throttle * 25) {
+				finalThrottle = remainingDistance / 25;// TODO tine these values
 			} else {
 				finalThrottle = Throttle;
 			}
@@ -106,6 +107,7 @@ public class Drivetrain extends PIDSubsystem {
 				finalThrottle = -remainingDistance / 25;
 			} else {
 				finalThrottle = Throttle;
+				
 			}
 
 			if (finalThrottle > -0.35) {
@@ -115,7 +117,7 @@ public class Drivetrain extends PIDSubsystem {
 
 		drive(-finalThrottle, -getAngle() * DKp);
 
-		System.out.println(Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get());
+		System.out.println(Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get() + " " + remainingTicks);
 	}
 
 	protected double returnPIDInput() {
@@ -132,7 +134,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public boolean driveAutoIsFinished() {
-		return Math.abs(remainingTicks) < 20; // ~ 1/2 "
+		return Math.abs(remainingTicks) < 10; // ~ 1/2 "
 	}
 
 	public void stop() {

@@ -1,13 +1,20 @@
-package org.usfirst.frc.team5253.robot.autocommands;
+package org.usfirst.frc.team5253.robot.autos;
+
+import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * TODO bleh but thiis one is th good one?
+ *
  */
-public class OPAuto extends CommandGroup {
+public class CrossBaseLineAuto extends CommandGroup {
 
-	public OPAuto() {
+	public CrossBaseLineAuto() {
+
+		System.out.format("Crossbaseline");
+		requires(Robot.Drivetrain);
+
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -25,13 +32,7 @@ public class OPAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoDriveToDistance(.75, -130));// 0.6 OG
+		addSequential(new AutoDriveToDistance(1.0, 100));
 
-		addSequential(new AutoRedBullWingsExtend());
-		addParallel(new AutoSpinUpThenShoot());
-
-		addSequential(new AutoTimerTurn(-1, 0.35)); // 0.2 OG
-
-		addSequential(new AutoStopRobot());
 	}
 }
