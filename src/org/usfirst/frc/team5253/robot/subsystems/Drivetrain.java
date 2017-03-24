@@ -1,17 +1,12 @@
 package org.usfirst.frc.team5253.robot.subsystems;
 
-import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.RobotMap;
 import org.usfirst.frc.team5253.robot.commands.DrivetrainDriveWithJoystick;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -24,7 +19,7 @@ public class Drivetrain extends PIDSubsystem {
 	public static Timer timer = new Timer();
 
 	double angle;
-	public double DKp = 0.08;
+	public double DKp = 0.6;// TODO confirm setting for competition robot
 	public double TKp = 0.3;
 	private static int finalTicks;
 	private int remainingTicks;
@@ -36,7 +31,6 @@ public class Drivetrain extends PIDSubsystem {
 		super("DriveTrain", .02, .002, .2);
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
-		gyro.calibrate();
 	}
 
 	protected void initDefaultCommand() {
@@ -86,9 +80,10 @@ public class Drivetrain extends PIDSubsystem {
 		} else {
 			initEncoder(false);
 		}
-		resetGyro();
+		gyro.reset();
 		timer.reset();
 		timer.start();
+		timer.delay(0.1);;
 	}
 
 	public void autoDrive() {
@@ -98,13 +93,13 @@ public class Drivetrain extends PIDSubsystem {
 
 		if (Throttle > 0) {
 			if (remainingDistance < Throttle * 25) {
-				finalThrottle = remainingDistance / 25;// TODO tine these values
+				finalThrottle = remainingDistance / 25;// TODO time these values
 			} else {
 				finalThrottle = Throttle;
 			}
 			
-			if (timer.get() < 0.5 && remainingDistance > 50.0){
-				finalThrottle = timer.get() * 2.0;
+			if (timer.get() < 1.0 && remainingDistance > 50.0){
+				finalThrottle = timer.get();
 			}
 
 			if (finalThrottle > Throttle){
@@ -119,18 +114,15 @@ public class Drivetrain extends PIDSubsystem {
 				finalThrottle = -remainingDistance / 25;
 			} else {
 				finalThrottle = Throttle;
-				
-<<<<<<< HEAD
-=======
+
 			}
 			
-			if (timer.get() < 0.5 && remainingDistance > 50.0){
-				finalThrottle = -timer.get() * 2.0;
+			if (timer.get() < 1.0 && remainingDistance > 50.0){
+				finalThrottle = -timer.get();
 			}
 
 			if (finalThrottle < Throttle){
 				finalThrottle = Throttle;
->>>>>>> refs/remotes/origin/Comp-Bot
 			}
 
 			if (finalThrottle > -0.35) {
@@ -139,8 +131,8 @@ public class Drivetrain extends PIDSubsystem {
 		}
 
 		drive(-finalThrottle, -getAngle() * DKp);
-
-		System.out.println(Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get() + " " + remainingTicks);
+		// TODO gyro jumps still
+		System.out.println(gyro.getAngle() + " " + Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get() + " " + remainingTicks);
 	}
 
 	protected double returnPIDInput() {
@@ -157,7 +149,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public boolean driveAutoIsFinished() {
-		return Math.abs(remainingTicks) < 10; // ~ 1/2 "
+		return Math.abs(remainingTicks) < 20; // ~ 1/2 "
 	}
 
 	public void stop() {

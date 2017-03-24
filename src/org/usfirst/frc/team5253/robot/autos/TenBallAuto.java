@@ -35,8 +35,7 @@ public class TenBallAuto extends CommandGroup {
 		// arm.
 
 		// TODO this auto is bad
-		addSequential(new HypeHatStartSpinning());// cause
-		addParallel(new AutoSpinUp(2));
+		addSequential(new AutoSpinUp(2));
 		addSequential(new AutoStartShooting(20));
 	}
 }
