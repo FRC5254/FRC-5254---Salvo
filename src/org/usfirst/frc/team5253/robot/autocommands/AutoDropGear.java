@@ -15,7 +15,6 @@ public class AutoDropGear extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 
-		requires(Robot.GearMech);
 		System.out.format("DropGearAuto()%n");
 	}
 

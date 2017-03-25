@@ -15,7 +15,6 @@ public class AutoDriveToDistance extends Command {
 	public AutoDriveToDistance(double Throttle, double Distance) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.Drivetrain);
 		this.Throttle = Throttle; // TODO ask Rorster if this works that it gets
 									// the throttle
 		this.Distance = Distance;

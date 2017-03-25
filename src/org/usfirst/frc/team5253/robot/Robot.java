@@ -41,10 +41,11 @@ public class Robot extends IterativeRobot {
 	private final String TenBall = "Shoot Ten Balls";
 	private final String GearTenBall = "Center Gear and Ten Ball Shot";
 	private final String OP = "Auto Bots Assemble";
+	private final String ShootAndCross = "Shoot 10 and cross base line";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
+			NothingAuto, CrossBaseLine, AutoCenterGear, ShootAndCross,  AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
 
 	};
 
@@ -132,6 +133,10 @@ public class Robot extends IterativeRobot {
 
 		case OP:
 			autonomousCommand = new OPAuto();
+			break;
+		
+		case ShootAndCross:
+			autonomousCommand = new ShootAndCrossBaseLineAuto();
 			break;
 
 		default:

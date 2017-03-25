@@ -19,8 +19,9 @@ public class Drivetrain extends PIDSubsystem {
 	public static Timer timer = new Timer();
 
 	double angle;
-	public double DKp = 0.6;// TODO confirm setting for competition robot
+	public double DKp = 0.3; // TODO confirm setting for competition robot
 	public double TKp = 0.3;
+	public double GTKp = 0.2; 
 	private static int finalTicks;
 	private int remainingTicks;
 	private double Throttle;
@@ -83,7 +84,7 @@ public class Drivetrain extends PIDSubsystem {
 		gyro.reset();
 		timer.reset();
 		timer.start();
-		timer.delay(0.1);;
+		timer.delay(0.1);
 	}
 
 	public void autoDrive() {
@@ -132,7 +133,7 @@ public class Drivetrain extends PIDSubsystem {
 
 		drive(-finalThrottle, -getAngle() * DKp);
 		// TODO gyro jumps still
-		System.out.println(gyro.getAngle() + " " + Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get() + " " + remainingTicks);
+		// System.out.println(gyro.getAngle() + " " + Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get() + " " + remainingTicks);
 	}
 
 	protected double returnPIDInput() {
@@ -156,4 +157,6 @@ public class Drivetrain extends PIDSubsystem {
 		myRobot.arcadeDrive(0.0, 0.0);
 
 	}
+	
+
 }

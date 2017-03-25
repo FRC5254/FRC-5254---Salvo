@@ -12,7 +12,6 @@ public class AutoRedBullWingsExtend extends Command {
 	public AutoRedBullWingsExtend() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.FuelTank);
 	}
 
 	// Called just before this Command runs the first time

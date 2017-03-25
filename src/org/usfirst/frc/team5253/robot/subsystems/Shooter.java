@@ -82,8 +82,11 @@ public class Shooter extends Subsystem {
 
 		if (loop++ > 10) {
 			loop = 0;
-			System.out.format("Spin Up; RPM %f Delta %f Error %d%n", shooterMotorTopLeft.getSpeed(),
-					shooterMotorTopLeft.getSpeed() - shooterRpm, shooterMotorTopLeft.getClosedLoopError());
+//			System.out.format("Spin Up; RPM %f Delta %f Error %d%n", shooterMotorTopLeft.getSpeed(),
+//					shooterMotorTopLeft.getSpeed() - shooterRpm, shooterMotorTopLeft.getClosedLoopError());
+			
+			System.out.format("Spin Up; RPM %f Delta %f%n", shooterMotorTopLeft.getSpeed(),
+			shooterMotorTopLeft.getSpeed() - shooterRpm);
 		}
 
 		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);

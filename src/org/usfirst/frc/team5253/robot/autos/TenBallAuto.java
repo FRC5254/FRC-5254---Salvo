@@ -8,7 +8,7 @@ import org.usfirst.frc.team5253.robot.commands.HypeHatStartSpinning;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * RW Certified
  */
 public class TenBallAuto extends CommandGroup {
 
@@ -33,9 +33,8 @@ public class TenBallAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-
-		// TODO this auto is bad
-		addSequential(new AutoSpinUp(2));
-		addSequential(new AutoStartShooting(20));
+		
+		addSequential(new AutoSpinUp(3));
+		addSequential(new AutoStartShooting(4));
 	}
 }

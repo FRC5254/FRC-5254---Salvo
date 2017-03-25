@@ -19,7 +19,6 @@ public class AutoStartShooting extends Command {
 	public AutoStartShooting(double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.Shooter);
 		this.time = time;
 	}
 

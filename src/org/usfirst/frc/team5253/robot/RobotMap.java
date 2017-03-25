@@ -52,7 +52,7 @@ public class RobotMap {
 	public static final int GEAR_MECH_MOTOR = 5; // TODO what is the can talon
 
 	// Shooter tuning values
-	public static final double SHOOTER_RPM = 3500;
+	public static final double SHOOTER_RPM = 3250;
 	public static final double SHOOTER_PID_F = 0.0267;
 	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;

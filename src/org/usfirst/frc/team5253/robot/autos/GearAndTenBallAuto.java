@@ -6,12 +6,14 @@ import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class GearAndTenBallAuto extends CommandGroup {
+	
 
 	public GearAndTenBallAuto() {
 
@@ -39,14 +41,12 @@ public class GearAndTenBallAuto extends CommandGroup {
 		// TODO do the driver allaince color code shit here an logic it out
 		double turn = 90;
 		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
-			turn = -turn;
+			turn = -turn;// TODO
 		}
 
-		addSequential(new AutoSpinUp(2));
-		addSequential(new AutoStartShooting(3));
+//		addSequential(new AutoSpinUp(2));
+//		addSequential(new AutoStartShooting(3));
 		addSequential(new AutoTurnRobot(turn));
-		// TODO figure out his line up mang
-		// addSequential(new AutoDriveToDistance(fuck(Throttle), you(Distance));
 		addSequential(new GearCenterAuto());
 	}
 }

@@ -18,7 +18,6 @@ public class AutoSpinUp extends Command {
 	public AutoSpinUp(double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.Shooter);
 
 		this.time = time;
 	}

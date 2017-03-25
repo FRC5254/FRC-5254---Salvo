@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5253.robot.autos;
 
+import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.AutoRedBullWingsExtend;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUpThenShoot;
@@ -15,6 +16,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class OPAuto extends CommandGroup {
 
 	public OPAuto() {
+		
+		requires(Robot.Drivetrain);
+		requires(Robot.FuelTank);
+		
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
