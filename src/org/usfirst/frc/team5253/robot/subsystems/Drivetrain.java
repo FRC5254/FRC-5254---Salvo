@@ -84,7 +84,6 @@ public class Drivetrain extends PIDSubsystem {
 		gyro.reset();
 		timer.reset();
 		timer.start();
-		timer.delay(0.1);
 	}
 
 	public void autoDrive() {

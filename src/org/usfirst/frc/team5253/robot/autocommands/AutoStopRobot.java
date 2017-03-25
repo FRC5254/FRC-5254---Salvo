@@ -10,9 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoStopRobot extends Command {
 
 	public AutoStopRobot() {
-		requires(Robot.Drivetrain);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		
 	}
 
 	// Called just before this Command runs the first time

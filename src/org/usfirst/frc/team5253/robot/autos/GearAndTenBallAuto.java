@@ -44,8 +44,8 @@ public class GearAndTenBallAuto extends CommandGroup {
 			turn = -turn;// TODO
 		}
 
-//		addSequential(new AutoSpinUp(2));
-//		addSequential(new AutoStartShooting(3));
+		addSequential(new AutoSpinUp(2));
+		addSequential(new AutoStartShooting(3));
 		addSequential(new AutoTurnRobot(turn));
 		addSequential(new GearCenterAuto());
 	}
