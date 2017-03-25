@@ -82,8 +82,8 @@ public class OI {
 		OperatorButtonY.whenInactive(new GearMechUp());
 //		OperatorButtonStart.whenPressed(new GearMechUp());
 		OperatorButtonBack.whenPressed(new GearMechCollect(true));
-		OperatorButtonBumperLeft.whenPressed(new RedBullWingsRetract());
-		OperatorButtonBumperRight.whenPressed(new RedBullWingsExtend());
+		OperatorButtonBumperLeft.whenPressed(new GearMechIntakeOn(false));
+		OperatorButtonBumperRight.whenPressed(new GearMechIntakeOn(true));
 
 	}
 
