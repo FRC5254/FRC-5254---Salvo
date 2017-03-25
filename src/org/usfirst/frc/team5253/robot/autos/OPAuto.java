@@ -3,7 +3,9 @@ package org.usfirst.frc.team5253.robot.autos;
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.AutoRedBullWingsExtend;
+import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUpThenShoot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoTimerTurn;
 
@@ -47,7 +49,8 @@ public class OPAuto extends CommandGroup {
 		// TODO do the thing that makeds the thing take he abosolute value of he encuder
 
 		addSequential(new AutoRedBullWingsExtend());
-		addParallel(new AutoSpinUpThenShoot());
+		addParallel(new AutoSpinUp(2));
+		addSequential(new AutoStartShooting(20));
 
 		addSequential(new AutoTimerTurn(turn, 0.35)); // 0.2 OG
 
