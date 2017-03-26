@@ -56,7 +56,6 @@ public class OI {
 		DriverButtonB.whenPressed(new HypeHatStopSpinning());
 		DriverButtonX.whenPressed(new ShooterSpinUp());
 		DriverButtonY.whenPressed(new HypeHatStartSpinning());
-		DriverButtonStart.whenPressed(new ShooterResetPIDData());
 		DriverButtonBack.whenPressed(new DrivetrainSlowTrun());
 		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
@@ -73,17 +72,16 @@ public class OI {
 		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
 		 * stop intaking balls & stop climbing & stop gear motor
 		 */
-		OperatorButtonA.whenActive(new GearMechCollect(false));
-		OperatorButtonA.whenInactive(new GearMechUp());
+		OperatorButtonA.whenPressed(new GearMechOn(false));
 		OperatorButtonB.whenPressed(new ClimberStopClimbing());
 		OperatorButtonB.whenPressed(new GearMechOff());
 		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
 		OperatorButtonY.whenActive(new GearMechDown());
 		OperatorButtonY.whenInactive(new GearMechUp());
-//		OperatorButtonStart.whenPressed(new GearMechUp());
+		// OperatorButtonStart.whenPressed(new GearMechUp());
 		OperatorButtonBack.whenPressed(new GearMechCollect(true));
-		OperatorButtonBumperLeft.whenPressed(new GearMechIntakeOn(false));
-		OperatorButtonBumperRight.whenPressed(new GearMechIntakeOn(true));
+		OperatorButtonBumperLeft.whenPressed(new GearMechOn(false));
+		OperatorButtonBumperRight.whenPressed(new GearMechOn(true));
 
 	}
 

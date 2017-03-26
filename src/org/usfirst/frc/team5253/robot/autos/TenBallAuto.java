@@ -33,8 +33,8 @@ public class TenBallAuto extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		
+
 		addSequential(new AutoSpinUp(3));
-		addSequential(new AutoStartShooting(4));
+		addSequential(new AutoStartShooting(10));
 	}
 }

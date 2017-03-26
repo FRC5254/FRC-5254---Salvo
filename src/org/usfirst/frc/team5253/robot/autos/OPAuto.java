@@ -4,7 +4,6 @@ import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.AutoRedBullWingsExtend;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
-import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUpThenShoot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoTimerTurn;
@@ -18,10 +17,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class OPAuto extends CommandGroup {
 
 	public OPAuto() {
-		
+
 		requires(Robot.Drivetrain);
 		requires(Robot.FuelTank);
-		
+
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -46,7 +45,8 @@ public class OPAuto extends CommandGroup {
 		}
 
 		addSequential(new AutoDriveToDistance(-1.0, 128.5));// 0.6 OG
-		// TODO do the thing that makeds the thing take he abosolute value of he encuder
+		// TODO do the thing that makeds the thing take he abosolute value of he
+		// encuder
 
 		addSequential(new AutoRedBullWingsExtend());
 		addParallel(new AutoSpinUp(2));

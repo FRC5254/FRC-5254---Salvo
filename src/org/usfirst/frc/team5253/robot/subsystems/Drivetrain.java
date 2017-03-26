@@ -21,7 +21,7 @@ public class Drivetrain extends PIDSubsystem {
 	double angle;
 	public double DKp = 0.3; // TODO confirm setting for competition robot
 	public double TKp = 0.3;
-	public double GTKp = 0.2; 
+	public double GTKp = 0.2;
 	private static int finalTicks;
 	private int remainingTicks;
 	private double Throttle;
@@ -92,36 +92,36 @@ public class Drivetrain extends PIDSubsystem {
 				* (RobotMap.WHEEL_DIAMETER * Math.PI);
 
 		if (Throttle > 0) {
-			if (remainingDistance < Throttle * 25) {
-				finalThrottle = remainingDistance / 25;// TODO time these values
+			if (remainingDistance < Throttle * 15) {
+				finalThrottle = remainingDistance / 15;// TODO time these values
 			} else {
 				finalThrottle = Throttle;
 			}
-			
-			if (timer.get() < 1.0 && remainingDistance > 50.0){
-				finalThrottle = timer.get();
+
+			if (timer.get() < 0.5 && remainingDistance > 10.0) {
+				finalThrottle = timer.get() * 2.0;
 			}
 
-			if (finalThrottle > Throttle){
+			if (finalThrottle > Throttle) {
 				finalThrottle = Throttle;
 			}
-			
+
 			if (finalThrottle < 0.35) {
 				finalThrottle = 0.35;
 			}
 		} else {
-			if (remainingDistance < Math.abs(Throttle) * 25) {
-				finalThrottle = -remainingDistance / 25;
+			if (remainingDistance < Math.abs(Throttle) * 15) {
+				finalThrottle = -remainingDistance / 15;
 			} else {
 				finalThrottle = Throttle;
 
 			}
-			
-			if (timer.get() < 1.0 && remainingDistance > 50.0){
-				finalThrottle = -timer.get();
+
+			if (timer.get() < 0.5 && remainingDistance > 10.0) {
+				finalThrottle = -timer.get() * 2.0;
 			}
 
-			if (finalThrottle < Throttle){
+			if (finalThrottle < Throttle) {
 				finalThrottle = Throttle;
 			}
 
@@ -131,8 +131,9 @@ public class Drivetrain extends PIDSubsystem {
 		}
 
 		drive(-finalThrottle, -getAngle() * DKp);
-		// TODO gyro jumps still
-		// System.out.println(gyro.getAngle() + " " + Throttle + " " + remainingDistance + " " + finalThrottle + " " + encoder.get() + " " + remainingTicks);
+		 System.out.println(gyro.getAngle() + " " + Throttle + " " +
+		 remainingDistance + " " + finalThrottle + " " + encoder.get() + " " +
+		 remainingTicks);
 	}
 
 	protected double returnPIDInput() {
@@ -149,13 +150,12 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public boolean driveAutoIsFinished() {
-		return Math.abs(remainingTicks) < 20; // ~ 1/2 "
+		return Math.abs(remainingTicks) < 21; // ~ 1/2 "
 	}
 
 	public void stop() {
 		myRobot.arcadeDrive(0.0, 0.0);
 
 	}
-	
 
 }

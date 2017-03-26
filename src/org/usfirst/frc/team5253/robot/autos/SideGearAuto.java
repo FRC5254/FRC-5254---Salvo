@@ -41,7 +41,9 @@ public class SideGearAuto extends CommandGroup {
 		addSequential(new AutoTurnRobot(angle));
 		addSequential(new AutoDriveToDistance(1.0, 12));
 		addSequential(new AutoDropGear());
-		addSequential(new AutoDriveToDistance(1.0, -34.5));// TODO how far do you have to backup 
+		addSequential(new AutoDriveToDistance(1.0, -34.5));// TODO how far do
+															// you have to
+															// backup
 		addSequential(new AutoStopRobot());
 	}
 }

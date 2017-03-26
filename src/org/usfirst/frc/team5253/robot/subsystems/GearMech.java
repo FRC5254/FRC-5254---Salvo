@@ -21,16 +21,12 @@ public class GearMech extends Subsystem {
 	private CANTalon gearMotor = new CANTalon(RobotMap.GEAR_MECH_MOTOR);
 
 	public GearMech() {
-		 gearMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		 gearMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		 gearMotor.configNominalOutputVoltage(+0.0f, -0.0f);
-		 gearMotor.configPeakOutputVoltage(0.0f,-12.0f);
-		 gearMotor.reverseSensor(false);
-		 gearMotor.reverseOutput(true);
-	}
-
-	public void down() {
-		gearPiston.set(DoubleSolenoid.Value.kForward);
+		gearMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+		gearMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		gearMotor.configNominalOutputVoltage(+0.0f, -0.0f);
+		gearMotor.configPeakOutputVoltage(0.0f, -12.0f);
+		gearMotor.reverseSensor(false);
+		gearMotor.reverseOutput(true);
 	}
 
 	@Override
@@ -51,5 +47,8 @@ public class GearMech extends Subsystem {
 	public void up() {
 		gearPiston.set(DoubleSolenoid.Value.kReverse);
 	} // TODO make sure solenoid values are correct
-
+	
+	public void down() {
+		gearPiston.set(DoubleSolenoid.Value.kForward);
+	}
 }

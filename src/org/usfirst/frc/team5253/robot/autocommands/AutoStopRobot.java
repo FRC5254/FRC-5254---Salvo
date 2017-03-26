@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoStopRobot extends Command {
 
 	public AutoStopRobot() {
-		
+
 	}
 
 	// Called just before this Command runs the first time

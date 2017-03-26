@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team5253.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -39,13 +40,14 @@ public class Robot extends IterativeRobot {
 	private final String AutoRightGear = "Right Gear";
 	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
-	private final String GearTenBall = "Center Gear and Ten Ball Shot";
+	private final String TenBallGear = "Ten Ball Shot and Center Gear";
 	private final String OP = "Auto Bots Assemble";
-	private final String ShootAndCross = "Shoot 10 and cross base line";
+	private final String TenBallAndCross = "Ten Ball and Cross Base Line";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, ShootAndCross,  AutoRightGear, AutoLeftGear, TenBall, GearTenBall, OP,
+			NothingAuto, CrossBaseLine, AutoCenterGear, TenBallAndCross, AutoRightGear, AutoLeftGear, TenBall,
+			TenBallGear,
 
 	};
 
@@ -65,7 +67,7 @@ public class Robot extends IterativeRobot {
 
 		// Initialize cameras
 		// TODO CameraServer.getInstance().startAutomaticCapture(1);
-		// CameraServer.getInstance().startAutomaticCapture(0);
+		CameraServer.getInstance().startAutomaticCapture(0);
 
 	}
 
@@ -127,19 +129,20 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new TenBallAuto();
 			break;
 
-		case GearTenBall:
-			autonomousCommand = new GearAndTenBallAuto();
+		case TenBallGear:
+			autonomousCommand = new TenBallAndGearAuto();
 			break;
 
 		case OP:
 			autonomousCommand = new OPAuto();
 			break;
-		
-		case ShootAndCross:
-			autonomousCommand = new ShootAndCrossBaseLineAuto();
+
+		case TenBallAndCross:
+			autonomousCommand = new TenBallAndCrossBaseLineAuto();
 			break;
 
 		default:
+			autonomousCommand = new NothingAuto();
 			break;
 		}
 

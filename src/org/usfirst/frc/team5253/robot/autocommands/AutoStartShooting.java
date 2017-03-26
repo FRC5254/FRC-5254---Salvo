@@ -15,7 +15,6 @@ public class AutoStartShooting extends Command {
 	Timer timer = new Timer();
 	double time;
 
-
 	public AutoStartShooting(double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -33,7 +32,7 @@ public class AutoStartShooting extends Command {
 	@Override
 	protected void execute() {
 		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
-		Robot.HypeHat.startSpinning();
+		Robot.HypeHat.on();
 		// TODO dosent his auto exist naw?
 	}
 
