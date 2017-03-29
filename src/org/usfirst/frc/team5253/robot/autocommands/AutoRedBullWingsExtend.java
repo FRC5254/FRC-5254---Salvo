@@ -12,7 +12,6 @@ public class AutoRedBullWingsExtend extends Command {
 	public AutoRedBullWingsExtend() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.FuelTank);
 	}
 
 	// Called just before this Command runs the first time
@@ -23,7 +22,7 @@ public class AutoRedBullWingsExtend extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.FuelTank.redBullWingsOut();
+		Robot.FuelTank.out();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -35,6 +34,7 @@ public class AutoRedBullWingsExtend extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		// TODO for autos put robot.stop();
 	}
 
 	// Called when another command which requires one or more of the same

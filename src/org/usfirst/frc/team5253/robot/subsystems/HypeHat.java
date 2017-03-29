@@ -34,11 +34,11 @@ public class HypeHat extends Subsystem {
 		setDefaultCommand(new HypeHatStopSpinning());
 	}
 
-	public void startSpinning() {
-		HatMotor.set(-0.75);
+	public void on() {
+		HatMotor.set(-0.5);
 	}
 
-	public void stopSpinning() {
+	public void off() {
 		HatMotor.set(0);
 	}
 }
