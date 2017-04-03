@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 		table.putStringArray("Auto List", AutoModes);
 
 		// Initialize cameras
-		// TODO CameraServer.getInstance().startAutomaticCapture(1);
+		CameraServer.getInstance().startAutomaticCapture(1);
 		CameraServer.getInstance().startAutomaticCapture(0);
 
 	}

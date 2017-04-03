@@ -18,7 +18,7 @@ public class TenBallAndCrossBaseLineAuto extends CommandGroup {
 
 		double turn = 60;
 		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
-			turn = -turn;// TODO
+			turn = -turn;
 		}
 
 		addSequential(new AutoSpinUp(3));

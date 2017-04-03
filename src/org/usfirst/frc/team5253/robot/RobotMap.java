@@ -20,10 +20,10 @@ public class RobotMap {
 
 	// Solenoids
 	public static final int SHIFTING_PISTON = 0;
-	public static final int GEAR_MECH_PISTON_EXTEND = 4;// 2
-	public static final int GEAR_MECH_PISTON_RETRACT = 5;// 3
-	public static final int RED_BULL_WINGS_PISTION_EXTEND = 2;// 4
-	public static final int RED_BULL_WINGS_PISTION_RETRACT = 3;// 5
+	public static final int GEAR_MECH_PISTON_EXTEND = 2;
+	public static final int GEAR_MECH_PISTON_RETRACT = 3;
+	public static final int RED_BULL_WINGS_PISTION_EXTEND = 4;
+	public static final int RED_BULL_WINGS_PISTION_RETRACT = 5;
 	public static final int GEAR_FLAP_PISTION = 6;
 
 	// Sensors
@@ -45,10 +45,10 @@ public class RobotMap {
 	public static final int SHOOTER_MOTOR_TOP_LEFT = 6;
 	public static final int SHOOTER_MOTOR_TOP_RIGHT = 7;
 	public static final int SHOOTER_MOTOR_BOTTOM = 4;
-	public static final int HYPE_HAT_MOTOR = 3;// 9
-	public static final int CLIMBER_MOTOR = 10;// 11
+	public static final int HYPE_HAT_MOTOR = 9;
+	public static final int CLIMBER_MOTOR = 1;
 	public static final int CLIMBER_MOTOR_2 = 12;
-	public static final int GEAR_MECH_MOTOR = 5;// ?
+	public static final int GEAR_MECH_MOTOR = 2;
 
 	// Shooter tuning values
 	public static final double SHOOTER_RPM = 3250;

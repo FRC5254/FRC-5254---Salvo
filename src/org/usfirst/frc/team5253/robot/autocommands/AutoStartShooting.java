@@ -46,6 +46,7 @@ public class AutoStartShooting extends Command {
 	@Override
 	protected void end() {
 		Robot.Shooter.stopShooting();
+		Robot.HypeHat.off();
 		timer.stop();
 	}
 
