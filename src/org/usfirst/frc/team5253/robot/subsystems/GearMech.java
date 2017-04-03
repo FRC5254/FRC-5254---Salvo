@@ -46,7 +46,7 @@ public class GearMech extends Subsystem {
 
 	public void up() {
 		gearPiston.set(DoubleSolenoid.Value.kReverse);
-	} // TODO make sure solenoid values are correct
+	}
 	
 	public void down() {
 		gearPiston.set(DoubleSolenoid.Value.kForward);

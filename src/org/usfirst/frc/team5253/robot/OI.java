@@ -56,7 +56,7 @@ public class OI {
 		DriverButtonB.whenPressed(new HypeHatStopSpinning());
 		DriverButtonX.whenPressed(new ShooterSpinUp());
 		DriverButtonY.whenPressed(new HypeHatStartSpinning());
-		DriverButtonBack.whenPressed(new DrivetrainSlowTrun());
+		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
 		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
 		DriverButtonBumperLeft.whenInactive(new DrivetrainShiftDown());

@@ -3,10 +3,10 @@ package org.usfirst.frc.team5253.robot.autos;
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
-import org.usfirst.frc.team5253.robot.autocommands.AutoSecondWait;
+import org.usfirst.frc.team5253.robot.autocommands.AutoTimerWait;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
-import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoGyroTurn;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
@@ -40,7 +40,6 @@ public class TenBallAndGearAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		// TODO do the driver allaince color code shit here an logic it out
 		double turn1 = 59;
 		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
 			turn1 = -turn1;
@@ -52,11 +51,11 @@ public class TenBallAndGearAuto extends CommandGroup {
 		
 		addSequential(new AutoSpinUp(3));
 		addSequential(new AutoStartShooting(2));
-		addSequential(new AutoTurnRobot(turn1));
-		addSequential(new AutoSecondWait(0.25));
+		addSequential(new AutoGyroTurn(turn1));
+		addSequential(new AutoTimerWait(0.25));
 		addSequential(new AutoDriveToDistance(1.0, 82.5));
-		addSequential(new AutoTurnRobot(turn2));
-		addSequential(new AutoSecondWait(0.25));
+		addSequential(new AutoGyroTurn(turn2));
+		addSequential(new AutoTimerWait(0.25));
 		addSequential(new AutoDriveToDistance(1.0, 46.0));
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistance(-1.0, 34.5));

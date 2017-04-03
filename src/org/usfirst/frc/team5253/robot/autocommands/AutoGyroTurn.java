@@ -1,43 +1,50 @@
+
 package org.usfirst.frc.team5253.robot.autocommands;
 
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team5253.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutoSecondWait extends Command {
 
-	double time;
-	Timer timer = new Timer();
+public class AutoGyroTurn extends Command {
 
-	public AutoSecondWait(double time) {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		this.time = time;
+	double angle;
+
+	public AutoGyroTurn(double angle) {
+		this.angle = angle;
 	}
 
 	// Called just before this Command runs the first time
+	@Override
 	protected void initialize() {
-		timer.reset();
-		timer.start();
+		Robot.Drivetrain.setSetpoint(Robot.Drivetrain.getAngle() + this.angle);
+		Robot.Drivetrain.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
+	@Override
 	protected void execute() {
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
+	@Override
 	protected boolean isFinished() {
-		return timer.get() > time;
+		return Robot.Drivetrain.onTarget();
 	}
 
 	// Called once after isFinished returns true
+	@Override
 	protected void end() {
+		Robot.Drivetrain.disable();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
+	@Override
 	protected void interrupted() {
+		end();
 	}
 }

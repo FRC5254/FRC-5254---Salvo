@@ -23,8 +23,8 @@ public class TenBallAndCrossBaseLineAuto extends CommandGroup {
 
 		addSequential(new AutoSpinUp(3));
 		addSequential(new AutoStartShooting(6));
-		addSequential(new AutoTurnRobot(turn));
-		addSequential(new AutoSecondWait(0.5));
+		addSequential(new AutoGyroTurn(turn));
+		addSequential(new AutoTimerWait(0.5));
 		addSequential(new AutoDriveToDistance(1.0, 80.0));
 	}
 }

@@ -19,7 +19,7 @@ public class Drivetrain extends PIDSubsystem {
 	public static Timer timer = new Timer();
 
 	double angle;
-	public double DKp = 0.3; // TODO confirm setting for competition robot
+	public double DKp = 0.3;
 	public double TKp = 0.3;
 	public double GTKp = 0.2;
 	private static int finalTicks;
@@ -93,7 +93,7 @@ public class Drivetrain extends PIDSubsystem {
 
 		if (Throttle > 0) {
 			if (remainingDistance < Throttle * 15) {
-				finalThrottle = remainingDistance / 15;// TODO time these values
+				finalThrottle = remainingDistance / 15;
 			} else {
 				finalThrottle = Throttle;
 			}

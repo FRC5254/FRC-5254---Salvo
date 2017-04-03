@@ -33,7 +33,6 @@ public class AutoStartShooting extends Command {
 	protected void execute() {
 		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
 		Robot.HypeHat.on();
-		// TODO dosent his auto exist naw?
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

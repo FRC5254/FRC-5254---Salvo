@@ -30,23 +30,23 @@ public class Robot extends IterativeRobot {
 	public static GearMech GearMech = new GearMech();
 	public static HypeHat HypeHat = new HypeHat();
 	public static Shooter Shooter = new Shooter();
-	public static FuelTank FuelTank = new FuelTank();
 	public static Climber Climber = new Climber();
 
 	// Auto modes
 	private final String NothingAuto = "Nothing";
 	private final String CrossBaseLine = "Cross Base Line";
 	private final String AutoCenterGear = "Center Gear";
-	private final String AutoRightGear = "Right Gear";
-	private final String AutoLeftGear = "Left Gear";
 	private final String TenBall = "Shoot Ten Balls";
 	private final String TenBallGear = "Ten Ball Shot and Center Gear";
-	private final String OP = "Auto Bots Assemble";
 	private final String TenBallAndCross = "Ten Ball and Cross Base Line";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, TenBallAndCross, AutoRightGear, AutoLeftGear, TenBall,
+			NothingAuto, 
+			CrossBaseLine, 
+			AutoCenterGear, 
+			TenBallAndCross, 
+			TenBall,
 			TenBallGear,
 
 	};
@@ -117,13 +117,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new GearCenterAuto();
 			break;
 
-		case AutoRightGear:
-			autonomousCommand = new SideGearAuto(false);
-			break;
-
-		case AutoLeftGear:
-			autonomousCommand = new SideGearAuto(true);
-			break;
 
 		case TenBall:
 			autonomousCommand = new TenBallAuto();
@@ -133,9 +126,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new TenBallAndGearAuto();
 			break;
 
-		case OP:
-			autonomousCommand = new OPAuto();
-			break;
 
 		case TenBallAndCross:
 			autonomousCommand = new TenBallAndCrossBaseLineAuto();
