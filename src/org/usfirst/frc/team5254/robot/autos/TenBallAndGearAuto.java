@@ -9,7 +9,6 @@ import org.usfirst.frc.team5254.robot.autocommands.AutoStartShooting;
 import org.usfirst.frc.team5254.robot.autocommands.AutoTimerWait;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**

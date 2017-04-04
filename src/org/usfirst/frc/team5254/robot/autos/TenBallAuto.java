@@ -3,7 +3,6 @@ package org.usfirst.frc.team5254.robot.autos;
 import org.usfirst.frc.team5254.robot.Robot;
 import org.usfirst.frc.team5254.robot.autocommands.AutoSpinUp;
 import org.usfirst.frc.team5254.robot.autocommands.AutoStartShooting;
-import org.usfirst.frc.team5254.robot.commands.HypeHatStartSpinning;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
