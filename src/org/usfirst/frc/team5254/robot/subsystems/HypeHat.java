@@ -35,7 +35,7 @@ public class HypeHat extends Subsystem {
 	}
 
 	public void on() {
-		HatMotor.set(-0.5);
+		HatMotor.set(RobotMap.HAT_POWER);
 	}
 
 	public void off() {

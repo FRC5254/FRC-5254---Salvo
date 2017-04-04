@@ -56,9 +56,14 @@ public class RobotMap {
 	public static final double SHOOTER_PID_P = 0.04;
 	public static final double SHOOTER_PID_I = 0.0;
 	public static final double SHOOTER_PID_D = 0.4;
+	public static final double HAT_POWER = -0.5;
 
-	// Misc
+	// Auto Driving
+	public static final double DKp = 0.3;
 	public static final int WHEEL_DIAMETER = 4;
 	public static final int ENCODER_TICKS = 256;
 	public static final double GEAR_RATIO = ((25.0 / 6.0) * (100.0 / 91.0));
+	public static final double TURNING_P = 0.02;
+	public static final double TURNING_I = 0.02;
+	public static final double TURNING_D = 0.2;
 }

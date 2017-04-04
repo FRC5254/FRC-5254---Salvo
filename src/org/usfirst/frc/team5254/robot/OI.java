@@ -18,6 +18,7 @@ public class OI {
 	public Joystick driver = new Joystick(RobotMap.DRIVER_JOYSTICK);
 	public XboxController operator = new XboxController(RobotMap.OPERATOR_JOYSTICK);
 
+	@SuppressWarnings("unused")
 	public OI() {
 
 		// defining driver buttons

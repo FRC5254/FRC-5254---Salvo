@@ -18,6 +18,7 @@ public class Climber extends Subsystem {
 	// here. Call these from Commands.
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	private CANTalon climberMotor2 = new CANTalon(RobotMap.CLIMBER_MOTOR_2);
+	double climerSpeed;
 
 	public Climber() {
 
@@ -40,10 +41,21 @@ public class Climber extends Subsystem {
 		setDefaultCommand(new ClimberStopClimbing());
 	}
 
-	public void on(double percent) {
+	public void on(boolean direction) {
+		double climberSpeed;
+		
+		// if climb direction is forward
+				if (direction == true) {
+					// set speed to full forward
+					climberSpeed = -1.0;
+				} else {
+					// set speed to full backward
+					climberSpeed = 1.0;
+				}
+		
 		climberMotor.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		climberMotor.configPeakOutputVoltage(0.0f, -12.0f);
-		climberMotor.set(percent);
+		climberMotor.set(climberSpeed);
 	}
 
 	public void off() {

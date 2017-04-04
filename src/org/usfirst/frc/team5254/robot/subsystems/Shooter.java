@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Shooter extends Subsystem {
-
-	private static final double ShooterError = Math.abs(20);
-
+	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
@@ -73,11 +71,11 @@ public class Shooter extends Subsystem {
 		setDefaultCommand(new ShooterStopShooting());
 	}
 
-	public void spinUp(double shooterRpm) {
+	public void spinUp() {
 
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f, -12.0f);
-		shooterMotorTopLeft.set(shooterRpm);// SmartDashboard.getNumber("DB/Slider
+		shooterMotorTopLeft.set(RobotMap.SHOOTER_RPM);// SmartDashboard.getNumber("DB/Slider
 											// 0", -0.75)
 
 		if (loop++ > 10) {
@@ -88,7 +86,7 @@ public class Shooter extends Subsystem {
 			// shooterMotorTopLeft.getClosedLoopError());
 
 			System.out.format("Spin Up; RPM %f Delta %f%n", shooterMotorTopLeft.getSpeed(),
-					shooterMotorTopLeft.getSpeed() - shooterRpm);
+					shooterMotorTopLeft.getSpeed() - RobotMap.SHOOTER_RPM);
 		}
 
 		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
@@ -98,7 +96,7 @@ public class Shooter extends Subsystem {
 		// SmartDashboard.putNumber("Spin Up Error",
 		// shooterMotorTopLeft.getClosedLoopError());
 
-		if (shooterMotorTopLeft.getSpeed() >= shooterRpm) {
+		if (shooterMotorTopLeft.getSpeed() >= RobotMap.SHOOTER_RPM) {
 			idleAchieved = true;
 		}
 
@@ -112,11 +110,11 @@ public class Shooter extends Subsystem {
 
 	}
 
-	public void startShooting(double shooterRpm) {
+	public void startShooting() {
 
 		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
 		shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
-		shooterMotorTopLeft.set(shooterRpm);// SmartDashboard.getNumber("DB/Slider
+		shooterMotorTopLeft.set(RobotMap.SHOOTER_RPM);// SmartDashboard.getNumber("DB/Slider
 											// 1", -0.75)
 
 		double currentRpm = shooterMotorTopLeft.getSpeed();
@@ -127,7 +125,7 @@ public class Shooter extends Subsystem {
 
 		if (loop++ > 10) {
 			loop = 0;
-			System.out.format("Start Shooting; RPM %f Delta %f Error %d%n", currentRpm, currentRpm - shooterRpm,
+			System.out.format("Start Shooting; RPM %f Delta %f Error %d%n", currentRpm, currentRpm - RobotMap.SHOOTER_RPM,
 					closedLoopError);
 		}
 
@@ -141,7 +139,7 @@ public class Shooter extends Subsystem {
 		// SmartDashboard.putNumber("Start Shooting Error",
 		// shooterMotorTopLeft.getClosedLoopError());
 
-		if (shooterMotorTopLeft.getSpeed() >= shooterRpm) {
+		if (shooterMotorTopLeft.getSpeed() >= RobotMap.SHOOTER_RPM) {
 			shootingSpeedAchieved = true;
 		}
 

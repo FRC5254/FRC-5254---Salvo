@@ -9,22 +9,15 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ClimberStartClimbing extends Command {
 
-	double climberSpeed;
+	
+	boolean direction;
 
 	public ClimberStartClimbing(boolean direction) {
 		// accept direction of climber direction. true = forward, false =
 		// backward
 
 		requires(Robot.Climber);
-
-		// if climb direction is forward
-		if (direction == true) {
-			// set speed to full forward
-			climberSpeed = -1.0;
-		} else {
-			// set speed to full backward
-			climberSpeed = 1.0;
-		}
+		this.direction = direction;
 	}
 
 	// Called just before this Command runs the first time
@@ -35,7 +28,7 @@ public class ClimberStartClimbing extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Climber.on(climberSpeed);
+		Robot.Climber.on(direction);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

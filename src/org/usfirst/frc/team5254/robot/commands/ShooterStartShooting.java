@@ -24,7 +24,7 @@ public class ShooterStartShooting extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
+		Robot.Shooter.startShooting();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

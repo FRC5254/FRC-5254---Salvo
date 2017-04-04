@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5254.robot.subsystems;
 
+import org.usfirst.frc.team5254.robot.Robot;
 import org.usfirst.frc.team5254.robot.RobotMap;
 import org.usfirst.frc.team5254.robot.commands.DrivetrainDriveWithJoystick;
 
@@ -19,9 +20,6 @@ public class Drivetrain extends PIDSubsystem {
 	public static Timer timer = new Timer();
 
 	double angle;
-	public double DKp = 0.3;
-	public double TKp = 0.3;
-	public double GTKp = 0.2;
 	private static int finalTicks;
 	private int remainingTicks;
 	private double Throttle;
@@ -29,13 +27,18 @@ public class Drivetrain extends PIDSubsystem {
 	private double finalThrottle;
 
 	public Drivetrain() {
-		super("DriveTrain", .02, .002, .2);
+		super("DriveTrain", RobotMap.TURNING_P, RobotMap.TURNING_I, RobotMap.TURNING_D);
 		setAbsoluteTolerance(3.0);
 		getPIDController().setContinuous(true);
 	}
 
 	protected void initDefaultCommand() {
 		setDefaultCommand(new DrivetrainDriveWithJoystick());
+	}
+	
+	public void autoTurnInit(){
+		setSetpoint(Robot.Drivetrain.getAngle() + this.angle);
+		enable();
 	}
 
 	public void drive(double Throttle, double Turn) {
@@ -130,7 +133,7 @@ public class Drivetrain extends PIDSubsystem {
 			}
 		}
 
-		drive(-finalThrottle, -getAngle() * DKp);
+		drive(-finalThrottle, -getAngle() * RobotMap.DKp);
 		 System.out.println(gyro.getAngle() + " " + Throttle + " " +
 		 remainingDistance + " " + finalThrottle + " " + encoder.get() + " " +
 		 remainingTicks);
