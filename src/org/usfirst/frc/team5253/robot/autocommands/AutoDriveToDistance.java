@@ -15,7 +15,6 @@ public class AutoDriveToDistance extends Command {
 	public AutoDriveToDistance(double Throttle, double Distance) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.Drivetrain);
 		this.Throttle = Throttle; // TODO ask Rorster if this works that it gets
 									// the throttle
 		this.Distance = Distance;
@@ -25,7 +24,7 @@ public class AutoDriveToDistance extends Command {
 	@Override
 	protected void initialize() {
 		Robot.Drivetrain.autoDriveInitialize(Throttle, Distance);
-		System.out.format("DriveToDistance(%f,%f)%n", this.Throttle, this.Distance);
+		// System.out.format("DriveToDistance(%f,%f)%n", this.Throttle, this.Distance);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -37,6 +36,7 @@ public class AutoDriveToDistance extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
+		 
 		return Robot.Drivetrain.driveAutoIsFinished();
 	}
 

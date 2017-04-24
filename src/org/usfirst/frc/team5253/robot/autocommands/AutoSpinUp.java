@@ -5,7 +5,6 @@ import org.usfirst.frc.team5253.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,7 +17,6 @@ public class AutoSpinUp extends Command {
 	public AutoSpinUp(double time) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.Shooter);
 
 		this.time = time;
 	}

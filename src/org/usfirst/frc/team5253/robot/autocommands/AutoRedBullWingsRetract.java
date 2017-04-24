@@ -12,7 +12,6 @@ public class AutoRedBullWingsRetract extends Command {
 	public AutoRedBullWingsRetract() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.FuelTank);
 	}
 
 	// Called just before this Command runs the first time
@@ -23,7 +22,7 @@ public class AutoRedBullWingsRetract extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.FuelTank.redBullWingsIn();
+		Robot.FuelTank.in();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

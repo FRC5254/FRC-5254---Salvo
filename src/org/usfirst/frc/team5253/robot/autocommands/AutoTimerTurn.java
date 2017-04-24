@@ -15,7 +15,6 @@ public class AutoTimerTurn extends Command {
 	double time, turn;
 
 	public AutoTimerTurn(double turn, double time) {
-		requires(Robot.Drivetrain);
 		this.turn = turn;
 		this.time = time;
 	}

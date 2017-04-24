@@ -12,7 +12,7 @@ public class GearCenterAuto extends CommandGroup {
 	public GearCenterAuto() {
 
 		requires(Robot.Drivetrain);
-		requires(Robot.GearHolder);
+		requires(Robot.GearMech);
 
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -31,9 +31,9 @@ public class GearCenterAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoDriveToDistance(1.0, 69));
+		addSequential(new AutoDriveToDistance(0.75, 67));
 		addSequential(new AutoDropGear());
-		addSequential(new AutoDriveToDistance(-1.0, 34.5));// TODO why
+		addSequential(new AutoDriveToDistance(-0.75, 34.5));
 		addSequential(new AutoStopRobot());
 
 	}

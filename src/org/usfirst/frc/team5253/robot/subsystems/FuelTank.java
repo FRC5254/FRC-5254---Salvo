@@ -24,11 +24,11 @@ public class FuelTank extends Subsystem {
 		// sets default command to inside the frame perimeter
 	}
 
-	public void redBullWingsIn() {
+	public void in() {
 		redBullWingsPistion.set(DoubleSolenoid.Value.kReverse);
 	}
 
-	public void redBullWingsOut() {
+	public void out() {
 		redBullWingsPistion.set(DoubleSolenoid.Value.kForward);
 	}
 }
