@@ -10,7 +10,7 @@ public class Shoot extends CommandGroup {
 
 	public Shoot() {
 		// TODO get this to work? does it?
-		addSequential(new AutoSpinUp(5));
+		addSequential(new AutoSpinUp(5, false));
 		addSequential(new ShooterStartShooting());
 
 	}

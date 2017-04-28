@@ -49,12 +49,12 @@ public class Shooter extends Subsystem {
 		shooterMotorTopLeft.reverseSensor(true);
 		shooterMotorTopLeft.reverseOutput(true);
 		shooterMotorTopLeft.setProfile(0);
-		shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F);
-		System.out.format("Shooter RPM %f F calculated: %f using: %f%n", RobotMap.SHOOTER_RPM,
-				1023.0 / (RobotMap.SHOOTER_RPM / 600.0 * 4096.0), shooterMotorTopLeft.getF());
-		shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P);
-		shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I);
-		shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D);
+		shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F_SHORT);
+		System.out.format("Shooter RPM %f F calculated: %f using: %f%n", RobotMap.SHOOTER_RPM_SHORT,
+				1023.0 / (RobotMap.SHOOTER_RPM_SHORT / 600.0 * 4096.0), shooterMotorTopLeft.getF());
+		shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P_SHORT);
+		shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I_SHORT);
+		shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D_SHORT);
 		System.out.format("Shooter P %f I %f D %f%n", shooterMotorTopLeft.getP(), shooterMotorTopLeft.getI(),
 				shooterMotorTopLeft.getD());
 
@@ -63,7 +63,6 @@ public class Shooter extends Subsystem {
 		shooterMotorTopRight.reverseOutput(false);
 
 		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-		;
 		shooterMotorBottom.configNominalOutputVoltage(+0.0f, -0.0f);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
 		shooterMotorBottom.reverseSensor(false);
@@ -73,22 +72,72 @@ public class Shooter extends Subsystem {
 		setDefaultCommand(new ShooterStopShooting());
 	}
 
-	public void spinUp(double shooterRpm) {
+	public void spinUp(boolean longshot) {
+		if (longshot) {
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+			shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.reverseSensor(true);
+			shooterMotorTopLeft.reverseOutput(true);
+			shooterMotorTopLeft.setProfile(0);
+			shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F_LONG);
+			shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P_LONG);
+			shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I_LONG);
+			shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D_LONG);
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.set(RobotMap.SHOOTER_RPM_LONG);
+			
+			if (loop++ > 10) {
+				loop = 0;
+				// System.out.format("Spin Up; RPM %f Delta %f Error %d%n",
+				// shooterMotorTopLeft.getSpeed(),
+				// shooterMotorTopLeft.getSpeed() - shooterRpm,
+				// shooterMotorTopLeft.getClosedLoopError());
 
-		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
-		shooterMotorTopLeft.configPeakOutputVoltage(+0.0f, -12.0f);
-		shooterMotorTopLeft.set(shooterRpm);// SmartDashboard.getNumber("DB/Slider
-											// 0", -0.75)
+				System.out.format("Spin Up; RPM %f Delta %f%n", shooterMotorTopLeft.getSpeed(),
+						shooterMotorTopLeft.getSpeed() - RobotMap.SHOOTER_RPM_LONG);
+			}
+			
+			if (shooterMotorTopLeft.getSpeed() >= RobotMap.SHOOTER_RPM_LONG) {
+				idleAchieved = true;
+			}
+			
+		} else {
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+			shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.reverseSensor(true);
+			shooterMotorTopLeft.reverseOutput(true);
+			shooterMotorTopLeft.setProfile(0);
+			shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F_SHORT);
+			shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P_SHORT);
+			shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I_SHORT);
+			shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D_SHORT);
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.set(RobotMap.SHOOTER_RPM_SHORT);
+			
+			if (loop++ > 10) {
+				loop = 0;
+				// System.out.format("Spin Up; RPM %f Delta %f Error %d%n",
+				// shooterMotorTopLeft.getSpeed(),
+				// shooterMotorTopLeft.getSpeed() - shooterRpm,
+				// shooterMotorTopLeft.getClosedLoopError());
 
-		if (loop++ > 10) {
-			loop = 0;
-			// System.out.format("Spin Up; RPM %f Delta %f Error %d%n",
-			// shooterMotorTopLeft.getSpeed(),
-			// shooterMotorTopLeft.getSpeed() - shooterRpm,
-			// shooterMotorTopLeft.getClosedLoopError());
-
-			System.out.format("Spin Up; RPM %f Delta %f%n", shooterMotorTopLeft.getSpeed(),
-					shooterMotorTopLeft.getSpeed() - shooterRpm);
+				System.out.format("Spin Up; RPM %f Delta %f%n", shooterMotorTopLeft.getSpeed(),
+						shooterMotorTopLeft.getSpeed() - RobotMap.SHOOTER_RPM_SHORT);
+			}
+			
+			if (shooterMotorTopLeft.getSpeed() >= RobotMap.SHOOTER_RPM_SHORT) {
+				idleAchieved = true;
+			}
 		}
 
 		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
@@ -98,9 +147,7 @@ public class Shooter extends Subsystem {
 		// SmartDashboard.putNumber("Spin Up Error",
 		// shooterMotorTopLeft.getClosedLoopError());
 
-		if (shooterMotorTopLeft.getSpeed() >= shooterRpm) {
-			idleAchieved = true;
-		}
+		
 
 		if (idleAchieved = true) {
 			maxIdle = Math.max(maxIdle, shooterMotorTopLeft.getSpeed());
@@ -112,24 +159,75 @@ public class Shooter extends Subsystem {
 
 	}
 
-	public void startShooting(double shooterRpm) {
-
-		shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
-		shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
-		shooterMotorTopLeft.set(shooterRpm);// SmartDashboard.getNumber("DB/Slider
-											// 1", -0.75)
-
+	public void startShooting(boolean longshot) {
+		
 		double currentRpm = shooterMotorTopLeft.getSpeed();
 		int closedLoopError = shooterMotorTopLeft.getClosedLoopError();
+		
+		if (longshot) {
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+			shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.reverseSensor(true);
+			shooterMotorTopLeft.reverseOutput(true);
+			shooterMotorTopLeft.setProfile(0);
+			shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F_LONG);
+			shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P_LONG);
+			shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I_LONG);
+			shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D_LONG);
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.set(RobotMap.SHOOTER_RPM_LONG);
+			
+			if (loop++ > 10) {
+				loop = 0;
+				System.out.format("Start Shooting; RPM %f Delta %f Error %d%n", currentRpm, currentRpm - RobotMap.SHOOTER_RPM_LONG,
+						closedLoopError);
+			}
+			
+			if (shooterMotorTopLeft.getSpeed() >= RobotMap.SHOOTER_RPM_LONG) {
+				shootingSpeedAchieved = true;
+			}
+			
+		} else {
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+			shooterMotorTopLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.reverseSensor(true);
+			shooterMotorTopLeft.reverseOutput(true);
+			shooterMotorTopLeft.setProfile(0);
+			shooterMotorTopLeft.setF(RobotMap.SHOOTER_PID_F_SHORT);
+			System.out.format("Shooter RPM %f F calculated: %f using: %f%n", RobotMap.SHOOTER_RPM_SHORT,
+					1023.0 / (RobotMap.SHOOTER_RPM_SHORT / 600.0 * 4096.0), shooterMotorTopLeft.getF());
+			shooterMotorTopLeft.setP(RobotMap.SHOOTER_PID_P_SHORT);
+			shooterMotorTopLeft.setI(RobotMap.SHOOTER_PID_I_SHORT);
+			shooterMotorTopLeft.setD(RobotMap.SHOOTER_PID_D_SHORT);
+			
+			shooterMotorTopLeft.changeControlMode(CANTalon.TalonControlMode.Speed);
+			shooterMotorTopLeft.configPeakOutputVoltage(0.0f, -12.0f);
+			shooterMotorTopLeft.set(RobotMap.SHOOTER_RPM_SHORT);
+			
+			if (loop++ > 10) {
+				loop = 0;
+				System.out.format("Start Shooting; RPM %f Delta %f Error %d%n", currentRpm, currentRpm - RobotMap.SHOOTER_RPM_SHORT,
+						closedLoopError);
+				
+				if (shooterMotorTopLeft.getSpeed() >= RobotMap.SHOOTER_RPM_SHORT) {
+					shootingSpeedAchieved = true;
+				}
+			}
+		
+		}
+
+		
 
 		maxError = Math.max(maxError, Math.abs(currentRpm));
 		minError = Math.min(minError, Math.abs(currentRpm));
-
-		if (loop++ > 10) {
-			loop = 0;
-			System.out.format("Start Shooting; RPM %f Delta %f Error %d%n", currentRpm, currentRpm - shooterRpm,
-					closedLoopError);
-		}
 
 		shooterMotorBottom.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 		shooterMotorBottom.configPeakOutputVoltage(0.0f, -12.0f);
@@ -140,10 +238,6 @@ public class Shooter extends Subsystem {
 		// SmartDashboard.putNumber("Shooter RPM", shooterRpm);
 		// SmartDashboard.putNumber("Start Shooting Error",
 		// shooterMotorTopLeft.getClosedLoopError());
-
-		if (shooterMotorTopLeft.getSpeed() >= shooterRpm) {
-			shootingSpeedAchieved = true;
-		}
 
 		if (shootingSpeedAchieved = true) {
 			maxShooting = Math.max(maxShooting, shooterMotorTopLeft.getSpeed());
@@ -185,7 +279,4 @@ public class Shooter extends Subsystem {
 	//// return true;
 	//// }
 	// }
-	public void ResetMinMaxRpmValues() {
-
-	}
 }

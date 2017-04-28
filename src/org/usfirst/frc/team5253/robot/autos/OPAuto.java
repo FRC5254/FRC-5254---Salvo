@@ -49,8 +49,8 @@ public class OPAuto extends CommandGroup {
 		// encuder
 
 		addSequential(new AutoRedBullWingsExtend());
-		addParallel(new AutoSpinUp(2));
-		addSequential(new AutoStartShooting(20));
+		addParallel(new AutoSpinUp(2, false));
+		addSequential(new AutoStartShooting(20, false));
 
 		addSequential(new AutoTimerTurn(turn, 0.35)); // 0.2 OG
 

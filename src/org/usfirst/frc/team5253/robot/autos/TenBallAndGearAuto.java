@@ -50,8 +50,8 @@ public class TenBallAndGearAuto extends CommandGroup {
 			turn2 = -turn2;
 		}
 		
-		addSequential(new AutoSpinUp(3));
-		addSequential(new AutoStartShooting(2));
+		addSequential(new AutoSpinUp(3, false));
+		addSequential(new AutoStartShooting(2, false));
 		addSequential(new AutoTurnRobot(turn1));
 		addSequential(new AutoSecondWait(0.25));
 		addSequential(new AutoDriveToDistance(1.0, 82.5));

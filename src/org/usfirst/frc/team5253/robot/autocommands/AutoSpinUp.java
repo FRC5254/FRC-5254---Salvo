@@ -13,11 +13,13 @@ public class AutoSpinUp extends Command {
 
 	Timer timer = new Timer();
 	double time;
+	boolean longshot;
 
-	public AutoSpinUp(double time) {
+	public AutoSpinUp(double time, boolean longshot) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-
+		
+		this.longshot = longshot;
 		this.time = time;
 	}
 
@@ -31,7 +33,8 @@ public class AutoSpinUp extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Shooter.spinUp(RobotMap.SHOOTER_RPM);
+		
+		Robot.Shooter.spinUp(longshot);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

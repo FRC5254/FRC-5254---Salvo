@@ -51,11 +51,17 @@ public class RobotMap {
 	public static final int GEAR_MECH_MOTOR = 2;
 
 	// Shooter tuning values
-	public static final double SHOOTER_RPM = 3250;
-	public static final double SHOOTER_PID_F = 0.0267;
-	public static final double SHOOTER_PID_P = 0.04;
-	public static final double SHOOTER_PID_I = 0.0;
-	public static final double SHOOTER_PID_D = 0.4;
+	public static final double SHOOTER_RPM_SHORT = 3250;
+	public static final double SHOOTER_PID_F_SHORT = 0.0267;
+	public static final double SHOOTER_PID_P_SHORT = 0.04;
+	public static final double SHOOTER_PID_I_SHORT = 0.0;
+	public static final double SHOOTER_PID_D_SHORT = 0.4;
+	
+	public static final double SHOOTER_RPM_LONG = 4000;
+	public static final double SHOOTER_PID_F_LONG = 0.0267;
+	public static final double SHOOTER_PID_P_LONG = 0.04;
+	public static final double SHOOTER_PID_I_LONG = 0.0;
+	public static final double SHOOTER_PID_D_LONG = 0.4;
 
 	// Misc
 	public static final int WHEEL_DIAMETER = 4;

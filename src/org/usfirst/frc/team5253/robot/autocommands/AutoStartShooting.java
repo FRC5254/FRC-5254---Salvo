@@ -14,11 +14,13 @@ public class AutoStartShooting extends Command {
 
 	Timer timer = new Timer();
 	double time;
+	boolean longshot;
 
-	public AutoStartShooting(double time) {
+	public AutoStartShooting(double time, boolean longshot) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		this.time = time;
+		this.longshot = longshot;
 	}
 
 	// Called just before this Command runs the first time
@@ -31,9 +33,8 @@ public class AutoStartShooting extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Shooter.startShooting(RobotMap.SHOOTER_RPM);
+		Robot.Shooter.startShooting(longshot);
 		Robot.HypeHat.on();
-		// TODO dosent his auto exist naw?
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

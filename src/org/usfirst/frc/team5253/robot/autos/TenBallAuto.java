@@ -34,7 +34,7 @@ public class TenBallAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoSpinUp(3));
-		addSequential(new AutoStartShooting(10));
+		addSequential(new AutoSpinUp(3, false));
+		addSequential(new AutoStartShooting(10, false));
 	}
 }
