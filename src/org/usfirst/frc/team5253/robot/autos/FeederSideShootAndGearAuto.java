@@ -9,6 +9,7 @@ import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 import org.usfirst.frc.team5253.robot.autocommands.AutoTurnRobot;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class FeederSideShootAndGearAuto extends CommandGroup {
 
     public FeederSideShootAndGearAuto() {
-        
+        Timer timer = new Timer();
     	requires(Robot.Drivetrain);
 		requires(Robot.Shooter);
 		requires(Robot.GearMech);
@@ -32,6 +33,8 @@ public class FeederSideShootAndGearAuto extends CommandGroup {
 			turn2 = -(turn2);
 		}
 		
+		timer.reset();
+		timer.start();
 		addSequential(new AutoSpinUp(1.5, true));
 		addSequential(new AutoStartShooting(2, true));
 		addSequential(new AutoTurnRobot(turn1));
@@ -42,5 +45,6 @@ public class FeederSideShootAndGearAuto extends CommandGroup {
 		addSequential(new AutoDriveToDistance(1.0, 19.0));
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistance(-1.0, 21));
+		System.out.println(timer.get());
     }
 }

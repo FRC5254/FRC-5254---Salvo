@@ -23,7 +23,7 @@ import com.ctre.CANTalon;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	Timer timer = new Timer();
+	
 
 	NetworkTable table;
 	public static OI oi;
@@ -45,11 +45,12 @@ public class Robot extends IterativeRobot {
 	private final String OP = "Auto Bots Assemble";
 	private final String TenBallAndCross = "Ten Ball and Cross Base Line";
 	private final String FeederSideShootAndGear = "Feeder side shooty auto";
+	private final String TestAuto = "Test Auto";
 
 	private final String[] AutoModes = {
 
 			NothingAuto, CrossBaseLine, AutoCenterGear, TenBallAndCross, AutoRightGear, AutoLeftGear, TenBall,
-			TenBallGear, FeederSideShootAndGear,
+			TenBallGear, FeederSideShootAndGear, TestAuto,
 
 	};
 
@@ -105,8 +106,7 @@ public class Robot extends IterativeRobot {
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
 
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
-		timer.reset();
-		timer.start();
+		
 		switch (autoSelected) {
 		/*
 		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
@@ -147,6 +147,10 @@ public class Robot extends IterativeRobot {
 		case FeederSideShootAndGear:
 			autonomousCommand = new FeederSideShootAndGearAuto();
 			break;
+		
+		case TestAuto:
+			autonomousCommand = new TestAuto();
+			break;
 
 		default:
 			autonomousCommand = new NothingAuto();
@@ -166,8 +170,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		timer.stop();
-		System.out.println(timer.get());
+	
 	}
 
 	@Override

@@ -135,6 +135,11 @@ public class Drivetrain extends PIDSubsystem {
 		 remainingDistance + " " + finalThrottle + " " + encoder.get() + " " +
 		 remainingTicks);
 	}
+	
+	public void autoDriveFast(){
+		remainingTicks = Math.abs(finalTicks) - Math.abs(encoder.get());
+		drive(-Throttle,-getAngle() * DKp);
+	}
 
 	protected double returnPIDInput() {
 		// Return your input value for the PID loop
@@ -150,7 +155,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 
 	public boolean driveAutoIsFinished() {
-		return Math.abs(remainingTicks) < 21; // ~ 1/2 "
+		return remainingTicks < 21; // ~ 1/2 "
 	}
 
 	public void stop() {

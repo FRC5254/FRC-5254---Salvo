@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TenBallAndGearAuto extends CommandGroup {
 
 	public TenBallAndGearAuto() {
-
+		Timer timer = new Timer();
 		requires(Robot.Drivetrain);
 		requires(Robot.Shooter);
 		requires(Robot.GearMech);
@@ -50,6 +50,8 @@ public class TenBallAndGearAuto extends CommandGroup {
 			turn2 = -turn2;
 		}
 		
+		timer.reset();
+		timer.start();
 		addSequential(new AutoSpinUp(3, false));
 		addSequential(new AutoStartShooting(2, false));
 		addSequential(new AutoTurnRobot(turn1));
@@ -60,5 +62,6 @@ public class TenBallAndGearAuto extends CommandGroup {
 		addSequential(new AutoDriveToDistance(1.0, 46.0));
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistance(-1.0, 34.5));
+		System.out.println(timer.get());
 	}
 }
