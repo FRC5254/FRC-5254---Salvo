@@ -3,6 +3,7 @@ package org.usfirst.frc.team5253.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -22,7 +23,7 @@ import com.ctre.CANTalon;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
+	Timer timer = new Timer();
 
 	NetworkTable table;
 	public static OI oi;
@@ -104,7 +105,8 @@ public class Robot extends IterativeRobot {
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
 
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
-
+		timer.reset();
+		timer.start();
 		switch (autoSelected) {
 		/*
 		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
@@ -164,6 +166,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		timer.stop();
+		System.out.println(timer.get());
 	}
 
 	@Override
