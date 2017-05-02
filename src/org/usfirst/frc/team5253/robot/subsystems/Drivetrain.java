@@ -98,8 +98,8 @@ public class Drivetrain extends PIDSubsystem {
 				finalThrottle = Throttle;
 			}
 
-			if (timer.get() < 0.5 && remainingDistance > 10.0) {
-				finalThrottle = timer.get() * 2.0;
+			if (timer.get() < 0.25 && remainingDistance > 10.0) {
+				finalThrottle = timer.get() * 4.0;
 			}
 
 			if (finalThrottle > Throttle) {
@@ -117,8 +117,8 @@ public class Drivetrain extends PIDSubsystem {
 
 			}
 
-			if (timer.get() < 0.5 && remainingDistance > 10.0) {
-				finalThrottle = -timer.get() * 2.0;
+			if (timer.get() < 0.25 && remainingDistance > 10.0) {
+				finalThrottle = -timer.get() * 4.0;
 			}
 
 			if (finalThrottle < Throttle) {

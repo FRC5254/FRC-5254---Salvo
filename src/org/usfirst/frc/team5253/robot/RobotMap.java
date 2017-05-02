@@ -58,6 +58,7 @@ public class RobotMap {
 	public static final double SHOOTER_PID_D_SHORT = 0.4;
 	
 	public static final double SHOOTER_RPM_LONG = 4000;
+	
 	public static final double SHOOTER_PID_F_LONG = 0.0267;
 	public static final double SHOOTER_PID_P_LONG = 0.04;
 	public static final double SHOOTER_PID_I_LONG = 0.0;

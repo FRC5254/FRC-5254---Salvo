@@ -31,7 +31,7 @@ public class GearCenterAuto extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		addSequential(new AutoDriveToDistance(0.75, 67));
+		addSequential(new AutoDriveToDistance(1.0, 67));// throttle .75
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistance(-0.75, 34.5));
 		addSequential(new AutoStopRobot());
