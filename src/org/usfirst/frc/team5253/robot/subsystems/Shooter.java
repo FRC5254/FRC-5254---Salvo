@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Shooter extends Subsystem {
 
-	private static final double ShooterError = Math.abs(20);
-
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	CANTalon shooterMotorTopLeft = new CANTalon(RobotMap.SHOOTER_MOTOR_TOP_LEFT);
@@ -30,15 +28,6 @@ public class Shooter extends Subsystem {
 	double loop, maxError, minError = 10000000;
 	double minIdle = 10000000.0;
 	double maxIdle = 0.0;
-
-	public void resetData() {
-		minIdle = 10000000.0;
-		maxIdle = 0.0;
-		minShooting = 10000000.0;
-		maxShooting = 0.0;
-		maxError = 0.0;
-		minError = 1000000000.0;
-	}
 
 	public Shooter() {
 
@@ -146,16 +135,6 @@ public class Shooter extends Subsystem {
 		SmartDashboard.putNumber("Spin Up RPM", shooterMotorTopLeft.getSpeed());
 		// SmartDashboard.putNumber("Spin Up Error",
 		// shooterMotorTopLeft.getClosedLoopError());
-
-		
-
-		if (idleAchieved = true) {
-			maxIdle = Math.max(maxIdle, shooterMotorTopLeft.getSpeed());
-			minIdle = Math.min(minIdle, shooterMotorTopLeft.getSpeed());
-			SmartDashboard.putString("DB/String 2", Double.toString(minIdle));
-			SmartDashboard.putString("DB/String 7", Double.toString(maxIdle));
-
-		}
 
 	}
 

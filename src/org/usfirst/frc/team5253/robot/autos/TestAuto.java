@@ -3,6 +3,7 @@ package org.usfirst.frc.team5253.robot.autos;
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistanceFast;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
+import org.usfirst.frc.team5253.robot.autocommands.AutoPrintTimer;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 
@@ -34,7 +35,7 @@ public class TestAuto extends CommandGroup {
 //    	 addSequential(new AutoDropGear());
 //    	 addSequential(new AutoDriveToDistanceFast(-0.75, 18));
     	 
-    	 System.out.println("Timer " + timer.get());
+    	 addSequential(new AutoPrintTimer());
     	
     }
 }

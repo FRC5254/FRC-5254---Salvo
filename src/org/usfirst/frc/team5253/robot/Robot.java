@@ -24,6 +24,7 @@ import com.ctre.CANTalon;
  */
 public class Robot extends IterativeRobot {
 	
+	static Timer timer = new Timer();
 
 	NetworkTable table;
 	public static OI oi;
@@ -81,7 +82,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		
+	}
+	public static void stopTimer(){
+		System.out.println(timer.get());
 	}
 
 	@Override
@@ -104,7 +108,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		String autoSelected = SmartDashboard.getString("Auto Selector", NothingAuto);
-
+		
+		timer.reset();
+		timer.start();
+		
 		System.out.format("Auto: %s '%s'%n", m_ds.getAlliance(), autoSelected);
 		
 		switch (autoSelected) {
