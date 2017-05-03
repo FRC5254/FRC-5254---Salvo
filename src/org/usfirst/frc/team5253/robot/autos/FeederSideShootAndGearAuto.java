@@ -2,6 +2,7 @@ package org.usfirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistanceFast;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSecondWait;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
@@ -42,9 +43,9 @@ public class FeederSideShootAndGearAuto extends CommandGroup {
 		addSequential(new AutoDriveToDistance(-1.0, 84));
 		addSequential(new AutoTurnRobot(turn2));
 		addSequential(new AutoSecondWait(0.25));
-		addSequential(new AutoDriveToDistance(1.0, 19.0));
+		addSequential(new AutoDriveToDistanceFast(1.0, 19.0));
 		addSequential(new AutoDropGear());
-		addSequential(new AutoDriveToDistance(-1.0, 21));
+		addSequential(new AutoDriveToDistanceFast(-1.0, 21));
 		System.out.println(timer.get());
     }
 }

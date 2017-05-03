@@ -1,6 +1,10 @@
 package org.usfirst.frc.team5253.robot.autos;
 
 import org.usfirst.frc.team5253.robot.Robot;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistanceFast;
+import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
+import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
+import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -23,9 +27,14 @@ public class TestAuto extends CommandGroup {
     	 timer.reset();
     	 timer.start();
     	 
-    	 //auto goes here
+    	addSequential(new AutoSpinUp(2, true));
+ 		addSequential(new AutoStartShooting(2, true));
     	 
-    	 System.out.println(timer.get());
+//    	 addSequential(new AutoDriveToDistanceFast(0.75, 18));
+//    	 addSequential(new AutoDropGear());
+//    	 addSequential(new AutoDriveToDistanceFast(-0.75, 18));
+    	 
+    	 System.out.println("Timer " + timer.get());
     	
     }
 }
