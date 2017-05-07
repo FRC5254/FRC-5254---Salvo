@@ -28,8 +28,8 @@ public class TestAuto extends CommandGroup {
     	 timer.reset();
     	 timer.start();
     	 
-    	addSequential(new AutoSpinUp(2, true));
- 		addSequential(new AutoStartShooting(2, true));
+    	addSequential(new AutoSpinUp(1.5, true));
+ 		addSequential(new AutoStartShooting(2.5, true));
     	 
 //    	 addSequential(new AutoDriveToDistanceFast(0.75, 18));
 //    	 addSequential(new AutoDropGear());

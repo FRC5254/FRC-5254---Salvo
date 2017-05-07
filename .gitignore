@@ -2,3 +2,4 @@
 /build/
 /dist/
 src/org/usfirst/frc/team5253/robot/commands/GearMechIn.java
+.classpath

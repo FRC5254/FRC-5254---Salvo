@@ -4,6 +4,7 @@ import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistanceFast;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
+import org.usfirst.frc.team5253.robot.autocommands.AutoPrintTimer;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSecondWait;
 import org.usfirst.frc.team5253.robot.autocommands.AutoSpinUp;
 import org.usfirst.frc.team5253.robot.autocommands.AutoStartShooting;
@@ -37,15 +38,16 @@ public class FeederSideShootAndGearAuto extends CommandGroup {
 		timer.reset();
 		timer.start();
 		addSequential(new AutoSpinUp(1.5, true));
-		addSequential(new AutoStartShooting(2, true));
+		addSequential(new AutoStartShooting(2.5, true));
 		addSequential(new AutoTurnRobot(turn1));
 		addSequential(new AutoSecondWait(0.25));
-		addSequential(new AutoDriveToDistance(-1.0, 84));
+		addSequential(new AutoDriveToDistance(-1.0, 83)); //OLD 84
 		addSequential(new AutoTurnRobot(turn2));
 		addSequential(new AutoSecondWait(0.25));
 		addSequential(new AutoDriveToDistanceFast(1.0, 19.0));
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistanceFast(-1.0, 21));
-		System.out.println(timer.get());
+		addSequential(new AutoPrintTimer());
+	
     }
 }

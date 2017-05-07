@@ -3,9 +3,7 @@ package org.usfirst.frc.team5253.robot.autos;
 import org.usfirst.frc.team5253.robot.Robot;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDriveToDistance;
 import org.usfirst.frc.team5253.robot.autocommands.AutoDropGear;
-import org.usfirst.frc.team5253.robot.autocommands.AutoStopRobot;
-
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team5253.robot.autocommands.AutoPrintTimer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GearCenterAuto extends CommandGroup {
@@ -14,31 +12,10 @@ public class GearCenterAuto extends CommandGroup {
 
 		requires(Robot.Drivetrain);
 		requires(Robot.GearMech);
-		 Timer timer = new Timer();
-
-		// Add Commands here:
-		// e.g. addSequential(new Command1());
-		// addSequential(new Command2());
-		// these will run in order.
-
-		// To run multiple commands at the same time,
-		// use addParallel()
-		// e.g. addParallel(new Command1());
-		// addSequential(new Command2());
-		// Command1 and Command2 will run in parallel.
-
-		// A command group will require all of the subsystems that each member
-		// would require.
-		// e.g. if Command1 requires chassis, and Command2 requires arm,
-		// a CommandGroup containing them would require both the chassis and the
-		// arm.
-		timer.reset();
-		timer.start();
 		addSequential(new AutoDriveToDistance(1.0, 67));// throttle .75
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistance(-0.75, 34.5));
-		addSequential(new AutoStopRobot());
-		System.out.println(timer.get());
+		addSequential(new AutoPrintTimer());
 
 	}
 }
