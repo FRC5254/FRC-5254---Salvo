@@ -98,12 +98,6 @@ public class OI {
 		 * shift up Right Bumper = shift down B = stop hat spinning/stop
 		 * shooting
 		 */
-		DriverButtonA.whenPressed(new ShooterStartShooting());
-		DriverButtonA.whenPressed(new HypeHatStartSpinning());
-		DriverButtonB.whenPressed(new ShooterStopShooting());
-		DriverButtonB.whenPressed(new HypeHatStopSpinning());
-		DriverButtonX.whenPressed(new ShooterSpinUp());
-		DriverButtonY.whenPressed(new HypeHatStartSpinning());
 		DriverButtonBack.whenPressed(new DrivetrainSlowTurn());
 		DriverButtonBack.whenInactive(new DrivetrainDriveWithJoystick());
 		DriverButtonBumperLeft.whenPressed(new DrivetrainShiftUp());
@@ -113,23 +107,8 @@ public class OI {
 		// DriverButtonLeftJoystickPress.whenPressed(command);
 		// DriverButtonRightJoystickPress.whenPressed(command);
 
-		/*
-		 * set operator buttons to activate commands A = start intaking ballssss
-		 * X = start climber (forwards) Start = lowers gear mech and intakes to
-		 * collect gear Back = outtakes and lowers to place gear Right Bumper =
-		 * extend wings Left Bumper = retract wings Y = raises the gear mech B =
-		 * stop intaking balls & stop climbing & stop gear motor
-		 */
-		OperatorButtonA.whenPressed(new GearMechOn(false));
-		OperatorButtonB.whenPressed(new ClimberStopClimbing());
-		OperatorButtonB.whenPressed(new GearMechOff());
-		OperatorButtonX.whenPressed(new ClimberStartClimbing(true));
-		OperatorButtonY.whenActive(new GearMechDown());
-		OperatorButtonY.whenInactive(new GearMechUp());
-		// OperatorButtonStart.whenPressed(new GearMechUp());
-		OperatorButtonBack.whenPressed(new GearMechCollect(true));
-		OperatorButtonBumperLeft.whenPressed(new GearMechOn(false));
-		OperatorButtonBumperRight.whenPressed(new GearMechOn(true));
+		
+		// OperatorButtonStart.whenPressed(command());
 
 	}
 

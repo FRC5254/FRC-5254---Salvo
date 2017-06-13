@@ -92,25 +92,14 @@ public class Robot extends IterativeRobot {
 	NetworkTable table;
 	public static OI oi;
 	public static Drivetrain Drivetrain = new Drivetrain();
-	public static GearMech GearMech = new GearMech();
-	public static HypeHat HypeHat = new HypeHat();
-	public static Shooter Shooter = new Shooter();
-	public static Climber Climber = new Climber();
 
 	// Auto modes
 	private final String NothingAuto = "Nothing";
-	private final String CrossBaseLine = "Cross Base Line";
-	private final String AutoCenterGear = "Center Gear";
-	private final String TenBall = "Shoot Ten Balls";
-	private final String TenBallGear = "Shooty side gear";
-	private final String TenBallAndCross = "Ten Ball and Cross Base Line";
-	private final String FeederSideShootAndGear = "Feeder side shooty auto";
 	private final String TestAuto = "Test Auto";
 
 	private final String[] AutoModes = {
 
-			NothingAuto, CrossBaseLine, AutoCenterGear, TenBallAndCross, TenBall,
-			TenBallGear, FeederSideShootAndGear, TestAuto,
+			NothingAuto, TestAuto,
 
 	};
 
@@ -177,30 +166,6 @@ public class Robot extends IterativeRobot {
 		/*
 		 * TenBall, GearBaseLine, GearTenBall, GearTenBallAndCross, OP
 		 */
-
-		case CrossBaseLine:
-			autonomousCommand = new CrossBaseLineAuto();
-			break;
-
-		case AutoCenterGear:
-			autonomousCommand = new GearCenterAuto();
-			break;
-
-		case TenBall:
-			autonomousCommand = new TenBallAuto();
-			break;
-
-		case TenBallGear:
-			autonomousCommand = new TenBallAndGearAuto();
-			break;
-
-		case TenBallAndCross:
-			autonomousCommand = new TenBallAndCrossBaseLineAuto();
-			break;
-			
-		case FeederSideShootAndGear:
-			autonomousCommand = new FeederSideShootAndGearAuto();
-			break;
 		
 		case TestAuto:
 			autonomousCommand = new TestAuto();

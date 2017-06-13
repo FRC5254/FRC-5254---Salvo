@@ -1,4 +1,5 @@
-package org.usfirst.frc.team5254.robot.commands;
+
+package org.usfirst.frc.team5254.robot.autocommands;
 
 import org.usfirst.frc.team5254.robot.Robot;
 
@@ -7,34 +8,41 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearMechUp extends Command {
 
-	public GearMechUp() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-		requires(Robot.GearMech);
+public class AutoPIDTurn extends Command {
+
+	double angle;
+
+	public AutoPIDTurn(double angle) {
+		this.angle = angle;
 	}
 
 	// Called just before this Command runs the first time
+	@Override
 	protected void initialize() {
+		Robot.Drivetrain.PIDTurnInit();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
+	@Override
 	protected void execute() {
-		Robot.GearMech.up();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
+	@Override
 	protected boolean isFinished() {
-		return false;
+		return Robot.Drivetrain.onTarget();
 	}
 
 	// Called once after isFinished returns true
+	@Override
 	protected void end() {
+		Robot.Drivetrain.disable();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
+	@Override
 	protected void interrupted() {
 		end();
 	}
