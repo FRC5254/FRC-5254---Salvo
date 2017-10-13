@@ -20,7 +20,8 @@ public class AutoGyroTurn extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.Drivetrain.autoTurnInit();
+		Robot.Drivetrain.setSetpoint(Robot.Drivetrain.getAngle() + this.angle);
+		Robot.Drivetrain.enable();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -37,8 +37,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 	
 	public void autoTurnInit(){
-		setSetpoint(Robot.Drivetrain.getAngle() + this.angle);
-		enable();
+
 	}
 
 	public void drive(double Throttle, double Turn) {
