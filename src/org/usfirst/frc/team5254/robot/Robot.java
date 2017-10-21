@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	private final String CrossBaseLine = "Cross Base Line";
 	private final String AutoCenterGear = "Center Gear";
 	private final String TenBall = "Shoot Ten Balls";
-	private final String TenBallGear = "Ten Ball Shot and Center Gear";
+	private final String TenBallGear = "Ten Ball Shot and Side Gear";
 	private final String TenBallAndCross = "Ten Ball and Cross Base Line";
 
 	private final String[] AutoModes = {

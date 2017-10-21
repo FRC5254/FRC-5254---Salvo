@@ -48,6 +48,16 @@ public class TenBallAndGearAuto extends CommandGroup {
 			turn2 = -turn2;
 		}
 		
+		double turn3 = -60;
+		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red) {
+			turn3 = -turn3;
+		}
+		double turn4 = 45;
+		if (DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Red){
+			turn4 = -turn4;
+		}
+		
+		//to shoot and place the gear
 		addSequential(new AutoSpinUp(3));
 		addSequential(new AutoStartShooting(2));
 		addSequential(new AutoGyroTurn(turn1));
@@ -58,5 +68,12 @@ public class TenBallAndGearAuto extends CommandGroup {
 		addSequential(new AutoDriveToDistance(1.0, 46.0));
 		addSequential(new AutoDropGear());
 		addSequential(new AutoDriveToDistance(-1.0, 34.5));
+		
+		//to cross the field after placing the gear
+		addSequential(new AutoGyroTurn(turn3));
+		addSequential(new AutoDriveToDistance(1.0, 150.0));
+		addSequential(new AutoGyroTurn(turn4));
+		addSequential(new AutoDriveToDistance(1.0, 254.0));
+		
 	}
 }
